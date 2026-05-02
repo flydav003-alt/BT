@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台股 K線評分排名報告與回測系統</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* ── CSS Variables ── */
+:root{
+  --bg:#080c14;--s1:#0d1220;--s2:#131a2e;--s3:#1a2340;
+  --border:#1e2d4a;--gold:#e8b84b;--cyan:#29c5c5;
+  --text:#d4dff0;--muted:#4a6080;--accent:#4a9eff;
+  --font:'Noto Sans TC',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;}
+
+/* ── Layout ── */
+.container{max-width:1400px;margin:0 auto;padding:0 20px;}
+.section{margin-bottom:40px;}
+.section-header{display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:16px;flex-wrap:wrap;gap:8px;}
+.section-title{font-size:1.1rem;font-weight:700;color:var(--gold);
+  font-family:var(--mono);letter-spacing:1px;}
+.section-date{font-size:.72rem;color:var(--muted);font-family:var(--mono);}
+
+/* ── Navbar ── */
+.navbar{background:var(--s1);border-bottom:1px solid var(--border);
+  padding:14px 0;position:sticky;top:0;z-index:100;}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;}
+.navbar-brand{font-family:var(--mono);font-size:1rem;font-weight:700;color:var(--gold);}
+.navbar-sub{font-size:.7rem;color:var(--muted);margin-top:2px;}
+.navbar-nav{display:flex;gap:20px;}
+.navbar-nav a{color:var(--muted);font-size:.8rem;text-decoration:none;transition:color .2s;}
+.navbar-nav a:hover{color:var(--text);}
+.update-badge{font-size:.65rem;color:var(--muted);font-family:var(--mono);
+  background:var(--s2);border:1px solid var(--border);border-radius:4px;padding:3px 8px;}
+
+/* ── Main Content ── */
+.main-content{padding:28px 0;}
+
+/* ── Today Grid ── */
+.today-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.today-col{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:16px;}
+
+/* ── Data Table ── */
+.data-table{width:100%;border-collapse:collapse;background:var(--s1);
+  border-radius:10px;overflow:hidden;border:1px solid var(--border);}
+.data-table thead tr{background:var(--s2);border-bottom:2px solid var(--border);}
+.data-table thead th{padding:10px 12px;text-align:left;font-size:.65rem;
+  font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;white-space:nowrap;}
+.data-table tbody tr{border-bottom:1px solid #0f1a2e;transition:background .15s;}
+.data-table tbody tr:hover{background:rgba(255,255,255,.02);}
+.data-table tbody td{padding:9px 12px;font-size:.8rem;white-space:nowrap;}
+
+/* ── Tab Buttons ── */
+.tab-btn{background:transparent;border:none;color:var(--muted);
+  font-size:.75rem;padding:4px 12px;border-radius:5px;cursor:pointer;transition:all .2s;
+  font-family:var(--font);}
+.tab-btn.active{background:var(--s3);color:var(--text);font-weight:600;}
+.tab-btn:hover:not(.active){color:var(--text);}
+
+/* ── Footer ── */
+.footer{background:var(--s1);border-top:1px solid var(--border);
+  padding:20px 0;text-align:center;font-size:.68rem;color:var(--muted);line-height:2;}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .today-grid{grid-template-columns:1fr;}
+  .navbar-nav{display:none;}
+}
+@media(max-width:600px){
+  .data-table{font-size:.72rem;}
+  .data-table thead th,.data-table tbody td{padding:7px 8px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <div>
+      <div class="navbar-brand">📊 台股 K線評分排名報告與回測系統</div>
+      <div class="navbar-sub">每日自動更新｜ETF × 上櫃 × 上市</div>
+    </div>
+    <nav class="navbar-nav">
+      <a href="#today">今日推薦</a>
+      <a href="#history">歷史回測</a>
+      <a href="#winrate">勝率排行</a>
+    </nav>
+    <div class="update-badge">🕐 2026-05-02 12:33 更新</div>
+  </div>
+</nav>
+
+<!-- ── Main ── -->
+<main class="main-content">
+  <div class="container">
+    
+<section class="section" id="today">
+  <div class="section-header">
+    <div class="section-title">📈 今日推薦</div>
+    <div class="section-date">資料日期：2026-05-02</div>
+  </div>
+  <div class="today-grid">
+    
+<div class="today-col">
+  <div class="col-header" style="border-bottom:2px solid #a78bfa;margin-bottom:12px;padding-bottom:8px;">
+    <span style="font-size:.9rem;font-weight:700;color:#a78bfa;">ETF</span>
+    <span style="font-size:.68rem;color:#4a6080;margin-left:8px;">1 支</span>
+  </div>
+  
+<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">1</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
+        stroke-dasharray="207.3 69.2"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">75</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=0050" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">0050</a>
+      <span style="font-size:.72rem;color:#6a85a8;">元大台灣50</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:1px;">📊 偏多觀察</div>
+    
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">178.50</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 52.3 ｜ K 61.2</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.30x</div>
+  </div>
+</div>
+</div>
+<div class="today-col">
+  <div class="col-header" style="border-bottom:2px solid #29c5c5;margin-bottom:12px;padding-bottom:8px;">
+    <span style="font-size:.9rem;font-weight:700;color:#29c5c5;">上櫃</span>
+    <span style="font-size:.68rem;color:#4a6080;margin-left:8px;">1 支</span>
+  </div>
+  
+<div class="pick-card" style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">1</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff4d6d" stroke-width="4"
+        stroke-dasharray="226.7 49.8"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">82</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=6547" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">6547</a>
+      <span style="font-size:.72rem;color:#6a85a8;">高端疫苗</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff4d6d;font-weight:600;margin-top:1px;">📈 強烈偏多</div>
+    
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">45.60</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 38.1 ｜ K 42.5</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 2.10x</div>
+  </div>
+</div>
+</div>
+<div class="today-col">
+  <div class="col-header" style="border-bottom:2px solid #ff9f40;margin-bottom:12px;padding-bottom:8px;">
+    <span style="font-size:.9rem;font-weight:700;color:#ff9f40;">上市</span>
+    <span style="font-size:.68rem;color:#4a6080;margin-left:8px;">1 支</span>
+  </div>
+  
+<div class="pick-card" style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">1</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff4d6d" stroke-width="4"
+        stroke-dasharray="243.3 33.2"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">88</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=2330" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">2330</a>
+      <span style="font-size:.72rem;color:#6a85a8;">台積電</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff4d6d;font-weight:600;margin-top:1px;">📈 強烈偏多</div>
+    
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">910.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 65.4 ｜ K 72.1</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.80x</div>
+  </div>
+</div>
+</div>
+  </div>
+</section>
+    
+<section class="section" id="history">
+  <div class="section-header">
+    <div class="section-title">📋 歷史回測（近5天）</div>
+    <input id="history-search" type="text" placeholder="搜尋股票代號或名稱..."
+      style="background:#0d1220;border:1px solid #1e2d4a;border-radius:6px;padding:6px 12px;
+             color:#d4dff0;font-size:.8rem;outline:none;width:200px;"
+      oninput="filterHistory(this.value)">
+  </div>
+  <div style="overflow-x:auto;">
+  <table class="data-table" id="history-table">
+    <thead>
+      <tr>
+        <th>日期</th><th>類別</th><th>代號</th><th>名稱</th>
+        <th>K線分</th><th>收盤價</th>
+        <th>T+3價</th><th>T+3損益</th>
+        <th>T+5價</th><th>T+5損益</th>
+      </tr>
+    </thead>
+    <tbody id="history-body">
+      
+<tr class="history-row" data-search="0050 元大台灣50">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=0050" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">0050</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">元大台灣50</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">75</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">178.5</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="6547 高端疫苗">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=6547" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">6547</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">高端疫苗</td>
+  <td><span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">82</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">45.6</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="2330 台積電">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=2330" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">2330</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">台積電</td>
+  <td><span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">88</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">910.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="00878 國泰永續高息">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-04-30</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=00878" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">00878</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">國泰永續高息</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">71</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">22.5</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">22.8</td>
+  <td style="font-weight:600;color:#ff4d6d;">+1.33%</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">23.1</td>
+  <td style="font-weight:600;color:#ff4d6d;">+2.67%</td>
+</tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+    
+<section class="section" id="winrate">
+  <div class="section-header">
+    <div class="section-title">🏆 歷史勝率排行</div>
+  </div>
+  <!-- 切換按鈕列 -->
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
+    <div style="display:flex;gap:4px;background:#0d1220;border:1px solid #1e2d4a;border-radius:8px;padding:4px;">
+      <button class="tab-btn active" onclick="switchWin('t3')" id="btn-t3">T+3</button>
+      <button class="tab-btn" onclick="switchWin('t5')"  id="btn-t5">T+5</button>
+    </div>
+    <div style="display:flex;gap:4px;background:#0d1220;border:1px solid #1e2d4a;border-radius:8px;padding:4px;">
+      <button class="tab-btn active" onclick="switchRange('30d')" id="btn-30d">近30天</button>
+      <button class="tab-btn" onclick="switchRange('90d')"  id="btn-90d">近90天</button>
+      <button class="tab-btn" onclick="switchRange('all')"  id="btn-all">全部</button>
+    </div>
+  </div>
+  <div style="overflow-x:auto;">
+    <div class="win-panel" id="win-t3_30d" style="display:block;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div><div class="win-panel" id="win-t5_30d" style="display:none;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div><div class="win-panel" id="win-t3_90d" style="display:none;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div><div class="win-panel" id="win-t5_90d" style="display:none;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div><div class="win-panel" id="win-t3_all" style="display:none;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div><div class="win-panel" id="win-t5_all" style="display:none;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div>
+  </div>
+</section>
+  </div>
+</main>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <div class="container">
+    <div>⚠️ 本系統由 Python K線評分引擎自動產生，所有分析僅供參考，不構成買賣建議。投資人應自行判斷風險。</div>
+    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-05-02 12:33</div>
+  </div>
+</footer>
+
+<script>
+// ── 歷史回測搜尋 ──
+function filterHistory(q) {
+  const rows = document.querySelectorAll('#history-body .history-row');
+  const kw = q.trim().toLowerCase();
+  rows.forEach(tr => {
+    const search = (tr.dataset.search || '').toLowerCase();
+    tr.style.display = (!kw || search.includes(kw)) ? '' : 'none';
+  });
+}
+
+// ── 勝率切換 ──
+let _winType = 't3', _winRange = '30d';
+
+function switchWin(type) {
+  _winType = type;
+  document.querySelectorAll('[id^="btn-t"]').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + type).classList.add('active');
+  _showWinPanel();
+}
+
+function switchRange(range) {
+  _winRange = range;
+  ['30d','90d','all'].forEach(r => {
+    document.getElementById('btn-' + r).classList.remove('active');
+  });
+  document.getElementById('btn-' + range).classList.add('active');
+  _showWinPanel();
+}
+
+function _showWinPanel() {
+  document.querySelectorAll('.win-panel').forEach(p => p.style.display = 'none');
+  const key = _winType + '_' + _winRange;
+  const panel = document.getElementById('win-' + key);
+  if (panel) panel.style.display = 'block';
+}
+</script>
+</body>
+</html>
