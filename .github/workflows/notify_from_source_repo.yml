@@ -1,0 +1,64 @@
+name: 通知主 Repo 更新（放在各來源 Repo 使用）
+
+# ══════════════════════════════════════════════
+# ⚠️ 此檔案放在「來源 Repo」（ETF/OTC/TSE），
+#    不是放在本 Repo。
+#    當來源 Repo 有新 CSV push 時，
+#    透過 repository_dispatch 通知主 Repo 執行更新。
+# ══════════════════════════════════════════════
+
+on:
+  push:
+    paths:
+      - '**.csv'        # 偵測到 CSV 變動時觸發
+  workflow_dispatch:    # 也可手動觸發
+
+jobs:
+  notify:
+    name: 通知主 Repo
+    runs-on: ubuntu-latest
+    steps:
+      - name: 複製 CSV 到主 Repo 並觸發更新
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          # ⚠️ 需要在此 Repo 的 Secrets 設定：
+          #    MAIN_REPO_TOKEN = 主 Repo 的 Personal Access Token（需要 repo 權限）
+          token:      ${{ secrets.MAIN_REPO_TOKEN }}
+          # ⚠️ 改成你的主 Repo 路徑
+          repository: YOUR_GITHUB_USERNAME/taiwan-kline-dashboard
+          # ⚠️ 依照此 Repo 是哪個類別選擇：
+          #    ETF Repo  → csv-etf-updated
+          #    OTC Repo  → csv-otc-updated
+          #    TSE Repo  → csv-tse-updated
+          event-type: csv-etf-updated
+          client-payload: |
+            {
+              "source_repo": "${{ github.repository }}",
+              "triggered_at": "${{ github.event.head_commit.timestamp }}"
+            }
+
+      # ── 同時將 CSV 直接複製到主 Repo（若需要）──
+      # 若你的架構是「來源 Repo 只通知，CSV 已在主 Repo」可刪除此 step
+      - name: 將 CSV push 到主 Repo data/input/
+        env:
+          MAIN_REPO_TOKEN: ${{ secrets.MAIN_REPO_TOKEN }}
+        run: |
+          # 找到最新的 CSV 檔
+          CSV_FILE=$(find . -name "*.csv" | head -1)
+          if [ -z "$CSV_FILE" ]; then
+            echo "找不到 CSV 檔，跳過"
+            exit 0
+          fi
+
+          # Clone 主 Repo
+          git clone https://x-access-token:${MAIN_REPO_TOKEN}@github.com/YOUR_GITHUB_USERNAME/taiwan-kline-dashboard.git main_repo
+          cd main_repo
+
+          # 複製 CSV（依類別命名）
+          cp ../$CSV_FILE data/input/etf.csv   # ← 改成對應的檔名：etf.csv / otc.csv / tse.csv
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/input/
+          git diff --staged --quiet || git commit -m "📥 更新 ETF CSV from ${{ github.repository }}"
+          git push
