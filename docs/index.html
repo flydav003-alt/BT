@@ -98,7 +98,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
       <a href="#history">歷史回測</a>
       <a href="#winrate">勝率排行</a>
     </nav>
-    <div class="update-badge">🕐 2026-05-02 18:26 更新</div>
+    <div class="update-badge">🕐 2026-05-02 18:50 更新</div>
   </div>
 </nav>
 
@@ -433,16 +433,636 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <div class="today-col">
   <div class="col-header" style="border-bottom:2px solid #29c5c5;margin-bottom:12px;padding-bottom:8px;">
     <span style="font-size:.9rem;font-weight:700;color:#29c5c5;">上櫃</span>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:8px;">0 支</span>
+    <span style="font-size:.68rem;color:#4a6080;margin-left:8px;">10 支</span>
   </div>
-  <div style="color:#4a6080;font-size:.8rem;padding:20px 0;">暫無資料</div>
+  
+<div class="pick-card" style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">1</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff4d6d" stroke-width="4"
+        stroke-dasharray="226.7 49.8"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">82</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=3580" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">3580</a>
+      <span style="font-size:.72rem;color:#6a85a8;">友威科</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff4d6d;font-weight:600;margin-top:1px;">📈 強烈偏多</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">85.90</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 64.2 ｜ K 58.0</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.80x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">2</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff4d6d" stroke-width="4"
+        stroke-dasharray="218.4 58.1"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">79</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=5864" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">5864</a>
+      <span style="font-size:.72rem;color:#6a85a8;">致和證</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff4d6d;font-weight:600;margin-top:1px;">📈 強烈偏多</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">28.50</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 72.0 ｜ K 88.4</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.13x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">3</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
+        stroke-dasharray="199.1 77.4"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">72</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=6903" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">6903</a>
+      <span style="font-size:.72rem;color:#6a85a8;">巨漢</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:1px;">📊 偏多觀察</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">412.50</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 64.2 ｜ K 70.4</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.64x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">4</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
+        stroke-dasharray="188.0 88.5"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">68</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=6761" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">6761</a>
+      <span style="font-size:.72rem;color:#6a85a8;">穩得</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:1px;">📊 偏多觀察</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">218.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 64.6 ｜ K 44.5</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.34x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">5</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
+        stroke-dasharray="174.2 102.3"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">63</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=8091" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">8091</a>
+      <span style="font-size:.72rem;color:#6a85a8;">翔名</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:1px;">📊 偏多觀察</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">192.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 66.4 ｜ K 47.4</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 2.26x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">6</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
+        stroke-dasharray="174.2 102.3"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">63</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=6244" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">6244</a>
+      <span style="font-size:.72rem;color:#6a85a8;">茂迪</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:1px;">📊 偏多觀察</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">27.40</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 47.3 ｜ K 30.3</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.27x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">7</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#e8b84b" stroke-width="4"
+        stroke-dasharray="163.1 113.4"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">59</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=8358" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">8358</a>
+      <span style="font-size:.72rem;color:#6a85a8;">金居</span>
+    </div>
+    <div style="font-size:.7rem;color:#e8b84b;font-weight:600;margin-top:1px;">⚖️ 中性觀望</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">388.50</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 66.7 ｜ K 57.7</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 0.87x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">8</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#e8b84b" stroke-width="4"
+        stroke-dasharray="160.3 116.2"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">58</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=3691" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">3691</a>
+      <span style="font-size:.72rem;color:#6a85a8;">碩禾</span>
+    </div>
+    <div style="font-size:.7rem;color:#e8b84b;font-weight:600;margin-top:1px;">⚖️ 中性觀望</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">118.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 53.9 ｜ K 45.4</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.49x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">9</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#e8b84b" stroke-width="4"
+        stroke-dasharray="149.3 127.2"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">54</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=3689" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">3689</a>
+      <span style="font-size:.72rem;color:#6a85a8;">湧德</span>
+    </div>
+    <div style="font-size:.7rem;color:#e8b84b;font-weight:600;margin-top:1px;">⚖️ 中性觀望</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">134.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 58.2 ｜ K 54.5</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.69x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">10</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#e8b84b" stroke-width="4"
+        stroke-dasharray="138.2 138.3"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">50</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=6175" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">6175</a>
+      <span style="font-size:.72rem;color:#6a85a8;">立敦</span>
+    </div>
+    <div style="font-size:.7rem;color:#e8b84b;font-weight:600;margin-top:1px;">⚖️ 中性觀望</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">62.40</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 61.1 ｜ K 46.6</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.44x</div>
+  </div>
+</div>
 </div>
 <div class="today-col">
   <div class="col-header" style="border-bottom:2px solid #ff9f40;margin-bottom:12px;padding-bottom:8px;">
     <span style="font-size:.9rem;font-weight:700;color:#ff9f40;">上市</span>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:8px;">0 支</span>
+    <span style="font-size:.68rem;color:#4a6080;margin-left:8px;">10 支</span>
   </div>
-  <div style="color:#4a6080;font-size:.8rem;padding:20px 0;">暫無資料</div>
+  
+<div class="pick-card" style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">1</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff4d6d" stroke-width="4"
+        stroke-dasharray="218.4 58.1"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">79</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=2449" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">2449</a>
+      <span style="font-size:.72rem;color:#6a85a8;">京元電子</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff4d6d;font-weight:600;margin-top:1px;">📈 強烈偏多</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">302.50</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 57.9 ｜ K 53.6</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.80x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">2</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff4d6d" stroke-width="4"
+        stroke-dasharray="215.6 60.9"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">78</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=2465" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">2465</a>
+      <span style="font-size:.72rem;color:#6a85a8;">麗臺</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff4d6d;font-weight:600;margin-top:1px;">📈 強烈偏多</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">74.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 72.0 ｜ K 80.6</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 2.07x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">3</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
+        stroke-dasharray="204.6 71.9"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">74</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=5269" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">5269</a>
+      <span style="font-size:.72rem;color:#6a85a8;">祥碩</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:1px;">📊 偏多觀察</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">1365.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 62.9 ｜ K 50.1</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.85x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">4</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
+        stroke-dasharray="176.9 99.6"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">64</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=6505" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">6505</a>
+      <span style="font-size:.72rem;color:#6a85a8;">台塑化</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:1px;">📊 偏多觀察</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">56.40</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 57.1 ｜ K 57.2</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.97x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">5</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
+        stroke-dasharray="174.2 102.3"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">63</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=3029" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">3029</a>
+      <span style="font-size:.72rem;color:#6a85a8;">零壹</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:1px;">📊 偏多觀察</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">102.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 55.8 ｜ K 52.5</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 2.62x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">6</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#e8b84b" stroke-width="4"
+        stroke-dasharray="165.9 110.6"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">60</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=6412" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">6412</a>
+      <span style="font-size:.72rem;color:#6a85a8;">群電</span>
+    </div>
+    <div style="font-size:.7rem;color:#e8b84b;font-weight:600;margin-top:1px;">⚖️ 中性觀望</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">81.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 56.0 ｜ K 43.2</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 2.40x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">7</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#e8b84b" stroke-width="4"
+        stroke-dasharray="154.8 121.7"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">56</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=6706" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">6706</a>
+      <span style="font-size:.72rem;color:#6a85a8;">惠特</span>
+    </div>
+    <div style="font-size:.7rem;color:#e8b84b;font-weight:600;margin-top:1px;">⚖️ 中性觀望</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">151.50</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 60.9 ｜ K 55.1</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 2.39x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">8</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#e8b84b" stroke-width="4"
+        stroke-dasharray="149.3 127.2"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">54</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=1528" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">1528</a>
+      <span style="font-size:.72rem;color:#6a85a8;">恩德</span>
+    </div>
+    <div style="font-size:.7rem;color:#e8b84b;font-weight:600;margin-top:1px;">⚖️ 中性觀望</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">28.80</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 58.1 ｜ K 45.2</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 2.00x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">9</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#e8b84b" stroke-width="4"
+        stroke-dasharray="127.2 149.3"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">46</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=4766" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">4766</a>
+      <span style="font-size:.72rem;color:#6a85a8;">南寶</span>
+    </div>
+    <div style="font-size:.7rem;color:#e8b84b;font-weight:600;margin-top:1px;">⚖️ 中性觀望</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">358.50</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 61.4 ｜ K 37.6</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 3.49x</div>
+  </div>
+</div>
+<div class="pick-card" style="background:rgba(74,158,255,0.10);border:1px solid #4a9eff33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  <!-- 排名 -->
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">10</div>
+  <!-- 分數圓環 -->
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#4a9eff" stroke-width="4"
+        stroke-dasharray="102.3 174.2"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#4a9eff;font-family:'IBM Plex Mono',monospace;z-index:1;">37</span>
+  </div>
+  <!-- 主體資訊 -->
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:baseline;gap:6px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=6282" target="_blank"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         title="點擊開啟K線分析">6282</a>
+      <span style="font-size:.72rem;color:#6a85a8;">康舒</span>
+    </div>
+    <div style="font-size:.7rem;color:#4a9eff;font-weight:600;margin-top:1px;">⚠️ 偏空謹慎</div>
+  </div>
+  <!-- 數值欄 -->
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">47.35</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 47.9 ｜ K 30.6</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.54x</div>
+  </div>
+</div>
 </div>
   </div>
 </section>
@@ -617,6 +1237,306 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
+<tr class="history-row" data-search="3580 友威科">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=3580" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3580</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">友威科</td>
+  <td><span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">82</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">85.9</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="5864 致和證">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=5864" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">5864</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">致和證</td>
+  <td><span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">79</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">28.5</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="6903 巨漢">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=6903" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">6903</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">巨漢</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">72</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">412.5</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="6761 穩得">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=6761" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">6761</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">穩得</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">68</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">218.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="8091 翔名">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=8091" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">8091</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">翔名</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">63</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">192.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="6244 茂迪">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=6244" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">6244</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">茂迪</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">63</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">27.4</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="8358 金居">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=8358" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">8358</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">金居</td>
+  <td><span style="color:#e8b84b;font-weight:700;font-family:'IBM Plex Mono',monospace;">59</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">388.5</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="3691 碩禾">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=3691" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3691</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">碩禾</td>
+  <td><span style="color:#e8b84b;font-weight:700;font-family:'IBM Plex Mono',monospace;">58</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">118.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="3689 湧德">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=3689" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3689</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">湧德</td>
+  <td><span style="color:#e8b84b;font-weight:700;font-family:'IBM Plex Mono',monospace;">54</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">134.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="6175 立敦">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=6175" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">6175</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">立敦</td>
+  <td><span style="color:#e8b84b;font-weight:700;font-family:'IBM Plex Mono',monospace;">50</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">62.4</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="2449 京元電子">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=2449" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">2449</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">京元電子</td>
+  <td><span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">79</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">302.5</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="2465 麗臺">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=2465" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">2465</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">麗臺</td>
+  <td><span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">78</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">74.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="5269 祥碩">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=5269" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">5269</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">祥碩</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">74</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">1365.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="6505 台塑化">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=6505" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">6505</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">台塑化</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">64</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">56.4</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="3029 零壹">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=3029" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3029</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">零壹</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">63</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">102.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="6412 群電">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=6412" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">6412</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">群電</td>
+  <td><span style="color:#e8b84b;font-weight:700;font-family:'IBM Plex Mono',monospace;">60</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">81.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="6706 惠特">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=6706" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">6706</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">惠特</td>
+  <td><span style="color:#e8b84b;font-weight:700;font-family:'IBM Plex Mono',monospace;">56</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">151.5</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="1528 恩德">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=1528" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">1528</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">恩德</td>
+  <td><span style="color:#e8b84b;font-weight:700;font-family:'IBM Plex Mono',monospace;">54</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">28.8</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="4766 南寶">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=4766" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">4766</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">南寶</td>
+  <td><span style="color:#e8b84b;font-weight:700;font-family:'IBM Plex Mono',monospace;">46</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">358.5</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row" data-search="6282 康舒">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
+  <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=6282" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">6282</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">康舒</td>
+  <td><span style="color:#4a9eff;font-weight:700;font-family:'IBM Plex Mono',monospace;">37</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">47.35</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
     </tbody>
   </table>
   </div>
@@ -649,7 +1569,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <footer class="footer">
   <div class="container">
     <div>⚠️ 本系統由 Python K線評分引擎自動產生，所有分析僅供參考，不構成買賣建議。投資人應自行判斷風險。</div>
-    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-05-02 18:26</div>
+    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-05-02 18:50</div>
   </div>
 </footer>
 
