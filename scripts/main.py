@@ -25,6 +25,7 @@ import logging
 import json
 from datetime import date, datetime
 from pathlib import Path
+from typing import Optional
 
 # 確保 scripts/ 在 import 路徑中
 sys.path.insert(0, str(Path(__file__).parent))
@@ -349,5 +350,4 @@ def main():
 
 
 if __name__ == "__main__":
-    from typing import Optional
     main()
