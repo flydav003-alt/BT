@@ -75,32 +75,20 @@ def sig_color(sig_type: str) -> str:
 # ══════════════════════════════════════════════
 
 def render_pick_card(p: dict) -> str:
-    sc  = p.get("kline_score", 0)
-    col = score_color(sc)
-    bg  = score_bg(sc)
-    sid = p.get("stock_id", "")
+    sc   = p.get("kline_score", 0)
+    col  = score_color(sc)
+    bg   = score_bg(sc)
+    sid  = p.get("stock_id", "")
     name = p.get("stock_name", "")
     circ = round(sc / 100 * 276.46, 1)
     gap  = round(276.46 - circ, 1)
-
-    # 解析 top_signals
-    try:
-        sigs = json.loads(p.get("top_signals", "[]"))
-    except Exception:
-        sigs = []
-
-    sig_html = ""
-    for s in sigs[:2]:
-        ic  = sig_icon(s.get("type","neutral"))
-        sc2 = sig_color(s.get("type","neutral"))
-        sig_html += f'<div style="font-size:.65rem;color:{sc2};margin-top:2px;">{ic} [{s.get("cat","")}] {s.get("text","")[:22]}{"…" if len(s.get("text","")) > 22 else ""}</div>'
 
     rsi_str = f'{p["rsi"]:.1f}' if p.get("rsi") else "—"
     kd_str  = f'{p["kd_k"]:.1f}' if p.get("kd_k") else "—"
     vr_str  = f'{p["vol_ratio"]:.2f}x' if p.get("vol_ratio") else "—"
 
     return f"""
-<div class="pick-card" style="background:{bg};border:1px solid {col}33;border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card" style="background:{bg};border:1px solid {col}33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">{p.get('rank','')}</div>
   <!-- 分數圓環 -->
@@ -123,7 +111,6 @@ def render_pick_card(p: dict) -> str:
       <span style="font-size:.72rem;color:#6a85a8;">{name}</span>
     </div>
     <div style="font-size:.7rem;color:{col};font-weight:600;margin-top:1px;">{p.get('verdict','')}</div>
-    {sig_html}
   </div>
   <!-- 數值欄 -->
   <div style="text-align:right;flex-shrink:0;">
