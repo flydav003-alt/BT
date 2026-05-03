@@ -257,14 +257,14 @@ def render_win_table(stats: list[dict], table_id: str) -> str:
 
 
 def render_winrate_section() -> str:
-    combos = {{
+    combos = {
         "t3_30d": get_win_rate_stats(days=30,  use_t5=False),
         "t5_30d": get_win_rate_stats(days=30,  use_t5=True),
         "t3_90d": get_win_rate_stats(days=90,  use_t5=False),
         "t5_90d": get_win_rate_stats(days=90,  use_t5=True),
         "t3_all": get_win_rate_stats(days=None, use_t5=False),
         "t5_all": get_win_rate_stats(days=None, use_t5=True),
-    }}
+    }
 
     tables_html = ""
     for key, stats in combos.items():
