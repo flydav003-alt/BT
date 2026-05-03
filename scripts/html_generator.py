@@ -1062,67 +1062,79 @@ function _drawTrendChart(trend, col, currentScore) {{
     return;
   }}
 
-  var scores = trend.map(function(t) {{ return t.s; }});
-  var dates  = trend.map(function(t) {{ return t.d ? t.d.slice(5) : ''; }}); // MM-DD
-  var mn = Math.min.apply(null, scores) - 8;
-  var mx = Math.max.apply(null, scores) + 8;
+  // 支援兩種格式：{{s, d}} 舊格式 / {{close, score, date}} 新格式
+  var hasPriceData = trend[0].close !== undefined;
+  var values  = trend.map(function(t) {{ return hasPriceData ? t.close : t.s; }});
+  var scores  = trend.map(function(t) {{ return t.score !== undefined ? t.score : t.s; }});
+  var dates   = trend.map(function(t) {{ return (t.date || t.d || '').slice(5); }}); // MM-DD
+
+  var mn = Math.min.apply(null, values) * 0.995;
+  var mx = Math.max.apply(null, values) * 1.005;
   if (mx <= mn) mx = mn + 1;
 
-  var W = 400, H = 80, pad = 6;
-  var n = scores.length;
+  var W = 400, H = 80, padL = 8, padR = 8, padT = 14, padB = 4;
+  var n = values.length;
 
-  function toX(i) {{ return pad + i / (n - 1) * (W - pad * 2); }}
-  function toY(s) {{ return H - pad - (s - mn) / (mx - mn) * (H - pad * 2); }}
+  function toX(i) {{ return padL + i / (n - 1) * (W - padL - padR); }}
+  function toY(v) {{ return padT + (1 - (v - mn) / (mx - mn)) * (H - padT - padB); }}
 
-  var pts = scores.map(function(s, i) {{
-    return toX(i).toFixed(1) + ',' + toY(s).toFixed(1);
+  var pts = values.map(function(v, i) {{
+    return toX(i).toFixed(1) + ',' + toY(v).toFixed(1);
   }}).join(' ');
 
-  // 漸層填充
-  var gradId = 'grad-trend-' + Date.now();
+  var gradId = 'grad-' + Math.random().toString(36).slice(2);
   var lastX = toX(n - 1).toFixed(1);
-  var lastY = toY(scores[n - 1]).toFixed(1);
+  var lastY = toY(values[n - 1]).toFixed(1);
 
-  // 分數標籤（每個點）
-  var labels = scores.map(function(s, i) {{
-    var x = toX(i).toFixed(1);
-    var y = toY(s).toFixed(1);
-    var isLast = i === n - 1;
-    var textCol = isLast ? col : '#4a6080';
-    var fw = isLast ? '700' : '400';
-    return '<text x="' + x + '" y="' + (parseFloat(y) - 5).toFixed(1) +
-           '" text-anchor="middle" font-size="9" fill="' + textCol + '" font-weight="' + fw + '">' + s + '</text>';
-  }}).join('');
-
-  // 日期標籤
-  var dateLabels = '';
-  if (n >= 2) {{
-    dateLabels += '<text x="' + pad + '" y="' + (H + 12) + '" text-anchor="middle" font-size="8" fill="#4a6080">' + dates[0] + '</text>';
-    dateLabels += '<text x="' + (W - pad) + '" y="' + (H + 12) + '" text-anchor="middle" font-size="8" fill="' + col + '">' + dates[n-1] + '</text>';
+  // 收盤價標籤（首尾）
+  var priceLabels = '';
+  if (hasPriceData) {{
+    priceLabels +=
+      '<text x="' + padL + '" y="' + (toY(values[0]) - 4).toFixed(1) + '" font-size="8" fill="#4a6080" text-anchor="middle">' + values[0].toFixed(1) + '</text>' +
+      '<text x="' + lastX + '" y="' + (toY(values[n-1]) - 4).toFixed(1) + '" font-size="8" fill="' + col + '" text-anchor="middle" font-weight="700">' + values[n-1].toFixed(1) + '</text>';
   }}
 
-  container.innerHTML = '<svg width="100%" viewBox="0 0 ' + (W) + ' ' + (H + 16) + '" preserveAspectRatio="xMidYMid meet">' +
-    '<defs>' +
-    '<linearGradient id="' + gradId + '" x1="0" y1="0" x2="0" y2="1">' +
-    '<stop offset="0%" stop-color="' + col + '" stop-opacity="0.18"/>' +
+  // 有分數的日期打圓點標記
+  var scoreDots = '';
+  scores.forEach(function(sc, i) {{
+    if (sc === null || sc === undefined) return;
+    var cx = toX(i).toFixed(1);
+    var cy = toY(values[i]).toFixed(1);
+    scoreDots += '<circle cx="' + cx + '" cy="' + cy + '" r="3" fill="' + col + '" opacity="0.9"/>';
+    // 分數文字（只在有值時顯示）
+    var textY = (parseFloat(cy) - 6).toFixed(1);
+    scoreDots += '<text x="' + cx + '" y="' + textY + '" font-size="8" fill="' + col + '" text-anchor="middle" font-weight="600">' + sc + '</text>';
+  }});
+
+  // 日期標籤（首尾）
+  var dateLabels =
+    '<text x="' + padL + '" y="' + (H + 12) + '" font-size="8" fill="#4a6080" text-anchor="middle">' + dates[0] + '</text>' +
+    '<text x="' + lastX + '" y="' + (H + 12) + '" font-size="8" fill="' + col + '" text-anchor="middle">' + dates[n-1] + '</text>';
+
+  container.innerHTML =
+    '<svg width="100%" viewBox="0 0 ' + W + ' ' + (H + 16) + '" preserveAspectRatio="xMidYMid meet">' +
+    '<defs><linearGradient id="' + gradId + '" x1="0" y1="0" x2="0" y2="1">' +
+    '<stop offset="0%" stop-color="' + col + '" stop-opacity="0.2"/>' +
     '<stop offset="100%" stop-color="' + col + '" stop-opacity="0"/>' +
     '</linearGradient></defs>' +
-    '<polygon points="' + pad + ',' + H + ' ' + pts + ' ' + lastX + ',' + H + '" fill="url(#' + gradId + ')"/>' +
+    '<polygon points="' + padL + ',' + H + ' ' + pts + ' ' + lastX + ',' + H + '" fill="url(#' + gradId + ')"/>' +
     '<polyline points="' + pts + '" fill="none" stroke="' + col + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
-    '<circle cx="' + lastX + '" cy="' + lastY + '" r="4" fill="' + col + '"/>' +
-    labels +
-    dateLabels +
+    priceLabels + scoreDots + dateLabels +
     '</svg>';
 
-  // 分數變化摘要
-  var delta = scores[n-1] - scores[0];
-  var deltaStr = (delta > 0 ? '+' : '') + delta;
-  var deltaCol = delta > 0 ? '#ff4d6d' : (delta < 0 ? '#4a9eff' : '#6a85a8');
+  // 摘要文字
+  var delta = hasPriceData
+    ? ((values[n-1] - values[0]) / values[0] * 100).toFixed(2) + '%'
+    : (scores[n-1] - scores[0] > 0 ? '+' : '') + (scores[n-1] - scores[0]) + ' pts';
+  var deltaCol = (hasPriceData ? values[n-1] >= values[0] : scores[n-1] >= scores[0]) ? '#ff4d6d' : '#4a9eff';
+  var labelA = hasPriceData ? values[0].toFixed(1) : scores[0];
+  var labelB = hasPriceData ? values[n-1].toFixed(1) : scores[n-1];
+
   document.getElementById('pm-trend-summary').innerHTML =
-    '<span style="color:#6a85a8;">7日前：' + scores[0] + '</span>' +
-    '&nbsp;&nbsp;→&nbsp;&nbsp;' +
-    '<span style="color:' + col + ';font-weight:700;">今日：' + scores[n-1] + '</span>' +
-    '&nbsp;&nbsp;<span style="color:' + deltaCol + ';font-size:.85rem;">' + deltaStr + ' pts</span>';
+    '<span style="color:#6a85a8;">' + dates[0] + '：' + labelA + '</span>' +
+    '&nbsp;→&nbsp;' +
+    '<span style="color:' + col + ';font-weight:700;">' + dates[n-1] + '：' + labelB + '</span>' +
+    '&nbsp;<span style="color:' + deltaCol + ';">(' + delta + ')</span>';
 }}
 
 function _renderSignals(signals) {{
