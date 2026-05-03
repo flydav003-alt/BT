@@ -664,13 +664,25 @@ function applyTodayFilters() {{
       if (f.rsi === '50-'   && rsi >= 50) ok = false;
       if (vr < f.vol) ok = false;
 
-      card.style.display = ok ? '' : 'none';
+      if (ok) {{
+        card.style.display = '';
+        card.style.marginBottom = '6px';
+      }} else {{
+        card.style.display = 'none';
+        card.style.marginBottom = '0';
+      }}
       if (ok) visible++;
     }});
 
     var noResult = col.querySelector('.no-result');
     if (noResult) noResult.style.display = visible === 0 ? '' : 'none';
   }});
+
+  // 類別篩選時動態調整 grid 欄數，避免空欄撐開
+  var grid = document.querySelector('.today-grid');
+  if (grid) {{
+    grid.style.gridTemplateColumns = f.cat ? '1fr' : 'repeat(3,1fr)';
+  }}
 }}
 
 function resetTodayFilters() {{
