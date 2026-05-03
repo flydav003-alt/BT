@@ -20,7 +20,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent))
 
 from config import DOCS_DIR, DOCS_DATA_DIR, SITE_TITLE, SITE_SUBTITLE, KLINE_TOOL_URL, TOP_N
-from db_manager import get_latest_picks, get_history_picks, get_win_rate_stats, get_all_score_trends
+from db_manager import get_latest_picks, get_history_picks, get_win_rate_stats, get_all_score_trends, get_watchlist, get_watchlist_latest_picks
 
 logger = logging.getLogger(__name__)
 
@@ -491,6 +491,313 @@ def render_winrate_section() -> str:
 
 
 # ══════════════════════════════════════════════
+#  自選股 Watchlist 頁面
+# ══════════════════════════════════════════════
+
+def render_watchlist_section() -> str:
+    """
+    自選股頁面：
+    - 上方管理 UI（新增/刪除，帶說明）
+    - 下方今日評分結果卡片（category=WATCH）
+    """
+    watch_items   = get_watchlist()           # 完整 watchlist（含今日分）
+    watch_picks   = get_watchlist_latest_picks()   # 已評分紀錄（有 score）
+
+    # 今日已評分的代號 set
+    scored_ids = {p["stock_id"] for p in watch_picks}
+    total_cnt  = len(watch_items)
+    scored_cnt = len(scored_ids)
+    bull_cnt   = sum(1 for p in watch_picks if "偏多" in (p.get("verdict") or ""))
+
+    # ── 管理表格列 ─────────────────────────────
+    table_rows = ""
+    for item in watch_items:
+        sid  = item["stock_id"]
+        name = item.get("stock_name") or item.get("display_name") or ""
+        note = item.get("note") or ""
+        sc   = item.get("kline_score")
+        verdict = item.get("verdict") or ""
+        close_p = item.get("close_price")
+
+        sc_badge = "—"
+        if sc is not None:
+            col = score_color(sc)
+            bg  = score_bg(sc)
+            sc_badge = f'<span style="color:{col};background:{bg};font-family:var(--mono);font-size:.82rem;font-weight:700;padding:2px 8px;border-radius:5px;border:1px solid {col}33;">{sc}</span>'
+
+        verdict_html = f'<span style="font-size:.72rem;color:{"#ff4d6d" if "多" in verdict else ("#4a9eff" if "空" in verdict else "#6a85a8")};">{verdict or "—"}</span>'
+        close_html   = f'<span style="font-family:var(--mono);font-size:.8rem;">{close_p:.2f}</span>' if close_p else '<span style="color:#4a6080;">—</span>'
+        status_badge = (
+            f'<span style="font-size:.7rem;color:#e8b84b;background:#e8b84b18;border:1px solid #e8b84b44;border-radius:4px;padding:2px 7px;">★ 已追蹤</span>'
+            if sid in scored_ids else
+            f'<span style="font-size:.7rem;color:#4a6080;background:#1a2340;border:1px solid #1e2d4a;border-radius:4px;padding:2px 7px;">待評分</span>'
+        )
+        note_html = f'<span style="font-size:.68rem;color:#4a6080;">{note}</span>' if note else ""
+
+        table_rows += f"""
+<tr class="wl-row" data-sid="{sid}">
+  <td>
+    <a href="{kline_url(sid)}" target="_blank"
+       style="font-family:var(--mono);font-weight:700;color:#d4dff0;text-decoration:none;
+              border-bottom:1px dashed #4a6080;">{sid}</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.8rem;">{name}<br>{note_html}</td>
+  <td>{sc_badge}</td>
+  <td>{verdict_html}</td>
+  <td>{close_html}</td>
+  <td>{status_badge}</td>
+  <td>
+    <button class="wl-del-btn" onclick="wlRemove('{sid}')"
+      title="從自選股移除"
+      style="background:transparent;border:1px solid #1e2d4a;color:#4a6080;border-radius:5px;
+             padding:3px 10px;cursor:pointer;font-size:.72rem;transition:all .15s;"
+      onmouseover="this.style.color='#ff4d6d';this.style.borderColor='#ff4d6d66';"
+      onmouseout="this.style.color='#4a6080';this.style.borderColor='#1e2d4a';">
+      ✕ 移除
+    </button>
+  </td>
+</tr>"""
+
+    empty_row = "" if watch_items else """
+<tr><td colspan="7" style="text-align:center;padding:28px 0;color:#4a6080;font-size:.85rem;">
+  自選股清單為空，請在上方輸入代號新增。
+</td></tr>"""
+
+    # ── 今日評分卡片 ────────────────────────────
+    pick_cards = ""
+    if watch_picks:
+        for p in watch_picks:
+            sc  = p.get("kline_score", 0)
+            col = score_color(sc)
+            bg  = score_bg(sc)
+            sid = p.get("stock_id", "")
+            name = p.get("display_name") or p.get("stock_name", "")
+            circ = round(sc / 100 * 276.46, 1)
+            gap  = round(276.46 - circ, 1)
+            rsi_v = float(p["rsi"]) if p.get("rsi") else 0
+            vr_v  = float(p["vol_ratio"]) if p.get("vol_ratio") else 0
+            close_str = f"{p['close_price']:.2f}" if p.get("close_price") else "—"
+            rsi_str = f"{rsi_v:.1f}" if rsi_v else "—"
+            kd_str  = f"{p['kd_k']:.1f}" if p.get("kd_k") else "—"
+            vr_str  = f"{vr_v:.2f}x" if vr_v else "—"
+            verdict = p.get("verdict", "")
+            verdict_col = "#ff4d6d" if "多" in verdict else ("#4a9eff" if "空" in verdict else "#6a85a8")
+            note_tag = f'<span style="font-size:.65rem;color:#e8b84b;background:#e8b84b18;border:1px solid #e8b84b44;border-radius:3px;padding:1px 5px;margin-left:4px;">備註</span>' if p.get("note") else ""
+
+            sigs_raw = p.get("top_signals", "[]")
+            try:
+                sigs_list = json.loads(sigs_raw) if isinstance(sigs_raw, str) else sigs_raw
+            except Exception:
+                sigs_list = []
+            sigs_json = json.dumps(sigs_list, ensure_ascii=False).replace('"', '&quot;')
+
+            pick_cards += f"""
+<div class="pick-card"
+  data-score="{sc}" data-cat="WATCH"
+  data-rsi="{round(rsi_v,1)}" data-volratio="{round(vr_v,2)}"
+  data-trend="[]" data-signals="{sigs_json}"
+  data-sid="{sid}" data-name="{name}"
+  data-verdict="{verdict}"
+  data-score-val="{sc}" data-color="{col}"
+  data-price="{close_str}" data-rsi-val="{rsi_str}"
+  data-kd="{kd_str}" data-vol="{vr_str}"
+  data-cat-label="自選" data-cat-color="#e8b84b"
+  onclick="openPickModal(this)"
+  style="background:{bg};border:1px solid {col}33;border-radius:10px;padding:10px 14px;
+         margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;
+         transition:border-color .2s;"
+  onmouseover="this.style.borderColor='{col}88'" onmouseout="this.style.borderColor='{col}33'">
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="{col}" stroke-width="4"
+        stroke-dasharray="{circ} {gap}" stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:{col};font-family:var(--mono);z-index:1;">{sc}</span>
+  </div>
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:center;gap:4px;">
+      <a href="{kline_url(sid)}" target="_blank"
+         onclick="event.stopPropagation()"
+         style="font-family:var(--mono);font-size:.95rem;font-weight:700;color:#d4dff0;
+                text-decoration:none;border-bottom:1px dashed #4a6080;">{sid}</a>
+      {note_tag}
+    </div>
+    <div style="font-size:.72rem;color:#6a85a8;margin-top:2px;">{name}</div>
+    <div style="font-size:.7rem;color:{verdict_col};font-weight:600;margin-top:2px;">{verdict}</div>
+  </div>
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:var(--mono);font-size:.88rem;color:#d4dff0;">{close_str}</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI {rsi_str} ｜ K {kd_str}</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 {vr_str}</div>
+  </div>
+</div>"""
+    else:
+        pick_cards = '<div style="color:#4a6080;font-size:.82rem;padding:28px 0;text-align:center;">今日尚無評分（明日自動執行）</div>'
+
+    latest_date_label = watch_picks[0]["date"] if watch_picks else "—"
+
+    return f"""
+<section class="section" id="watchlist">
+  <div class="section-header">
+    <div class="section-title">⭐ 自選股 Watchlist</div>
+    <div class="section-date">最後評分：{latest_date_label}</div>
+  </div>
+
+  <!-- 提示列 -->
+  <div style="background:#e8b84b18;border:1px solid #e8b84b44;border-radius:8px;
+    padding:10px 16px;margin-bottom:16px;font-size:.78rem;color:#e8b84b;
+    display:flex;align-items:center;gap:10px;">
+    <span style="font-size:1rem;">⚡</span>
+    <span>自選股每天<strong>必定</strong>跑評分，不受當日 CSV 限制。目前追蹤 <strong>{total_cnt}</strong> 支，今日已評分 <strong>{scored_cnt}</strong> 支，偏多訊號 <strong>{bull_cnt}</strong> 支。</span>
+  </div>
+
+  <!-- 新增區 -->
+  <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;
+    padding:14px 16px;margin-bottom:16px;">
+    <div style="font-size:.7rem;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;
+      font-family:var(--mono);margin-bottom:10px;">新增自選股</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <input id="wl-input-sid" type="text" placeholder="股票代號（如 2330）"
+        style="background:var(--s2);border:1px solid var(--border);border-radius:7px;
+               padding:7px 12px;color:var(--text);font-size:.82rem;outline:none;
+               font-family:var(--mono);width:160px;"
+        onkeydown="if(event.key==='Enter')wlAdd()">
+      <input id="wl-input-note" type="text" placeholder="備註（選填）"
+        style="background:var(--s2);border:1px solid var(--border);border-radius:7px;
+               padding:7px 12px;color:var(--text);font-size:.82rem;outline:none;flex:1;min-width:120px;"
+        onkeydown="if(event.key==='Enter')wlAdd()">
+      <button onclick="wlAdd()"
+        style="background:#4a9eff22;border:1px solid #4a9eff55;color:var(--accent);
+               border-radius:7px;padding:7px 18px;font-size:.82rem;cursor:pointer;
+               white-space:nowrap;transition:all .15s;"
+        onmouseover="this.style.background='#4a9eff33'" onmouseout="this.style.background='#4a9eff22'">
+        + 新增
+      </button>
+    </div>
+    <div id="wl-msg" style="font-size:.72rem;margin-top:8px;min-height:1.2em;color:#4a9eff;"></div>
+    <div style="font-size:.68rem;color:var(--muted);margin-top:4px;">
+      代號直接輸入即可，系統每日自動補齊名稱與評分。最多建議 30 支。
+    </div>
+  </div>
+
+  <!-- 管理表格 -->
+  <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;
+    padding:0;margin-bottom:24px;overflow:hidden;">
+    <div style="padding:12px 16px;border-bottom:1px solid var(--border);
+      font-size:.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;
+      font-family:var(--mono);">
+      清單管理
+      <span style="margin-left:8px;color:#4a6080;">共 {total_cnt} 支</span>
+    </div>
+    <div style="overflow-x:auto;">
+    <table class="data-table" id="wl-table">
+      <thead>
+        <tr>
+          <th>代號</th>
+          <th>名稱 / 備註</th>
+          <th>今日分數</th>
+          <th>訊號</th>
+          <th>收盤價</th>
+          <th>狀態</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="wl-tbody">
+        {table_rows}{empty_row}
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- 今日評分結果 -->
+  <div class="section-header" style="margin-bottom:12px;">
+    <div class="section-title" style="font-size:.95rem;">📈 今日評分結果（WATCH）</div>
+    <div class="section-date">{scored_cnt} 支</div>
+  </div>
+  <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:16px;">
+    {pick_cards}
+  </div>
+
+  <!-- 統計列 -->
+  <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:100px;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center;">
+      <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--accent);">{total_cnt}</div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:3px;">自選股總數</div>
+    </div>
+    <div style="flex:1;min-width:100px;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center;">
+      <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:#29c5c5;">{scored_cnt}</div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:3px;">今日已評分</div>
+    </div>
+    <div style="flex:1;min-width:100px;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center;">
+      <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:#ff4d6d;">{bull_cnt}</div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:3px;">今日偏多</div>
+    </div>
+    <div style="flex:1;min-width:100px;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center;">
+      <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:#e8b84b;">{round(sum(p.get('kline_score',0) for p in watch_picks)/len(watch_picks)) if watch_picks else "—"}</div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:3px;">平均分數</div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ── Watchlist 前端管理（新增/刪除透過 server-side action URL 或直接 reload）──
+// 注意：靜態 HTML 不能直接呼叫 Python，這裡的新增/刪除僅示範 UI 回饋。
+// 若部署於本地，可改為呼叫 FastAPI / Flask 端點。
+// 目前版本：僅顯示訊息，真正修改請透過 CLI 或後台 API。
+
+function wlAdd() {{
+  var sid  = (document.getElementById('wl-input-sid').value  || '').trim().toUpperCase();
+  var note = (document.getElementById('wl-input-note').value || '').trim();
+  var msg  = document.getElementById('wl-msg');
+  if (!sid) {{ msg.style.color='#ff4d6d'; msg.textContent='請輸入股票代號'; return; }}
+  // 靜態頁面無法直接寫 DB；呼叫 /api/watchlist/add 若有後端
+  if (window._wlApiBase) {{
+    fetch(window._wlApiBase + '/watchlist/add', {{
+      method:'POST', headers:{{'Content-Type':'application/json'}},
+      body: JSON.stringify({{stock_id: sid, note: note}})
+    }}).then(r=>r.json()).then(function(d) {{
+      if (d.ok) {{
+        msg.style.color='#00c896';
+        msg.textContent = '✓ 已新增 ' + sid + '，下次執行時將加入評分';
+        document.getElementById('wl-input-sid').value='';
+        document.getElementById('wl-input-note').value='';
+      }} else {{
+        msg.style.color='#e8b84b'; msg.textContent = d.msg || '已存在或新增失敗';
+      }}
+    }}).catch(function(){{
+      msg.style.color='#4a6080';
+      msg.textContent='⚠ 靜態頁面模式：請透過 CLI 執行 python manage_watchlist.py add ' + sid;
+    }});
+  }} else {{
+    msg.style.color='#4a6080';
+    msg.textContent='⚠ 靜態頁面模式：請透過 CLI 執行 python manage_watchlist.py add ' + sid;
+  }}
+}}
+
+function wlRemove(sid) {{
+  if (!confirm('確定要從自選股移除 ' + sid + '？')) return;
+  if (window._wlApiBase) {{
+    fetch(window._wlApiBase + '/watchlist/remove', {{
+      method:'POST', headers:{{'Content-Type':'application/json'}},
+      body: JSON.stringify({{stock_id: sid}})
+    }}).then(r=>r.json()).then(function(d) {{
+      if (d.ok) {{
+        var row = document.querySelector('.wl-row[data-sid="' + sid + '"]');
+        if (row) row.remove();
+      }}
+    }}).catch(function(){{
+      alert('靜態頁面模式：請透過 CLI 執行 python manage_watchlist.py remove ' + sid);
+    }});
+  }} else {{
+    alert('靜態頁面模式：請透過 CLI 執行\\npython manage_watchlist.py remove ' + sid);
+  }}
+}}
+</script>"""
+
+
+# ══════════════════════════════════════════════
 #  完整 HTML 組裝
 # ══════════════════════════════════════════════
 
@@ -500,9 +807,10 @@ def generate_index_html() -> str:
     score_trends = get_all_score_trends(days=7)
     now_str      = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-    today_html   = render_today_section(picks, score_trends)
-    history_html = render_history_section(history)
-    winrate_html = render_winrate_section()
+    today_html     = render_today_section(picks, score_trends)
+    history_html   = render_history_section(history)
+    winrate_html   = render_winrate_section()
+    watchlist_html = render_watchlist_section()
 
     return f"""<!DOCTYPE html>
 <html lang="zh-TW">
@@ -648,6 +956,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
       <a href="#" onclick="switchTab('today');return false;" id="nav-today" class="nav-active">今日推薦</a>
       <a href="#" onclick="switchTab('history');return false;" id="nav-history">歷史回測</a>
       <a href="#" onclick="switchTab('winrate');return false;" id="nav-winrate">勝率排行</a>
+      <a href="#" onclick="switchTab('watchlist');return false;" id="nav-watchlist">⭐ 自選股</a>
     </nav>
     <div class="update-badge">🕐 {now_str} 更新</div>
   </div>
@@ -730,6 +1039,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
     <div class="tab-section active" id="tab-today">{today_html}</div>
     <div class="tab-section" id="tab-history">{history_html}</div>
     <div class="tab-section" id="tab-winrate">{winrate_html}</div>
+    <div class="tab-section" id="tab-watchlist">{watchlist_html}</div>
   </div>
 </main>
 
@@ -743,7 +1053,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 <script>
 // Tab 切換
 function switchTab(tab) {{
-  ['today', 'history', 'winrate'].forEach(function(t) {{
+  ['today', 'history', 'winrate', 'watchlist'].forEach(function(t) {{
     var sec = document.getElementById('tab-' + t);
     var nav = document.getElementById('nav-' + t);
     if (sec) sec.classList.toggle('active', t === tab);
