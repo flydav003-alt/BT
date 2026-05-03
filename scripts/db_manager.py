@@ -7,9 +7,10 @@ Schema：
   - daily_picks   : 每日推薦紀錄（含 T+3/T+5 回測資料）
   - stock_names   : 股票代號 ↔ 中文名稱對照
   - run_log       : 每次執行紀錄（偵錯用）
+  - watchlist     : 自選股追蹤清單（不受 CSV 限制，每天必追）
 
 設計原則：
-  - category（ETF/OTC/TSE）欄位完全隔離寫入
+  - category（ETF/OTC/TSE/WATCH）欄位完全隔離寫入
   - INSERT OR REPLACE 保證冪等（重跑不會重複）
   - portalocker 檔案鎖防止並發寫入衝突
 """
@@ -101,6 +102,16 @@ def init_db() -> None:
             PRIMARY KEY (stock_id, date)
         );
 
+        -- ── 自選股清單 ──────────────────────────────────────
+        CREATE TABLE IF NOT EXISTS watchlist (
+            id          INTEGER PRIMARY KEY AUTOINCREMENT,
+            stock_id    TEXT    NOT NULL UNIQUE,
+            stock_name  TEXT    DEFAULT '',
+            note        TEXT    DEFAULT '',
+            added_at    TEXT    DEFAULT (datetime('now','localtime')),
+            updated_at  TEXT    DEFAULT (datetime('now','localtime'))
+        );
+
         -- ── 索引 ────────────────────────────────────────────
         CREATE INDEX IF NOT EXISTS idx_picks_date     ON daily_picks(date);
         CREATE INDEX IF NOT EXISTS idx_picks_category ON daily_picks(category);
@@ -109,6 +120,7 @@ def init_db() -> None:
         CREATE INDEX IF NOT EXISTS idx_picks_t5       ON daily_picks(t5_price);
         CREATE INDEX IF NOT EXISTS idx_cache_stock    ON price_cache(stock_id);
         CREATE INDEX IF NOT EXISTS idx_cache_date     ON price_cache(date);
+        CREATE INDEX IF NOT EXISTS idx_watchlist_sid  ON watchlist(stock_id);
         """)
     logger.info(f"DB 初始化完成：{DB_PATH}")
 
@@ -591,3 +603,143 @@ def get_all_score_trends(days: int = 7) -> dict[str, list[dict]]:
             "score": r["score"],   # 沒上榜的日期為 None
         })
     return result
+
+# ══════════════════════════════════════════════
+#  自選股 Watchlist CRUD
+# ══════════════════════════════════════════════
+
+def get_watchlist() -> list[dict]:
+    """
+    取得所有自選股，依新增時間降序排列。
+    回傳欄位：id, stock_id, stock_name, note, added_at
+    同時附帶今日最新評分（若有）。
+    """
+    today = date.today().isoformat()
+    with _connect() as conn:
+        rows = conn.execute("""
+            SELECT
+                w.id,
+                w.stock_id,
+                COALESCE(sn.stock_name, w.stock_name, '') AS stock_name,
+                w.note,
+                w.added_at,
+                dp.kline_score,
+                dp.verdict,
+                dp.close_price,
+                dp.rsi,
+                dp.vol_ratio,
+                dp.category AS scored_category
+            FROM watchlist w
+            LEFT JOIN stock_names sn ON w.stock_id = sn.stock_id
+            LEFT JOIN daily_picks dp
+                   ON dp.stock_id = w.stock_id
+                  AND dp.date = ?
+                  AND dp.category = 'WATCH'
+            ORDER BY w.added_at DESC
+        """, (today,)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def add_to_watchlist(stock_id: str, stock_name: str = "", note: str = "") -> bool:
+    """
+    新增股票到自選股清單。
+    若已存在則更新名稱與備註。
+    回傳 True=新增成功，False=已存在（更新）
+    """
+    stock_id = str(stock_id).strip()
+    if not stock_id:
+        return False
+
+    with _connect() as conn:
+        existing = conn.execute(
+            "SELECT id FROM watchlist WHERE stock_id = ?", (stock_id,)
+        ).fetchone()
+
+    with DBWriteLock():
+        with _connect() as conn:
+            if existing:
+                conn.execute("""
+                    UPDATE watchlist
+                    SET stock_name = COALESCE(NULLIF(?, ''), stock_name),
+                        note       = COALESCE(NULLIF(?, ''), note),
+                        updated_at = datetime('now','localtime')
+                    WHERE stock_id = ?
+                """, (stock_name, note, stock_id))
+                logger.info(f"[watchlist] 更新：{stock_id}")
+                return False
+            else:
+                conn.execute("""
+                    INSERT INTO watchlist (stock_id, stock_name, note)
+                    VALUES (?, ?, ?)
+                """, (stock_id, stock_name, note))
+                logger.info(f"[watchlist] 新增：{stock_id} {stock_name}")
+                return True
+
+
+def remove_from_watchlist(stock_id: str) -> bool:
+    """從自選股清單移除，回傳 True=成功刪除"""
+    stock_id = str(stock_id).strip()
+    with DBWriteLock():
+        with _connect() as conn:
+            cur = conn.execute(
+                "DELETE FROM watchlist WHERE stock_id = ?", (stock_id,)
+            )
+    deleted = cur.rowcount > 0
+    if deleted:
+        logger.info(f"[watchlist] 刪除：{stock_id}")
+    return deleted
+
+
+def update_watchlist_note(stock_id: str, note: str) -> None:
+    """更新自選股備註"""
+    with DBWriteLock():
+        with _connect() as conn:
+            conn.execute("""
+                UPDATE watchlist SET note = ?, updated_at = datetime('now','localtime')
+                WHERE stock_id = ?
+            """, (note, stock_id))
+
+
+def is_in_watchlist(stock_id: str) -> bool:
+    """檢查股票是否在自選股清單中"""
+    with _connect() as conn:
+        row = conn.execute(
+            "SELECT 1 FROM watchlist WHERE stock_id = ?", (stock_id,)
+        ).fetchone()
+    return row is not None
+
+
+def get_watchlist_ids() -> list[str]:
+    """只回傳自選股代號列表（供 runner 使用）"""
+    with _connect() as conn:
+        rows = conn.execute(
+            "SELECT stock_id FROM watchlist ORDER BY added_at DESC"
+        ).fetchall()
+    return [r["stock_id"] for r in rows]
+
+
+def get_watchlist_latest_picks() -> list[dict]:
+    """
+    取得自選股今日（或最近一次）WATCH 類別的評分結果。
+    供 html_generator 使用。
+    """
+    with _connect() as conn:
+        latest = conn.execute(
+            "SELECT MAX(date) as d FROM daily_picks WHERE category = 'WATCH'"
+        ).fetchone()
+        if not latest or not latest["d"]:
+            return []
+
+        rows = conn.execute("""
+            SELECT
+                dp.*,
+                COALESCE(sn.stock_name, dp.stock_name, '') AS display_name,
+                w.note
+            FROM daily_picks dp
+            LEFT JOIN stock_names sn ON dp.stock_id = sn.stock_id
+            LEFT JOIN watchlist w   ON dp.stock_id = w.stock_id
+            WHERE dp.category = 'WATCH' AND dp.date = ?
+            ORDER BY dp.kline_score DESC
+        """, (latest["d"],)).fetchall()
+
+    return [dict(r) for r in rows]
