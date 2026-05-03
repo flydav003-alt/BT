@@ -30,6 +30,7 @@ from db_manager import (
     get_latest_picks, get_history_picks, get_win_rate_stats,
     upsert_price_cache,
     log_run,
+    get_watchlist_ids, add_to_watchlist, remove_from_watchlist,
 )
 from kline_scorer import fetch_price, run_analysis, STRATEGY_PROFILES
 from html_generator import generate_all
@@ -280,6 +281,49 @@ def export_json() -> None:
 
 
 # ══════════════════════════════════════════════
+#  自選股評分（WATCH 類別）
+# ══════════════════════════════════════════════
+
+def _run_watchlist_scoring(trade_date: str) -> None:
+    """
+    抓取 watchlist 所有股票，跑評分後寫入 daily_picks（category='WATCH'）。
+    不依賴 CSV，每天主動呼叫 fetch_price + run_analysis。
+    已在當日 CSV 類別跑過的股票也會重跑，確保 WATCH 欄位有獨立紀錄。
+    """
+    watch_ids = get_watchlist_ids()
+    if not watch_ids:
+        logger.info("[WATCH] 自選股清單為空，跳過")
+        log_run("WATCH", "skipped", 0, "watchlist 為空")
+        return
+
+    logger.info(f"[WATCH] 自選股共 {len(watch_ids)} 支：{watch_ids}")
+
+    # 建 info_map（名稱從 stock_names 補）
+    from db_manager import get_stock_name
+    info_map = {
+        sid: {
+            "name":      get_stock_name(sid),
+            "close":     None,
+            "rsi":       None,
+            "vol_ratio": None,
+        }
+        for sid in watch_ids
+    }
+
+    results = score_category("WATCH", watch_ids, info_map, trade_date)
+
+    # 順帶更新 stock_names（若抓到名稱）
+    name_map = {r["stock_id"]: r["stock_name"] for r in results if r.get("stock_name")}
+    if name_map:
+        upsert_stock_names(name_map)
+
+    cnt = upsert_daily_picks(results, "WATCH", trade_date)
+    ok  = sum(1 for r in results if "error" not in r)
+    log_run("WATCH", "ok", cnt, f"成功={ok} 失敗={len(results)-ok}")
+    logger.info(f"[WATCH] 完成，寫入 {cnt} 筆")
+
+
+# ══════════════════════════════════════════════
 #  主流程
 # ══════════════════════════════════════════════
 
@@ -306,6 +350,10 @@ def run(category_filter: Optional[str] = None) -> None:
         cnt = upsert_daily_picks(results, cat, trade_date)
         ok  = sum(1 for r in results if "error" not in r)
         log_run(cat, "ok", cnt, f"成功={ok} 失敗={len(results)-ok}")
+
+    # ── 自選股 Watchlist（必追，不受 CSV 限制）──
+    logger.info("\n── WATCH 自選股 ──")
+    _run_watchlist_scoring(trade_date)
 
     logger.info("\n── 補填回測 ──")
     backfill_prices()
