@@ -155,10 +155,10 @@ def upsert_daily_picks(picks: list[dict], category: str, trade_date: str) -> int
     for rank, p in enumerate(picks, 1):
         if "error" in p:
             continue
-        # 取前3個訊號
-        top_sigs = p.get("signals", [])[:3]
+        # 存全部訊號（前端 Modal 自行決定顯示幾筆）
+        all_sigs = p.get("signals", [])
         sig_json = json.dumps(
-            [{"type": s["type"], "cat": s["cat"], "text": s["text"]} for s in top_sigs],
+            [{"type": s["type"], "cat": s["cat"], "text": s["text"]} for s in all_sigs],
             ensure_ascii=False
         )
         rows.append((
