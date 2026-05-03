@@ -391,13 +391,13 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 ::-webkit-scrollbar-thumb{{background:var(--border);border-radius:3px;}}
 
 /* ── Responsive ── */
-@media(max-width:900px){
-  .today-grid{grid-template-columns:1fr;}
-  .navbar-inner{flex-wrap:wrap;gap:8px;}
-  .navbar-nav{display:flex;gap:12px;width:100%;justify-content:center;
-    padding-top:8px;border-top:1px solid var(--border);}
-  .navbar-nav a{font-size:.8rem;}
-  .update-badge{font-size:.6rem;}}
+@media(max-width:900px){{
+  .today-grid{{grid-template-columns:1fr;}}
+  .navbar-inner{{flex-wrap:wrap;gap:8px;}}
+  .navbar-nav{{display:flex;gap:12px;width:100%;justify-content:center;
+    padding-top:8px;border-top:1px solid var(--border);}}
+  .navbar-nav a{{font-size:.8rem;}}
+  .update-badge{{font-size:.6rem;}}
 }}
 @media(max-width:600px){{
   .data-table{{font-size:.72rem;}}
