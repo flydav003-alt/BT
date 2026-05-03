@@ -88,12 +88,27 @@ def init_db() -> None:
             message     TEXT    DEFAULT ''
         );
 
+        -- ── 價格快取（每次評分時順帶存入，供趨勢圖使用）────
+        CREATE TABLE IF NOT EXISTS price_cache (
+            stock_id    TEXT    NOT NULL,
+            date        TEXT    NOT NULL,   -- YYYY-MM-DD
+            open        REAL,
+            high        REAL,
+            low         REAL,
+            close       REAL    NOT NULL,
+            volume      REAL,
+            updated_at  TEXT    DEFAULT (datetime('now','localtime')),
+            PRIMARY KEY (stock_id, date)
+        );
+
         -- ── 索引 ────────────────────────────────────────────
         CREATE INDEX IF NOT EXISTS idx_picks_date     ON daily_picks(date);
         CREATE INDEX IF NOT EXISTS idx_picks_category ON daily_picks(category);
         CREATE INDEX IF NOT EXISTS idx_picks_stock    ON daily_picks(stock_id);
         CREATE INDEX IF NOT EXISTS idx_picks_t3       ON daily_picks(t3_price);
         CREATE INDEX IF NOT EXISTS idx_picks_t5       ON daily_picks(t5_price);
+        CREATE INDEX IF NOT EXISTS idx_cache_stock    ON price_cache(stock_id);
+        CREATE INDEX IF NOT EXISTS idx_cache_date     ON price_cache(date);
         """)
     logger.info(f"DB 初始化完成：{DB_PATH}")
 
@@ -390,6 +405,100 @@ def get_last_run_date(category: str) -> Optional[str]:
 
 
 # ══════════════════════════════════════════════
+#  價格快取（price_cache）
+# ══════════════════════════════════════════════
+
+def upsert_price_cache(stock_id: str, raw_data: list) -> int:
+    """
+    將 fetch_price() 回傳的 raw_data 最近 60 天存入 price_cache。
+    raw_data 格式：[{"date":"YYYY-MM-DD","open":...,"max":...,"min":...,"close":...,"Trading_Volume":...}, ...]
+    PRIMARY KEY (stock_id, date) → 重跑安全，不重複。
+    回傳寫入筆數。
+    """
+    if not raw_data:
+        return 0
+
+    # 只存最近 60 天（足夠趨勢圖+回測，不囤太多）
+    recent = raw_data[-60:] if len(raw_data) > 60 else raw_data
+
+    rows = []
+    for d in recent:
+        dt = d.get("date") or d.get("Date")
+        if not dt:
+            continue
+        rows.append((
+            stock_id,
+            str(dt)[:10],                          # 確保 YYYY-MM-DD
+            d.get("open")  or d.get("Open"),
+            d.get("max")   or d.get("High"),
+            d.get("min")   or d.get("Low"),
+            d.get("close") or d.get("Close"),
+            d.get("Trading_Volume") or d.get("volume"),
+        ))
+
+    if not rows:
+        return 0
+
+    with DBWriteLock():
+        with _connect() as conn:
+            conn.executemany("""
+                INSERT OR REPLACE INTO price_cache
+                    (stock_id, date, open, high, low, close, volume)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            """, rows)
+
+    logger.debug(f"[price_cache] {stock_id}: 寫入 {len(rows)} 筆")
+    return len(rows)
+
+
+def get_price_trend(stock_id: str, days: int = 7) -> list[dict]:
+    """
+    從 price_cache 取得個股近 N 個交易日的收盤價趨勢。
+    回傳：[{"date": "YYYY-MM-DD", "close": 85.9}, ...] 依日期升序
+    """
+    with _connect() as conn:
+        rows = conn.execute("""
+            SELECT date, open, high, low, close, volume
+            FROM price_cache
+            WHERE stock_id = ?
+            ORDER BY date DESC
+            LIMIT ?
+        """, (stock_id, days)).fetchall()
+    # 反轉成升序
+    return [dict(r) for r in reversed(rows)]
+
+
+def get_all_price_trends(stock_ids: list[str], days: int = 7) -> dict[str, list[dict]]:
+    """
+    批次取得多支股票的價格趨勢（一次 SQL）。
+    回傳：{"3580": [{"date":..., "close":...}, ...], ...}
+    """
+    if not stock_ids:
+        return {}
+
+    placeholders = ",".join("?" * len(stock_ids))
+    with _connect() as conn:
+        rows = conn.execute(f"""
+            SELECT stock_id, date, close
+            FROM price_cache
+            WHERE stock_id IN ({placeholders})
+              AND date IN (
+                  SELECT DISTINCT date FROM price_cache
+                  ORDER BY date DESC LIMIT ?
+              )
+            ORDER BY stock_id, date ASC
+        """, stock_ids + [days]).fetchall()
+
+    result: dict[str, list[dict]] = {}
+    for r in rows:
+        sid = r["stock_id"]
+        if sid not in result:
+            result[sid] = []
+        result[sid].append({"date": r["date"], "close": r["close"]})
+    return result
+
+
+# ══════════════════════════════════════════════
 #  個股分數趨勢（供 Modal & 迷你折線圖使用）
 # ══════════════════════════════════════════════
 
@@ -429,25 +538,56 @@ def get_stock_price_history(stock_id: str, days: int = 10) -> list[dict]:
 
 def get_all_score_trends(days: int = 7) -> dict[str, list[dict]]:
     """
-    批次取得所有「最近 days 天內曾出現在推薦清單」股票的分數趨勢。
-    一次 SQL 搞定，避免 N+1 查詢。
-    回傳：{"3580": [{"date":..., "score":...}, ...], ...}  依日期升序
+    批次取得所有「今日推薦」股票的近 N 交易日趨勢。
+    - 價格來自 price_cache（每次評分主動存入，資料連續）
+    - 分數來自 daily_picks LEFT JOIN（沒上榜的日期分數為 None）
+    回傳：{"3580": [{"date":..., "close":..., "score":...}, ...], ...}  依日期升序
     """
-    cutoff = (date.today() - timedelta(days=days + 1)).isoformat()
-
+    # 取各類別最新日期的推薦股票
     with _connect() as conn:
-        trend_rows = conn.execute("""
-            SELECT stock_id, date, kline_score as score
-            FROM daily_picks
-            WHERE date >= ?
-            ORDER BY stock_id, date ASC
-        """, (cutoff,)).fetchall()
+        latest_rows = conn.execute("""
+            SELECT DISTINCT dp.stock_id
+            FROM daily_picks dp
+            INNER JOIN (
+                SELECT category, MAX(date) as latest_date
+                FROM daily_picks GROUP BY category
+            ) latest ON dp.category = latest.category
+                     AND dp.date = latest.latest_date
+        """).fetchall()
+
+        stock_ids = [r["stock_id"] for r in latest_rows]
+        if not stock_ids:
+            return {}
+
+        placeholders = ",".join("?" * len(stock_ids))
+
+        # price_cache 取近 N 個交易日（依 date 排序取最近 days 筆唯一日期）
+        rows = conn.execute(f"""
+            SELECT
+                pc.stock_id,
+                pc.date,
+                pc.close,
+                dp.kline_score as score
+            FROM price_cache pc
+            LEFT JOIN daily_picks dp
+                   ON dp.stock_id = pc.stock_id
+                  AND dp.date     = pc.date
+            WHERE pc.stock_id IN ({placeholders})
+              AND pc.date IN (
+                  SELECT DISTINCT date FROM price_cache
+                  ORDER BY date DESC LIMIT ?
+              )
+            ORDER BY pc.stock_id, pc.date ASC
+        """, stock_ids + [days]).fetchall()
 
     result: dict[str, list[dict]] = {}
-    for r in trend_rows:
+    for r in rows:
         sid = r["stock_id"]
         if sid not in result:
             result[sid] = []
-        result[sid].append({"date": r["date"], "score": r["score"]})
-
+        result[sid].append({
+            "date":  r["date"],
+            "close": r["close"],
+            "score": r["score"],   # 沒上榜的日期為 None
+        })
     return result
