@@ -28,6 +28,7 @@ from db_manager import (
     init_db, upsert_daily_picks, upsert_stock_names,
     get_pending_backfill, update_backtest_prices,
     get_latest_picks, get_history_picks, get_win_rate_stats,
+    upsert_price_cache,
     log_run,
 )
 from kline_scorer import fetch_price, run_analysis, STRATEGY_PROFILES
@@ -140,6 +141,9 @@ def score_category(
         try:
             raw_data = fetch_price(sid, FINMIND_TOKEN)
             sliced   = raw_data[-SCORE_PERIOD:] if len(raw_data) >= SCORE_PERIOD else raw_data
+
+            # ── 順手存入 price_cache（60天，供趨勢圖用）──
+            upsert_price_cache(sid, raw_data)
 
             chip_proc = []
             try:
