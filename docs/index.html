@@ -84,7 +84,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 /* ── Responsive ── */
 @media(max-width:900px){
   .today-grid{grid-template-columns:1fr;}
-  .navbar-nav{display:none;}
+  .navbar-inner{flex-wrap:wrap;gap:8px;}
+  .navbar-nav{display:flex;gap:12px;width:100%;justify-content:center;
+    padding-top:8px;border-top:1px solid var(--border);}
+  .navbar-nav a{font-size:.8rem;}
+  .update-badge{font-size:.6rem;}
 }
 @media(max-width:600px){
   .data-table{font-size:.72rem;}
@@ -107,7 +111,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
       <a href="#" onclick="switchTab('history');return false;" id="nav-history">歷史回測</a>
       <a href="#" onclick="switchTab('winrate');return false;" id="nav-winrate">勝率排行</a>
     </nav>
-    <div class="update-badge">🕐 2026-05-03 02:52 更新</div>
+    <div class="update-badge">🕐 2026-05-03 03:16 更新</div>
   </div>
 </nav>
 
@@ -2038,7 +2042,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <footer class="footer">
   <div class="container">
     <div>⚠️ 本系統由 Python K線評分引擎自動產生，所有分析僅供參考，不構成買賣建議。投資人應自行判斷風險。</div>
-    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-05-03 02:52</div>
+    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-05-03 03:16</div>
   </div>
 </footer>
 
