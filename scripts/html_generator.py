@@ -647,10 +647,18 @@ def render_watchlist_section() -> str:
 
   <!-- 提示列 -->
   <div style="background:#e8b84b18;border:1px solid #e8b84b44;border-radius:8px;
-    padding:10px 16px;margin-bottom:16px;font-size:.78rem;color:#e8b84b;
+    padding:10px 16px;margin-bottom:12px;font-size:.78rem;color:#e8b84b;
     display:flex;align-items:center;gap:10px;">
     <span style="font-size:1rem;">⚡</span>
-    <span>自選股每天<strong>必定</strong>跑評分，不受當日 CSV 限制。目前追蹤 <strong>{total_cnt}</strong> 支，今日已評分 <strong>{scored_cnt}</strong> 支，偏多訊號 <strong>{bull_cnt}</strong> 支。</span>
+    <span>自選股每天<strong>必定</strong>跑評分，不受當日 CSV 限制。目前追蹤 <strong id="wl-stat-total">{total_cnt}</strong> 支，今日已評分 <strong>{scored_cnt}</strong> 支，偏多訊號 <strong>{bull_cnt}</strong> 支。</span>
+  </div>
+
+  <!-- API 連線狀態 -->
+  <div style="margin-bottom:12px;font-size:.72rem;">
+    <span id="wl-api-status" style="color:#4a6080;">⏳ 檢查 API 連線中...</span>
+    <span style="color:#1e2d4a;margin:0 8px;">｜</span>
+    <span style="color:#4a6080;">API 伺服器：</span>
+    <code style="background:#131a2e;padding:1px 8px;border-radius:3px;font-size:.7rem;color:#4a9eff;">python watchlist_api.py</code>
   </div>
 
   <!-- 新增區 -->
@@ -668,7 +676,7 @@ def render_watchlist_section() -> str:
         style="background:var(--s2);border:1px solid var(--border);border-radius:7px;
                padding:7px 12px;color:var(--text);font-size:.82rem;outline:none;flex:1;min-width:120px;"
         onkeydown="if(event.key==='Enter')wlAdd()">
-      <button onclick="wlAdd()"
+      <button id="wl-add-btn" onclick="wlAdd()"
         style="background:#4a9eff22;border:1px solid #4a9eff55;color:var(--accent);
                border-radius:7px;padding:7px 18px;font-size:.82rem;cursor:pointer;
                white-space:nowrap;transition:all .15s;"
@@ -689,7 +697,7 @@ def render_watchlist_section() -> str:
       font-size:.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;
       font-family:var(--mono);">
       清單管理
-      <span style="margin-left:8px;color:#4a6080;">共 {total_cnt} 支</span>
+      <span style="margin-left:8px;color:#4a6080;">共 <span id="wl-count-badge">{total_cnt}</span> 支</span>
     </div>
     <div style="overflow-x:auto;">
     <table class="data-table" id="wl-table">
@@ -705,7 +713,12 @@ def render_watchlist_section() -> str:
         </tr>
       </thead>
       <tbody id="wl-tbody">
-        {table_rows}{empty_row}
+        {table_rows}
+        <tr id="wl-empty-row" style="{'display:none' if watch_items else ''}">
+          <td colspan="7" style="text-align:center;padding:28px 0;color:#4a6080;font-size:.85rem;">
+            自選股清單為空，請在上方輸入代號新增。
+          </td>
+        </tr>
       </tbody>
     </table>
     </div>
@@ -747,51 +760,148 @@ def render_watchlist_section() -> str:
 // 若部署於本地，可改為呼叫 FastAPI / Flask 端點。
 // 目前版本：僅顯示訊息，真正修改請透過 CLI 或後台 API。
 
+// ── Watchlist API 設定 ────────────────────────────────────
+var WL_API = 'http://localhost:5050';
+
+// 啟動時 ping API，更新連線狀態指示
+(function() {{
+  fetch(WL_API + '/ping', {{method:'GET', signal: AbortSignal.timeout(1500)}})
+    .then(function(r) {{ return r.json(); }})
+    .then(function() {{
+      var el = document.getElementById('wl-api-status');
+      if (el) {{ el.textContent = '🟢 API 已連線'; el.style.color = '#00c896'; }}
+    }})
+    .catch(function() {{
+      var el = document.getElementById('wl-api-status');
+      if (el) {{
+        el.innerHTML = '🔴 API 未啟動 — 請執行 <code style="background:#131a2e;padding:1px 6px;border-radius:3px;font-size:.72rem;">python watchlist_api.py</code>';
+        el.style.color = '#ff4d6d';
+      }}
+    }});
+}})();
+
 function wlAdd() {{
   var sid  = (document.getElementById('wl-input-sid').value  || '').trim().toUpperCase();
   var note = (document.getElementById('wl-input-note').value || '').trim();
   var msg  = document.getElementById('wl-msg');
+  var btn  = document.querySelector('#wl-add-btn');
+
   if (!sid) {{ msg.style.color='#ff4d6d'; msg.textContent='請輸入股票代號'; return; }}
-  // 靜態頁面無法直接寫 DB；呼叫 /api/watchlist/add 若有後端
-  if (window._wlApiBase) {{
-    fetch(window._wlApiBase + '/watchlist/add', {{
-      method:'POST', headers:{{'Content-Type':'application/json'}},
-      body: JSON.stringify({{stock_id: sid, note: note}})
-    }}).then(r=>r.json()).then(function(d) {{
-      if (d.ok) {{
-        msg.style.color='#00c896';
-        msg.textContent = '✓ 已新增 ' + sid + '，下次執行時將加入評分';
-        document.getElementById('wl-input-sid').value='';
-        document.getElementById('wl-input-note').value='';
-      }} else {{
-        msg.style.color='#e8b84b'; msg.textContent = d.msg || '已存在或新增失敗';
-      }}
-    }}).catch(function(){{
-      msg.style.color='#4a6080';
-      msg.textContent='⚠ 靜態頁面模式：請透過 CLI 執行 python manage_watchlist.py add ' + sid;
-    }});
-  }} else {{
-    msg.style.color='#4a6080';
-    msg.textContent='⚠ 靜態頁面模式：請透過 CLI 執行 python manage_watchlist.py add ' + sid;
+
+  // 簡易格式檢查：台股代號通常 4~6 碼
+  if (!/^[0-9A-Z]{{2,10}}$/.test(sid)) {{
+    msg.style.color='#ff4d6d'; msg.textContent='代號格式有誤，請確認後重試'; return;
   }}
+
+  if (btn) {{ btn.disabled = true; btn.textContent = '新增中...'; }}
+  msg.style.color='#6a85a8'; msg.textContent='連線中...';
+
+  fetch(WL_API + '/watchlist/add', {{
+    method: 'POST',
+    headers: {{'Content-Type': 'application/json'}},
+    body: JSON.stringify({{stock_id: sid, note: note}}),
+    signal: AbortSignal.timeout(8000),
+  }})
+  .then(function(r) {{ return r.json(); }})
+  .then(function(d) {{
+    if (d.ok) {{
+      msg.style.color = '#00c896';
+      msg.textContent = d.is_new
+        ? '✓ 已新增 ' + sid + '（' + (d.stock_name || '名稱待補') + '）— 下次執行時加入評分'
+        : '⚡ ' + sid + ' 已存在，備註已更新';
+      document.getElementById('wl-input-sid').value  = '';
+      document.getElementById('wl-input-note').value = '';
+      // 動態插入新列到表格
+      if (d.is_new) {{
+        _wlInsertRow(sid, d.stock_name || '', note);
+        _wlUpdateCount(1);
+        _wlHideEmpty();
+      }}
+    }} else {{
+      msg.style.color = '#e8b84b';
+      msg.textContent = '⚠ ' + (d.msg || '新增失敗');
+    }}
+  }})
+  .catch(function(err) {{
+    msg.style.color = '#ff4d6d';
+    msg.textContent = '❌ 無法連線 API — 請確認 watchlist_api.py 正在執行（python watchlist_api.py）';
+  }})
+  .finally(function() {{
+    if (btn) {{ btn.disabled = false; btn.textContent = '+ 新增'; }}
+  }});
 }}
 
 function wlRemove(sid) {{
   if (!confirm('確定要從自選股移除 ' + sid + '？')) return;
-  if (window._wlApiBase) {{
-    fetch(window._wlApiBase + '/watchlist/remove', {{
-      method:'POST', headers:{{'Content-Type':'application/json'}},
-      body: JSON.stringify({{stock_id: sid}})
-    }}).then(r=>r.json()).then(function(d) {{
-      if (d.ok) {{
-        var row = document.querySelector('.wl-row[data-sid="' + sid + '"]');
-        if (row) row.remove();
-      }}
-    }}).catch(function(){{
-      alert('靜態頁面模式：請透過 CLI 執行 python manage_watchlist.py remove ' + sid);
-    }});
-  }} else {{
-    alert('靜態頁面模式：請透過 CLI 執行\\npython manage_watchlist.py remove ' + sid);
+
+  fetch(WL_API + '/watchlist/remove', {{
+    method: 'POST',
+    headers: {{'Content-Type': 'application/json'}},
+    body: JSON.stringify({{stock_id: sid}}),
+    signal: AbortSignal.timeout(8000),
+  }})
+  .then(function(r) {{ return r.json(); }})
+  .then(function(d) {{
+    if (d.ok) {{
+      var row = document.querySelector('.wl-row[data-sid="' + sid + '"]');
+      if (row) {{ row.style.opacity='0'; row.style.transition='opacity .3s'; setTimeout(function(){{row.remove();}},300); }}
+      _wlUpdateCount(-1);
+      _wlCheckEmpty();
+    }} else {{
+      alert('移除失敗：' + (d.msg || '未知錯誤'));
+    }}
+  }})
+  .catch(function() {{
+    alert('❌ 無法連線 API — 請確認 watchlist_api.py 正在執行');
+  }});
+}}
+
+// ── DOM 輔助 ─────────────────────────────────────────────
+
+function _wlInsertRow(sid, name, note) {{
+  var tbody = document.getElementById('wl-tbody');
+  if (!tbody) return;
+  var noteHtml = note ? '<br><span style="font-size:.68rem;color:#4a6080;">' + note + '</span>' : '';
+  var tr = document.createElement('tr');
+  tr.className = 'wl-row';
+  tr.dataset.sid = sid;
+  tr.innerHTML =
+    '<td><a href="{KLINE_TOOL_URL}?stock=' + sid + '" target="_blank" ' +
+      'style="font-family:var(--mono);font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;">' + sid + '</a></td>' +
+    '<td style="color:#6a85a8;font-size:.8rem;">' + (name||'—') + noteHtml + '</td>' +
+    '<td><span style="color:#4a6080;">—</span></td>' +
+    '<td><span style="color:#4a6080;font-size:.72rem;">待評分</span></td>' +
+    '<td><span style="color:#4a6080;">—</span></td>' +
+    '<td><span style="font-size:.7rem;color:#4a6080;background:#1a2340;border:1px solid #1e2d4a;border-radius:4px;padding:2px 7px;">待評分</span></td>' +
+    '<td><button class="wl-del-btn" onclick="wlRemove(\'' + sid + '\')" ' +
+      'style="background:transparent;border:1px solid #1e2d4a;color:#4a6080;border-radius:5px;padding:3px 10px;cursor:pointer;font-size:.72rem;" ' +
+      'onmouseover="this.style.color=\'#ff4d6d\';this.style.borderColor=\'#ff4d6d66\';" ' +
+      'onmouseout="this.style.color=\'#4a6080\';this.style.borderColor=\'#1e2d4a\';">✕ 移除</button></td>';
+  tbody.insertBefore(tr, tbody.firstChild);
+}}
+
+function _wlUpdateCount(delta) {{
+  var el = document.getElementById('wl-count-badge');
+  if (!el) return;
+  var n = parseInt(el.textContent) + delta;
+  el.textContent = n;
+  // 同步更新頁首統計數字
+  var totalEl = document.getElementById('wl-stat-total');
+  if (totalEl) totalEl.textContent = n;
+}}
+
+function _wlHideEmpty() {{
+  var empty = document.getElementById('wl-empty-row');
+  if (empty) empty.style.display = 'none';
+}}
+
+function _wlCheckEmpty() {{
+  var tbody = document.getElementById('wl-tbody');
+  if (!tbody) return;
+  var rows = tbody.querySelectorAll('.wl-row');
+  if (rows.length === 0) {{
+    var empty = document.getElementById('wl-empty-row');
+    if (empty) empty.style.display = '';
   }}
 }}
 </script>"""
