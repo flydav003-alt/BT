@@ -487,6 +487,16 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 .today-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}}
 .today-col{{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:16px;}}
 
+/* ── 篩選隱藏卡片：不佔空間 ── */
+.pick-card.hidden{{
+  display:none !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:none !important;
+  height:0 !important;
+  overflow:hidden !important;
+}}
+
 /* ── Filter Buttons ── */
 .f-btn{{background:transparent;border:1px solid var(--border);color:var(--muted);
   font-size:.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;transition:all .15s;
@@ -665,11 +675,9 @@ function applyTodayFilters() {{
       if (vr < f.vol) ok = false;
 
       if (ok) {{
-        card.style.display = '';
-        card.style.marginBottom = '6px';
+        card.classList.remove('hidden');
       }} else {{
-        card.style.display = 'none';
-        card.style.marginBottom = '0';
+        card.classList.add('hidden');
       }}
       if (ok) visible++;
     }});
