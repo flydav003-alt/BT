@@ -1,11 +1,12 @@
 """
-html_generator.py  ── PATCHED (修改 1 & 2)
+html_generator.py  ── PATCHED (修改 1 & 2 & 3)
 =================
 靜態 HTML 生成器：從 DB 資料生成 docs/index.html
 
 修改記錄：
   [修改1] render_pick_card：中文名稱移到代號正下方（flex-direction:column）
   [修改2] generate_index_html：navbar 連結變亮 + 三個 section 改成 Tab 切換（點一頁只顯示一項）
+  [修改3] 多條件篩選器：今日推薦卡片 + 歷史回測表格均支援分數/類別/RSI/量比篩選
 """
 
 import json
@@ -22,7 +23,7 @@ from db_manager import get_latest_picks, get_history_picks, get_win_rate_stats
 logger = logging.getLogger(__name__)
 
 # ══════════════════════════════════════════════
-#  輔助函數（unchanged）
+#  輔助函數
 # ══════════════════════════════════════════════
 
 def score_color(s: int) -> str:
@@ -70,7 +71,8 @@ def sig_color(sig_type: str) -> str:
 
 # ══════════════════════════════════════════════
 #  今日推薦卡片
-#  [修改1] 代號+名稱改為直排：代號在上，名稱在下
+#  [修改1] 代號+名稱改為直排
+#  [修改3] 加入 data-* 屬性供 JS 篩選
 # ══════════════════════════════════════════════
 
 def render_pick_card(p: dict) -> str:
@@ -79,15 +81,24 @@ def render_pick_card(p: dict) -> str:
     bg   = score_bg(sc)
     sid  = p.get("stock_id", "")
     name = p.get("stock_name", "")
+    cat  = p.get("category", "")
     circ = round(sc / 100 * 276.46, 1)
     gap  = round(276.46 - circ, 1)
 
-    rsi_str = f'{p["rsi"]:.1f}' if p.get("rsi") else "—"
+    rsi_val = float(p["rsi"]) if p.get("rsi") else 0
+    vr_val  = float(p["vol_ratio"]) if p.get("vol_ratio") else 0
+
+    rsi_str = f'{rsi_val:.1f}' if rsi_val else "—"
     kd_str  = f'{p["kd_k"]:.1f}' if p.get("kd_k") else "—"
-    vr_str  = f'{p["vol_ratio"]:.2f}x' if p.get("vol_ratio") else "—"
+    vr_str  = f'{vr_val:.2f}x' if vr_val else "—"
 
     return f"""
-<div class="pick-card" style="background:{bg};border:1px solid {col}33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="{sc}"
+  data-cat="{cat}"
+  data-rsi="{round(rsi_val,1)}"
+  data-volratio="{round(vr_val,2)}"
+  style="background:{bg};border:1px solid {col}33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">{p.get('rank','')}</div>
   <!-- 分數圓環 -->
@@ -101,7 +112,7 @@ def render_pick_card(p: dict) -> str:
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:{col};font-family:'IBM Plex Mono',monospace;z-index:1;">{sc}</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="{kline_url(sid)}" target="_blank"
@@ -132,12 +143,15 @@ def render_today_section(picks: dict[str, list[dict]]) -> str:
                 '<div style="color:#4a6080;font-size:.8rem;padding:20px 0;">暫無資料</div>'
 
         cols_html += f"""
-<div class="today-col">
+<div class="today-col" id="col-{cat}">
   <div class="col-header" style="border-bottom:2px solid {col_color};margin-bottom:12px;padding-bottom:8px;">
     <span style="font-size:.9rem;font-weight:700;color:{col_color};">{cat_label(cat)}</span>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:8px;">{len(cat_picks)} 支</span>
+    <span class="col-count" style="font-size:.68rem;color:#4a6080;margin-left:8px;">{len(cat_picks)} 支</span>
   </div>
+  <div class="cards-wrapper">
   {cards}
+  </div>
+  <div class="no-result" style="display:none;color:#4a6080;font-size:.8rem;padding:20px 0;text-align:center;">無符合條件的股票</div>
 </div>"""
 
     return f"""
@@ -146,6 +160,57 @@ def render_today_section(picks: dict[str, list[dict]]) -> str:
     <div class="section-title">📈 今日推薦</div>
     <div class="section-date">資料日期：{latest_date}</div>
   </div>
+
+  <!-- [修改3] 今日推薦篩選器 -->
+  <div id="today-filters" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;
+    padding:12px 16px;background:var(--s1);border:1px solid var(--border);border-radius:10px;align-items:center;">
+
+    <!-- 類別篩選 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">類別</span>
+      <button class="f-btn active" data-group="cat" data-val="">全部</button>
+      <button class="f-btn" data-group="cat" data-val="ETF">ETF</button>
+      <button class="f-btn" data-group="cat" data-val="OTC">上櫃</button>
+      <button class="f-btn" data-group="cat" data-val="TSE">上市</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 分數篩選 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">分數</span>
+      <button class="f-btn active" data-group="score" data-val="0">全部</button>
+      <button class="f-btn" data-group="score" data-val="62">62+</button>
+      <button class="f-btn" data-group="score" data-val="78">78+</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- RSI 篩選 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">RSI</span>
+      <button class="f-btn active" data-group="rsi" data-val="all">全部</button>
+      <button class="f-btn" data-group="rsi" data-val="50-70">50-70</button>
+      <button class="f-btn" data-group="rsi" data-val="70+">70+</button>
+      <button class="f-btn" data-group="rsi" data-val="50-">50以下</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 量比篩選 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">量比</span>
+      <button class="f-btn active" data-group="vol" data-val="0">全部</button>
+      <button class="f-btn" data-group="vol" data-val="1.5">1.5x+</button>
+      <button class="f-btn" data-group="vol" data-val="2">2x+</button>
+    </div>
+
+    <!-- 重設 -->
+    <button onclick="resetTodayFilters()" style="margin-left:auto;font-size:.7rem;color:var(--muted);
+      background:transparent;border:1px solid var(--border);border-radius:5px;
+      padding:3px 10px;cursor:pointer;">重設</button>
+  </div>
+
   <div class="today-grid">
     {cols_html}
   </div>
@@ -153,7 +218,8 @@ def render_today_section(picks: dict[str, list[dict]]) -> str:
 
 
 # ══════════════════════════════════════════════
-#  歷史回測表格（unchanged）
+#  歷史回測表格
+#  [修改3] 加入多條件篩選列
 # ══════════════════════════════════════════════
 
 def render_history_section(history: list[dict]) -> str:
@@ -167,9 +233,16 @@ def render_history_section(history: list[dict]) -> str:
         name  = r.get("stock_name") or r.get("sn_name") or ""
         t3pnl = r.get("t3_pnl")
         t5pnl = r.get("t5_pnl")
+        rsi_v = float(r["rsi"]) if r.get("rsi") else 0
+        vr_v  = float(r["vol_ratio"]) if r.get("vol_ratio") else 0
 
         rows_html += f"""
-<tr class="history-row" data-search="{sid} {name}">
+<tr class="history-row"
+  data-search="{sid} {name}"
+  data-cat="{cat}"
+  data-score="{sc}"
+  data-rsi="{round(rsi_v,1)}"
+  data-volratio="{round(vr_v,2)}">
   <td><span style="font-size:.72rem;color:#6a85a8;">{r.get('date','')}</span></td>
   <td><span style="font-size:.7rem;color:{cc};border:1px solid {cc}44;border-radius:4px;padding:1px 6px;">{cat_label(cat)}</span></td>
   <td>
@@ -189,11 +262,67 @@ def render_history_section(history: list[dict]) -> str:
 <section class="section" id="history">
   <div class="section-header">
     <div class="section-title">📋 歷史回測（近5天）</div>
-    <input id="history-search" type="text" placeholder="搜尋股票代號或名稱..."
-      style="background:#0d1220;border:1px solid #1e2d4a;border-radius:6px;padding:6px 12px;
-             color:#d4dff0;font-size:.8rem;outline:none;width:200px;"
-      oninput="filterHistory(this.value)">
   </div>
+
+  <!-- [修改3] 歷史回測篩選器 -->
+  <div id="history-filters" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;
+    padding:12px 16px;background:var(--s1);border:1px solid var(--border);border-radius:10px;align-items:center;">
+
+    <!-- 搜尋 -->
+    <input id="history-search" type="text" placeholder="搜尋代號或名稱..."
+      style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:5px 10px;
+             color:var(--text);font-size:.78rem;outline:none;width:150px;"
+      oninput="applyHistoryFilters()">
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 類別 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">類別</span>
+      <button class="f-btn active" data-group="hcat" data-val="">全部</button>
+      <button class="f-btn" data-group="hcat" data-val="ETF">ETF</button>
+      <button class="f-btn" data-group="hcat" data-val="OTC">上櫃</button>
+      <button class="f-btn" data-group="hcat" data-val="TSE">上市</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 分數 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">分數</span>
+      <button class="f-btn active" data-group="hscore" data-val="0">全部</button>
+      <button class="f-btn" data-group="hscore" data-val="62">62+</button>
+      <button class="f-btn" data-group="hscore" data-val="78">78+</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 量比 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">量比</span>
+      <button class="f-btn active" data-group="hvol" data-val="0">全部</button>
+      <button class="f-btn" data-group="hvol" data-val="1.5">1.5x+</button>
+      <button class="f-btn" data-group="hvol" data-val="2">2x+</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 損益 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">T+3</span>
+      <button class="f-btn active" data-group="hpnl" data-val="all">全部</button>
+      <button class="f-btn" data-group="hpnl" data-val="win">獲利</button>
+      <button class="f-btn" data-group="hpnl" data-val="loss">虧損</button>
+    </div>
+
+    <!-- 重設 -->
+    <button onclick="resetHistoryFilters()" style="margin-left:auto;font-size:.7rem;color:var(--muted);
+      background:transparent;border:1px solid var(--border);border-radius:5px;
+      padding:3px 10px;cursor:pointer;">重設</button>
+  </div>
+
+  <div id="history-count" style="font-size:.72rem;color:var(--muted);margin-bottom:8px;"></div>
+
   <div style="overflow-x:auto;">
   <table class="data-table" id="history-table">
     <thead>
@@ -213,7 +342,7 @@ def render_history_section(history: list[dict]) -> str:
 
 
 # ══════════════════════════════════════════════
-#  歷史勝率排行（unchanged）
+#  歷史勝率排行
 # ══════════════════════════════════════════════
 
 def render_win_row(rank: int, r: dict, pnl_key: str = "avg_pnl") -> str:
@@ -257,14 +386,14 @@ def render_win_table(stats: list[dict], table_id: str) -> str:
 
 
 def render_winrate_section() -> str:
-    combos = {
+    combos = {{
         "t3_30d": get_win_rate_stats(days=30,  use_t5=False),
         "t5_30d": get_win_rate_stats(days=30,  use_t5=True),
         "t3_90d": get_win_rate_stats(days=90,  use_t5=False),
         "t5_90d": get_win_rate_stats(days=90,  use_t5=True),
         "t3_all": get_win_rate_stats(days=None, use_t5=False),
         "t5_all": get_win_rate_stats(days=None, use_t5=True),
-    }
+    }}
 
     tables_html = ""
     for key, stats in combos.items():
@@ -295,7 +424,6 @@ def render_winrate_section() -> str:
 
 # ══════════════════════════════════════════════
 #  完整 HTML 組裝
-#  [修改2] navbar 連結變亮 + Tab 切換（單頁模式）
 # ══════════════════════════════════════════════
 
 def generate_index_html() -> str:
@@ -344,7 +472,6 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 .navbar-brand{{font-family:var(--mono);font-size:1rem;font-weight:700;color:var(--gold);}}
 .navbar-sub{{font-size:.7rem;color:var(--muted);margin-top:2px;}}
 .navbar-nav{{display:flex;gap:24px;}}
-/* [修改2] navbar 連結明顯亮化 */
 .navbar-nav a{{color:#9bbfe0;font-size:.85rem;font-weight:600;text-decoration:none;
   transition:color .2s;letter-spacing:.3px;padding-bottom:4px;
   border-bottom:2px solid transparent;}}
@@ -359,6 +486,13 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 /* ── Today Grid ── */
 .today-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}}
 .today-col{{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:16px;}}
+
+/* ── Filter Buttons ── */
+.f-btn{{background:transparent;border:1px solid var(--border);color:var(--muted);
+  font-size:.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;transition:all .15s;
+  font-family:var(--font);white-space:nowrap;}}
+.f-btn:hover{{color:var(--text);border-color:#4a6080;}}
+.f-btn.active{{background:var(--s3);color:var(--text);border-color:var(--accent);font-weight:600;}}
 
 /* ── Data Table ── */
 .data-table{{width:100%;border-collapse:collapse;background:var(--s1);
@@ -377,7 +511,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 .tab-btn.active{{background:var(--s3);color:var(--text);font-weight:600;}}
 .tab-btn:hover:not(.active){{color:var(--text);}}
 
-/* ── [修改2] Tab sections (single-page navigation) ── */
+/* ── Tab sections ── */
 .tab-section{{display:none;}}
 .tab-section.active{{display:block;}}
 
@@ -398,6 +532,8 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
     padding-top:8px;border-top:1px solid var(--border);}}
   .navbar-nav a{{font-size:.8rem;}}
   .update-badge{{font-size:.6rem;}}
+  #today-filters, #history-filters{{gap:8px;}}
+  .f-btn{{font-size:.68rem;padding:2px 7px;}}
 }}
 @media(max-width:600px){{
   .data-table{{font-size:.72rem;}}
@@ -414,7 +550,6 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
       <div class="navbar-brand">📊 {SITE_TITLE}</div>
       <div class="navbar-sub">{SITE_SUBTITLE}</div>
     </div>
-    <!-- [修改2] onclick 切換 Tab，active 樣式明顯 -->
     <nav class="navbar-nav">
       <a href="#" onclick="switchTab('today');return false;" id="nav-today" class="nav-active">今日推薦</a>
       <a href="#" onclick="switchTab('history');return false;" id="nav-history">歷史回測</a>
@@ -428,7 +563,6 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 <main class="main-content">
   <div class="container">
 
-    <!-- [修改2] 每個 section 外包 .tab-section div，點擊 navbar 才顯示 -->
     <div class="tab-section active" id="tab-today">
       {today_html}
     </div>
@@ -453,7 +587,9 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 </footer>
 
 <script>
-// ── [修改2] Tab 切換（單頁模式）──
+// ══════════════════════════════════════════
+//  Tab 切換
+// ══════════════════════════════════════════
 function switchTab(tab) {{
   ['today', 'history', 'winrate'].forEach(function(t) {{
     var sec = document.getElementById('tab-' + t);
@@ -464,17 +600,170 @@ function switchTab(tab) {{
   window.scrollTo({{ top: 0, behavior: 'smooth' }});
 }}
 
-// ── 歷史回測搜尋 ──
-function filterHistory(q) {{
-  var rows = document.querySelectorAll('#history-body .history-row');
-  var kw = q.trim().toLowerCase();
-  rows.forEach(function(tr) {{
-    var search = (tr.dataset.search || '').toLowerCase();
-    tr.style.display = (!kw || search.includes(kw)) ? '' : 'none';
+// ══════════════════════════════════════════
+//  [修改3] 今日推薦篩選
+// ══════════════════════════════════════════
+var _todayFilters = {{ cat: '', score: 0, rsi: 'all', vol: 0 }};
+
+// f-btn 點擊事件（統一綁定）
+document.addEventListener('DOMContentLoaded', function() {{
+  document.querySelectorAll('#today-filters .f-btn').forEach(function(btn) {{
+    btn.addEventListener('click', function() {{
+      var group = this.dataset.group;
+      // 同 group 的按鈕取消 active
+      document.querySelectorAll('#today-filters .f-btn[data-group="' + group + '"]')
+        .forEach(function(b) {{ b.classList.remove('active'); }});
+      this.classList.add('active');
+
+      var val = this.dataset.val;
+      if (group === 'cat')   _todayFilters.cat   = val;
+      if (group === 'score') _todayFilters.score  = parseFloat(val);
+      if (group === 'rsi')   _todayFilters.rsi   = val;
+      if (group === 'vol')   _todayFilters.vol    = parseFloat(val);
+      applyTodayFilters();
+    }});
+  }});
+
+  document.querySelectorAll('#history-filters .f-btn').forEach(function(btn) {{
+    btn.addEventListener('click', function() {{
+      var group = this.dataset.group;
+      document.querySelectorAll('#history-filters .f-btn[data-group="' + group + '"]')
+        .forEach(function(b) {{ b.classList.remove('active'); }});
+      this.classList.add('active');
+      applyHistoryFilters();
+    }});
+  }});
+
+  updateHistoryCount();
+}});
+
+function applyTodayFilters() {{
+  var f = _todayFilters;
+  ['ETF','OTC','TSE'].forEach(function(cat) {{
+    var col = document.getElementById('col-' + cat);
+    if (!col) return;
+
+    // 類別欄位整體顯示/隱藏
+    if (f.cat && f.cat !== cat) {{
+      col.style.display = 'none';
+      return;
+    }}
+    col.style.display = '';
+
+    var cards = col.querySelectorAll('.pick-card');
+    var visible = 0;
+    cards.forEach(function(card) {{
+      var score = parseFloat(card.dataset.score || 0);
+      var rsi   = parseFloat(card.dataset.rsi || 0);
+      var vr    = parseFloat(card.dataset.volratio || 0);
+
+      var ok = true;
+      if (score < f.score) ok = false;
+      if (f.rsi === '50-70' && !(rsi >= 50 && rsi < 70)) ok = false;
+      if (f.rsi === '70+'   && rsi < 70) ok = false;
+      if (f.rsi === '50-'   && rsi >= 50) ok = false;
+      if (vr < f.vol) ok = false;
+
+      card.style.display = ok ? '' : 'none';
+      if (ok) visible++;
+    }});
+
+    var noResult = col.querySelector('.no-result');
+    if (noResult) noResult.style.display = visible === 0 ? '' : 'none';
   }});
 }}
 
-// ── 勝率切換 ──
+function resetTodayFilters() {{
+  _todayFilters = {{ cat: '', score: 0, rsi: 'all', vol: 0 }};
+  document.querySelectorAll('#today-filters .f-btn').forEach(function(btn) {{
+    btn.classList.remove('active');
+  }});
+  document.querySelectorAll('#today-filters .f-btn[data-val=""]').forEach(function(btn) {{
+    btn.classList.add('active');
+  }});
+  document.querySelector('#today-filters .f-btn[data-group="score"][data-val="0"]').classList.add('active');
+  document.querySelector('#today-filters .f-btn[data-group="rsi"][data-val="all"]').classList.add('active');
+  document.querySelector('#today-filters .f-btn[data-group="vol"][data-val="0"]').classList.add('active');
+  applyTodayFilters();
+}}
+
+// ══════════════════════════════════════════
+//  [修改3] 歷史回測篩選
+// ══════════════════════════════════════════
+function applyHistoryFilters() {{
+  var kw    = (document.getElementById('history-search').value || '').trim().toLowerCase();
+  var cat   = getActiveVal('hcat');
+  var score = parseFloat(getActiveVal('hscore') || 0);
+  var vol   = parseFloat(getActiveVal('hvol') || 0);
+  var pnl   = getActiveVal('hpnl');
+
+  var rows = document.querySelectorAll('#history-body .history-row');
+  var shown = 0;
+  rows.forEach(function(tr) {{
+    var search  = (tr.dataset.search || '').toLowerCase();
+    var trCat   = tr.dataset.cat   || '';
+    var trScore = parseFloat(tr.dataset.score   || 0);
+    var trVr    = parseFloat(tr.dataset.volratio || 0);
+
+    // T+3 損益讀法：從第8個 td（index 7）
+    var cells = tr.querySelectorAll('td');
+    var t3text = cells[7] ? cells[7].textContent.trim() : '';
+    var t3val  = parseFloat(t3text.replace('%','').replace('+',''));
+
+    var ok = true;
+    if (kw && !search.includes(kw)) ok = false;
+    if (cat && trCat !== cat) ok = false;
+    if (trScore < score) ok = false;
+    if (trVr < vol) ok = false;
+    if (pnl === 'win'  && !(t3val > 0)) ok = false;
+    if (pnl === 'loss' && !(t3val < 0)) ok = false;
+
+    tr.style.display = ok ? '' : 'none';
+    if (ok) shown++;
+  }});
+
+  updateHistoryCount(shown, rows.length);
+}}
+
+function getActiveVal(group) {{
+  var btn = document.querySelector('#history-filters .f-btn[data-group="' + group + '"].active');
+  return btn ? btn.dataset.val : '';
+}}
+
+function updateHistoryCount(shown, total) {{
+  var el = document.getElementById('history-count');
+  if (!el) return;
+  if (shown === undefined) {{
+    var all = document.querySelectorAll('#history-body .history-row');
+    shown = all.length; total = all.length;
+  }}
+  el.textContent = '顯示 ' + shown + ' / ' + total + ' 筆';
+}}
+
+function resetHistoryFilters() {{
+  document.getElementById('history-search').value = '';
+  document.querySelectorAll('#history-filters .f-btn').forEach(function(btn) {{
+    btn.classList.remove('active');
+  }});
+  // 重設各 group 的預設 active
+  [['hcat',''],['hscore','0'],['hvol','0'],['hpnl','all']].forEach(function(pair) {{
+    var btn = document.querySelector(
+      '#history-filters .f-btn[data-group="' + pair[0] + '"][data-val="' + pair[1] + '"]'
+    );
+    if (btn) btn.classList.add('active');
+  }});
+  applyHistoryFilters();
+}}
+
+// ── 舊版 filterHistory 保持相容 ──
+function filterHistory(q) {{
+  document.getElementById('history-search').value = q;
+  applyHistoryFilters();
+}}
+
+// ══════════════════════════════════════════
+//  勝率切換
+// ══════════════════════════════════════════
 var _winType = 't3', _winRange = '30d';
 
 function switchWin(type) {{
