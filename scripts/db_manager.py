@@ -427,37 +427,21 @@ def get_stock_price_history(stock_id: str, days: int = 10) -> list[dict]:
     return [dict(r) for r in rows]
 
 
-def get_all_score_trends(top_n: int = 8, days: int = 7) -> dict[str, list[dict]]:
+def get_all_score_trends(days: int = 7) -> dict[str, list[dict]]:
     """
-    批次取得所有最新推薦股票的分數趨勢（一次 SQL，避免 N+1 查詢）。
-    回傳：{"3580": [{"date":..., "score":...}, ...], ...}
+    批次取得所有「最近 days 天內曾出現在推薦清單」股票的分數趨勢。
+    一次 SQL 搞定，避免 N+1 查詢。
+    回傳：{"3580": [{"date":..., "score":...}, ...], ...}  依日期升序
     """
     cutoff = (date.today() - timedelta(days=days + 1)).isoformat()
 
-    # 先取各類別最新日期的所有股票
     with _connect() as conn:
-        stock_rows = conn.execute("""
-            SELECT DISTINCT dp.stock_id
-            FROM daily_picks dp
-            INNER JOIN (
-                SELECT category, MAX(date) as latest_date
-                FROM daily_picks
-                GROUP BY category
-            ) latest ON dp.category = latest.category AND dp.date = latest.latest_date
-            ORDER BY dp.rank ASC
-        """).fetchall()
-
-        stock_ids = [r["stock_id"] for r in stock_rows]
-        if not stock_ids:
-            return {}
-
-        placeholders = ",".join("?" * len(stock_ids))
-        trend_rows = conn.execute(f"""
+        trend_rows = conn.execute("""
             SELECT stock_id, date, kline_score as score
             FROM daily_picks
-            WHERE stock_id IN ({placeholders}) AND date >= ?
+            WHERE date >= ?
             ORDER BY stock_id, date ASC
-        """, stock_ids + [cutoff]).fetchall()
+        """, (cutoff,)).fetchall()
 
     result: dict[str, list[dict]] = {}
     for r in trend_rows:
