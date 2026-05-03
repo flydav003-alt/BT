@@ -188,7 +188,6 @@ def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
     </div>
     <div style="font-size:.7rem;color:{col};font-weight:600;margin-top:3px;">{p.get('verdict','')}</div>
   </div>
-  {mini_svg}
   <!-- 數值欄 -->
   <div style="text-align:right;flex-shrink:0;">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">{close_str}</div>
