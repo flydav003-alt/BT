@@ -174,7 +174,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
       <a href="#" onclick="switchTab('history');return false;" id="nav-history">歷史回測</a>
       <a href="#" onclick="switchTab('winrate');return false;" id="nav-winrate">勝率排行</a>
     </nav>
-    <div class="update-badge">🕐 2026-05-03 06:07 更新</div>
+    <div class="update-badge">🕐 2026-05-03 06:19 更新</div>
   </div>
 </nav>
 
@@ -212,7 +212,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <!-- Body -->
     <div class="pm-body">
 
+      <!-- 訊號（最優先） -->
+      <div class="pm-section-lbl">🔍 主要評分訊號</div>
+      <div style="background:#131a2e;border-radius:8px;padding:8px 12px;" id="pm-signals">
+        <div style="color:#4a6080;font-size:.78rem;text-align:center;padding:12px 0;">載入中...</div>
+      </div>
+
+      <!-- 7日分數趨勢 -->
+      <div class="pm-section-lbl">📈 7 日分數趨勢</div>
+      <div style="background:#131a2e;border-radius:8px;padding:12px 14px;">
+        <div id="pm-trend-area" style="min-height:96px;"></div>
+        <div id="pm-trend-summary" style="font-size:.72rem;color:#6a85a8;margin-top:6px;text-align:center;font-family:'IBM Plex Mono',monospace;"></div>
+      </div>
+
       <!-- 數值 -->
+      <div class="pm-section-lbl">📊 技術數值</div>
       <div class="pm-stat-grid">
         <div class="pm-stat-box">
           <div class="pm-stat-val" id="pm-price">—</div>
@@ -241,20 +255,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
         </div>
       </div>
 
-      <!-- 7日分數趨勢 -->
-      <div class="pm-section-lbl">📈 7 日分數趨勢</div>
-      <div style="background:#131a2e;border-radius:8px;padding:12px 14px;">
-        <div id="pm-trend-area" style="min-height:96px;"></div>
-        <div id="pm-trend-summary" style="font-size:.72rem;color:#6a85a8;margin-top:6px;text-align:center;font-family:'IBM Plex Mono',monospace;"></div>
-      </div>
-
-      <!-- 訊號 -->
-      <div class="pm-section-lbl">🔍 主要評分訊號</div>
-      <div style="background:#131a2e;border-radius:8px;padding:8px 12px;" id="pm-signals">
-        <div style="color:#4a6080;font-size:.78rem;text-align:center;padding:12px 0;">載入中...</div>
-      </div>
-
-      <div style="margin-top:14px;font-size:.65rem;color:#4a6080;text-align:center;">
+      <div style="margin-top:6px;font-size:.65rem;color:#4a6080;text-align:center;">
         ⚠️ 本評分僅供參考，不構成投資建議。
       </div>
     </div>
@@ -338,7 +339,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="80.4"
   data-volratio="1.52"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 72}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 72}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=80.4 極度超買，短線回調風險高&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;KD金叉（K=87.3），短線偏多&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=80.4 極度超買，短線回調風險高&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;KD金叉（K=87.3），短線偏多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均1.5倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「長紅K」△ 有效性低｜出現在高檔（近60日99%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「晨星」△ 有效性低｜出現在高檔（近60日99%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：886.00（+0.3%）／支撐：477.00（-46.0%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 6241張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 1708張&quot;}]"
   data-sid="3037"
   data-name="欣興"
   data-verdict="📊 偏多觀察"
@@ -390,7 +391,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="75.0"
   data-volratio="0.93"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 65}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 65}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=75.0，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：17295.00（+5.0%）／支撐：11105.00（-32.6%）&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=75.0，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：17295.00（+5.0%）／支撐：11105.00（-32.6%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 61張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 75張&quot;}]"
   data-sid="5274"
   data-name="信驊"
   data-verdict="📊 偏多觀察"
@@ -442,7 +443,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="65.7"
   data-volratio="1.21"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 62}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 62}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=65.7，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;KD金叉（K=66.8），短線偏多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;量增紅K（量比均1.2倍），有效上漲&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=65.7，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;KD金叉（K=66.8），短線偏多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;量增紅K（量比均1.2倍），有效上漲&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「長紅K」△ 有效性低｜出現在高檔（近60日100%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：1250.00（+0.0%）／支撐：865.00（-30.8%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 340張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 602張&quot;}]"
   data-sid="8996"
   data-name="高力"
   data-verdict="📊 偏多觀察"
@@ -494,7 +495,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="75.0"
   data-volratio="0.78"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 62}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 62}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=75.0，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「十字線」多空僵持｜位置：高檔（89%），高檔出現需警惕&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=75.0，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「十字線」多空僵持｜位置：高檔（89%），高檔出現需警惕&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：3010.00（+6.2%）／支撐：2015.00（-28.9%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 785張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 584張&quot;}]"
   data-sid="3017"
   data-name="奇鋐科技"
   data-verdict="📊 偏多觀察"
@@ -546,7 +547,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="59.2"
   data-volratio="1.02"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 59}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 59}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=59.2，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「晨星」△ 有效性低｜出現在高檔（近60日74%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：3305.00（+25.2%）／支撐：1665.00（-36.9%）&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=59.2，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「晨星」△ 有效性低｜出現在高檔（近60日74%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：3305.00（+25.2%）／支撐：1665.00（-36.9%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 182張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 1638張&quot;}]"
   data-sid="3081"
   data-name="聯亞光電工業"
   data-verdict="⚖️ 中性觀望"
@@ -598,7 +599,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="62.3"
   data-volratio="0.84"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 58}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 58}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=62.3，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;RSI背離&quot;, &quot;text&quot;: &quot;RSI頂背離：價格創新高（1390.00）但RSI走低，潛在見頂訊號&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀向下擴大，空方動能增強&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=62.3，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;RSI背離&quot;, &quot;text&quot;: &quot;RSI頂背離：價格創新高（1390.00）但RSI走低，潛在見頂訊號&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀向下擴大，空方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「晨星」△ 有效性低｜出現在高檔（近60日75%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：1490.00（+23.1%）／支撐：840.00（-30.6%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 2167張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 819張&quot;}]"
   data-sid="6187"
   data-name="萬潤"
   data-verdict="⚖️ 中性觀望"
@@ -650,7 +651,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="73.6"
   data-volratio="2.32"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 58}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 58}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=73.6，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=73.6，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量黑K（量比均2.3倍），賣壓沉重&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：173.00（+6.1%）／支撐：72.30（-55.6%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 14927張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 10614張&quot;}]"
   data-sid="6147"
   data-name="頎邦"
   data-verdict="⚖️ 中性觀望"
@@ -702,7 +703,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="62.6"
   data-volratio="1.37"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 53}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 53}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=62.6，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「長黑K」⭐ 有效性高｜出現在高檔，量增，看跌訊號可信度高&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=62.6，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「長黑K」⭐ 有效性高｜出現在高檔，量增，看跌訊號可信度高&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「空頭吞噬」⭐ 有效性高｜出現在高檔，量增，看跌訊號可信度高&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：2330.00（+9.1%）／支撐：1805.00（-15.5%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 69713張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 8911張&quot;}]"
   data-sid="2330"
   data-name="台積電"
   data-verdict="⚖️ 中性觀望"
@@ -754,7 +755,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="35.4"
   data-volratio="0.93"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 52}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 52}]"
-  data-signals="[{&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;空頭排列（MA5<10<20），短線趨勢向下&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI由超賣區回升至35.4，短線反彈機率高&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：294.00（+20.2%）／支撐：205.00（-16.2%）&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;空頭排列（MA5<10<20），短線趨勢向下&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI由超賣區回升至35.4，短線反彈機率高&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：294.00（+20.2%）／支撐：205.00（-16.2%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 28777張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 5139張&quot;}]"
   data-sid="2313"
   data-name="華通"
   data-verdict="⚖️ 中性觀望"
@@ -806,7 +807,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="77.8"
   data-volratio="1.56"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 46}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 46}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=77.8，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量黑K（量比均1.6倍），賣壓沉重&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=77.8，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量黑K（量比均1.6倍），賣壓沉重&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「空頭吞噬」⭐ 有效性高｜出現在高檔，爆量，看跌訊號可信度高&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「暮星」⭐ 有效性高｜出現在高檔，爆量，看跌訊號可信度高&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：523.00（+9.4%）／支撐：344.50（-27.9%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 14089張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 6476張&quot;}]"
   data-sid="3711"
   data-name="日月光投控"
   data-verdict="⚖️ 中性觀望"
@@ -868,7 +869,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="64.2"
   data-volratio="1.8"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 82}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 82}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;MA5黃金交叉MA10，短線轉多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=60.9，處於偏多健康區間&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;MA5黃金交叉MA10，短線轉多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=60.9，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均1.7倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」△ 有效性低｜出現在高檔（近60日88%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：89.10（+3.7%）／支撐：69.30（-19.3%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 784張&quot;}]"
   data-sid="3580"
   data-name="友威科"
   data-verdict="📈 強烈偏多"
@@ -920,7 +921,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="72.0"
   data-volratio="1.13"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 79}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 79}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=78.5，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=78.5，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均1.7倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;突破布林上軌，短線超漲追高謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」△ 有效性低｜出現在高檔（近60日97%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：28.75（+0.9%）／支撐：23.05（-19.1%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 5352張&quot;}]"
   data-sid="5864"
   data-name="致和證"
   data-verdict="📈 強烈偏多"
@@ -972,7 +973,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="64.2"
   data-volratio="1.64"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 72}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 72}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=57.1，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;量增紅K（量比均1.3倍），有效上漲&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=57.1，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;量增紅K（量比均1.3倍），有效上漲&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：425.00（+3.0%）／支撐：279.00（-32.4%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 76張&quot;}]"
   data-sid="6903"
   data-name="巨漢"
   data-verdict="📊 偏多觀察"
@@ -1024,7 +1025,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="64.6"
   data-volratio="1.34"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 68}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 68}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=62.8，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=62.8，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;量增紅K（量比均1.4倍），有效上漲&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：233.50（+7.1%）／支撐：157.50（-27.8%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 548張&quot;}]"
   data-sid="6761"
   data-name="穩得"
   data-verdict="📊 偏多觀察"
@@ -1076,7 +1077,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="66.4"
   data-volratio="2.26"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 63}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 63}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=56.9，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;低檔KD金叉（K=47.4），短線強烈買入訊號&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀向下擴大，空方動能增強&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=56.9，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;低檔KD金叉（K=47.4），短線強烈買入訊號&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀向下擴大，空方動能增強&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：199.50（+3.9%）／支撐：151.00（-21.4%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 215張&quot;}]"
   data-sid="8091"
   data-name="翔名"
   data-verdict="📊 偏多觀察"
@@ -1128,7 +1129,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="47.3"
   data-volratio="1.27"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 63}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 63}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;剛突破MA20（27.26），短線動能轉強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=59.4，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「晨星」▷ 有效性中｜出現在低檔，但量能不足（平量），需等量增確認&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;剛突破MA20（27.26），短線動能轉強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=59.4，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「晨星」▷ 有效性中｜出現在低檔，但量能不足（平量），需等量增確認&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：30.45（+11.1%）／支撐：25.10（-8.4%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 1352張&quot;}]"
   data-sid="6244"
   data-name="茂迪"
   data-verdict="📊 偏多觀察"
@@ -1180,7 +1181,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="66.7"
   data-volratio="0.87"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 59}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 59}]"
-  data-signals="[{&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=72.8 超買區，追高謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;量大幅萎縮（均量27%），等待方向確認&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」△ 有效性低｜出現在高檔（近60日86%位），反轉型態高檔效果差，謹慎&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=72.8 超買區，追高謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;量大幅萎縮（均量27%），等待方向確認&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」△ 有效性低｜出現在高檔（近60日86%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：416.00（+7.1%）／支撐：230.00（-40.8%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 7362張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 7476張&quot;}]"
   data-sid="8358"
   data-name="金居"
   data-verdict="⚖️ 中性觀望"
@@ -1232,7 +1233,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="53.9"
   data-volratio="1.49"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 58}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 58}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;剛突破MA20（114.05），短線動能轉強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=50.0，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;低檔KD金叉（K=45.4），短線強烈買入訊號&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;剛突破MA20（114.05），短線動能轉強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=50.0，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;低檔KD金叉（K=45.4），短線強烈買入訊號&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀向下擴大，空方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」▷ 有效性中｜整理區出現，需配合均線突破確認&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：131.50（+11.4%）／支撐：102.00（-13.6%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 359張&quot;}]"
   data-sid="3691"
   data-name="碩禾"
   data-verdict="⚖️ 中性觀望"
@@ -1284,7 +1285,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="58.2"
   data-volratio="1.69"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 54}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 54}]"
-  data-signals="[{&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=48.5，偏弱，觀望&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀向下擴大，空方動能增強&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「墓碑十字」▷ 有效性中｜出現在高檔，量能普通，觀察後續走勢&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=48.5，偏弱，觀望&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀向下擴大，空方動能增強&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「墓碑十字」▷ 有效性中｜出現在高檔，量能普通，觀察後續走勢&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：146.00（+9.0%）／支撐：109.50（-18.3%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 360張&quot;}]"
   data-sid="3689"
   data-name="湧德"
   data-verdict="⚖️ 中性觀望"
@@ -1336,7 +1337,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="61.1"
   data-volratio="1.44"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 50}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 50}]"
-  data-signals="[{&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI從超買區回落，注意短線壓力&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「空頭吞噬」▷ 有效性中｜出現在高檔，量能普通，觀察後續走勢&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：67.50（+8.2%）／支撐：45.80（-26.6%）&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI從超買區回落，注意短線壓力&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「空頭吞噬」▷ 有效性中｜出現在高檔，量能普通，觀察後續走勢&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：67.50（+8.2%）／支撐：45.80（-26.6%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 603張&quot;}]"
   data-sid="6175"
   data-name="立敦"
   data-verdict="⚖️ 中性觀望"
@@ -1398,7 +1399,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="57.9"
   data-volratio="1.8"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 79}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 79}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;短期多頭排列（MA5>10>20），趨勢偏多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=61.4，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD零軸上穿，中線轉多確認&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;短期多頭排列（MA5>10>20），趨勢偏多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=61.4，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD零軸上穿，中線轉多確認&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均2.4倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;突破布林上軌，短線超漲追高謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「晨星」▷ 有效性中｜整理區出現，需配合均線突破確認&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：311.00（+2.8%）／支撐：255.50（-15.5%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 30658張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 10643張&quot;}]"
   data-sid="2449"
   data-name="京元電子"
   data-verdict="📈 強烈偏多"
@@ -1450,7 +1451,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="72.0"
   data-volratio="2.07"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 78}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 78}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=75.9，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=75.9，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均2.2倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：75.00（+1.4%）／支撐：51.50（-30.4%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 343張&quot;}]"
   data-sid="2465"
   data-name="麗臺"
   data-verdict="📈 強烈偏多"
@@ -1502,7 +1503,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="62.9"
   data-volratio="1.85"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 74}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 74}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;短期多頭排列（MA5>10>20），趨勢偏多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;MA5黃金交叉MA10，短線轉多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=71.4，處於偏多健康區間&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;短期多頭排列（MA5>10>20），趨勢偏多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;MA5黃金交叉MA10，短線轉多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=71.4，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均2.1倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：1445.00（+5.9%）／支撐：1040.00（-23.8%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 157張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 7張&quot;}]"
   data-sid="5269"
   data-name="祥碩"
   data-verdict="📊 偏多觀察"
@@ -1554,7 +1555,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="57.1"
   data-volratio="1.97"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 64}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 64}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;MA5黃金交叉MA10，短線轉多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;剛突破MA20（54.00），短線動能轉強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=64.7，處於偏多健康區間&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;MA5黃金交叉MA10，短線轉多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;剛突破MA20（54.00），短線動能轉強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=64.7，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均1.6倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：57.80（+2.5%）／支撐：50.60（-10.3%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 17768張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 1966張&quot;}]"
   data-sid="6505"
   data-name="台塑化"
   data-verdict="📊 偏多觀察"
@@ -1606,7 +1607,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="55.8"
   data-volratio="2.62"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 63}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 63}]"
-  data-signals="[{&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;空頭排列（MA5<10<20），短線趨勢向下&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;剛突破MA20（96.70），短線動能轉強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=59.3，處於偏多健康區間&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;空頭排列（MA5<10<20），短線趨勢向下&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;剛突破MA20（96.70），短線動能轉強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=59.3，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;KD金叉（K=52.5），短線偏多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均3.1倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;突破布林上軌，短線超漲追高謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「長紅K」⭐ 有效性高｜出現在低檔（近60日31%位），爆量，訊號可信度高&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：103.00（+1.0%）／支撐：92.10（-9.7%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 1193張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 401張&quot;}]"
   data-sid="3029"
   data-name="零壹"
   data-verdict="📊 偏多觀察"
@@ -1658,7 +1659,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="56.0"
   data-volratio="2.4"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 60}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 60}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;剛突破MA20（77.85），短線動能轉強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=53.3，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;低檔KD金叉（K=43.2），短線強烈買入訊號&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;剛突破MA20（77.85），短線動能轉強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=53.3，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;低檔KD金叉（K=43.2），短線強烈買入訊號&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均3.8倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：83.90（+3.6%）／支撐：72.70（-10.2%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 1535張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 1889張&quot;}]"
   data-sid="6412"
   data-name="群電"
   data-verdict="⚖️ 中性觀望"
@@ -1710,7 +1711,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="60.9"
   data-volratio="2.39"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 56}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 56}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=57.2，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「十字線」多空僵持｜位置：高檔（84%），高檔出現需警惕&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：160.00（+5.6%）／支撐：114.50（-24.4%）&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=57.2，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「十字線」多空僵持｜位置：高檔（84%），高檔出現需警惕&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：160.00（+5.6%）／支撐：114.50（-24.4%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 5065張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 1576張&quot;}]"
   data-sid="6706"
   data-name="惠特"
   data-verdict="⚖️ 中性觀望"
@@ -1762,7 +1763,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="58.1"
   data-volratio="2.0"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 54}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 54}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=55.3，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」△ 有效性低｜出現在高檔（近60日74%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：31.75（+10.2%）／支撐：24.00（-16.7%）&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=55.3，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」△ 有效性低｜出現在高檔（近60日74%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：31.75（+10.2%）／支撐：24.00（-16.7%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 384張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 15張&quot;}]"
   data-sid="1528"
   data-name="恩德"
   data-verdict="⚖️ 中性觀望"
@@ -1814,7 +1815,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="61.4"
   data-volratio="3.49"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 46}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 46}]"
-  data-signals="[{&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=44.0，偏弱，觀望&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量黑K（量比均4.0倍），賣壓沉重&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「爆量長黑」量比均量4.0倍 + 收黑｜主力出貨訊號&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=44.0，偏弱，觀望&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量黑K（量比均4.0倍），賣壓沉重&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「爆量長黑」量比均量4.0倍 + 收黑｜主力出貨訊號&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：389.00（+8.5%）／支撐：307.00（-14.4%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 101張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 172張&quot;}]"
   data-sid="4766"
   data-name="南寶"
   data-verdict="⚖️ 中性觀望"
@@ -1866,7 +1867,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   data-rsi="47.9"
   data-volratio="1.54"
   data-trend="[{&quot;d&quot;: &quot;2026-05-02&quot;, &quot;s&quot;: 37}, {&quot;d&quot;: &quot;2026-05-03&quot;, &quot;s&quot;: 37}]"
-  data-signals="[{&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;跌破MA20（47.70），注意下方支撐&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=53.6，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD零軸下穿，中線轉空&quot;}]"
+  data-signals="[{&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;跌破MA20（47.70），注意下方支撐&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=53.6，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD零軸下穿，中線轉空&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「空頭吞噬」△ 有效性低｜出現在低檔，空頭型態低檔效果差&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：53.80（+13.6%）／支撐：42.50（-10.2%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 4013張&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日賣超 357張&quot;}]"
   data-sid="6282"
   data-name="康舒"
   data-verdict="⚠️ 偏空謹慎"
@@ -3233,7 +3234,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <footer class="footer">
   <div class="container">
     <div>⚠️ 本系統由 Python K線評分引擎自動產生，所有分析僅供參考，不構成買賣建議。投資人應自行判斷風險。</div>
-    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-05-03 06:07</div>
+    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-05-03 06:19</div>
   </div>
 </footer>
 
