@@ -387,3 +387,83 @@ def get_last_run_date(category: str) -> Optional[str]:
             SELECT MAX(date) as d FROM daily_picks WHERE category = ?
         """, (category,)).fetchone()
     return row["d"] if row else None
+
+
+# ══════════════════════════════════════════════
+#  個股分數趨勢（供 Modal & 迷你折線圖使用）
+# ══════════════════════════════════════════════
+
+def get_score_trend(stock_id: str, days: int = 7) -> list[dict]:
+    """
+    取得單支股票近 N 天的 K線分數趨勢。
+    回傳：[{"date": "YYYY-MM-DD", "score": 72}, ...] 依日期升序
+    """
+    cutoff = (date.today() - timedelta(days=days + 1)).isoformat()
+    with _connect() as conn:
+        rows = conn.execute("""
+            SELECT date, kline_score as score
+            FROM daily_picks
+            WHERE stock_id = ? AND date >= ?
+            ORDER BY date ASC
+            LIMIT ?
+        """, (stock_id, cutoff, days)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_stock_price_history(stock_id: str, days: int = 10) -> list[dict]:
+    """
+    從 daily_picks 取得個股近 N 天收盤價（供 Modal 小折線圖使用）。
+    回傳：[{"date": "YYYY-MM-DD", "close": 85.9, "score": 72}, ...] 依日期升序
+    """
+    cutoff = (date.today() - timedelta(days=days + 3)).isoformat()
+    with _connect() as conn:
+        rows = conn.execute("""
+            SELECT date, close_price as close, kline_score as score
+            FROM daily_picks
+            WHERE stock_id = ? AND date >= ?
+            ORDER BY date ASC
+            LIMIT ?
+        """, (stock_id, cutoff, days)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_all_score_trends(top_n: int = 8, days: int = 7) -> dict[str, list[dict]]:
+    """
+    批次取得所有最新推薦股票的分數趨勢（一次 SQL，避免 N+1 查詢）。
+    回傳：{"3580": [{"date":..., "score":...}, ...], ...}
+    """
+    cutoff = (date.today() - timedelta(days=days + 1)).isoformat()
+
+    # 先取各類別最新日期的所有股票
+    with _connect() as conn:
+        stock_rows = conn.execute("""
+            SELECT DISTINCT dp.stock_id
+            FROM daily_picks dp
+            INNER JOIN (
+                SELECT category, MAX(date) as latest_date
+                FROM daily_picks
+                GROUP BY category
+            ) latest ON dp.category = latest.category AND dp.date = latest.latest_date
+            ORDER BY dp.rank ASC
+        """).fetchall()
+
+        stock_ids = [r["stock_id"] for r in stock_rows]
+        if not stock_ids:
+            return {}
+
+        placeholders = ",".join("?" * len(stock_ids))
+        trend_rows = conn.execute(f"""
+            SELECT stock_id, date, kline_score as score
+            FROM daily_picks
+            WHERE stock_id IN ({placeholders}) AND date >= ?
+            ORDER BY stock_id, date ASC
+        """, stock_ids + [cutoff]).fetchall()
+
+    result: dict[str, list[dict]] = {}
+    for r in trend_rows:
+        sid = r["stock_id"]
+        if sid not in result:
+            result[sid] = []
+        result[sid].append({"date": r["date"], "score": r["score"]})
+
+    return result
