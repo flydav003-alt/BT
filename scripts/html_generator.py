@@ -1,12 +1,14 @@
 """
-html_generator.py  ── PATCHED (修改 1 & 2 & 3)
+html_generator.py  ── PATCHED (修改 1 & 2 & 3 & 4)
 =================
 靜態 HTML 生成器：從 DB 資料生成 docs/index.html
 
 修改記錄：
   [修改1] render_pick_card：中文名稱移到代號正下方（flex-direction:column）
-  [修改2] generate_index_html：navbar 連結變亮 + 三個 section 改成 Tab 切換（點一頁只顯示一項）
-  [修改3] 多條件篩選器：今日推薦卡片 + 歷史回測表格均支援分數/類別/RSI/量比篩選
+  [修改2] generate_index_html：navbar 連結變亮 + 三個 section 改成 Tab 切換
+  [修改3] 多條件篩選器
+  [修改4] 迷你折線圖改用 close 收盤價（price_cache 7天連續資料），不再依賴 score 欄位
+           score 為 None 的日期（沒上榜）不影響折線圖，但上榜的日期在 Modal 大圖中顯示圓點分數標記
 """
 
 import json
@@ -71,8 +73,7 @@ def sig_color(sig_type: str) -> str:
 
 # ══════════════════════════════════════════════
 #  今日推薦卡片
-#  [修改1] 代號+名稱改為直排
-#  [修改3] 加入 data-* 屬性供 JS 篩選
+#  [修改4] 迷你折線圖改用 close 收盤價，score=None 不影響折線
 # ══════════════════════════════════════════════
 
 def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
@@ -92,34 +93,45 @@ def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
     kd_str  = f'{p["kd_k"]:.1f}' if p.get("kd_k") else "—"
     vr_str  = f'{vr_val:.2f}x' if vr_val else "—"
 
-    # 趨勢資料序列化給 JS
+    # [修改4] trend 結構: [{"date":..., "close":..., "score":...}, ...]
+    # close 來自 price_cache，7天連續，不會有 None
+    # score 來自 daily_picks LEFT JOIN，沒上榜的日期為 None → 不影響折線
     trend_json = "[]"
-    mini_svg = ""
+    mini_svg = '<div style="width:60px;flex-shrink:0;"></div>'
+
     if trend and len(trend) >= 2:
-        scores = [t["score"] for t in trend]
-        dates  = [t["date"] for t in trend]
-        trend_json = json.dumps([{"d": d, "s": s} for d, s in zip(dates, scores)])
+        # 只過濾 close 為 None 的項目（price_cache 理論上不會有，純防呆）
+        valid = [t for t in trend if t.get("close") is not None]
+        if len(valid) >= 2:
+            closes = [float(t["close"]) for t in valid]
+            scores = [t.get("score") for t in valid]   # 可能含 None，沒關係
+            dates  = [t["date"] for t in valid]
 
-        # 迷你折線 SVG（60x28）
-        mn = min(scores) - 5
-        mx = max(scores) + 5
-        if mx == mn:
-            mx = mn + 1
-        n = len(scores)
-        pts = " ".join(
-            f"{round(i / (n - 1) * 56, 1)},{round(26 - (s - mn) / (mx - mn) * 22, 1)}"
-            for i, s in enumerate(scores)
-        )
-        last_x = round((n - 1) / (n - 1) * 56, 1)
-        last_y = round(26 - (scores[-1] - mn) / (mx - mn) * 22, 1)
-        prev_s = scores[-2] if len(scores) >= 2 else scores[-1]
-        arrow  = "↑" if scores[-1] > prev_s else ("↓" if scores[-1] < prev_s else "→")
-        tr_col = col if scores[-1] >= prev_s else "#4a9eff"
-        delta  = scores[-1] - scores[0]
-        delta_str = f"{scores[0]}→{scores[-1]} {arrow}"
+            # trend_json 傳給 Modal 大圖，格式含 close + score
+            trend_json = json.dumps(
+                [{"d": d, "s": s, "close": c} for d, s, c in zip(dates, scores, closes)],
+                ensure_ascii=False
+            )
 
-        mini_svg = f"""
-  <!-- 迷你趨勢折線 -->
+            # 迷你折線 SVG（60x28）— 用 close 繪製
+            rng = max(closes) - min(closes)
+            mn = min(closes) - rng * 0.1 - 0.01
+            mx = max(closes) + rng * 0.1 + 0.01
+            if mx == mn:
+                mx = mn + 1
+            n = len(closes)
+            pts = " ".join(
+                f"{round(i / (n - 1) * 56, 1)},{round(26 - (c - mn) / (mx - mn) * 22, 1)}"
+                for i, c in enumerate(closes)
+            )
+            last_x = round((n - 1) / (n - 1) * 56, 1)
+            last_y = round(26 - (closes[-1] - mn) / (mx - mn) * 22, 1)
+            prev_c = closes[-2]
+            arrow  = "↑" if closes[-1] > prev_c else ("↓" if closes[-1] < prev_c else "→")
+            tr_col = col if closes[-1] >= prev_c else "#4a9eff"
+            delta_str = f"{closes[0]:.1f}→{closes[-1]:.1f} {arrow}"
+
+            mini_svg = f"""
   <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
     <svg width="60" height="28" viewBox="0 0 60 28">
       <polyline points="{pts}"
@@ -128,8 +140,6 @@ def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
     </svg>
     <div style="font-size:.58rem;color:{tr_col};margin-top:1px;font-family:'IBM Plex Mono',monospace;">{delta_str}</div>
   </div>"""
-    else:
-        mini_svg = '<div style="width:60px;flex-shrink:0;"></div>'
 
     # signals JSON for modal
     sigs_raw = p.get("top_signals", "[]")
@@ -188,6 +198,8 @@ def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
     </div>
     <div style="font-size:.7rem;color:{col};font-weight:600;margin-top:3px;">{p.get('verdict','')}</div>
   </div>
+  <!-- 迷你折線 -->
+  {mini_svg}
   <!-- 數值欄 -->
   <div style="text-align:right;flex-shrink:0;">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">{close_str}</div>
@@ -231,11 +243,9 @@ def render_today_section(picks: dict[str, list[dict]], score_trends: dict[str, l
     <div class="section-date">資料日期：{latest_date}</div>
   </div>
 
-  <!-- [修改3] 今日推薦篩選器 -->
   <div id="today-filters" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;
     padding:12px 16px;background:var(--s1);border:1px solid var(--border);border-radius:10px;align-items:center;">
 
-    <!-- 類別篩選 -->
     <div style="display:flex;gap:4px;align-items:center;">
       <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">類別</span>
       <button class="f-btn active" data-group="cat" data-val="">全部</button>
@@ -246,7 +256,6 @@ def render_today_section(picks: dict[str, list[dict]], score_trends: dict[str, l
 
     <div style="width:1px;height:24px;background:var(--border);"></div>
 
-    <!-- 分數篩選 -->
     <div style="display:flex;gap:4px;align-items:center;">
       <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">分數</span>
       <button class="f-btn active" data-group="score" data-val="0">全部</button>
@@ -256,7 +265,6 @@ def render_today_section(picks: dict[str, list[dict]], score_trends: dict[str, l
 
     <div style="width:1px;height:24px;background:var(--border);"></div>
 
-    <!-- RSI 篩選 -->
     <div style="display:flex;gap:4px;align-items:center;">
       <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">RSI</span>
       <button class="f-btn active" data-group="rsi" data-val="all">全部</button>
@@ -267,7 +275,6 @@ def render_today_section(picks: dict[str, list[dict]], score_trends: dict[str, l
 
     <div style="width:1px;height:24px;background:var(--border);"></div>
 
-    <!-- 量比篩選 -->
     <div style="display:flex;gap:4px;align-items:center;">
       <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">量比</span>
       <button class="f-btn active" data-group="vol" data-val="0">全部</button>
@@ -275,7 +282,6 @@ def render_today_section(picks: dict[str, list[dict]], score_trends: dict[str, l
       <button class="f-btn" data-group="vol" data-val="2">2x+</button>
     </div>
 
-    <!-- 重設 -->
     <button onclick="resetTodayFilters()" style="margin-left:auto;font-size:.7rem;color:var(--muted);
       background:transparent;border:1px solid var(--border);border-radius:5px;
       padding:3px 10px;cursor:pointer;">重設</button>
@@ -289,7 +295,6 @@ def render_today_section(picks: dict[str, list[dict]], score_trends: dict[str, l
 
 # ══════════════════════════════════════════════
 #  歷史回測表格
-#  [修改3] 加入多條件篩選列
 # ══════════════════════════════════════════════
 
 def render_history_section(history: list[dict]) -> str:
@@ -334,11 +339,9 @@ def render_history_section(history: list[dict]) -> str:
     <div class="section-title">📋 歷史回測（近5天）</div>
   </div>
 
-  <!-- [修改3] 歷史回測篩選器 -->
   <div id="history-filters" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;
     padding:12px 16px;background:var(--s1);border:1px solid var(--border);border-radius:10px;align-items:center;">
 
-    <!-- 搜尋 -->
     <input id="history-search" type="text" placeholder="搜尋代號或名稱..."
       style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:5px 10px;
              color:var(--text);font-size:.78rem;outline:none;width:150px;"
@@ -346,7 +349,6 @@ def render_history_section(history: list[dict]) -> str:
 
     <div style="width:1px;height:24px;background:var(--border);"></div>
 
-    <!-- 類別 -->
     <div style="display:flex;gap:4px;align-items:center;">
       <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">類別</span>
       <button class="f-btn active" data-group="hcat" data-val="">全部</button>
@@ -357,7 +359,6 @@ def render_history_section(history: list[dict]) -> str:
 
     <div style="width:1px;height:24px;background:var(--border);"></div>
 
-    <!-- 分數 -->
     <div style="display:flex;gap:4px;align-items:center;">
       <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">分數</span>
       <button class="f-btn active" data-group="hscore" data-val="0">全部</button>
@@ -367,7 +368,6 @@ def render_history_section(history: list[dict]) -> str:
 
     <div style="width:1px;height:24px;background:var(--border);"></div>
 
-    <!-- 量比 -->
     <div style="display:flex;gap:4px;align-items:center;">
       <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">量比</span>
       <button class="f-btn active" data-group="hvol" data-val="0">全部</button>
@@ -377,7 +377,6 @@ def render_history_section(history: list[dict]) -> str:
 
     <div style="width:1px;height:24px;background:var(--border);"></div>
 
-    <!-- 損益 -->
     <div style="display:flex;gap:4px;align-items:center;">
       <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">T+3</span>
       <button class="f-btn active" data-group="hpnl" data-val="all">全部</button>
@@ -385,7 +384,6 @@ def render_history_section(history: list[dict]) -> str:
       <button class="f-btn" data-group="hpnl" data-val="loss">虧損</button>
     </div>
 
-    <!-- 重設 -->
     <button onclick="resetHistoryFilters()" style="margin-left:auto;font-size:.7rem;color:var(--muted);
       background:transparent;border:1px solid var(--border);border-radius:5px;
       padding:3px 10px;cursor:pointer;">重設</button>
@@ -515,7 +513,6 @@ def generate_index_html() -> str:
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-/* ── CSS Variables ── */
 :root{{
   --bg:#080c14;--s1:#0d1220;--s2:#131a2e;--s3:#1a2340;
   --border:#1e2d4a;--gold:#e8b84b;--cyan:#29c5c5;
@@ -526,8 +523,6 @@ def generate_index_html() -> str:
 *{{margin:0;padding:0;box-sizing:border-box;}}
 html{{scroll-behavior:smooth;}}
 body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;}}
-
-/* ── Layout ── */
 .container{{max-width:1400px;margin:0 auto;padding:0 20px;}}
 .section{{margin-bottom:40px;}}
 .section-header{{display:flex;align-items:center;justify-content:space-between;
@@ -535,8 +530,6 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 .section-title{{font-size:1.1rem;font-weight:700;color:var(--gold);
   font-family:var(--mono);letter-spacing:1px;}}
 .section-date{{font-size:.72rem;color:var(--muted);font-family:var(--mono);}}
-
-/* ── Navbar ── */
 .navbar{{background:var(--s1);border-bottom:1px solid var(--border);
   padding:14px 0;position:sticky;top:0;z-index:100;}}
 .navbar-inner{{display:flex;align-items:center;justify-content:space-between;}}
@@ -550,32 +543,19 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 .navbar-nav a.nav-active{{color:var(--gold);border-bottom:2px solid var(--gold);}}
 .update-badge{{font-size:.65rem;color:var(--muted);font-family:var(--mono);
   background:var(--s2);border:1px solid var(--border);border-radius:4px;padding:3px 8px;}}
-
-/* ── Main Content ── */
 .main-content{{padding:28px 0;}}
-
-/* ── Today Grid ── */
 .today-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}}
 .today-col{{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:16px;}}
-
-/* ── 篩選隱藏卡片：不佔空間 ── */
 .pick-card.hidden{{
   display:none !important;
-  margin:0 !important;
-  padding:0 !important;
-  border:none !important;
-  height:0 !important;
-  overflow:hidden !important;
+  margin:0 !important;padding:0 !important;
+  border:none !important;height:0 !important;overflow:hidden !important;
 }}
-
-/* ── Filter Buttons ── */
 .f-btn{{background:transparent;border:1px solid var(--border);color:var(--muted);
   font-size:.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;transition:all .15s;
   font-family:var(--font);white-space:nowrap;}}
 .f-btn:hover{{color:var(--text);border-color:#4a6080;}}
 .f-btn.active{{background:var(--s3);color:var(--text);border-color:var(--accent);font-weight:600;}}
-
-/* ── Data Table ── */
 .data-table{{width:100%;border-collapse:collapse;background:var(--s1);
   border-radius:10px;overflow:hidden;border:1px solid var(--border);}}
 .data-table thead tr{{background:var(--s2);border-bottom:2px solid var(--border);}}
@@ -584,28 +564,18 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 .data-table tbody tr{{border-bottom:1px solid #0f1a2e;transition:background .15s;}}
 .data-table tbody tr:hover{{background:rgba(255,255,255,.02);}}
 .data-table tbody td{{padding:9px 12px;font-size:.8rem;white-space:nowrap;}}
-
-/* ── Tab Buttons (win rate) ── */
 .tab-btn{{background:transparent;border:none;color:var(--muted);
   font-size:.75rem;padding:4px 12px;border-radius:5px;cursor:pointer;transition:all .2s;
   font-family:var(--font);}}
 .tab-btn.active{{background:var(--s3);color:var(--text);font-weight:600;}}
 .tab-btn:hover:not(.active){{color:var(--text);}}
-
-/* ── Tab sections ── */
 .tab-section{{display:none;}}
 .tab-section.active{{display:block;}}
-
-/* ── Footer ── */
 .footer{{background:var(--s1);border-top:1px solid var(--border);
   padding:20px 0;text-align:center;font-size:.68rem;color:var(--muted);line-height:2;}}
-
-/* ── Scrollbar ── */
 ::-webkit-scrollbar{{width:6px;height:6px;}}
 ::-webkit-scrollbar-track{{background:var(--bg);}}
 ::-webkit-scrollbar-thumb{{background:var(--border);border-radius:3px;}}
-
-/* ── Responsive ── */
 @media(max-width:900px){{
   .today-grid{{grid-template-columns:1fr;}}
   .navbar-inner{{flex-wrap:wrap;gap:8px;}}
@@ -620,8 +590,6 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
   .data-table{{font-size:.72rem;}}
   .data-table thead th,.data-table tbody td{{padding:7px 8px;}}
 }}
-
-/* ── Pick Modal ── */
 .pick-modal-bg{{
   position:fixed;inset:0;background:rgba(0,0,0,.75);
   display:none;align-items:center;justify-content:center;
@@ -670,7 +638,6 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 </head>
 <body>
 
-<!-- ── Navbar ── -->
 <nav class="navbar">
   <div class="container navbar-inner">
     <div>
@@ -686,13 +653,10 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
   </div>
 </nav>
 
-<!-- ── Pick Modal ── -->
+<!-- Pick Modal -->
 <div class="pick-modal-bg" id="pick-modal-bg" onclick="if(event.target===this)closePickModal()">
   <div class="pick-modal" onclick="event.stopPropagation()">
-
-    <!-- Header -->
     <div class="pm-head">
-      <!-- 圓環 -->
       <div style="position:relative;width:52px;height:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
         <svg width="52" height="52" viewBox="0 0 52 52" style="position:absolute;">
           <circle cx="26" cy="26" r="22" fill="none" stroke="#1a2340" stroke-width="4"/>
@@ -702,7 +666,6 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
         </svg>
         <span id="pm-score-num" style="font-size:.9rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">—</span>
       </div>
-      <!-- 股票資訊 -->
       <div style="flex:1;min-width:0;">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           <a id="pm-sid" href="#" target="_blank"
@@ -716,24 +679,17 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
       </div>
       <button class="pm-close" onclick="closePickModal()">✕</button>
     </div>
-
-    <!-- Body -->
     <div class="pm-body">
-
-      <!-- 訊號（最優先） -->
       <div class="pm-section-lbl">🔍 主要評分訊號</div>
       <div style="background:#131a2e;border-radius:8px;padding:8px 12px;" id="pm-signals">
         <div style="color:#4a6080;font-size:.78rem;text-align:center;padding:12px 0;">載入中...</div>
       </div>
-
-      <!-- 7日分數趨勢 -->
-      <div class="pm-section-lbl">📈 7 日分數趨勢</div>
+      <!-- [修改4] 標題改為「7日收盤價走勢」，圓點=有上榜的日期並標示分數 -->
+      <div class="pm-section-lbl">📈 7 日收盤價走勢（圓點為上榜日分數）</div>
       <div style="background:#131a2e;border-radius:8px;padding:12px 14px;">
         <div id="pm-trend-area" style="min-height:96px;"></div>
         <div id="pm-trend-summary" style="font-size:.72rem;color:#6a85a8;margin-top:6px;text-align:center;font-family:'IBM Plex Mono',monospace;"></div>
       </div>
-
-      <!-- 數值 -->
       <div class="pm-section-lbl">📊 技術數值</div>
       <div class="pm-stat-grid">
         <div class="pm-stat-box">
@@ -762,7 +718,6 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
           </a>
         </div>
       </div>
-
       <div style="margin-top:6px;font-size:.65rem;color:#4a6080;text-align:center;">
         ⚠️ 本評分僅供參考，不構成投資建議。
       </div>
@@ -770,26 +725,14 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
   </div>
 </div>
 
-<!-- ── Main ── -->
 <main class="main-content">
   <div class="container">
-
-    <div class="tab-section active" id="tab-today">
-      {today_html}
-    </div>
-
-    <div class="tab-section" id="tab-history">
-      {history_html}
-    </div>
-
-    <div class="tab-section" id="tab-winrate">
-      {winrate_html}
-    </div>
-
+    <div class="tab-section active" id="tab-today">{today_html}</div>
+    <div class="tab-section" id="tab-history">{history_html}</div>
+    <div class="tab-section" id="tab-winrate">{winrate_html}</div>
   </div>
 </main>
 
-<!-- ── Footer ── -->
 <footer class="footer">
   <div class="container">
     <div>⚠️ 本系統由 Python K線評分引擎自動產生，所有分析僅供參考，不構成買賣建議。投資人應自行判斷風險。</div>
@@ -798,9 +741,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 </footer>
 
 <script>
-// ══════════════════════════════════════════
-//  Tab 切換
-// ══════════════════════════════════════════
+// Tab 切換
 function switchTab(tab) {{
   ['today', 'history', 'winrate'].forEach(function(t) {{
     var sec = document.getElementById('tab-' + t);
@@ -811,21 +752,16 @@ function switchTab(tab) {{
   window.scrollTo({{ top: 0, behavior: 'smooth' }});
 }}
 
-// ══════════════════════════════════════════
-//  [修改3] 今日推薦篩選
-// ══════════════════════════════════════════
+// 今日推薦篩選
 var _todayFilters = {{ cat: '', score: 0, rsi: 'all', vol: 0 }};
 
-// f-btn 點擊事件（統一綁定）
 document.addEventListener('DOMContentLoaded', function() {{
   document.querySelectorAll('#today-filters .f-btn').forEach(function(btn) {{
     btn.addEventListener('click', function() {{
       var group = this.dataset.group;
-      // 同 group 的按鈕取消 active
       document.querySelectorAll('#today-filters .f-btn[data-group="' + group + '"]')
         .forEach(function(b) {{ b.classList.remove('active'); }});
       this.classList.add('active');
-
       var val = this.dataset.val;
       if (group === 'cat')   _todayFilters.cat   = val;
       if (group === 'score') _todayFilters.score  = parseFloat(val);
@@ -834,7 +770,6 @@ document.addEventListener('DOMContentLoaded', function() {{
       applyTodayFilters();
     }});
   }});
-
   document.querySelectorAll('#history-filters .f-btn').forEach(function(btn) {{
     btn.addEventListener('click', function() {{
       var group = this.dataset.group;
@@ -844,7 +779,6 @@ document.addEventListener('DOMContentLoaded', function() {{
       applyHistoryFilters();
     }});
   }});
-
   updateHistoryCount();
 }});
 
@@ -853,71 +787,47 @@ function applyTodayFilters() {{
   ['ETF','OTC','TSE'].forEach(function(cat) {{
     var col = document.getElementById('col-' + cat);
     if (!col) return;
-
-    // 類別欄位整體顯示/隱藏
-    if (f.cat && f.cat !== cat) {{
-      col.style.display = 'none';
-      return;
-    }}
+    if (f.cat && f.cat !== cat) {{ col.style.display = 'none'; return; }}
     col.style.display = '';
-
     var cards = col.querySelectorAll('.pick-card');
     var visible = 0;
     cards.forEach(function(card) {{
       var score = parseFloat(card.dataset.score || 0);
       var rsi   = parseFloat(card.dataset.rsi || 0);
       var vr    = parseFloat(card.dataset.volratio || 0);
-
       var ok = true;
       if (score < f.score) ok = false;
       if (f.rsi === '50-70' && !(rsi >= 50 && rsi < 70)) ok = false;
       if (f.rsi === '70+'   && rsi < 70) ok = false;
       if (f.rsi === '50-'   && rsi >= 50) ok = false;
       if (vr < f.vol) ok = false;
-
-      if (ok) {{
-        card.classList.remove('hidden');
-      }} else {{
-        card.classList.add('hidden');
-      }}
-      if (ok) visible++;
+      if (ok) {{ card.classList.remove('hidden'); visible++; }}
+      else card.classList.add('hidden');
     }});
-
     var noResult = col.querySelector('.no-result');
     if (noResult) noResult.style.display = visible === 0 ? '' : 'none';
   }});
-
-  // 類別篩選時動態調整 grid 欄數，避免空欄撐開
   var grid = document.querySelector('.today-grid');
-  if (grid) {{
-    grid.style.gridTemplateColumns = f.cat ? '1fr' : 'repeat(3,1fr)';
-  }}
+  if (grid) grid.style.gridTemplateColumns = f.cat ? '1fr' : 'repeat(3,1fr)';
 }}
 
 function resetTodayFilters() {{
   _todayFilters = {{ cat: '', score: 0, rsi: 'all', vol: 0 }};
-  document.querySelectorAll('#today-filters .f-btn').forEach(function(btn) {{
-    btn.classList.remove('active');
-  }});
-  document.querySelectorAll('#today-filters .f-btn[data-val=""]').forEach(function(btn) {{
-    btn.classList.add('active');
-  }});
+  document.querySelectorAll('#today-filters .f-btn').forEach(function(btn) {{ btn.classList.remove('active'); }});
+  document.querySelectorAll('#today-filters .f-btn[data-val=""]').forEach(function(btn) {{ btn.classList.add('active'); }});
   document.querySelector('#today-filters .f-btn[data-group="score"][data-val="0"]').classList.add('active');
   document.querySelector('#today-filters .f-btn[data-group="rsi"][data-val="all"]').classList.add('active');
   document.querySelector('#today-filters .f-btn[data-group="vol"][data-val="0"]').classList.add('active');
   applyTodayFilters();
 }}
 
-// ══════════════════════════════════════════
-//  [修改3] 歷史回測篩選
-// ══════════════════════════════════════════
+// 歷史回測篩選
 function applyHistoryFilters() {{
   var kw    = (document.getElementById('history-search').value || '').trim().toLowerCase();
   var cat   = getActiveVal('hcat');
   var score = parseFloat(getActiveVal('hscore') || 0);
   var vol   = parseFloat(getActiveVal('hvol') || 0);
   var pnl   = getActiveVal('hpnl');
-
   var rows = document.querySelectorAll('#history-body .history-row');
   var shown = 0;
   rows.forEach(function(tr) {{
@@ -925,12 +835,9 @@ function applyHistoryFilters() {{
     var trCat   = tr.dataset.cat   || '';
     var trScore = parseFloat(tr.dataset.score   || 0);
     var trVr    = parseFloat(tr.dataset.volratio || 0);
-
-    // T+3 損益讀法：從第8個 td（index 7）
     var cells = tr.querySelectorAll('td');
     var t3text = cells[7] ? cells[7].textContent.trim() : '';
     var t3val  = parseFloat(t3text.replace('%','').replace('+',''));
-
     var ok = true;
     if (kw && !search.includes(kw)) ok = false;
     if (cat && trCat !== cat) ok = false;
@@ -938,11 +845,9 @@ function applyHistoryFilters() {{
     if (trVr < vol) ok = false;
     if (pnl === 'win'  && !(t3val > 0)) ok = false;
     if (pnl === 'loss' && !(t3val < 0)) ok = false;
-
     tr.style.display = ok ? '' : 'none';
     if (ok) shown++;
   }});
-
   updateHistoryCount(shown, rows.length);
 }}
 
@@ -963,47 +868,38 @@ function updateHistoryCount(shown, total) {{
 
 function resetHistoryFilters() {{
   document.getElementById('history-search').value = '';
-  document.querySelectorAll('#history-filters .f-btn').forEach(function(btn) {{
-    btn.classList.remove('active');
-  }});
-  // 重設各 group 的預設 active
+  document.querySelectorAll('#history-filters .f-btn').forEach(function(btn) {{ btn.classList.remove('active'); }});
   [['hcat',''],['hscore','0'],['hvol','0'],['hpnl','all']].forEach(function(pair) {{
-    var btn = document.querySelector(
-      '#history-filters .f-btn[data-group="' + pair[0] + '"][data-val="' + pair[1] + '"]'
-    );
+    var btn = document.querySelector('#history-filters .f-btn[data-group="' + pair[0] + '"][data-val="' + pair[1] + '"]');
     if (btn) btn.classList.add('active');
   }});
   applyHistoryFilters();
 }}
 
-// ── 舊版 filterHistory 保持相容 ──
 function filterHistory(q) {{
   document.getElementById('history-search').value = q;
   applyHistoryFilters();
 }}
 
-// ══════════════════════════════════════════
-//  個股詳細 Modal
-// ══════════════════════════════════════════
+// Modal
 var _modalBg = null;
-
 function _getModalBg() {{
   if (!_modalBg) _modalBg = document.getElementById('pick-modal-bg');
   return _modalBg;
 }}
 
 function openPickModal(card) {{
-  var sid      = card.dataset.sid;
-  var name     = card.dataset.name;
-  var score    = parseInt(card.dataset.scoreVal || card.dataset.score || 0);
-  var col      = card.dataset.color;
-  var verdict  = card.dataset.verdict;
-  var price    = card.dataset.price;
-  var rsi      = card.dataset.rsiVal;
-  var kd       = card.dataset.kd;
-  var vol      = card.dataset.vol;
-  var catLbl   = card.dataset.catLabel;
-  var catCol   = card.dataset.catColor;
+  var sid     = card.dataset.sid;
+  var name    = card.dataset.name;
+  var score   = parseInt(card.dataset.scoreVal || card.dataset.score || 0);
+  var col     = card.dataset.color;
+  var verdict = card.dataset.verdict;
+  var price   = card.dataset.price;
+  var rsi     = card.dataset.rsiVal;
+  var kd      = card.dataset.kd;
+  var vol     = card.dataset.vol;
+  var catLbl  = card.dataset.catLabel;
+  var catCol  = card.dataset.catColor;
 
   var trend = [];
   try {{ trend = JSON.parse(card.dataset.trend || '[]'); }} catch(e) {{}}
@@ -1011,7 +907,6 @@ function openPickModal(card) {{
   var signals = [];
   try {{ signals = JSON.parse((card.dataset.signals || '[]').replace(/&quot;/g,'"')); }} catch(e) {{}}
 
-  // 填入 header
   document.getElementById('pm-sid').textContent = sid;
   document.getElementById('pm-sid').href = '{KLINE_TOOL_URL}?stock=' + sid;
   document.getElementById('pm-name').textContent = name;
@@ -1024,28 +919,21 @@ function openPickModal(card) {{
   document.getElementById('pm-cat-tag').style.borderColor = catCol + '55';
   document.getElementById('pm-cat-tag').style.background = catCol + '18';
 
-  // 圓環
   var circ = Math.round(score / 100 * 276.46 * 10) / 10;
   var gap  = Math.round((276.46 - circ) * 10) / 10;
   document.getElementById('pm-ring-arc').setAttribute('stroke-dasharray', circ + ' ' + gap);
   document.getElementById('pm-ring-arc').setAttribute('stroke', col);
 
-  // 數值
   document.getElementById('pm-price').textContent = price;
   document.getElementById('pm-price').style.color = col;
   document.getElementById('pm-rsi').textContent = rsi;
   document.getElementById('pm-kd').textContent = kd;
   document.getElementById('pm-vol').textContent = vol;
 
-  // 趨勢折線（大圖）
   _drawTrendChart(trend, col, score);
-
-  // 訊號列表
   _renderSignals(signals);
 
-  // K線連結
   document.getElementById('pm-kline-btn').href = '{KLINE_TOOL_URL}?stock=' + sid;
-
   _getModalBg().classList.add('open');
   document.body.style.overflow = 'hidden';
 }}
@@ -1055,6 +943,7 @@ function closePickModal() {{
   document.body.style.overflow = '';
 }}
 
+// [修改4] Modal 大圖：用 close 收盤價畫折線，score 不為 null 的日期加圓點+分數標記
 function _drawTrendChart(trend, col, currentScore) {{
   var container = document.getElementById('pm-trend-area');
   if (!trend || trend.length < 2) {{
@@ -1062,18 +951,30 @@ function _drawTrendChart(trend, col, currentScore) {{
     return;
   }}
 
-  // 支援兩種格式：{{s, d}} 舊格式 / {{close, score, date}} 新格式
-  var hasPriceData = trend[0].close !== undefined;
-  var values  = trend.map(function(t) {{ return hasPriceData ? t.close : t.s; }});
-  var scores  = trend.map(function(t) {{ return t.score !== undefined ? t.score : t.s; }});
-  var dates   = trend.map(function(t) {{ return (t.date || t.d || '').slice(5); }}); // MM-DD
+  // 支援兩種格式：舊格式 {{d,s}} / 新格式 {{d,s,close}}
+  var hasPriceData = trend[0].close !== undefined && trend[0].close !== null;
+  // 折線用 close（若有），否則 fallback 到 s（分數）
+  var rawValues = trend.map(function(t) {{ return hasPriceData ? t.close : t.s; }});
+  var rawScores = trend.map(function(t) {{ return (t.s !== undefined) ? t.s : null; }});
+  var rawDates  = trend.map(function(t) {{ return (t.d || t.date || '').slice(5); }});
+
+  // 過濾 null（close 應該不會有，純防呆）
+  var validIdx = rawValues.map(function(v,i){{return (v!=null)?i:-1;}}).filter(function(i){{return i>=0;}});
+  if (validIdx.length < 2) {{
+    container.innerHTML = '<div style="color:#4a6080;font-size:.78rem;text-align:center;padding:20px 0;">歷史資料不足</div>';
+    return;
+  }}
+
+  var values = validIdx.map(function(i){{return rawValues[i];}});
+  var scores = validIdx.map(function(i){{return rawScores[i];}});
+  var dates  = validIdx.map(function(i){{return rawDates[i];}});
+  var n = values.length;
 
   var mn = Math.min.apply(null, values) * 0.995;
   var mx = Math.max.apply(null, values) * 1.005;
   if (mx <= mn) mx = mn + 1;
 
   var W = 400, H = 80, padL = 8, padR = 8, padT = 14, padB = 4;
-  var n = values.length;
 
   function toX(i) {{ return padL + i / (n - 1) * (W - padL - padR); }}
   function toY(v) {{ return padT + (1 - (v - mn) / (mx - mn)) * (H - padT - padB); }}
@@ -1086,7 +987,7 @@ function _drawTrendChart(trend, col, currentScore) {{
   var lastX = toX(n - 1).toFixed(1);
   var lastY = toY(values[n - 1]).toFixed(1);
 
-  // 收盤價標籤（首尾）
+  // 首尾收盤價標籤
   var priceLabels = '';
   if (hasPriceData) {{
     priceLabels +=
@@ -1094,19 +995,17 @@ function _drawTrendChart(trend, col, currentScore) {{
       '<text x="' + lastX + '" y="' + (toY(values[n-1]) - 4).toFixed(1) + '" font-size="8" fill="' + col + '" text-anchor="middle" font-weight="700">' + values[n-1].toFixed(1) + '</text>';
   }}
 
-  // 有分數的日期打圓點標記
+  // 有上榜 score 的日期：打圓點 + 顯示分數
   var scoreDots = '';
   scores.forEach(function(sc, i) {{
     if (sc === null || sc === undefined) return;
     var cx = toX(i).toFixed(1);
     var cy = toY(values[i]).toFixed(1);
     scoreDots += '<circle cx="' + cx + '" cy="' + cy + '" r="3" fill="' + col + '" opacity="0.9"/>';
-    // 分數文字（只在有值時顯示）
     var textY = (parseFloat(cy) - 6).toFixed(1);
     scoreDots += '<text x="' + cx + '" y="' + textY + '" font-size="8" fill="' + col + '" text-anchor="middle" font-weight="600">' + sc + '</text>';
   }});
 
-  // 日期標籤（首尾）
   var dateLabels =
     '<text x="' + padL + '" y="' + (H + 12) + '" font-size="8" fill="#4a6080" text-anchor="middle">' + dates[0] + '</text>' +
     '<text x="' + lastX + '" y="' + (H + 12) + '" font-size="8" fill="' + col + '" text-anchor="middle">' + dates[n-1] + '</text>';
@@ -1122,13 +1021,12 @@ function _drawTrendChart(trend, col, currentScore) {{
     priceLabels + scoreDots + dateLabels +
     '</svg>';
 
-  // 摘要文字
   var delta = hasPriceData
     ? ((values[n-1] - values[0]) / values[0] * 100).toFixed(2) + '%'
-    : (scores[n-1] - scores[0] > 0 ? '+' : '') + (scores[n-1] - scores[0]) + ' pts';
-  var deltaCol = (hasPriceData ? values[n-1] >= values[0] : scores[n-1] >= scores[0]) ? '#ff4d6d' : '#4a9eff';
-  var labelA = hasPriceData ? values[0].toFixed(1) : scores[0];
-  var labelB = hasPriceData ? values[n-1].toFixed(1) : scores[n-1];
+    : ((scores[n-1] || 0) - (scores[0] || 0) > 0 ? '+' : '') + ((scores[n-1] || 0) - (scores[0] || 0)) + ' pts';
+  var deltaCol = (values[n-1] >= values[0]) ? '#ff4d6d' : '#4a9eff';
+  var labelA = hasPriceData ? values[0].toFixed(1) : (scores[0] || '—');
+  var labelB = hasPriceData ? values[n-1].toFixed(1) : (scores[n-1] || '—');
 
   document.getElementById('pm-trend-summary').innerHTML =
     '<span style="color:#6a85a8;">' + dates[0] + '：' + labelA + '</span>' +
@@ -1143,23 +1041,16 @@ function _renderSignals(signals) {{
     container.innerHTML = '<div style="color:#4a6080;font-size:.78rem;text-align:center;padding:12px 0;">無訊號資料</div>';
     return;
   }}
-
   var typeMap = {{
-    'bull':    {{ icon: '▲', color: '#ff4d6d', label: '偏多' }},
-    'bear':    {{ icon: '▼', color: '#00c896', label: '偏空' }},
-    'neutral': {{ icon: '◆', color: '#6a85a8', label: '中性' }},
+    'bull':    {{ icon: '▲', color: '#ff4d6d' }},
+    'bear':    {{ icon: '▼', color: '#00c896' }},
+    'neutral': {{ icon: '◆', color: '#6a85a8' }},
   }};
-
   var catMap = {{
-    'ma':      'MA',
-    'rsi':     'RSI',
-    'kd':      'KD',
-    'macd':    'MACD',
-    'vol':     '量能',
-    'pattern': '型態',
-    'chip':    '籌碼',
+    'ma':'MA','rsi':'RSI','kd':'KD','macd':'MACD','vol':'量能','pattern':'型態','chip':'籌碼',
+    '均線':'均線','RSI':'RSI','KD':'KD','MACD':'MACD','量價':'量價','布林':'布林',
+    'K線型態':'K線','支撐壓力':'支撐','籌碼':'籌碼','RSI背離':'背離',
   }};
-
   container.innerHTML = signals.map(function(sig) {{
     var t = typeMap[sig.type] || typeMap['neutral'];
     var catStr = catMap[sig.cat] || sig.cat || '';
@@ -1171,23 +1062,18 @@ function _renderSignals(signals) {{
   }}).join('');
 }}
 
-// ESC 關閉
 document.addEventListener('keydown', function(e) {{
   if (e.key === 'Escape') closePickModal();
 }});
 
-// ══════════════════════════════════════════
-//  勝率切換
-// ══════════════════════════════════════════
+// 勝率切換
 var _winType = 't3', _winRange = '30d';
-
 function switchWin(type) {{
   _winType = type;
   document.querySelectorAll('[id^="btn-t"]').forEach(function(b) {{ b.classList.remove('active'); }});
   document.getElementById('btn-' + type).classList.add('active');
   _showWinPanel();
 }}
-
 function switchRange(range) {{
   _winRange = range;
   ['30d','90d','all'].forEach(function(r) {{
@@ -1196,7 +1082,6 @@ function switchRange(range) {{
   document.getElementById('btn-' + range).classList.add('active');
   _showWinPanel();
 }}
-
 function _showWinPanel() {{
   document.querySelectorAll('.win-panel').forEach(function(p) {{ p.style.display = 'none'; }});
   var key = _winType + '_' + _winRange;
