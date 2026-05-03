@@ -142,8 +142,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
       <a href="#" onclick="switchTab('today');return false;" id="nav-today" class="nav-active">今日推薦</a>
       <a href="#" onclick="switchTab('history');return false;" id="nav-history">歷史回測</a>
       <a href="#" onclick="switchTab('winrate');return false;" id="nav-winrate">勝率排行</a>
+      <a href="#" onclick="switchTab('watchlist');return false;" id="nav-watchlist">⭐ 自選股</a>
     </nav>
-    <div class="update-badge">🕐 2026-05-03 07:11 更新</div>
+    <div class="update-badge">🕐 2026-05-03 08:24 更新</div>
   </div>
 </nav>
 
@@ -3460,20 +3461,180 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div class="win-panel" id="win-t3_30d" style="display:block;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div><div class="win-panel" id="win-t5_30d" style="display:none;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div><div class="win-panel" id="win-t3_90d" style="display:none;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div><div class="win-panel" id="win-t5_90d" style="display:none;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div><div class="win-panel" id="win-t3_all" style="display:none;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div><div class="win-panel" id="win-t5_all" style="display:none;"><div style="color:#4a6080;padding:20px;text-align:center;">資料不足（需至少2筆紀錄）</div></div>
   </div>
 </section></div>
+    <div class="tab-section" id="tab-watchlist">
+<section class="section" id="watchlist">
+  <div class="section-header">
+    <div class="section-title">⭐ 自選股 Watchlist</div>
+    <div class="section-date">最後評分：—</div>
+  </div>
+
+  <!-- 提示列 -->
+  <div style="background:#e8b84b18;border:1px solid #e8b84b44;border-radius:8px;
+    padding:10px 16px;margin-bottom:16px;font-size:.78rem;color:#e8b84b;
+    display:flex;align-items:center;gap:10px;">
+    <span style="font-size:1rem;">⚡</span>
+    <span>自選股每天<strong>必定</strong>跑評分，不受當日 CSV 限制。目前追蹤 <strong>0</strong> 支，今日已評分 <strong>0</strong> 支，偏多訊號 <strong>0</strong> 支。</span>
+  </div>
+
+  <!-- 新增區 -->
+  <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;
+    padding:14px 16px;margin-bottom:16px;">
+    <div style="font-size:.7rem;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;
+      font-family:var(--mono);margin-bottom:10px;">新增自選股</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <input id="wl-input-sid" type="text" placeholder="股票代號（如 2330）"
+        style="background:var(--s2);border:1px solid var(--border);border-radius:7px;
+               padding:7px 12px;color:var(--text);font-size:.82rem;outline:none;
+               font-family:var(--mono);width:160px;"
+        onkeydown="if(event.key==='Enter')wlAdd()">
+      <input id="wl-input-note" type="text" placeholder="備註（選填）"
+        style="background:var(--s2);border:1px solid var(--border);border-radius:7px;
+               padding:7px 12px;color:var(--text);font-size:.82rem;outline:none;flex:1;min-width:120px;"
+        onkeydown="if(event.key==='Enter')wlAdd()">
+      <button onclick="wlAdd()"
+        style="background:#4a9eff22;border:1px solid #4a9eff55;color:var(--accent);
+               border-radius:7px;padding:7px 18px;font-size:.82rem;cursor:pointer;
+               white-space:nowrap;transition:all .15s;"
+        onmouseover="this.style.background='#4a9eff33'" onmouseout="this.style.background='#4a9eff22'">
+        + 新增
+      </button>
+    </div>
+    <div id="wl-msg" style="font-size:.72rem;margin-top:8px;min-height:1.2em;color:#4a9eff;"></div>
+    <div style="font-size:.68rem;color:var(--muted);margin-top:4px;">
+      代號直接輸入即可，系統每日自動補齊名稱與評分。最多建議 30 支。
+    </div>
+  </div>
+
+  <!-- 管理表格 -->
+  <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;
+    padding:0;margin-bottom:24px;overflow:hidden;">
+    <div style="padding:12px 16px;border-bottom:1px solid var(--border);
+      font-size:.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;
+      font-family:var(--mono);">
+      清單管理
+      <span style="margin-left:8px;color:#4a6080;">共 0 支</span>
+    </div>
+    <div style="overflow-x:auto;">
+    <table class="data-table" id="wl-table">
+      <thead>
+        <tr>
+          <th>代號</th>
+          <th>名稱 / 備註</th>
+          <th>今日分數</th>
+          <th>訊號</th>
+          <th>收盤價</th>
+          <th>狀態</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="wl-tbody">
+        
+<tr><td colspan="7" style="text-align:center;padding:28px 0;color:#4a6080;font-size:.85rem;">
+  自選股清單為空，請在上方輸入代號新增。
+</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- 今日評分結果 -->
+  <div class="section-header" style="margin-bottom:12px;">
+    <div class="section-title" style="font-size:.95rem;">📈 今日評分結果（WATCH）</div>
+    <div class="section-date">0 支</div>
+  </div>
+  <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:16px;">
+    <div style="color:#4a6080;font-size:.82rem;padding:28px 0;text-align:center;">今日尚無評分（明日自動執行）</div>
+  </div>
+
+  <!-- 統計列 -->
+  <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:100px;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center;">
+      <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--accent);">0</div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:3px;">自選股總數</div>
+    </div>
+    <div style="flex:1;min-width:100px;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center;">
+      <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:#29c5c5;">0</div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:3px;">今日已評分</div>
+    </div>
+    <div style="flex:1;min-width:100px;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center;">
+      <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:#ff4d6d;">0</div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:3px;">今日偏多</div>
+    </div>
+    <div style="flex:1;min-width:100px;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center;">
+      <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:#e8b84b;">—</div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:3px;">平均分數</div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ── Watchlist 前端管理（新增/刪除透過 server-side action URL 或直接 reload）──
+// 注意：靜態 HTML 不能直接呼叫 Python，這裡的新增/刪除僅示範 UI 回饋。
+// 若部署於本地，可改為呼叫 FastAPI / Flask 端點。
+// 目前版本：僅顯示訊息，真正修改請透過 CLI 或後台 API。
+
+function wlAdd() {
+  var sid  = (document.getElementById('wl-input-sid').value  || '').trim().toUpperCase();
+  var note = (document.getElementById('wl-input-note').value || '').trim();
+  var msg  = document.getElementById('wl-msg');
+  if (!sid) { msg.style.color='#ff4d6d'; msg.textContent='請輸入股票代號'; return; }
+  // 靜態頁面無法直接寫 DB；呼叫 /api/watchlist/add 若有後端
+  if (window._wlApiBase) {
+    fetch(window._wlApiBase + '/watchlist/add', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({stock_id: sid, note: note})
+    }).then(r=>r.json()).then(function(d) {
+      if (d.ok) {
+        msg.style.color='#00c896';
+        msg.textContent = '✓ 已新增 ' + sid + '，下次執行時將加入評分';
+        document.getElementById('wl-input-sid').value='';
+        document.getElementById('wl-input-note').value='';
+      } else {
+        msg.style.color='#e8b84b'; msg.textContent = d.msg || '已存在或新增失敗';
+      }
+    }).catch(function(){
+      msg.style.color='#4a6080';
+      msg.textContent='⚠ 靜態頁面模式：請透過 CLI 執行 python manage_watchlist.py add ' + sid;
+    });
+  } else {
+    msg.style.color='#4a6080';
+    msg.textContent='⚠ 靜態頁面模式：請透過 CLI 執行 python manage_watchlist.py add ' + sid;
+  }
+}
+
+function wlRemove(sid) {
+  if (!confirm('確定要從自選股移除 ' + sid + '？')) return;
+  if (window._wlApiBase) {
+    fetch(window._wlApiBase + '/watchlist/remove', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({stock_id: sid})
+    }).then(r=>r.json()).then(function(d) {
+      if (d.ok) {
+        var row = document.querySelector('.wl-row[data-sid="' + sid + '"]');
+        if (row) row.remove();
+      }
+    }).catch(function(){
+      alert('靜態頁面模式：請透過 CLI 執行 python manage_watchlist.py remove ' + sid);
+    });
+  } else {
+    alert('靜態頁面模式：請透過 CLI 執行\npython manage_watchlist.py remove ' + sid);
+  }
+}
+</script></div>
   </div>
 </main>
 
 <footer class="footer">
   <div class="container">
     <div>⚠️ 本系統由 Python K線評分引擎自動產生，所有分析僅供參考，不構成買賣建議。投資人應自行判斷風險。</div>
-    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-05-03 07:11</div>
+    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-05-03 08:24</div>
   </div>
 </footer>
 
 <script>
 // Tab 切換
 function switchTab(tab) {
-  ['today', 'history', 'winrate'].forEach(function(t) {
+  ['today', 'history', 'winrate', 'watchlist'].forEach(function(t) {
     var sec = document.getElementById('tab-' + t);
     var nav = document.getElementById('nav-' + t);
     if (sec) sec.classList.toggle('active', t === tab);
