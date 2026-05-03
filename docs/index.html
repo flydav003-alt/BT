@@ -35,7 +35,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .navbar-brand{font-family:var(--mono);font-size:1rem;font-weight:700;color:var(--gold);}
 .navbar-sub{font-size:.7rem;color:var(--muted);margin-top:2px;}
 .navbar-nav{display:flex;gap:24px;}
-/* [修改2] navbar 連結明顯亮化 */
 .navbar-nav a{color:#9bbfe0;font-size:.85rem;font-weight:600;text-decoration:none;
   transition:color .2s;letter-spacing:.3px;padding-bottom:4px;
   border-bottom:2px solid transparent;}
@@ -50,6 +49,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 /* ── Today Grid ── */
 .today-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .today-col{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:16px;}
+
+/* ── Filter Buttons ── */
+.f-btn{background:transparent;border:1px solid var(--border);color:var(--muted);
+  font-size:.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;transition:all .15s;
+  font-family:var(--font);white-space:nowrap;}
+.f-btn:hover{color:var(--text);border-color:#4a6080;}
+.f-btn.active{background:var(--s3);color:var(--text);border-color:var(--accent);font-weight:600;}
 
 /* ── Data Table ── */
 .data-table{width:100%;border-collapse:collapse;background:var(--s1);
@@ -68,7 +74,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .tab-btn.active{background:var(--s3);color:var(--text);font-weight:600;}
 .tab-btn:hover:not(.active){color:var(--text);}
 
-/* ── [修改2] Tab sections (single-page navigation) ── */
+/* ── Tab sections ── */
 .tab-section{display:none;}
 .tab-section.active{display:block;}
 
@@ -89,6 +95,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     padding-top:8px;border-top:1px solid var(--border);}
   .navbar-nav a{font-size:.8rem;}
   .update-badge{font-size:.6rem;}
+  #today-filters, #history-filters{gap:8px;}
+  .f-btn{font-size:.68rem;padding:2px 7px;}
 }
 @media(max-width:600px){
   .data-table{font-size:.72rem;}
@@ -105,13 +113,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
       <div class="navbar-brand">📊 台股 K線評分排名報告與回測系統</div>
       <div class="navbar-sub">每日自動更新｜ETF × 上櫃 × 上市</div>
     </div>
-    <!-- [修改2] onclick 切換 Tab，active 樣式明顯 -->
     <nav class="navbar-nav">
       <a href="#" onclick="switchTab('today');return false;" id="nav-today" class="nav-active">今日推薦</a>
       <a href="#" onclick="switchTab('history');return false;" id="nav-history">歷史回測</a>
       <a href="#" onclick="switchTab('winrate');return false;" id="nav-winrate">勝率排行</a>
     </nav>
-    <div class="update-badge">🕐 2026-05-03 03:16 更新</div>
+    <div class="update-badge">🕐 2026-05-03 03:48 更新</div>
   </div>
 </nav>
 
@@ -119,7 +126,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <main class="main-content">
   <div class="container">
 
-    <!-- [修改2] 每個 section 外包 .tab-section div，點擊 navbar 才顯示 -->
     <div class="tab-section active" id="tab-today">
       
 <section class="section" id="today">
@@ -127,15 +133,72 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div class="section-title">📈 今日推薦</div>
     <div class="section-date">資料日期：2026-05-03</div>
   </div>
+
+  <!-- [修改3] 今日推薦篩選器 -->
+  <div id="today-filters" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;
+    padding:12px 16px;background:var(--s1);border:1px solid var(--border);border-radius:10px;align-items:center;">
+
+    <!-- 類別篩選 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">類別</span>
+      <button class="f-btn active" data-group="cat" data-val="">全部</button>
+      <button class="f-btn" data-group="cat" data-val="ETF">ETF</button>
+      <button class="f-btn" data-group="cat" data-val="OTC">上櫃</button>
+      <button class="f-btn" data-group="cat" data-val="TSE">上市</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 分數篩選 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">分數</span>
+      <button class="f-btn active" data-group="score" data-val="0">全部</button>
+      <button class="f-btn" data-group="score" data-val="62">62+</button>
+      <button class="f-btn" data-group="score" data-val="78">78+</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- RSI 篩選 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">RSI</span>
+      <button class="f-btn active" data-group="rsi" data-val="all">全部</button>
+      <button class="f-btn" data-group="rsi" data-val="50-70">50-70</button>
+      <button class="f-btn" data-group="rsi" data-val="70+">70+</button>
+      <button class="f-btn" data-group="rsi" data-val="50-">50以下</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 量比篩選 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">量比</span>
+      <button class="f-btn active" data-group="vol" data-val="0">全部</button>
+      <button class="f-btn" data-group="vol" data-val="1.5">1.5x+</button>
+      <button class="f-btn" data-group="vol" data-val="2">2x+</button>
+    </div>
+
+    <!-- 重設 -->
+    <button onclick="resetTodayFilters()" style="margin-left:auto;font-size:.7rem;color:var(--muted);
+      background:transparent;border:1px solid var(--border);border-radius:5px;
+      padding:3px 10px;cursor:pointer;">重設</button>
+  </div>
+
   <div class="today-grid">
     
-<div class="today-col">
+<div class="today-col" id="col-ETF">
   <div class="col-header" style="border-bottom:2px solid #a78bfa;margin-bottom:12px;padding-bottom:8px;">
     <span style="font-size:.9rem;font-weight:700;color:#a78bfa;">ETF</span>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:8px;">10 支</span>
+    <span class="col-count" style="font-size:.68rem;color:#4a6080;margin-left:8px;">10 支</span>
   </div>
+  <div class="cards-wrapper">
   
-<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="72"
+  data-cat="ETF"
+  data-rsi="80.4"
+  data-volratio="1.52"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">1</div>
   <!-- 分數圓環 -->
@@ -149,7 +212,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">72</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=3037" target="_blank"
@@ -166,7 +229,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.52x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="65"
+  data-cat="ETF"
+  data-rsi="75.0"
+  data-volratio="0.93"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">2</div>
   <!-- 分數圓環 -->
@@ -180,7 +248,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">65</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=5274" target="_blank"
@@ -197,7 +265,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 0.93x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="62"
+  data-cat="ETF"
+  data-rsi="65.7"
+  data-volratio="1.21"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">3</div>
   <!-- 分數圓環 -->
@@ -211,7 +284,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">62</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=8996" target="_blank"
@@ -228,7 +301,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.21x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="62"
+  data-cat="ETF"
+  data-rsi="75.0"
+  data-volratio="0.78"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">4</div>
   <!-- 分數圓環 -->
@@ -242,7 +320,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">62</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=3017" target="_blank"
@@ -259,7 +337,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 0.78x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="59"
+  data-cat="ETF"
+  data-rsi="59.2"
+  data-volratio="1.02"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">5</div>
   <!-- 分數圓環 -->
@@ -273,7 +356,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">59</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=3081" target="_blank"
@@ -290,7 +373,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.02x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="58"
+  data-cat="ETF"
+  data-rsi="62.3"
+  data-volratio="0.84"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">6</div>
   <!-- 分數圓環 -->
@@ -304,7 +392,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">58</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=6187" target="_blank"
@@ -321,7 +409,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 0.84x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="58"
+  data-cat="ETF"
+  data-rsi="73.6"
+  data-volratio="2.32"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">7</div>
   <!-- 分數圓環 -->
@@ -335,7 +428,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">58</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=6147" target="_blank"
@@ -352,7 +445,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 2.32x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="53"
+  data-cat="ETF"
+  data-rsi="62.6"
+  data-volratio="1.37"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">8</div>
   <!-- 分數圓環 -->
@@ -366,7 +464,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">53</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=2330" target="_blank"
@@ -383,7 +481,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.37x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="52"
+  data-cat="ETF"
+  data-rsi="35.4"
+  data-volratio="0.93"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">9</div>
   <!-- 分數圓環 -->
@@ -397,7 +500,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">52</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=2313" target="_blank"
@@ -414,7 +517,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 0.93x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="46"
+  data-cat="ETF"
+  data-rsi="77.8"
+  data-volratio="1.56"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">10</div>
   <!-- 分數圓環 -->
@@ -428,7 +536,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">46</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=3711" target="_blank"
@@ -445,14 +553,22 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.56x</div>
   </div>
 </div>
+  </div>
+  <div class="no-result" style="display:none;color:#4a6080;font-size:.8rem;padding:20px 0;text-align:center;">無符合條件的股票</div>
 </div>
-<div class="today-col">
+<div class="today-col" id="col-OTC">
   <div class="col-header" style="border-bottom:2px solid #29c5c5;margin-bottom:12px;padding-bottom:8px;">
     <span style="font-size:.9rem;font-weight:700;color:#29c5c5;">上櫃</span>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:8px;">10 支</span>
+    <span class="col-count" style="font-size:.68rem;color:#4a6080;margin-left:8px;">10 支</span>
   </div>
+  <div class="cards-wrapper">
   
-<div class="pick-card" style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="82"
+  data-cat="OTC"
+  data-rsi="64.2"
+  data-volratio="1.8"
+  style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">1</div>
   <!-- 分數圓環 -->
@@ -466,7 +582,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">82</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=3580" target="_blank"
@@ -483,7 +599,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.80x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="79"
+  data-cat="OTC"
+  data-rsi="72.0"
+  data-volratio="1.13"
+  style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">2</div>
   <!-- 分數圓環 -->
@@ -497,7 +618,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">79</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=5864" target="_blank"
@@ -514,7 +635,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.13x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="72"
+  data-cat="OTC"
+  data-rsi="64.2"
+  data-volratio="1.64"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">3</div>
   <!-- 分數圓環 -->
@@ -528,7 +654,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">72</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=6903" target="_blank"
@@ -545,7 +671,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.64x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="68"
+  data-cat="OTC"
+  data-rsi="64.6"
+  data-volratio="1.34"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">4</div>
   <!-- 分數圓環 -->
@@ -559,7 +690,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">68</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=6761" target="_blank"
@@ -576,7 +707,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.34x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="63"
+  data-cat="OTC"
+  data-rsi="66.4"
+  data-volratio="2.26"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">5</div>
   <!-- 分數圓環 -->
@@ -590,7 +726,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">63</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=8091" target="_blank"
@@ -607,7 +743,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 2.26x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="63"
+  data-cat="OTC"
+  data-rsi="47.3"
+  data-volratio="1.27"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">6</div>
   <!-- 分數圓環 -->
@@ -621,7 +762,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">63</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=6244" target="_blank"
@@ -638,7 +779,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.27x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="59"
+  data-cat="OTC"
+  data-rsi="66.7"
+  data-volratio="0.87"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">7</div>
   <!-- 分數圓環 -->
@@ -652,7 +798,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">59</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=8358" target="_blank"
@@ -669,7 +815,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 0.87x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="58"
+  data-cat="OTC"
+  data-rsi="53.9"
+  data-volratio="1.49"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">8</div>
   <!-- 分數圓環 -->
@@ -683,7 +834,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">58</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=3691" target="_blank"
@@ -700,7 +851,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.49x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="54"
+  data-cat="OTC"
+  data-rsi="58.2"
+  data-volratio="1.69"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">9</div>
   <!-- 分數圓環 -->
@@ -714,7 +870,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">54</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=3689" target="_blank"
@@ -731,7 +887,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.69x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="50"
+  data-cat="OTC"
+  data-rsi="61.1"
+  data-volratio="1.44"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">10</div>
   <!-- 分數圓環 -->
@@ -745,7 +906,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">50</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=6175" target="_blank"
@@ -762,14 +923,22 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.44x</div>
   </div>
 </div>
+  </div>
+  <div class="no-result" style="display:none;color:#4a6080;font-size:.8rem;padding:20px 0;text-align:center;">無符合條件的股票</div>
 </div>
-<div class="today-col">
+<div class="today-col" id="col-TSE">
   <div class="col-header" style="border-bottom:2px solid #ff9f40;margin-bottom:12px;padding-bottom:8px;">
     <span style="font-size:.9rem;font-weight:700;color:#ff9f40;">上市</span>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:8px;">10 支</span>
+    <span class="col-count" style="font-size:.68rem;color:#4a6080;margin-left:8px;">10 支</span>
   </div>
+  <div class="cards-wrapper">
   
-<div class="pick-card" style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="79"
+  data-cat="TSE"
+  data-rsi="57.9"
+  data-volratio="1.8"
+  style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">1</div>
   <!-- 分數圓環 -->
@@ -783,7 +952,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">79</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=2449" target="_blank"
@@ -800,7 +969,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.80x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="78"
+  data-cat="TSE"
+  data-rsi="72.0"
+  data-volratio="2.07"
+  style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">2</div>
   <!-- 分數圓環 -->
@@ -814,7 +988,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">78</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=2465" target="_blank"
@@ -831,7 +1005,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 2.07x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="74"
+  data-cat="TSE"
+  data-rsi="62.9"
+  data-volratio="1.85"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">3</div>
   <!-- 分數圓環 -->
@@ -845,7 +1024,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">74</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=5269" target="_blank"
@@ -862,7 +1041,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.85x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="64"
+  data-cat="TSE"
+  data-rsi="57.1"
+  data-volratio="1.97"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">4</div>
   <!-- 分數圓環 -->
@@ -876,7 +1060,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">64</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=6505" target="_blank"
@@ -893,7 +1077,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.97x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="63"
+  data-cat="TSE"
+  data-rsi="55.8"
+  data-volratio="2.62"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">5</div>
   <!-- 分數圓環 -->
@@ -907,7 +1096,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">63</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=3029" target="_blank"
@@ -924,7 +1113,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 2.62x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="60"
+  data-cat="TSE"
+  data-rsi="56.0"
+  data-volratio="2.4"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">6</div>
   <!-- 分數圓環 -->
@@ -938,7 +1132,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">60</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=6412" target="_blank"
@@ -955,7 +1149,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 2.40x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="56"
+  data-cat="TSE"
+  data-rsi="60.9"
+  data-volratio="2.39"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">7</div>
   <!-- 分數圓環 -->
@@ -969,7 +1168,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">56</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=6706" target="_blank"
@@ -986,7 +1185,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 2.39x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="54"
+  data-cat="TSE"
+  data-rsi="58.1"
+  data-volratio="2.0"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">8</div>
   <!-- 分數圓環 -->
@@ -1000,7 +1204,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">54</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=1528" target="_blank"
@@ -1017,7 +1221,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 2.00x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="46"
+  data-cat="TSE"
+  data-rsi="61.4"
+  data-volratio="3.49"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">9</div>
   <!-- 分數圓環 -->
@@ -1031,7 +1240,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">46</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=4766" target="_blank"
@@ -1048,7 +1257,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 3.49x</div>
   </div>
 </div>
-<div class="pick-card" style="background:rgba(74,158,255,0.10);border:1px solid #4a9eff33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+<div class="pick-card"
+  data-score="37"
+  data-cat="TSE"
+  data-rsi="47.9"
+  data-volratio="1.54"
+  style="background:rgba(74,158,255,0.10);border:1px solid #4a9eff33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">10</div>
   <!-- 分數圓環 -->
@@ -1062,7 +1276,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:#4a9eff;font-family:'IBM Plex Mono',monospace;z-index:1;">37</span>
   </div>
-  <!-- 主體資訊：[修改1] flex-direction:column → 代號在上，名稱在下 -->
+  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="https://flydav003-alt.github.io/k-line/?stock=6282" target="_blank"
@@ -1079,6 +1293,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div style="font-size:.62rem;color:#e8b84b;">量比 1.54x</div>
   </div>
 </div>
+  </div>
+  <div class="no-result" style="display:none;color:#4a6080;font-size:.8rem;padding:20px 0;text-align:center;">無符合條件的股票</div>
 </div>
   </div>
 </section>
@@ -1089,11 +1305,67 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <section class="section" id="history">
   <div class="section-header">
     <div class="section-title">📋 歷史回測（近5天）</div>
-    <input id="history-search" type="text" placeholder="搜尋股票代號或名稱..."
-      style="background:#0d1220;border:1px solid #1e2d4a;border-radius:6px;padding:6px 12px;
-             color:#d4dff0;font-size:.8rem;outline:none;width:200px;"
-      oninput="filterHistory(this.value)">
   </div>
+
+  <!-- [修改3] 歷史回測篩選器 -->
+  <div id="history-filters" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;
+    padding:12px 16px;background:var(--s1);border:1px solid var(--border);border-radius:10px;align-items:center;">
+
+    <!-- 搜尋 -->
+    <input id="history-search" type="text" placeholder="搜尋代號或名稱..."
+      style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:5px 10px;
+             color:var(--text);font-size:.78rem;outline:none;width:150px;"
+      oninput="applyHistoryFilters()">
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 類別 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">類別</span>
+      <button class="f-btn active" data-group="hcat" data-val="">全部</button>
+      <button class="f-btn" data-group="hcat" data-val="ETF">ETF</button>
+      <button class="f-btn" data-group="hcat" data-val="OTC">上櫃</button>
+      <button class="f-btn" data-group="hcat" data-val="TSE">上市</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 分數 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">分數</span>
+      <button class="f-btn active" data-group="hscore" data-val="0">全部</button>
+      <button class="f-btn" data-group="hscore" data-val="62">62+</button>
+      <button class="f-btn" data-group="hscore" data-val="78">78+</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 量比 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">量比</span>
+      <button class="f-btn active" data-group="hvol" data-val="0">全部</button>
+      <button class="f-btn" data-group="hvol" data-val="1.5">1.5x+</button>
+      <button class="f-btn" data-group="hvol" data-val="2">2x+</button>
+    </div>
+
+    <div style="width:1px;height:24px;background:var(--border);"></div>
+
+    <!-- 損益 -->
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">T+3</span>
+      <button class="f-btn active" data-group="hpnl" data-val="all">全部</button>
+      <button class="f-btn" data-group="hpnl" data-val="win">獲利</button>
+      <button class="f-btn" data-group="hpnl" data-val="loss">虧損</button>
+    </div>
+
+    <!-- 重設 -->
+    <button onclick="resetHistoryFilters()" style="margin-left:auto;font-size:.7rem;color:var(--muted);
+      background:transparent;border:1px solid var(--border);border-radius:5px;
+      padding:3px 10px;cursor:pointer;">重設</button>
+  </div>
+
+  <div id="history-count" style="font-size:.72rem;color:var(--muted);margin-bottom:8px;"></div>
+
   <div style="overflow-x:auto;">
   <table class="data-table" id="history-table">
     <thead>
@@ -1106,7 +1378,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </thead>
     <tbody id="history-body">
       
-<tr class="history-row" data-search="3037 欣興">
+<tr class="history-row"
+  data-search="3037 欣興"
+  data-cat="ETF"
+  data-score="72"
+  data-rsi="80.4"
+  data-volratio="1.52">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1121,7 +1398,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="5274 信驊">
+<tr class="history-row"
+  data-search="5274 信驊"
+  data-cat="ETF"
+  data-score="65"
+  data-rsi="75.0"
+  data-volratio="0.93">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1136,7 +1418,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="8996 高力">
+<tr class="history-row"
+  data-search="8996 高力"
+  data-cat="ETF"
+  data-score="62"
+  data-rsi="65.7"
+  data-volratio="1.21">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1151,7 +1438,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3017 奇鋐科技">
+<tr class="history-row"
+  data-search="3017 奇鋐科技"
+  data-cat="ETF"
+  data-score="62"
+  data-rsi="75.0"
+  data-volratio="0.78">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1166,7 +1458,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3081 聯亞光電工業">
+<tr class="history-row"
+  data-search="3081 聯亞光電工業"
+  data-cat="ETF"
+  data-score="59"
+  data-rsi="59.2"
+  data-volratio="1.02">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1181,7 +1478,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6187 萬潤">
+<tr class="history-row"
+  data-search="6187 萬潤"
+  data-cat="ETF"
+  data-score="58"
+  data-rsi="62.3"
+  data-volratio="0.84">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1196,7 +1498,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6147 頎邦">
+<tr class="history-row"
+  data-search="6147 頎邦"
+  data-cat="ETF"
+  data-score="58"
+  data-rsi="73.6"
+  data-volratio="2.32">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1211,7 +1518,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="2330 台積電">
+<tr class="history-row"
+  data-search="2330 台積電"
+  data-cat="ETF"
+  data-score="53"
+  data-rsi="62.6"
+  data-volratio="1.37">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1226,7 +1538,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="2313 華通">
+<tr class="history-row"
+  data-search="2313 華通"
+  data-cat="ETF"
+  data-score="52"
+  data-rsi="35.4"
+  data-volratio="0.93">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1241,7 +1558,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3711 日月光投控">
+<tr class="history-row"
+  data-search="3711 日月光投控"
+  data-cat="ETF"
+  data-score="46"
+  data-rsi="77.8"
+  data-volratio="1.56">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1256,7 +1578,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3580 友威科">
+<tr class="history-row"
+  data-search="3580 友威科"
+  data-cat="OTC"
+  data-score="82"
+  data-rsi="64.2"
+  data-volratio="1.8">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1271,7 +1598,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="5864 致和證">
+<tr class="history-row"
+  data-search="5864 致和證"
+  data-cat="OTC"
+  data-score="79"
+  data-rsi="72.0"
+  data-volratio="1.13">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1286,7 +1618,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6903 巨漢">
+<tr class="history-row"
+  data-search="6903 巨漢"
+  data-cat="OTC"
+  data-score="72"
+  data-rsi="64.2"
+  data-volratio="1.64">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1301,7 +1638,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6761 穩得">
+<tr class="history-row"
+  data-search="6761 穩得"
+  data-cat="OTC"
+  data-score="68"
+  data-rsi="64.6"
+  data-volratio="1.34">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1316,7 +1658,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="8091 翔名">
+<tr class="history-row"
+  data-search="8091 翔名"
+  data-cat="OTC"
+  data-score="63"
+  data-rsi="66.4"
+  data-volratio="2.26">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1331,7 +1678,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6244 茂迪">
+<tr class="history-row"
+  data-search="6244 茂迪"
+  data-cat="OTC"
+  data-score="63"
+  data-rsi="47.3"
+  data-volratio="1.27">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1346,7 +1698,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="8358 金居">
+<tr class="history-row"
+  data-search="8358 金居"
+  data-cat="OTC"
+  data-score="59"
+  data-rsi="66.7"
+  data-volratio="0.87">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1361,7 +1718,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3691 碩禾">
+<tr class="history-row"
+  data-search="3691 碩禾"
+  data-cat="OTC"
+  data-score="58"
+  data-rsi="53.9"
+  data-volratio="1.49">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1376,7 +1738,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3689 湧德">
+<tr class="history-row"
+  data-search="3689 湧德"
+  data-cat="OTC"
+  data-score="54"
+  data-rsi="58.2"
+  data-volratio="1.69">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1391,7 +1758,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6175 立敦">
+<tr class="history-row"
+  data-search="6175 立敦"
+  data-cat="OTC"
+  data-score="50"
+  data-rsi="61.1"
+  data-volratio="1.44">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1406,7 +1778,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="2449 京元電子">
+<tr class="history-row"
+  data-search="2449 京元電子"
+  data-cat="TSE"
+  data-score="79"
+  data-rsi="57.9"
+  data-volratio="1.8">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1421,7 +1798,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="2465 麗臺">
+<tr class="history-row"
+  data-search="2465 麗臺"
+  data-cat="TSE"
+  data-score="78"
+  data-rsi="72.0"
+  data-volratio="2.07">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1436,7 +1818,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="5269 祥碩">
+<tr class="history-row"
+  data-search="5269 祥碩"
+  data-cat="TSE"
+  data-score="74"
+  data-rsi="62.9"
+  data-volratio="1.85">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1451,7 +1838,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6505 台塑化">
+<tr class="history-row"
+  data-search="6505 台塑化"
+  data-cat="TSE"
+  data-score="64"
+  data-rsi="57.1"
+  data-volratio="1.97">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1466,7 +1858,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3029 零壹">
+<tr class="history-row"
+  data-search="3029 零壹"
+  data-cat="TSE"
+  data-score="63"
+  data-rsi="55.8"
+  data-volratio="2.62">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1481,7 +1878,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6412 群電">
+<tr class="history-row"
+  data-search="6412 群電"
+  data-cat="TSE"
+  data-score="60"
+  data-rsi="56.0"
+  data-volratio="2.4">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1496,7 +1898,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6706 惠特">
+<tr class="history-row"
+  data-search="6706 惠特"
+  data-cat="TSE"
+  data-score="56"
+  data-rsi="60.9"
+  data-volratio="2.39">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1511,7 +1918,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="1528 恩德">
+<tr class="history-row"
+  data-search="1528 恩德"
+  data-cat="TSE"
+  data-score="54"
+  data-rsi="58.1"
+  data-volratio="2.0">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1526,7 +1938,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="4766 南寶">
+<tr class="history-row"
+  data-search="4766 南寶"
+  data-cat="TSE"
+  data-score="46"
+  data-rsi="61.4"
+  data-volratio="3.49">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1541,7 +1958,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6282 康舒">
+<tr class="history-row"
+  data-search="6282 康舒"
+  data-cat="TSE"
+  data-score="37"
+  data-rsi="47.9"
+  data-volratio="1.54">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-03</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1556,7 +1978,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3037 欣興">
+<tr class="history-row"
+  data-search="3037 欣興"
+  data-cat="ETF"
+  data-score="72"
+  data-rsi="80.4"
+  data-volratio="1.52">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1571,7 +1998,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="5274 信驊">
+<tr class="history-row"
+  data-search="5274 信驊"
+  data-cat="ETF"
+  data-score="65"
+  data-rsi="75.0"
+  data-volratio="0.93">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1586,7 +2018,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="8996 高力">
+<tr class="history-row"
+  data-search="8996 高力"
+  data-cat="ETF"
+  data-score="62"
+  data-rsi="65.7"
+  data-volratio="1.21">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1601,7 +2038,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3017 奇鋐科技">
+<tr class="history-row"
+  data-search="3017 奇鋐科技"
+  data-cat="ETF"
+  data-score="62"
+  data-rsi="75.0"
+  data-volratio="0.78">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1616,7 +2058,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3081 聯亞光電工業">
+<tr class="history-row"
+  data-search="3081 聯亞光電工業"
+  data-cat="ETF"
+  data-score="59"
+  data-rsi="59.2"
+  data-volratio="1.02">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1631,7 +2078,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6187 萬潤">
+<tr class="history-row"
+  data-search="6187 萬潤"
+  data-cat="ETF"
+  data-score="58"
+  data-rsi="62.3"
+  data-volratio="0.84">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1646,7 +2098,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6147 頎邦">
+<tr class="history-row"
+  data-search="6147 頎邦"
+  data-cat="ETF"
+  data-score="58"
+  data-rsi="73.6"
+  data-volratio="2.32">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1661,7 +2118,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="2330 台積電">
+<tr class="history-row"
+  data-search="2330 台積電"
+  data-cat="ETF"
+  data-score="53"
+  data-rsi="62.6"
+  data-volratio="1.37">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1676,7 +2138,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="2313 華通">
+<tr class="history-row"
+  data-search="2313 華通"
+  data-cat="ETF"
+  data-score="52"
+  data-rsi="35.4"
+  data-volratio="0.93">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1691,7 +2158,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3711 日月光投控">
+<tr class="history-row"
+  data-search="3711 日月光投控"
+  data-cat="ETF"
+  data-score="46"
+  data-rsi="77.8"
+  data-volratio="1.56">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
   <td>
@@ -1706,7 +2178,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3580 友威科">
+<tr class="history-row"
+  data-search="3580 友威科"
+  data-cat="OTC"
+  data-score="82"
+  data-rsi="64.2"
+  data-volratio="1.8">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1721,7 +2198,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="5864 致和證">
+<tr class="history-row"
+  data-search="5864 致和證"
+  data-cat="OTC"
+  data-score="79"
+  data-rsi="72.0"
+  data-volratio="1.13">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1736,7 +2218,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6903 巨漢">
+<tr class="history-row"
+  data-search="6903 巨漢"
+  data-cat="OTC"
+  data-score="72"
+  data-rsi="64.2"
+  data-volratio="1.64">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1751,7 +2238,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6761 穩得">
+<tr class="history-row"
+  data-search="6761 穩得"
+  data-cat="OTC"
+  data-score="68"
+  data-rsi="64.6"
+  data-volratio="1.34">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1766,7 +2258,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="8091 翔名">
+<tr class="history-row"
+  data-search="8091 翔名"
+  data-cat="OTC"
+  data-score="63"
+  data-rsi="66.4"
+  data-volratio="2.26">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1781,7 +2278,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6244 茂迪">
+<tr class="history-row"
+  data-search="6244 茂迪"
+  data-cat="OTC"
+  data-score="63"
+  data-rsi="47.3"
+  data-volratio="1.27">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1796,7 +2298,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="8358 金居">
+<tr class="history-row"
+  data-search="8358 金居"
+  data-cat="OTC"
+  data-score="59"
+  data-rsi="66.7"
+  data-volratio="0.87">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1811,7 +2318,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3691 碩禾">
+<tr class="history-row"
+  data-search="3691 碩禾"
+  data-cat="OTC"
+  data-score="58"
+  data-rsi="53.9"
+  data-volratio="1.49">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1826,7 +2338,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3689 湧德">
+<tr class="history-row"
+  data-search="3689 湧德"
+  data-cat="OTC"
+  data-score="54"
+  data-rsi="58.2"
+  data-volratio="1.69">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1841,7 +2358,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6175 立敦">
+<tr class="history-row"
+  data-search="6175 立敦"
+  data-cat="OTC"
+  data-score="50"
+  data-rsi="61.1"
+  data-volratio="1.44">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#29c5c5;border:1px solid #29c5c544;border-radius:4px;padding:1px 6px;">上櫃</span></td>
   <td>
@@ -1856,7 +2378,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="2449 京元電子">
+<tr class="history-row"
+  data-search="2449 京元電子"
+  data-cat="TSE"
+  data-score="79"
+  data-rsi="57.9"
+  data-volratio="1.8">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1871,7 +2398,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="2465 麗臺">
+<tr class="history-row"
+  data-search="2465 麗臺"
+  data-cat="TSE"
+  data-score="78"
+  data-rsi="72.0"
+  data-volratio="2.07">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1886,7 +2418,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="5269 祥碩">
+<tr class="history-row"
+  data-search="5269 祥碩"
+  data-cat="TSE"
+  data-score="74"
+  data-rsi="62.9"
+  data-volratio="1.85">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1901,7 +2438,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6505 台塑化">
+<tr class="history-row"
+  data-search="6505 台塑化"
+  data-cat="TSE"
+  data-score="64"
+  data-rsi="57.1"
+  data-volratio="1.97">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1916,7 +2458,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="3029 零壹">
+<tr class="history-row"
+  data-search="3029 零壹"
+  data-cat="TSE"
+  data-score="63"
+  data-rsi="55.8"
+  data-volratio="2.62">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1931,7 +2478,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6412 群電">
+<tr class="history-row"
+  data-search="6412 群電"
+  data-cat="TSE"
+  data-score="60"
+  data-rsi="56.0"
+  data-volratio="2.4">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1946,7 +2498,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6706 惠特">
+<tr class="history-row"
+  data-search="6706 惠特"
+  data-cat="TSE"
+  data-score="56"
+  data-rsi="60.9"
+  data-volratio="2.39">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1961,7 +2518,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="1528 恩德">
+<tr class="history-row"
+  data-search="1528 恩德"
+  data-cat="TSE"
+  data-score="54"
+  data-rsi="58.1"
+  data-volratio="2.0">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1976,7 +2538,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="4766 南寶">
+<tr class="history-row"
+  data-search="4766 南寶"
+  data-cat="TSE"
+  data-score="46"
+  data-rsi="61.4"
+  data-volratio="3.49">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -1991,7 +2558,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
   <td style="font-weight:600;color:#4a6080;">—</td>
 </tr>
-<tr class="history-row" data-search="6282 康舒">
+<tr class="history-row"
+  data-search="6282 康舒"
+  data-cat="TSE"
+  data-score="37"
+  data-rsi="47.9"
+  data-volratio="1.54">
   <td><span style="font-size:.72rem;color:#6a85a8;">2026-05-02</span></td>
   <td><span style="font-size:.7rem;color:#ff9f40;border:1px solid #ff9f4044;border-radius:4px;padding:1px 6px;">上市</span></td>
   <td>
@@ -2042,12 +2614,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <footer class="footer">
   <div class="container">
     <div>⚠️ 本系統由 Python K線評分引擎自動產生，所有分析僅供參考，不構成買賣建議。投資人應自行判斷風險。</div>
-    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-05-03 03:16</div>
+    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-05-03 03:48</div>
   </div>
 </footer>
 
 <script>
-// ── [修改2] Tab 切換（單頁模式）──
+// ══════════════════════════════════════════
+//  Tab 切換
+// ══════════════════════════════════════════
 function switchTab(tab) {
   ['today', 'history', 'winrate'].forEach(function(t) {
     var sec = document.getElementById('tab-' + t);
@@ -2058,17 +2632,170 @@ function switchTab(tab) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ── 歷史回測搜尋 ──
-function filterHistory(q) {
-  var rows = document.querySelectorAll('#history-body .history-row');
-  var kw = q.trim().toLowerCase();
-  rows.forEach(function(tr) {
-    var search = (tr.dataset.search || '').toLowerCase();
-    tr.style.display = (!kw || search.includes(kw)) ? '' : 'none';
+// ══════════════════════════════════════════
+//  [修改3] 今日推薦篩選
+// ══════════════════════════════════════════
+var _todayFilters = { cat: '', score: 0, rsi: 'all', vol: 0 };
+
+// f-btn 點擊事件（統一綁定）
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('#today-filters .f-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var group = this.dataset.group;
+      // 同 group 的按鈕取消 active
+      document.querySelectorAll('#today-filters .f-btn[data-group="' + group + '"]')
+        .forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+
+      var val = this.dataset.val;
+      if (group === 'cat')   _todayFilters.cat   = val;
+      if (group === 'score') _todayFilters.score  = parseFloat(val);
+      if (group === 'rsi')   _todayFilters.rsi   = val;
+      if (group === 'vol')   _todayFilters.vol    = parseFloat(val);
+      applyTodayFilters();
+    });
+  });
+
+  document.querySelectorAll('#history-filters .f-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var group = this.dataset.group;
+      document.querySelectorAll('#history-filters .f-btn[data-group="' + group + '"]')
+        .forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      applyHistoryFilters();
+    });
+  });
+
+  updateHistoryCount();
+});
+
+function applyTodayFilters() {
+  var f = _todayFilters;
+  ['ETF','OTC','TSE'].forEach(function(cat) {
+    var col = document.getElementById('col-' + cat);
+    if (!col) return;
+
+    // 類別欄位整體顯示/隱藏
+    if (f.cat && f.cat !== cat) {
+      col.style.display = 'none';
+      return;
+    }
+    col.style.display = '';
+
+    var cards = col.querySelectorAll('.pick-card');
+    var visible = 0;
+    cards.forEach(function(card) {
+      var score = parseFloat(card.dataset.score || 0);
+      var rsi   = parseFloat(card.dataset.rsi || 0);
+      var vr    = parseFloat(card.dataset.volratio || 0);
+
+      var ok = true;
+      if (score < f.score) ok = false;
+      if (f.rsi === '50-70' && !(rsi >= 50 && rsi < 70)) ok = false;
+      if (f.rsi === '70+'   && rsi < 70) ok = false;
+      if (f.rsi === '50-'   && rsi >= 50) ok = false;
+      if (vr < f.vol) ok = false;
+
+      card.style.display = ok ? '' : 'none';
+      if (ok) visible++;
+    });
+
+    var noResult = col.querySelector('.no-result');
+    if (noResult) noResult.style.display = visible === 0 ? '' : 'none';
   });
 }
 
-// ── 勝率切換 ──
+function resetTodayFilters() {
+  _todayFilters = { cat: '', score: 0, rsi: 'all', vol: 0 };
+  document.querySelectorAll('#today-filters .f-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  document.querySelectorAll('#today-filters .f-btn[data-val=""]').forEach(function(btn) {
+    btn.classList.add('active');
+  });
+  document.querySelector('#today-filters .f-btn[data-group="score"][data-val="0"]').classList.add('active');
+  document.querySelector('#today-filters .f-btn[data-group="rsi"][data-val="all"]').classList.add('active');
+  document.querySelector('#today-filters .f-btn[data-group="vol"][data-val="0"]').classList.add('active');
+  applyTodayFilters();
+}
+
+// ══════════════════════════════════════════
+//  [修改3] 歷史回測篩選
+// ══════════════════════════════════════════
+function applyHistoryFilters() {
+  var kw    = (document.getElementById('history-search').value || '').trim().toLowerCase();
+  var cat   = getActiveVal('hcat');
+  var score = parseFloat(getActiveVal('hscore') || 0);
+  var vol   = parseFloat(getActiveVal('hvol') || 0);
+  var pnl   = getActiveVal('hpnl');
+
+  var rows = document.querySelectorAll('#history-body .history-row');
+  var shown = 0;
+  rows.forEach(function(tr) {
+    var search  = (tr.dataset.search || '').toLowerCase();
+    var trCat   = tr.dataset.cat   || '';
+    var trScore = parseFloat(tr.dataset.score   || 0);
+    var trVr    = parseFloat(tr.dataset.volratio || 0);
+
+    // T+3 損益讀法：從第8個 td（index 7）
+    var cells = tr.querySelectorAll('td');
+    var t3text = cells[7] ? cells[7].textContent.trim() : '';
+    var t3val  = parseFloat(t3text.replace('%','').replace('+',''));
+
+    var ok = true;
+    if (kw && !search.includes(kw)) ok = false;
+    if (cat && trCat !== cat) ok = false;
+    if (trScore < score) ok = false;
+    if (trVr < vol) ok = false;
+    if (pnl === 'win'  && !(t3val > 0)) ok = false;
+    if (pnl === 'loss' && !(t3val < 0)) ok = false;
+
+    tr.style.display = ok ? '' : 'none';
+    if (ok) shown++;
+  });
+
+  updateHistoryCount(shown, rows.length);
+}
+
+function getActiveVal(group) {
+  var btn = document.querySelector('#history-filters .f-btn[data-group="' + group + '"].active');
+  return btn ? btn.dataset.val : '';
+}
+
+function updateHistoryCount(shown, total) {
+  var el = document.getElementById('history-count');
+  if (!el) return;
+  if (shown === undefined) {
+    var all = document.querySelectorAll('#history-body .history-row');
+    shown = all.length; total = all.length;
+  }
+  el.textContent = '顯示 ' + shown + ' / ' + total + ' 筆';
+}
+
+function resetHistoryFilters() {
+  document.getElementById('history-search').value = '';
+  document.querySelectorAll('#history-filters .f-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  // 重設各 group 的預設 active
+  [['hcat',''],['hscore','0'],['hvol','0'],['hpnl','all']].forEach(function(pair) {
+    var btn = document.querySelector(
+      '#history-filters .f-btn[data-group="' + pair[0] + '"][data-val="' + pair[1] + '"]'
+    );
+    if (btn) btn.classList.add('active');
+  });
+  applyHistoryFilters();
+}
+
+// ── 舊版 filterHistory 保持相容 ──
+function filterHistory(q) {
+  document.getElementById('history-search').value = q;
+  applyHistoryFilters();
+}
+
+// ══════════════════════════════════════════
+//  勝率切換
+// ══════════════════════════════════════════
 var _winType = 't3', _winRange = '30d';
 
 function switchWin(type) {
