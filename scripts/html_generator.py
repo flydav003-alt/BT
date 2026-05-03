@@ -18,7 +18,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent))
 
 from config import DOCS_DIR, DOCS_DATA_DIR, SITE_TITLE, SITE_SUBTITLE, KLINE_TOOL_URL, TOP_N
-from db_manager import get_latest_picks, get_history_picks, get_win_rate_stats
+from db_manager import get_latest_picks, get_history_picks, get_win_rate_stats, get_all_score_trends
 
 logger = logging.getLogger(__name__)
 
@@ -75,7 +75,7 @@ def sig_color(sig_type: str) -> str:
 #  [修改3] 加入 data-* 屬性供 JS 篩選
 # ══════════════════════════════════════════════
 
-def render_pick_card(p: dict) -> str:
+def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
     sc   = p.get("kline_score", 0)
     col  = score_color(sc)
     bg   = score_bg(sc)
@@ -92,13 +92,78 @@ def render_pick_card(p: dict) -> str:
     kd_str  = f'{p["kd_k"]:.1f}' if p.get("kd_k") else "—"
     vr_str  = f'{vr_val:.2f}x' if vr_val else "—"
 
+    # 趨勢資料序列化給 JS
+    trend_json = "[]"
+    mini_svg = ""
+    if trend and len(trend) >= 2:
+        scores = [t["score"] for t in trend]
+        dates  = [t["date"] for t in trend]
+        trend_json = json.dumps([{"d": d, "s": s} for d, s in zip(dates, scores)])
+
+        # 迷你折線 SVG（60x28）
+        mn = min(scores) - 5
+        mx = max(scores) + 5
+        if mx == mn:
+            mx = mn + 1
+        n = len(scores)
+        pts = " ".join(
+            f"{round(i / (n - 1) * 56, 1)},{round(26 - (s - mn) / (mx - mn) * 22, 1)}"
+            for i, s in enumerate(scores)
+        )
+        last_x = round((n - 1) / (n - 1) * 56, 1)
+        last_y = round(26 - (scores[-1] - mn) / (mx - mn) * 22, 1)
+        prev_s = scores[-2] if len(scores) >= 2 else scores[-1]
+        arrow  = "↑" if scores[-1] > prev_s else ("↓" if scores[-1] < prev_s else "→")
+        tr_col = col if scores[-1] >= prev_s else "#4a9eff"
+        delta  = scores[-1] - scores[0]
+        delta_str = f"{scores[0]}→{scores[-1]} {arrow}"
+
+        mini_svg = f"""
+  <!-- 迷你趨勢折線 -->
+  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
+    <svg width="60" height="28" viewBox="0 0 60 28">
+      <polyline points="{pts}"
+        fill="none" stroke="{tr_col}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="{last_x}" cy="{last_y}" r="2.5" fill="{tr_col}"/>
+    </svg>
+    <div style="font-size:.58rem;color:{tr_col};margin-top:1px;font-family:'IBM Plex Mono',monospace;">{delta_str}</div>
+  </div>"""
+    else:
+        mini_svg = '<div style="width:60px;flex-shrink:0;"></div>'
+
+    # signals JSON for modal
+    sigs_raw = p.get("top_signals", "[]")
+    try:
+        sigs_list = json.loads(sigs_raw) if isinstance(sigs_raw, str) else sigs_raw
+    except Exception:
+        sigs_list = []
+    sigs_json = json.dumps(sigs_list, ensure_ascii=False).replace('"', '&quot;')
+
+    close_price = p.get('close_price', 0)
+    close_str = f"{close_price:.2f}" if close_price else "—"
+
     return f"""
 <div class="pick-card"
   data-score="{sc}"
   data-cat="{cat}"
   data-rsi="{round(rsi_val,1)}"
   data-volratio="{round(vr_val,2)}"
-  style="background:{bg};border:1px solid {col}33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;">
+  data-trend="{trend_json.replace('"', '&quot;')}"
+  data-signals="{sigs_json}"
+  data-sid="{sid}"
+  data-name="{name}"
+  data-verdict="{p.get('verdict','')}"
+  data-score-val="{sc}"
+  data-color="{col}"
+  data-price="{close_str}"
+  data-rsi-val="{rsi_str}"
+  data-kd="{kd_str}"
+  data-vol="{vr_str}"
+  data-cat-label="{cat_label(cat)}"
+  data-cat-color="{cat_color(cat)}"
+  onclick="openPickModal(this)"
+  style="background:{bg};border:1px solid {col}33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
+  onmouseover="this.style.borderColor='{col}88'" onmouseout="this.style.borderColor='{col}33'">
   <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">{p.get('rank','')}</div>
   <!-- 分數圓環 -->
@@ -116,31 +181,37 @@ def render_pick_card(p: dict) -> str:
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="{kline_url(sid)}" target="_blank"
-         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;"
+         onclick="event.stopPropagation()"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
          title="點擊開啟K線分析">{sid}</a>
       <span style="font-size:.72rem;color:#6a85a8;">{name}</span>
     </div>
     <div style="font-size:.7rem;color:{col};font-weight:600;margin-top:3px;">{p.get('verdict','')}</div>
   </div>
+  {mini_svg}
   <!-- 數值欄 -->
   <div style="text-align:right;flex-shrink:0;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">{p.get('close_price','—'):.2f}</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">{close_str}</div>
     <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI {rsi_str} ｜ K {kd_str}</div>
     <div style="font-size:.62rem;color:#e8b84b;">量比 {vr_str}</div>
   </div>
 </div>"""
 
 
-def render_today_section(picks: dict[str, list[dict]]) -> str:
+def render_today_section(picks: dict[str, list[dict]], score_trends: dict[str, list[dict]] | None = None) -> str:
     all_dates = [p["date"] for cat_list in picks.values() for p in cat_list if p.get("date")]
     latest_date = max(all_dates) if all_dates else "—"
+    if score_trends is None:
+        score_trends = {}
 
     cols_html = ""
     for cat in ("ETF", "OTC", "TSE"):
         cat_picks = picks.get(cat, [])
         col_color = cat_color(cat)
-        cards = "".join(render_pick_card(p) for p in cat_picks) if cat_picks else \
-                '<div style="color:#4a6080;font-size:.8rem;padding:20px 0;">暫無資料</div>'
+        cards = "".join(
+            render_pick_card(p, trend=score_trends.get(p.get("stock_id", ""), []))
+            for p in cat_picks
+        ) if cat_picks else '<div style="color:#4a6080;font-size:.8rem;padding:20px 0;">暫無資料</div>'
 
         cols_html += f"""
 <div class="today-col" id="col-{cat}">
@@ -427,11 +498,12 @@ def render_winrate_section() -> str:
 # ══════════════════════════════════════════════
 
 def generate_index_html() -> str:
-    picks   = get_latest_picks(TOP_N)
-    history = get_history_picks(days=5)
-    now_str = datetime.now().strftime("%Y-%m-%d %H:%M")
+    picks        = get_latest_picks(TOP_N)
+    history      = get_history_picks(days=5)
+    score_trends = get_all_score_trends(days=7)
+    now_str      = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-    today_html   = render_today_section(picks)
+    today_html   = render_today_section(picks, score_trends)
     history_html = render_history_section(history)
     winrate_html = render_winrate_section()
 
@@ -549,6 +621,52 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
   .data-table{{font-size:.72rem;}}
   .data-table thead th,.data-table tbody td{{padding:7px 8px;}}
 }}
+
+/* ── Pick Modal ── */
+.pick-modal-bg{{
+  position:fixed;inset:0;background:rgba(0,0,0,.75);
+  display:none;align-items:center;justify-content:center;
+  z-index:200;backdrop-filter:blur(3px);
+}}
+.pick-modal-bg.open{{display:flex;}}
+.pick-modal{{
+  background:#0d1220;border:1px solid #1e2d4a;border-radius:14px;
+  width:500px;max-width:95vw;max-height:90vh;overflow-y:auto;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+}}
+.pm-head{{
+  padding:16px 20px;border-bottom:1px solid #1e2d4a;
+  display:flex;align-items:center;gap:14px;position:sticky;top:0;
+  background:#0d1220;z-index:10;
+}}
+.pm-body{{padding:16px 20px;}}
+.pm-close{{
+  margin-left:auto;background:transparent;border:none;
+  color:#4a6080;font-size:1.2rem;cursor:pointer;padding:2px 6px;
+  border-radius:4px;transition:all .15s;
+}}
+.pm-close:hover{{color:#d4dff0;background:#1a2340;}}
+.pm-stat-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}}
+.pm-stat-box{{background:#131a2e;border-radius:8px;padding:8px 10px;}}
+.pm-stat-val{{font-family:var(--mono);font-size:1rem;font-weight:700;}}
+.pm-stat-lbl{{font-size:.65rem;color:var(--muted);margin-top:2px;}}
+.pm-section-lbl{{
+  font-size:.68rem;color:var(--muted);letter-spacing:1px;
+  text-transform:uppercase;margin:14px 0 8px;
+}}
+.pm-signal-row{{
+  display:flex;align-items:flex-start;gap:8px;
+  padding:7px 0;border-bottom:1px solid #0f1a2e;font-size:.78rem;
+}}
+.pm-signal-row:last-child{{border-bottom:none;}}
+.pm-tag{{
+  font-size:.68rem;padding:2px 8px;border-radius:4px;
+  font-weight:600;white-space:nowrap;
+}}
+@media(max-width:600px){{
+  .pick-modal{{width:100vw;max-height:85vh;border-radius:14px 14px 0 0;}}
+  .pick-modal-bg.open{{align-items:flex-end;}}
+}}
 </style>
 </head>
 <body>
@@ -568,6 +686,89 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
     <div class="update-badge">🕐 {now_str} 更新</div>
   </div>
 </nav>
+
+<!-- ── Pick Modal ── -->
+<div class="pick-modal-bg" id="pick-modal-bg" onclick="if(event.target===this)closePickModal()">
+  <div class="pick-modal" onclick="event.stopPropagation()">
+
+    <!-- Header -->
+    <div class="pm-head">
+      <!-- 圓環 -->
+      <div style="position:relative;width:52px;height:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+        <svg width="52" height="52" viewBox="0 0 52 52" style="position:absolute;">
+          <circle cx="26" cy="26" r="22" fill="none" stroke="#1a2340" stroke-width="4"/>
+          <circle id="pm-ring-arc" cx="26" cy="26" r="22" fill="none" stroke="#ff4d6d" stroke-width="4"
+            stroke-dasharray="138.2 199.5" stroke-dashoffset="34.6" stroke-linecap="round"
+            transform="rotate(-90 26 26)"/>
+        </svg>
+        <span id="pm-score-num" style="font-size:.9rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">—</span>
+      </div>
+      <!-- 股票資訊 -->
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <a id="pm-sid" href="#" target="_blank"
+             style="font-family:'IBM Plex Mono',monospace;font-size:1.15rem;font-weight:700;
+                    color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;">—</a>
+          <span id="pm-cat-tag" class="pm-tag"
+            style="background:#29c5c518;color:#29c5c5;border:1px solid #29c5c544;">—</span>
+        </div>
+        <div id="pm-name" style="font-size:.8rem;color:#6a85a8;margin-top:3px;">—</div>
+        <div id="pm-verdict" style="font-size:.75rem;font-weight:600;margin-top:3px;color:#ff4d6d;">—</div>
+      </div>
+      <button class="pm-close" onclick="closePickModal()">✕</button>
+    </div>
+
+    <!-- Body -->
+    <div class="pm-body">
+
+      <!-- 數值 -->
+      <div class="pm-stat-grid">
+        <div class="pm-stat-box">
+          <div class="pm-stat-val" id="pm-price">—</div>
+          <div class="pm-stat-lbl">收盤價</div>
+        </div>
+        <div class="pm-stat-box">
+          <div class="pm-stat-val" id="pm-rsi" style="color:#e8b84b;">—</div>
+          <div class="pm-stat-lbl">RSI</div>
+        </div>
+        <div class="pm-stat-box">
+          <div class="pm-stat-val" id="pm-kd" style="color:#29c5c5;">—</div>
+          <div class="pm-stat-lbl">KD-K</div>
+        </div>
+        <div class="pm-stat-box">
+          <div class="pm-stat-val" id="pm-vol" style="color:#4a9eff;">—</div>
+          <div class="pm-stat-lbl">量比</div>
+        </div>
+        <div class="pm-stat-box" style="grid-column:span 2;display:flex;align-items:center;justify-content:center;">
+          <a id="pm-kline-btn" href="#" target="_blank"
+             style="font-size:.78rem;color:#4a9eff;text-decoration:none;
+                    border:1px solid #4a9eff44;border-radius:6px;padding:6px 16px;
+                    display:inline-block;text-align:center;transition:all .15s;"
+             onmouseover="this.style.background='#4a9eff18'" onmouseout="this.style.background='transparent'">
+            📈 開啟完整 K 線分析 →
+          </a>
+        </div>
+      </div>
+
+      <!-- 7日分數趨勢 -->
+      <div class="pm-section-lbl">📈 7 日分數趨勢</div>
+      <div style="background:#131a2e;border-radius:8px;padding:12px 14px;">
+        <div id="pm-trend-area" style="min-height:96px;"></div>
+        <div id="pm-trend-summary" style="font-size:.72rem;color:#6a85a8;margin-top:6px;text-align:center;font-family:'IBM Plex Mono',monospace;"></div>
+      </div>
+
+      <!-- 訊號 -->
+      <div class="pm-section-lbl">🔍 主要評分訊號</div>
+      <div style="background:#131a2e;border-radius:8px;padding:8px 12px;" id="pm-signals">
+        <div style="color:#4a6080;font-size:.78rem;text-align:center;padding:12px 0;">載入中...</div>
+      </div>
+
+      <div style="margin-top:14px;font-size:.65rem;color:#4a6080;text-align:center;">
+        ⚠️ 本評分僅供參考，不構成投資建議。
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ── Main ── -->
 <main class="main-content">
@@ -780,6 +981,188 @@ function filterHistory(q) {{
   document.getElementById('history-search').value = q;
   applyHistoryFilters();
 }}
+
+// ══════════════════════════════════════════
+//  個股詳細 Modal
+// ══════════════════════════════════════════
+var _modalBg = null;
+
+function _getModalBg() {{
+  if (!_modalBg) _modalBg = document.getElementById('pick-modal-bg');
+  return _modalBg;
+}}
+
+function openPickModal(card) {{
+  var sid      = card.dataset.sid;
+  var name     = card.dataset.name;
+  var score    = parseInt(card.dataset.scoreVal || card.dataset.score || 0);
+  var col      = card.dataset.color;
+  var verdict  = card.dataset.verdict;
+  var price    = card.dataset.price;
+  var rsi      = card.dataset.rsiVal;
+  var kd       = card.dataset.kd;
+  var vol      = card.dataset.vol;
+  var catLbl   = card.dataset.catLabel;
+  var catCol   = card.dataset.catColor;
+
+  var trend = [];
+  try {{ trend = JSON.parse(card.dataset.trend || '[]'); }} catch(e) {{}}
+
+  var signals = [];
+  try {{ signals = JSON.parse((card.dataset.signals || '[]').replace(/&quot;/g,'"')); }} catch(e) {{}}
+
+  // 填入 header
+  document.getElementById('pm-sid').textContent = sid;
+  document.getElementById('pm-sid').href = '{KLINE_TOOL_URL}?stock=' + sid;
+  document.getElementById('pm-name').textContent = name;
+  document.getElementById('pm-verdict').textContent = verdict;
+  document.getElementById('pm-verdict').style.color = col;
+  document.getElementById('pm-score-num').textContent = score;
+  document.getElementById('pm-score-num').style.color = col;
+  document.getElementById('pm-cat-tag').textContent = catLbl;
+  document.getElementById('pm-cat-tag').style.color = catCol;
+  document.getElementById('pm-cat-tag').style.borderColor = catCol + '55';
+  document.getElementById('pm-cat-tag').style.background = catCol + '18';
+
+  // 圓環
+  var circ = Math.round(score / 100 * 276.46 * 10) / 10;
+  var gap  = Math.round((276.46 - circ) * 10) / 10;
+  document.getElementById('pm-ring-arc').setAttribute('stroke-dasharray', circ + ' ' + gap);
+  document.getElementById('pm-ring-arc').setAttribute('stroke', col);
+
+  // 數值
+  document.getElementById('pm-price').textContent = price;
+  document.getElementById('pm-price').style.color = col;
+  document.getElementById('pm-rsi').textContent = rsi;
+  document.getElementById('pm-kd').textContent = kd;
+  document.getElementById('pm-vol').textContent = vol;
+
+  // 趨勢折線（大圖）
+  _drawTrendChart(trend, col, score);
+
+  // 訊號列表
+  _renderSignals(signals);
+
+  // K線連結
+  document.getElementById('pm-kline-btn').href = '{KLINE_TOOL_URL}?stock=' + sid;
+
+  _getModalBg().classList.add('open');
+  document.body.style.overflow = 'hidden';
+}}
+
+function closePickModal() {{
+  _getModalBg().classList.remove('open');
+  document.body.style.overflow = '';
+}}
+
+function _drawTrendChart(trend, col, currentScore) {{
+  var container = document.getElementById('pm-trend-area');
+  if (!trend || trend.length < 2) {{
+    container.innerHTML = '<div style="color:#4a6080;font-size:.78rem;text-align:center;padding:20px 0;">歷史資料不足（需至少2天）</div>';
+    return;
+  }}
+
+  var scores = trend.map(function(t) {{ return t.s; }});
+  var dates  = trend.map(function(t) {{ return t.d ? t.d.slice(5) : ''; }}); // MM-DD
+  var mn = Math.min.apply(null, scores) - 8;
+  var mx = Math.max.apply(null, scores) + 8;
+  if (mx <= mn) mx = mn + 1;
+
+  var W = 400, H = 80, pad = 6;
+  var n = scores.length;
+
+  function toX(i) {{ return pad + i / (n - 1) * (W - pad * 2); }}
+  function toY(s) {{ return H - pad - (s - mn) / (mx - mn) * (H - pad * 2); }}
+
+  var pts = scores.map(function(s, i) {{
+    return toX(i).toFixed(1) + ',' + toY(s).toFixed(1);
+  }}).join(' ');
+
+  // 漸層填充
+  var gradId = 'grad-trend-' + Date.now();
+  var lastX = toX(n - 1).toFixed(1);
+  var lastY = toY(scores[n - 1]).toFixed(1);
+
+  // 分數標籤（每個點）
+  var labels = scores.map(function(s, i) {{
+    var x = toX(i).toFixed(1);
+    var y = toY(s).toFixed(1);
+    var isLast = i === n - 1;
+    var textCol = isLast ? col : '#4a6080';
+    var fw = isLast ? '700' : '400';
+    return '<text x="' + x + '" y="' + (parseFloat(y) - 5).toFixed(1) +
+           '" text-anchor="middle" font-size="9" fill="' + textCol + '" font-weight="' + fw + '">' + s + '</text>';
+  }}).join('');
+
+  // 日期標籤
+  var dateLabels = '';
+  if (n >= 2) {{
+    dateLabels += '<text x="' + pad + '" y="' + (H + 12) + '" text-anchor="middle" font-size="8" fill="#4a6080">' + dates[0] + '</text>';
+    dateLabels += '<text x="' + (W - pad) + '" y="' + (H + 12) + '" text-anchor="middle" font-size="8" fill="' + col + '">' + dates[n-1] + '</text>';
+  }}
+
+  container.innerHTML = '<svg width="100%" viewBox="0 0 ' + (W) + ' ' + (H + 16) + '" preserveAspectRatio="xMidYMid meet">' +
+    '<defs>' +
+    '<linearGradient id="' + gradId + '" x1="0" y1="0" x2="0" y2="1">' +
+    '<stop offset="0%" stop-color="' + col + '" stop-opacity="0.18"/>' +
+    '<stop offset="100%" stop-color="' + col + '" stop-opacity="0"/>' +
+    '</linearGradient></defs>' +
+    '<polygon points="' + pad + ',' + H + ' ' + pts + ' ' + lastX + ',' + H + '" fill="url(#' + gradId + ')"/>' +
+    '<polyline points="' + pts + '" fill="none" stroke="' + col + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '<circle cx="' + lastX + '" cy="' + lastY + '" r="4" fill="' + col + '"/>' +
+    labels +
+    dateLabels +
+    '</svg>';
+
+  // 分數變化摘要
+  var delta = scores[n-1] - scores[0];
+  var deltaStr = (delta > 0 ? '+' : '') + delta;
+  var deltaCol = delta > 0 ? '#ff4d6d' : (delta < 0 ? '#4a9eff' : '#6a85a8');
+  document.getElementById('pm-trend-summary').innerHTML =
+    '<span style="color:#6a85a8;">7日前：' + scores[0] + '</span>' +
+    '&nbsp;&nbsp;→&nbsp;&nbsp;' +
+    '<span style="color:' + col + ';font-weight:700;">今日：' + scores[n-1] + '</span>' +
+    '&nbsp;&nbsp;<span style="color:' + deltaCol + ';font-size:.85rem;">' + deltaStr + ' pts</span>';
+}}
+
+function _renderSignals(signals) {{
+  var container = document.getElementById('pm-signals');
+  if (!signals || signals.length === 0) {{
+    container.innerHTML = '<div style="color:#4a6080;font-size:.78rem;text-align:center;padding:12px 0;">無訊號資料</div>';
+    return;
+  }}
+
+  var typeMap = {{
+    'bull':    {{ icon: '▲', color: '#ff4d6d', label: '偏多' }},
+    'bear':    {{ icon: '▼', color: '#00c896', label: '偏空' }},
+    'neutral': {{ icon: '◆', color: '#6a85a8', label: '中性' }},
+  }};
+
+  var catMap = {{
+    'ma':      'MA',
+    'rsi':     'RSI',
+    'kd':      'KD',
+    'macd':    'MACD',
+    'vol':     '量能',
+    'pattern': '型態',
+    'chip':    '籌碼',
+  }};
+
+  container.innerHTML = signals.map(function(sig) {{
+    var t = typeMap[sig.type] || typeMap['neutral'];
+    var catStr = catMap[sig.cat] || sig.cat || '';
+    return '<div class="pm-signal-row">' +
+      '<span style="color:' + t.color + ';font-size:.9rem;flex-shrink:0;">' + t.icon + '</span>' +
+      '<span style="flex:1;color:#d4dff0;">' + (sig.text || '') + '</span>' +
+      (catStr ? '<span class="pm-tag" style="background:' + t.color + '18;color:' + t.color + ';border:1px solid ' + t.color + '33;">' + catStr + '</span>' : '') +
+      '</div>';
+  }}).join('');
+}}
+
+// ESC 關閉
+document.addEventListener('keydown', function(e) {{
+  if (e.key === 'Escape') closePickModal();
+}});
 
 // ══════════════════════════════════════════
 //  勝率切換
