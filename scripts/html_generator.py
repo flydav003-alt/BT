@@ -720,7 +720,21 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
     <!-- Body -->
     <div class="pm-body">
 
+      <!-- 訊號（最優先） -->
+      <div class="pm-section-lbl">🔍 主要評分訊號</div>
+      <div style="background:#131a2e;border-radius:8px;padding:8px 12px;" id="pm-signals">
+        <div style="color:#4a6080;font-size:.78rem;text-align:center;padding:12px 0;">載入中...</div>
+      </div>
+
+      <!-- 7日分數趨勢 -->
+      <div class="pm-section-lbl">📈 7 日分數趨勢</div>
+      <div style="background:#131a2e;border-radius:8px;padding:12px 14px;">
+        <div id="pm-trend-area" style="min-height:96px;"></div>
+        <div id="pm-trend-summary" style="font-size:.72rem;color:#6a85a8;margin-top:6px;text-align:center;font-family:'IBM Plex Mono',monospace;"></div>
+      </div>
+
       <!-- 數值 -->
+      <div class="pm-section-lbl">📊 技術數值</div>
       <div class="pm-stat-grid">
         <div class="pm-stat-box">
           <div class="pm-stat-val" id="pm-price">—</div>
@@ -749,20 +763,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
         </div>
       </div>
 
-      <!-- 7日分數趨勢 -->
-      <div class="pm-section-lbl">📈 7 日分數趨勢</div>
-      <div style="background:#131a2e;border-radius:8px;padding:12px 14px;">
-        <div id="pm-trend-area" style="min-height:96px;"></div>
-        <div id="pm-trend-summary" style="font-size:.72rem;color:#6a85a8;margin-top:6px;text-align:center;font-family:'IBM Plex Mono',monospace;"></div>
-      </div>
-
-      <!-- 訊號 -->
-      <div class="pm-section-lbl">🔍 主要評分訊號</div>
-      <div style="background:#131a2e;border-radius:8px;padding:8px 12px;" id="pm-signals">
-        <div style="color:#4a6080;font-size:.78rem;text-align:center;padding:12px 0;">載入中...</div>
-      </div>
-
-      <div style="margin-top:14px;font-size:.65rem;color:#4a6080;text-align:center;">
+      <div style="margin-top:6px;font-size:.65rem;color:#4a6080;text-align:center;">
         ⚠️ 本評分僅供參考，不構成投資建議。
       </div>
     </div>
