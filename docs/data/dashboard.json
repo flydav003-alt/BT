@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-08 09:08:46",
+  "generated_at": "2026-05-08 10:26:21",
   "today_picks": {
     "ETF": [
       {
@@ -235,7 +235,7 @@
     ],
     "OTC": [
       {
-        "id": 571,
+        "id": 591,
         "date": "2026-05-08",
         "category": "OTC",
         "rank": 1,
@@ -255,10 +255,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-08 08:25:02"
+        "created_at": "2026-05-08 10:26:21"
       },
       {
-        "id": 572,
+        "id": 592,
         "date": "2026-05-08",
         "category": "OTC",
         "rank": 2,
@@ -278,10 +278,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-08 08:25:02"
+        "created_at": "2026-05-08 10:26:21"
       },
       {
-        "id": 573,
+        "id": 593,
         "date": "2026-05-08",
         "category": "OTC",
         "rank": 3,
@@ -301,10 +301,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-08 08:25:02"
+        "created_at": "2026-05-08 10:26:21"
       },
       {
-        "id": 574,
+        "id": 594,
         "date": "2026-05-08",
         "category": "OTC",
         "rank": 4,
@@ -324,10 +324,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-08 08:25:02"
+        "created_at": "2026-05-08 10:26:21"
       },
       {
-        "id": 575,
+        "id": 595,
         "date": "2026-05-08",
         "category": "OTC",
         "rank": 5,
@@ -347,10 +347,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-08 08:25:02"
+        "created_at": "2026-05-08 10:26:21"
       },
       {
-        "id": 576,
+        "id": 596,
         "date": "2026-05-08",
         "category": "OTC",
         "rank": 6,
@@ -370,10 +370,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-08 08:25:02"
+        "created_at": "2026-05-08 10:26:21"
       },
       {
-        "id": 577,
+        "id": 597,
         "date": "2026-05-08",
         "category": "OTC",
         "rank": 7,
@@ -393,10 +393,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-08 08:25:02"
+        "created_at": "2026-05-08 10:26:21"
       },
       {
-        "id": 578,
+        "id": 598,
         "date": "2026-05-08",
         "category": "OTC",
         "rank": 8,
@@ -416,10 +416,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-08 08:25:02"
+        "created_at": "2026-05-08 10:26:21"
       },
       {
-        "id": 579,
+        "id": 599,
         "date": "2026-05-08",
         "category": "OTC",
         "rank": 9,
@@ -439,10 +439,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-08 08:25:02"
+        "created_at": "2026-05-08 10:26:21"
       },
       {
-        "id": 580,
+        "id": 600,
         "date": "2026-05-08",
         "category": "OTC",
         "rank": 10,
@@ -462,7 +462,7 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-08 08:25:02"
+        "created_at": "2026-05-08 10:26:21"
       }
     ],
     "TSE": [
@@ -700,7 +700,7 @@
   },
   "history": [
     {
-      "id": 571,
+      "id": 591,
       "date": "2026-05-08",
       "category": "OTC",
       "rank": 1,
@@ -720,11 +720,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-08 08:25:02",
+      "created_at": "2026-05-08 10:26:21",
       "sn_name": "新盛力"
     },
     {
-      "id": 572,
+      "id": 592,
       "date": "2026-05-08",
       "category": "OTC",
       "rank": 2,
@@ -744,11 +744,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-08 08:25:02",
+      "created_at": "2026-05-08 10:26:21",
       "sn_name": "凌陽創新"
     },
     {
-      "id": 573,
+      "id": 593,
       "date": "2026-05-08",
       "category": "OTC",
       "rank": 3,
@@ -768,11 +768,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-08 08:25:02",
+      "created_at": "2026-05-08 10:26:21",
       "sn_name": "新普"
     },
     {
-      "id": 574,
+      "id": 594,
       "date": "2026-05-08",
       "category": "OTC",
       "rank": 4,
@@ -792,11 +792,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-08 08:25:02",
+      "created_at": "2026-05-08 10:26:21",
       "sn_name": "原相"
     },
     {
-      "id": 575,
+      "id": 595,
       "date": "2026-05-08",
       "category": "OTC",
       "rank": 5,
@@ -816,11 +816,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-08 08:25:02",
+      "created_at": "2026-05-08 10:26:21",
       "sn_name": "宏捷科"
     },
     {
-      "id": 576,
+      "id": 596,
       "date": "2026-05-08",
       "category": "OTC",
       "rank": 6,
@@ -840,11 +840,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-08 08:25:02",
+      "created_at": "2026-05-08 10:26:21",
       "sn_name": "創惟"
     },
     {
-      "id": 577,
+      "id": 597,
       "date": "2026-05-08",
       "category": "OTC",
       "rank": 7,
@@ -864,11 +864,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-08 08:25:02",
+      "created_at": "2026-05-08 10:26:21",
       "sn_name": "臺慶科"
     },
     {
-      "id": 578,
+      "id": 598,
       "date": "2026-05-08",
       "category": "OTC",
       "rank": 8,
@@ -888,11 +888,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-08 08:25:02",
+      "created_at": "2026-05-08 10:26:21",
       "sn_name": "光頡"
     },
     {
-      "id": 579,
+      "id": 599,
       "date": "2026-05-08",
       "category": "OTC",
       "rank": 9,
@@ -912,11 +912,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-08 08:25:02",
+      "created_at": "2026-05-08 10:26:21",
       "sn_name": "元太"
     },
     {
-      "id": 580,
+      "id": 600,
       "date": "2026-05-08",
       "category": "OTC",
       "rank": 10,
@@ -936,7 +936,7 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-08 08:25:02",
+      "created_at": "2026-05-08 10:26:21",
       "sn_name": "朋億*"
     },
     {
