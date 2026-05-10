@@ -123,6 +123,66 @@ def load_csv(category: str) -> tuple[list[str], dict[str, dict]]:
 
 
 # ══════════════════════════════════════════════
+#  美股 CSV 讀取
+# ══════════════════════════════════════════════
+
+def load_csv_us() -> tuple[list[str], dict[str, dict]]:
+    """
+    讀取美股 CSV（檔名格式：Grok_Elite_Swing_ALL_YYYYMMDD.csv）。
+    篩選 New_Grok_Elite_Score >= 68，依分數降序取前 TOP_N 支。
+    回傳：
+      tickers  : 排序後的代號列表
+      info_map : {ticker: {"name":..., "close":..., "rsi":..., "vol_ratio":...}}
+    """
+    import glob as _glob
+
+    pattern = str(Path(__file__).parent.parent / "data" / "input" / "Grok_Elite_Swing_ALL_*.csv")
+    files   = sorted(_glob.glob(pattern))
+    if not files:
+        logger.warning("[US] 找不到美股 CSV（Grok_Elite_Swing_ALL_*.csv），跳過")
+        return [], {}
+
+    csv_path = Path(files[-1])
+    logger.info(f"[US] 讀取：{csv_path.name}")
+
+    df = None
+    for enc in ("utf-8-sig", "utf-8", "big5", "cp950"):
+        try:
+            df = pd.read_csv(csv_path, dtype=str, encoding=enc, on_bad_lines="skip")
+            logger.info(f"  解析成功（encoding={enc}），{len(df)} 行")
+            break
+        except Exception as e:
+            logger.debug(f"  {enc} 失敗：{e}")
+
+    if df is None or df.empty:
+        logger.error("[US] CSV 無法解析或為空")
+        return [], {}
+
+    df.columns = [c.strip() for c in df.columns]
+    df["_score_num"] = pd.to_numeric(df["New_Grok_Elite_Score"], errors="coerce").fillna(0)
+    df = df[df["_score_num"] >= 68].sort_values("_score_num", ascending=False)
+
+    tickers = df["Ticker"].dropna().str.strip().tolist()[:TOP_N]
+
+    info_map: dict[str, dict] = {}
+    for _, row in df.iterrows():
+        t = str(row.get("Ticker", "")).strip()
+        if not t or t == "nan":
+            continue
+        cn   = str(row.get("CN_Name", "")).strip()
+        comp = str(row.get("Company_Name", "")).strip()
+        info_map[t] = {
+            "name":      cn if cn and cn != "nan" else comp,
+            "close":     row.get("Current_Price"),
+            "rsi":       row.get("RSI"),
+            "vol_ratio": row.get("Volume_Ratio"),
+        }
+
+    logger.info(f"  美股清單（{len(tickers)} 支）：{tickers}")
+    return tickers, info_map
+
+
+# ══════════════════════════════════════════════
 #  評分
 # ══════════════════════════════════════════════
 
@@ -194,6 +254,75 @@ def score_category(
             })
 
         if i < len(stock_ids):
+            time.sleep(SCORE_DELAY)
+
+    results.sort(key=lambda x: x.get("score", 0), reverse=True)
+    return results
+
+
+# ══════════════════════════════════════════════
+#  美股評分
+# ══════════════════════════════════════════════
+
+def score_category_us(
+    tickers:    list[str],
+    info_map:   dict[str, dict],
+    trade_date: str,
+) -> list[dict]:
+    """
+    美股評分：yfinance 抓日線，run_analysis 完全共用台股邏輯。
+    籌碼面無資料，傳空列表，其餘指標（MA/RSI/KD/MACD/型態）全部正常運行。
+    """
+    import time
+    from kline_scorer import fetch_price_us
+
+    results = []
+
+    for i, ticker in enumerate(tickers, 1):
+        logger.info(f"  [US {i}/{len(tickers)}] {ticker} 評分中...")
+        info = info_map.get(ticker, {})
+        try:
+            raw_data = fetch_price_us(ticker, days=400)
+            sliced   = raw_data[-SCORE_PERIOD:] if len(raw_data) >= SCORE_PERIOD else raw_data
+
+            # 順手存入 price_cache（供趨勢圖）
+            upsert_price_cache(ticker, raw_data)
+
+            use_strategy = SCORE_STRATEGY
+            if use_strategy == "auto":
+                pre = run_analysis(sliced, [], "balanced")
+                use_strategy = pre.get("auto_strategy", "balanced")
+
+            result = run_analysis(sliced, [], use_strategy)   # 籌碼傳空列表
+            result["stock_id"]      = ticker
+            result["stock_name"]    = info.get("name", "")
+            result["strategy_used"] = use_strategy
+
+            # CSV 已有收盤價、RSI、量比 → 優先覆蓋（更即時）
+            for src_key, dst_key in [
+                ("close",     "last_close"),
+                ("rsi",       "lrsi"),
+                ("vol_ratio", "vol_ratio"),
+            ]:
+                if info.get(src_key) is not None:
+                    try:
+                        result[dst_key] = float(info[src_key])
+                    except Exception:
+                        pass
+
+            logger.info(f"    ✅ K線分={result['score']} {result['verdict']}")
+            results.append(result)
+
+        except Exception as e:
+            logger.error(f"    ❌ {ticker} 失敗：{e}")
+            results.append({
+                "stock_id":   ticker,
+                "stock_name": info.get("name", ""),
+                "error":      str(e),
+                "score":      0,
+            })
+
+        if i < len(tickers):
             time.sleep(SCORE_DELAY)
 
     results.sort(key=lambda x: x.get("score", 0), reverse=True)
@@ -307,6 +436,20 @@ def run(category_filter: Optional[str] = None) -> None:
         ok  = sum(1 for r in results if "error" not in r)
         log_run(cat, "ok", cnt, f"成功={ok} 失敗={len(results)-ok}")
 
+    # ── 美股精選 ──
+    logger.info("\n── US 美股 ──")
+    us_tickers, us_info_map = load_csv_us()
+    if us_tickers:
+        us_name_map = {t: d["name"] for t, d in us_info_map.items() if d.get("name")}
+        if us_name_map:
+            upsert_stock_names(us_name_map)
+        us_results = score_category_us(us_tickers, us_info_map, trade_date)
+        cnt = upsert_daily_picks(us_results, "US", trade_date)
+        ok  = sum(1 for r in us_results if "error" not in r)
+        log_run("US", "ok", cnt, f"成功={ok} 失敗={len(us_results)-ok}")
+    else:
+        log_run("US", "skipped", 0, "CSV 不存在或無符合條件股票")
+
     logger.info("\n── 補填回測 ──")
     backfill_prices()
 
@@ -323,7 +466,7 @@ def run(category_filter: Optional[str] = None) -> None:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--category", choices=["ETF", "OTC", "TSE"])
+    parser.add_argument("--category", choices=["ETF", "OTC", "TSE", "US"])
     parser.add_argument("--backfill-only", action="store_true")
     parser.add_argument("--regen-html",    action="store_true")
     args = parser.parse_args()
