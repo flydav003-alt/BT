@@ -349,10 +349,16 @@ def backfill_prices() -> int:
         base_date  = rec["date"]
         base_price = rec["close_price"]
         rec_id     = rec["id"]
+        category   = rec.get("category", "")          # ← 新增
 
+        # ── 抓價格（台股用 FinMind，美股用 yfinance）──
         if sid not in stock_cache:
             try:
-                stock_cache[sid] = fetch_price(sid, FINMIND_TOKEN)
+                if category == "US":
+                    from kline_scorer import fetch_price_us
+                    stock_cache[sid] = fetch_price_us(sid, days=400)
+                else:
+                    stock_cache[sid] = fetch_price(sid, FINMIND_TOKEN)
                 time.sleep(0.5)
             except Exception as e:
                 logger.warning(f"  {sid} 抓價失敗：{e}")
@@ -377,7 +383,7 @@ def backfill_prices() -> int:
         t5_date, t5_price = nth_day(base_date, BACKTEST_T5)
         update_backtest_prices(rec_id, t3_date, t3_price, t5_date, t5_price, base_price)
         filled += 1
-        logger.info(f"  {sid}: T+3={t3_price} T+5={t5_price}")
+        logger.info(f"  {sid}({category}): T+3={t3_price} T+5={t5_price}")
 
     log_run("BACKFILL", "ok", filled)
     return filled
