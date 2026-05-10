@@ -7,6 +7,7 @@ on:
       - csv-etf-updated     # ETF Repo 推送時發送此事件
       - csv-otc-updated     # 上櫃 Repo 推送時發送此事件
       - csv-tse-updated     # 上市 Repo 推送時發送此事件
+      - csv-us-updated      # 美股 Repo 推送時發送此事件
 
   # ── 手動觸發（可指定類別）──
   workflow_dispatch:
@@ -15,7 +16,7 @@ on:
         description: '處理類別（留空=全部）'
         required: false
         type: choice
-        options: ['', 'ETF', 'OTC', 'TSE']
+        options: ['', 'ETF', 'OTC', 'TSE', 'US']
         default: ''
       mode:
         description: '執行模式'
@@ -63,6 +64,7 @@ jobs:
               csv-etf-updated) CATEGORY="ETF" ;;
               csv-otc-updated) CATEGORY="OTC" ;;
               csv-tse-updated) CATEGORY="TSE" ;;
+              csv-us-updated)  CATEGORY="US"  ;;
             esac
             echo "觸發來源：repository_dispatch (${{ github.event.action }})"
 
@@ -87,7 +89,7 @@ jobs:
           cache: 'pip'
 
       - name: 安裝相依套件
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt yfinance
 
       # ── 4. 確保資料目錄存在 ──
       - name: 建立必要目錄
