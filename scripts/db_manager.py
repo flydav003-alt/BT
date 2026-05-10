@@ -250,7 +250,7 @@ def get_pending_backfill() -> list[dict]:
 
     with _connect() as conn:
         rows = conn.execute("""
-            SELECT id, date, stock_id, close_price
+            SELECT id, date, category, stock_id, close_price
             FROM daily_picks
             WHERE (t3_price IS NULL AND date <= ?)
                OR (t5_price IS NULL AND date <= ?)
