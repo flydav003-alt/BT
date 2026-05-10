@@ -326,8 +326,46 @@ def get_history_picks(days: int = 5) -> list[dict]:
             SELECT dp.*, sn.stock_name as sn_name
             FROM daily_picks dp
             LEFT JOIN stock_names sn ON dp.stock_id = sn.stock_id
-            WHERE dp.date >= ?
+            WHERE dp.date >= ? AND dp.category != 'US'
             ORDER BY dp.date DESC, dp.category, dp.rank
+        """, (cutoff,)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_latest_picks_us(top_n: int = 10) -> list[dict]:
+    """
+    取得美股（category='US'）最新一個交易日的推薦資料。
+    回傳：[{...}, ...] 依 rank 升序
+    """
+    with _connect() as conn:
+        latest = conn.execute(
+            "SELECT MAX(date) as d FROM daily_picks WHERE category = 'US'"
+        ).fetchone()
+        if not latest or not latest["d"]:
+            return []
+        rows = conn.execute("""
+            SELECT dp.*, COALESCE(sn.stock_name, dp.stock_name, '') as sn_name
+            FROM daily_picks dp
+            LEFT JOIN stock_names sn ON dp.stock_id = sn.stock_id
+            WHERE dp.category = 'US' AND dp.date = ?
+            ORDER BY dp.rank ASC
+            LIMIT ?
+        """, (latest["d"], top_n)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_history_picks_us(days: int = 5) -> list[dict]:
+    """
+    取得美股近 N 天歷史推薦紀錄（無 T+3/T+5 回測）。
+    """
+    cutoff = (date.today() - timedelta(days=days)).isoformat()
+    with _connect() as conn:
+        rows = conn.execute("""
+            SELECT dp.*, COALESCE(sn.stock_name, dp.stock_name, '') as sn_name
+            FROM daily_picks dp
+            LEFT JOIN stock_names sn ON dp.stock_id = sn.stock_id
+            WHERE dp.category = 'US' AND dp.date >= ?
+            ORDER BY dp.date DESC, dp.rank
         """, (cutoff,)).fetchall()
     return [dict(r) for r in rows]
 
