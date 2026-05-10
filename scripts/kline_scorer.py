@@ -306,6 +306,43 @@ def fetch_chip(stock_id: str, token: str = "") -> list:
         return []
 
 
+def fetch_price_us(ticker: str, days: int = 400) -> list:
+    """
+    用 yfinance 抓美股日線，轉成與 fetch_price() 相同的統一格式。
+    格式：[{"date":..., "open":..., "max":..., "min":..., "close":..., "Trading_Volume":...}, ...]
+    籌碼面（chip）美股無資料，呼叫時直接傳空列表即可。
+    """
+    try:
+        import yfinance as yf
+    except ImportError:
+        raise ImportError("請先安裝 yfinance：pip install yfinance")
+
+    end_date   = datetime.today()
+    start_date = end_date - timedelta(days=days)
+
+    tk   = yf.Ticker(ticker)
+    hist = tk.history(
+        start=start_date.strftime("%Y-%m-%d"),
+        end=end_date.strftime("%Y-%m-%d"),
+        auto_adjust=True,
+    )
+
+    if hist.empty:
+        raise ValueError(f"{ticker}: yfinance 查無資料")
+
+    result = []
+    for ts, row in hist.iterrows():
+        result.append({
+            "date":           ts.strftime("%Y-%m-%d"),
+            "open":           float(row["Open"]),
+            "max":            float(row["High"]),
+            "min":            float(row["Low"]),
+            "close":          float(row["Close"]),
+            "Trading_Volume": float(row["Volume"]),
+        })
+    return result
+
+
 def process_chip(chip_raw: list) -> list:
     if not chip_raw:
         return []
