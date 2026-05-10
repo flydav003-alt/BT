@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-10 13:39:46",
+  "generated_at": "2026-05-10 15:21:49",
   "today_picks": {
     "ETF": [
       {
-        "id": 671,
+        "id": 711,
         "date": "2026-05-10",
         "category": "ETF",
         "rank": 1,
@@ -23,10 +23,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:07"
+        "created_at": "2026-05-10 15:20:13"
       },
       {
-        "id": 672,
+        "id": 712,
         "date": "2026-05-10",
         "category": "ETF",
         "rank": 2,
@@ -46,10 +46,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:07"
+        "created_at": "2026-05-10 15:20:13"
       },
       {
-        "id": 673,
+        "id": 713,
         "date": "2026-05-10",
         "category": "ETF",
         "rank": 3,
@@ -69,10 +69,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:07"
+        "created_at": "2026-05-10 15:20:13"
       },
       {
-        "id": 674,
+        "id": 714,
         "date": "2026-05-10",
         "category": "ETF",
         "rank": 4,
@@ -92,10 +92,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:07"
+        "created_at": "2026-05-10 15:20:13"
       },
       {
-        "id": 675,
+        "id": 715,
         "date": "2026-05-10",
         "category": "ETF",
         "rank": 5,
@@ -115,10 +115,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:07"
+        "created_at": "2026-05-10 15:20:13"
       },
       {
-        "id": 676,
+        "id": 716,
         "date": "2026-05-10",
         "category": "ETF",
         "rank": 6,
@@ -138,10 +138,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:07"
+        "created_at": "2026-05-10 15:20:13"
       },
       {
-        "id": 677,
+        "id": 717,
         "date": "2026-05-10",
         "category": "ETF",
         "rank": 7,
@@ -161,10 +161,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:07"
+        "created_at": "2026-05-10 15:20:13"
       },
       {
-        "id": 678,
+        "id": 718,
         "date": "2026-05-10",
         "category": "ETF",
         "rank": 8,
@@ -184,10 +184,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:07"
+        "created_at": "2026-05-10 15:20:13"
       },
       {
-        "id": 679,
+        "id": 719,
         "date": "2026-05-10",
         "category": "ETF",
         "rank": 9,
@@ -207,10 +207,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:07"
+        "created_at": "2026-05-10 15:20:13"
       },
       {
-        "id": 680,
+        "id": 720,
         "date": "2026-05-10",
         "category": "ETF",
         "rank": 10,
@@ -230,12 +230,12 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:07"
+        "created_at": "2026-05-10 15:20:13"
       }
     ],
     "OTC": [
       {
-        "id": 681,
+        "id": 721,
         "date": "2026-05-10",
         "category": "OTC",
         "rank": 1,
@@ -255,10 +255,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:25"
+        "created_at": "2026-05-10 15:20:31"
       },
       {
-        "id": 682,
+        "id": 722,
         "date": "2026-05-10",
         "category": "OTC",
         "rank": 2,
@@ -278,10 +278,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:25"
+        "created_at": "2026-05-10 15:20:31"
       },
       {
-        "id": 683,
+        "id": 723,
         "date": "2026-05-10",
         "category": "OTC",
         "rank": 3,
@@ -301,10 +301,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:25"
+        "created_at": "2026-05-10 15:20:31"
       },
       {
-        "id": 684,
+        "id": 724,
         "date": "2026-05-10",
         "category": "OTC",
         "rank": 4,
@@ -324,10 +324,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:25"
+        "created_at": "2026-05-10 15:20:31"
       },
       {
-        "id": 685,
+        "id": 725,
         "date": "2026-05-10",
         "category": "OTC",
         "rank": 5,
@@ -347,10 +347,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:25"
+        "created_at": "2026-05-10 15:20:31"
       },
       {
-        "id": 686,
+        "id": 726,
         "date": "2026-05-10",
         "category": "OTC",
         "rank": 6,
@@ -370,10 +370,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:25"
+        "created_at": "2026-05-10 15:20:31"
       },
       {
-        "id": 687,
+        "id": 727,
         "date": "2026-05-10",
         "category": "OTC",
         "rank": 7,
@@ -393,10 +393,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:25"
+        "created_at": "2026-05-10 15:20:31"
       },
       {
-        "id": 688,
+        "id": 728,
         "date": "2026-05-10",
         "category": "OTC",
         "rank": 8,
@@ -416,10 +416,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:25"
+        "created_at": "2026-05-10 15:20:31"
       },
       {
-        "id": 689,
+        "id": 729,
         "date": "2026-05-10",
         "category": "OTC",
         "rank": 9,
@@ -439,10 +439,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:25"
+        "created_at": "2026-05-10 15:20:31"
       },
       {
-        "id": 690,
+        "id": 730,
         "date": "2026-05-10",
         "category": "OTC",
         "rank": 10,
@@ -462,12 +462,12 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:25"
+        "created_at": "2026-05-10 15:20:31"
       }
     ],
     "TSE": [
       {
-        "id": 691,
+        "id": 731,
         "date": "2026-05-10",
         "category": "TSE",
         "rank": 1,
@@ -487,10 +487,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:43"
+        "created_at": "2026-05-10 15:20:48"
       },
       {
-        "id": 692,
+        "id": 732,
         "date": "2026-05-10",
         "category": "TSE",
         "rank": 2,
@@ -510,10 +510,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:43"
+        "created_at": "2026-05-10 15:20:48"
       },
       {
-        "id": 693,
+        "id": 733,
         "date": "2026-05-10",
         "category": "TSE",
         "rank": 3,
@@ -533,10 +533,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:43"
+        "created_at": "2026-05-10 15:20:48"
       },
       {
-        "id": 694,
+        "id": 734,
         "date": "2026-05-10",
         "category": "TSE",
         "rank": 4,
@@ -556,10 +556,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:43"
+        "created_at": "2026-05-10 15:20:48"
       },
       {
-        "id": 695,
+        "id": 735,
         "date": "2026-05-10",
         "category": "TSE",
         "rank": 5,
@@ -579,10 +579,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:43"
+        "created_at": "2026-05-10 15:20:48"
       },
       {
-        "id": 696,
+        "id": 736,
         "date": "2026-05-10",
         "category": "TSE",
         "rank": 6,
@@ -602,10 +602,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:43"
+        "created_at": "2026-05-10 15:20:48"
       },
       {
-        "id": 697,
+        "id": 737,
         "date": "2026-05-10",
         "category": "TSE",
         "rank": 7,
@@ -625,10 +625,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:43"
+        "created_at": "2026-05-10 15:20:48"
       },
       {
-        "id": 698,
+        "id": 738,
         "date": "2026-05-10",
         "category": "TSE",
         "rank": 8,
@@ -648,10 +648,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:43"
+        "created_at": "2026-05-10 15:20:48"
       },
       {
-        "id": 699,
+        "id": 739,
         "date": "2026-05-10",
         "category": "TSE",
         "rank": 9,
@@ -671,10 +671,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:43"
+        "created_at": "2026-05-10 15:20:48"
       },
       {
-        "id": 700,
+        "id": 740,
         "date": "2026-05-10",
         "category": "TSE",
         "rank": 10,
@@ -694,13 +694,13 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-10 13:38:43"
+        "created_at": "2026-05-10 15:20:48"
       }
     ]
   },
   "history": [
     {
-      "id": 671,
+      "id": 711,
       "date": "2026-05-10",
       "category": "ETF",
       "rank": 1,
@@ -720,11 +720,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:07",
+      "created_at": "2026-05-10 15:20:13",
       "sn_name": "聯發科"
     },
     {
-      "id": 672,
+      "id": 712,
       "date": "2026-05-10",
       "category": "ETF",
       "rank": 2,
@@ -744,11 +744,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:07",
+      "created_at": "2026-05-10 15:20:13",
       "sn_name": "緯穎"
     },
     {
-      "id": 673,
+      "id": 713,
       "date": "2026-05-10",
       "category": "ETF",
       "rank": 3,
@@ -768,11 +768,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:07",
+      "created_at": "2026-05-10 15:20:13",
       "sn_name": "川湖"
     },
     {
-      "id": 674,
+      "id": 714,
       "date": "2026-05-10",
       "category": "ETF",
       "rank": 4,
@@ -792,11 +792,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:07",
+      "created_at": "2026-05-10 15:20:13",
       "sn_name": "台光電"
     },
     {
-      "id": 675,
+      "id": 715,
       "date": "2026-05-10",
       "category": "ETF",
       "rank": 5,
@@ -816,11 +816,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:07",
+      "created_at": "2026-05-10 15:20:13",
       "sn_name": "台達電"
     },
     {
-      "id": 676,
+      "id": 716,
       "date": "2026-05-10",
       "category": "ETF",
       "rank": 6,
@@ -840,11 +840,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:07",
+      "created_at": "2026-05-10 15:20:13",
       "sn_name": "台積電"
     },
     {
-      "id": 677,
+      "id": 717,
       "date": "2026-05-10",
       "category": "ETF",
       "rank": 7,
@@ -864,11 +864,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:07",
+      "created_at": "2026-05-10 15:20:13",
       "sn_name": "旺矽"
     },
     {
-      "id": 678,
+      "id": 718,
       "date": "2026-05-10",
       "category": "ETF",
       "rank": 8,
@@ -888,11 +888,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:07",
+      "created_at": "2026-05-10 15:20:13",
       "sn_name": "奇鋐"
     },
     {
-      "id": 679,
+      "id": 719,
       "date": "2026-05-10",
       "category": "ETF",
       "rank": 9,
@@ -912,11 +912,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:07",
+      "created_at": "2026-05-10 15:20:13",
       "sn_name": "穎崴"
     },
     {
-      "id": 680,
+      "id": 720,
       "date": "2026-05-10",
       "category": "ETF",
       "rank": 10,
@@ -936,11 +936,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:07",
+      "created_at": "2026-05-10 15:20:13",
       "sn_name": "欣興"
     },
     {
-      "id": 681,
+      "id": 721,
       "date": "2026-05-10",
       "category": "OTC",
       "rank": 1,
@@ -960,11 +960,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:25",
+      "created_at": "2026-05-10 15:20:31",
       "sn_name": "新盛力"
     },
     {
-      "id": 682,
+      "id": 722,
       "date": "2026-05-10",
       "category": "OTC",
       "rank": 2,
@@ -984,11 +984,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:25",
+      "created_at": "2026-05-10 15:20:31",
       "sn_name": "凌陽創新"
     },
     {
-      "id": 683,
+      "id": 723,
       "date": "2026-05-10",
       "category": "OTC",
       "rank": 3,
@@ -1008,11 +1008,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:25",
+      "created_at": "2026-05-10 15:20:31",
       "sn_name": "新普"
     },
     {
-      "id": 684,
+      "id": 724,
       "date": "2026-05-10",
       "category": "OTC",
       "rank": 4,
@@ -1032,11 +1032,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:25",
+      "created_at": "2026-05-10 15:20:31",
       "sn_name": "原相"
     },
     {
-      "id": 685,
+      "id": 725,
       "date": "2026-05-10",
       "category": "OTC",
       "rank": 5,
@@ -1056,11 +1056,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:25",
+      "created_at": "2026-05-10 15:20:31",
       "sn_name": "宏捷科"
     },
     {
-      "id": 686,
+      "id": 726,
       "date": "2026-05-10",
       "category": "OTC",
       "rank": 6,
@@ -1080,11 +1080,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:25",
+      "created_at": "2026-05-10 15:20:31",
       "sn_name": "創惟"
     },
     {
-      "id": 687,
+      "id": 727,
       "date": "2026-05-10",
       "category": "OTC",
       "rank": 7,
@@ -1104,11 +1104,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:25",
+      "created_at": "2026-05-10 15:20:31",
       "sn_name": "臺慶科"
     },
     {
-      "id": 688,
+      "id": 728,
       "date": "2026-05-10",
       "category": "OTC",
       "rank": 8,
@@ -1128,11 +1128,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:25",
+      "created_at": "2026-05-10 15:20:31",
       "sn_name": "光頡"
     },
     {
-      "id": 689,
+      "id": 729,
       "date": "2026-05-10",
       "category": "OTC",
       "rank": 9,
@@ -1152,11 +1152,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:25",
+      "created_at": "2026-05-10 15:20:31",
       "sn_name": "元太"
     },
     {
-      "id": 690,
+      "id": 730,
       "date": "2026-05-10",
       "category": "OTC",
       "rank": 10,
@@ -1176,11 +1176,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:25",
+      "created_at": "2026-05-10 15:20:31",
       "sn_name": "朋億*"
     },
     {
-      "id": 691,
+      "id": 731,
       "date": "2026-05-10",
       "category": "TSE",
       "rank": 1,
@@ -1200,11 +1200,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:43",
+      "created_at": "2026-05-10 15:20:48",
       "sn_name": "祥碩"
     },
     {
-      "id": 692,
+      "id": 732,
       "date": "2026-05-10",
       "category": "TSE",
       "rank": 2,
@@ -1224,11 +1224,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:43",
+      "created_at": "2026-05-10 15:20:48",
       "sn_name": "雷虎"
     },
     {
-      "id": 693,
+      "id": 733,
       "date": "2026-05-10",
       "category": "TSE",
       "rank": 3,
@@ -1248,11 +1248,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:43",
+      "created_at": "2026-05-10 15:20:48",
       "sn_name": "矽統"
     },
     {
-      "id": 694,
+      "id": 734,
       "date": "2026-05-10",
       "category": "TSE",
       "rank": 4,
@@ -1272,11 +1272,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:43",
+      "created_at": "2026-05-10 15:20:48",
       "sn_name": "至上"
     },
     {
-      "id": 695,
+      "id": 735,
       "date": "2026-05-10",
       "category": "TSE",
       "rank": 5,
@@ -1296,11 +1296,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:43",
+      "created_at": "2026-05-10 15:20:48",
       "sn_name": "AES-KY"
     },
     {
-      "id": 696,
+      "id": 736,
       "date": "2026-05-10",
       "category": "TSE",
       "rank": 6,
@@ -1320,11 +1320,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:43",
+      "created_at": "2026-05-10 15:20:48",
       "sn_name": "瑞鼎"
     },
     {
-      "id": 697,
+      "id": 737,
       "date": "2026-05-10",
       "category": "TSE",
       "rank": 7,
@@ -1344,11 +1344,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:43",
+      "created_at": "2026-05-10 15:20:48",
       "sn_name": "義隆"
     },
     {
-      "id": 698,
+      "id": 738,
       "date": "2026-05-10",
       "category": "TSE",
       "rank": 8,
@@ -1368,11 +1368,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:43",
+      "created_at": "2026-05-10 15:20:48",
       "sn_name": "鈺邦"
     },
     {
-      "id": 699,
+      "id": 739,
       "date": "2026-05-10",
       "category": "TSE",
       "rank": 9,
@@ -1392,11 +1392,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:43",
+      "created_at": "2026-05-10 15:20:48",
       "sn_name": "中磊"
     },
     {
-      "id": 700,
+      "id": 740,
       "date": "2026-05-10",
       "category": "TSE",
       "rank": 10,
@@ -1416,7 +1416,7 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-10 13:38:43",
+      "created_at": "2026-05-10 15:20:48",
       "sn_name": "飛捷"
     },
     {
