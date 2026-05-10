@@ -1,5 +1,5 @@
 """
-html_generator.py  ── PATCHED (修改 1 & 2 & 3 & 4)
+html_generator.py  ── PATCHED (修改 1 & 2 & 3 & 4 & 5)
 =================
 靜態 HTML 生成器：從 DB 資料生成 docs/index.html
 
@@ -9,6 +9,7 @@ html_generator.py  ── PATCHED (修改 1 & 2 & 3 & 4)
   [修改3] 多條件篩選器
   [修改4] 迷你折線圖改用 close 收盤價（price_cache 7天連續資料），不再依賴 score 欄位
            score 為 None 的日期（沒上榜）不影響折線圖，但上榜的日期在 Modal 大圖中顯示圓點分數標記
+  [修改5] 美股歷史表格加 T+3/T+5 欄位 + 篩選列（搜尋/分數/量比/損益）
 """
 
 import json
@@ -76,7 +77,6 @@ def sig_color(sig_type: str) -> str:
 
 # ══════════════════════════════════════════════
 #  今日推薦卡片
-#  [修改4] 迷你折線圖改用 close 收盤價，score=None 不影響折線
 # ══════════════════════════════════════════════
 
 def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
@@ -96,27 +96,21 @@ def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
     kd_str  = f'{p["kd_k"]:.1f}' if p.get("kd_k") else "—"
     vr_str  = f'{vr_val:.2f}x' if vr_val else "—"
 
-    # [修改4] trend 結構: [{"date":..., "close":..., "score":...}, ...]
-    # close 來自 price_cache，7天連續，不會有 None
-    # score 來自 daily_picks LEFT JOIN，沒上榜的日期為 None → 不影響折線
     trend_json = "[]"
     mini_svg = '<div style="width:60px;flex-shrink:0;"></div>'
 
     if trend and len(trend) >= 2:
-        # 只過濾 close 為 None 的項目（price_cache 理論上不會有，純防呆）
         valid = [t for t in trend if t.get("close") is not None]
         if len(valid) >= 2:
             closes = [float(t["close"]) for t in valid]
-            scores = [t.get("score") for t in valid]   # 可能含 None，沒關係
+            scores = [t.get("score") for t in valid]
             dates  = [t["date"] for t in valid]
 
-            # trend_json 傳給 Modal 大圖，格式含 close + score
             trend_json = json.dumps(
                 [{"d": d, "s": s, "close": c} for d, s, c in zip(dates, scores, closes)],
                 ensure_ascii=False
             )
 
-            # 迷你折線 SVG（60x28）— 用 close 繪製
             rng = max(closes) - min(closes)
             mn = min(closes) - rng * 0.1 - 0.01
             mx = max(closes) + rng * 0.1 + 0.01
@@ -144,7 +138,6 @@ def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
     <div style="font-size:.58rem;color:{tr_col};margin-top:1px;font-family:'IBM Plex Mono',monospace;">{delta_str}</div>
   </div>"""
 
-    # signals JSON for modal
     sigs_raw = p.get("top_signals", "[]")
     try:
         sigs_list = json.loads(sigs_raw) if isinstance(sigs_raw, str) else sigs_raw
@@ -177,9 +170,7 @@ def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
   onclick="openPickModal(this)"
   style="background:{bg};border:1px solid {col}33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
   onmouseover="this.style.borderColor='{col}88'" onmouseout="this.style.borderColor='{col}33'">
-  <!-- 排名 -->
   <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">{p.get('rank','')}</div>
-  <!-- 分數圓環 -->
   <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
     <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
       <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
@@ -190,7 +181,6 @@ def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
     </svg>
     <span style="font-size:.78rem;font-weight:700;color:{col};font-family:'IBM Plex Mono',monospace;z-index:1;">{sc}</span>
   </div>
-  <!-- 主體資訊 -->
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
       <a href="{kline_url(sid)}" target="_blank"
@@ -201,9 +191,7 @@ def render_pick_card(p: dict, trend: list[dict] | None = None) -> str:
     </div>
     <div style="font-size:.7rem;color:{col};font-weight:600;margin-top:3px;">{p.get('verdict','')}</div>
   </div>
-  <!-- 迷你折線 -->
   {mini_svg}
-  <!-- 數值欄 -->
   <div style="text-align:right;flex-shrink:0;">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">{close_str}</div>
     <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI {rsi_str} ｜ K {kd_str}</div>
@@ -500,7 +488,6 @@ def render_winrate_section() -> str:
 # ══════════════════════════════════════════════
 
 def render_us_pick_card(p: dict, trend: list[dict] | None = None) -> str:
-    """美股精選卡片 — 與台股卡片同結構，籌碼欄位留空，收盤價加 $ 符號"""
     sc   = p.get("kline_score", 0)
     col  = score_color(sc)
     bg   = score_bg(sc)
@@ -514,7 +501,6 @@ def render_us_pick_card(p: dict, trend: list[dict] | None = None) -> str:
     rsi_str = f'{rsi_val:.1f}' if rsi_val else "—"
     vr_str  = f'{vr_val:.2f}x' if vr_val else "—"
 
-    # 迷你折線圖（與台股相同邏輯）
     trend_json = "[]"
     mini_svg   = '<div style="width:60px;flex-shrink:0;"></div>'
     if trend and len(trend) >= 2:
@@ -617,10 +603,10 @@ def render_us_pick_card(p: dict, trend: list[dict] | None = None) -> str:
 
 # ══════════════════════════════════════════════
 #  美股精選 Section（今日卡片 + 歷史表格）
+#  [修改5] 歷史表格加 T+3/T+5 欄位 + 篩選列
 # ══════════════════════════════════════════════
 
 def render_us_section() -> str:
-    """美股精選 Tab：今日10檔卡片（kline_scorer評分） + 近5天歷史記錄表格"""
     us_picks     = get_latest_picks_us(top_n=10)
     us_history   = get_history_picks_us(days=5)
     score_trends = get_all_score_trends(days=7)
@@ -647,23 +633,23 @@ def render_us_section() -> str:
 </div>"""
 
     # ── 歷史記錄表格 ──
-hist_rows = ""
+    hist_rows = ""
     for r in us_history:
-        sc    = r.get("kline_score", 0)
-        col   = score_color(sc)
-        sid   = r.get("stock_id", "")
-        name  = r.get("stock_name") or r.get("sn_name", "")
-        rsi_v = float(r["rsi"]) if r.get("rsi") else 0
-        vr_v  = float(r["vol_ratio"]) if r.get("vol_ratio") else 0
-        cp    = r.get("close_price", 0)
+        sc      = r.get("kline_score", 0)
+        col     = score_color(sc)
+        sid     = r.get("stock_id", "")
+        name    = r.get("stock_name") or r.get("sn_name", "")
+        rsi_v   = float(r["rsi"]) if r.get("rsi") else 0
+        vr_v    = float(r["vol_ratio"]) if r.get("vol_ratio") else 0
+        cp      = r.get("close_price", 0)
+        t3pnl   = r.get("t3_pnl")
+        t5pnl   = r.get("t5_pnl")
         close_str = f"${float(cp):.2f}" if cp else "—"
-        t3pnl = r.get("t3_pnl")
-        t5pnl = r.get("t5_pnl")
         hist_rows += f"""
 <tr class="us-history-row"
   data-search="{sid} {name}"
   data-score="{sc}"
-  data-volratio="{round(vr_v,2)}">
+  data-volratio="{round(vr_v, 2)}">
   <td><span style="font-size:.72rem;color:#6a85a8;">{r.get('date','')}</span></td>
   <td>
     <a href="{kline_url(sid)}" target="_blank"
@@ -680,7 +666,8 @@ hist_rows = ""
   <td style="font-weight:600;color:{pnl_color(t5pnl)};">{pnl_str(t5pnl)}</td>
 </tr>"""
 
-    hist_table = f"""
+    if us_history:
+        hist_table = f"""
 <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;
   padding:12px 16px;background:var(--s1);border:1px solid var(--border);border-radius:10px;align-items:center;">
 
@@ -735,10 +722,12 @@ hist_rows = ""
     </tr>
   </thead>
   <tbody id="us-history-body">
-    {hist_rows if hist_rows else '<tr><td colspan="11" style="text-align:center;color:#4a6080;padding:20px;">暫無歷史資料</td></tr>'}
+    {hist_rows}
   </tbody>
 </table>
-</div>""" if us_history else '<div style="color:#4a6080;font-size:.8rem;padding:20px;text-align:center;">暫無歷史資料</div>'
+</div>"""
+    else:
+        hist_table = '<div style="color:#4a6080;font-size:.8rem;padding:20px;text-align:center;">暫無歷史資料</div>'
 
     return f"""
 <section class="section" id="us">
@@ -747,18 +736,15 @@ hist_rows = ""
     <div class="section-date">資料日期：{latest_date}｜K線評分引擎同台股</div>
   </div>
 
-  <!-- 說明列 -->
   <div style="background:#0d1220;border:1px solid #1e2d4a;border-radius:8px;padding:10px 16px;
               margin-bottom:16px;font-size:.72rem;color:#4a6080;line-height:1.8;">
     篩選條件：Grok Elite Score ≥ 68 → 依 K線評分排序前10支 ｜ 評分邏輯與台股完全相同（籌碼面不計）
   </div>
 
-  <!-- 今日卡片 -->
   <div style="font-size:.8rem;font-weight:600;color:#60a5fa;margin-bottom:10px;
               border-left:3px solid #60a5fa;padding-left:8px;">📊 今日精選（前10）</div>
   {cards_area}
 
-  <!-- 歷史記錄 -->
   <div style="font-size:.8rem;font-weight:600;color:#60a5fa;margin-top:28px;margin-bottom:10px;
               border-left:3px solid #60a5fa;padding-left:8px;">📋 歷史推薦（近5天）</div>
   {hist_table}
@@ -966,7 +952,6 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
       <div style="background:#131a2e;border-radius:8px;padding:8px 12px;" id="pm-signals">
         <div style="color:#4a6080;font-size:.78rem;text-align:center;padding:12px 0;">載入中...</div>
       </div>
-      <!-- [修改4] 標題改為「7日收盤價走勢」，圓點=有上榜的日期並標示分數 -->
       <div class="pm-section-lbl">📈 7 日收盤價走勢（圓點為上榜日分數）</div>
       <div style="background:#131a2e;border-radius:8px;padding:12px 14px;">
         <div id="pm-trend-area" style="min-height:96px;"></div>
@@ -1062,7 +1047,23 @@ document.addEventListener('DOMContentLoaded', function() {{
       applyHistoryFilters();
     }});
   }});
+  // 美股歷史篩選按鈕事件
+  document.querySelectorAll('#tab-us .f-btn').forEach(function(btn) {{
+    btn.addEventListener('click', function() {{
+      var group = this.dataset.group;
+      document.querySelectorAll('#tab-us .f-btn[data-group="' + group + '"]')
+        .forEach(function(b) {{ b.classList.remove('active'); }});
+      this.classList.add('active');
+      applyUsHistoryFilters();
+    }});
+  }});
   updateHistoryCount();
+  // 美股歷史初始筆數
+  var usRows = document.querySelectorAll('#us-history-body .us-history-row');
+  var usEl = document.getElementById('us-history-count');
+  if (usEl && usRows.length) {{
+    usEl.textContent = '顯示 ' + usRows.length + ' / ' + usRows.length + ' 筆';
+  }}
 }});
 
 function applyTodayFilters() {{
@@ -1164,6 +1165,50 @@ function filterHistory(q) {{
   applyHistoryFilters();
 }}
 
+// 美股歷史篩選
+function applyUsHistoryFilters() {{
+  var kw    = (document.getElementById('us-history-search') ? document.getElementById('us-history-search').value : '').trim().toLowerCase();
+  var score = parseFloat(getUsActiveVal('usscore') || 0);
+  var vol   = parseFloat(getUsActiveVal('usvol') || 0);
+  var pnl   = getUsActiveVal('uspnl');
+  var rows  = document.querySelectorAll('#us-history-body .us-history-row');
+  var shown = 0;
+  rows.forEach(function(tr) {{
+    var search  = (tr.dataset.search || '').toLowerCase();
+    var trScore = parseFloat(tr.dataset.score    || 0);
+    var trVr    = parseFloat(tr.dataset.volratio || 0);
+    var cells   = tr.querySelectorAll('td');
+    var t3text  = cells[8] ? cells[8].textContent.trim() : '';
+    var t3val   = parseFloat(t3text.replace('%','').replace('+',''));
+    var ok = true;
+    if (kw && !search.includes(kw)) ok = false;
+    if (trScore < score) ok = false;
+    if (trVr < vol) ok = false;
+    if (pnl === 'win'  && !(t3val > 0)) ok = false;
+    if (pnl === 'loss' && !(t3val < 0)) ok = false;
+    tr.style.display = ok ? '' : 'none';
+    if (ok) shown++;
+  }});
+  var el = document.getElementById('us-history-count');
+  if (el) el.textContent = '顯示 ' + shown + ' / ' + rows.length + ' 筆';
+}}
+
+function getUsActiveVal(group) {{
+  var btn = document.querySelector('#tab-us .f-btn[data-group="' + group + '"].active');
+  return btn ? btn.dataset.val : '';
+}}
+
+function resetUsHistoryFilters() {{
+  var searchEl = document.getElementById('us-history-search');
+  if (searchEl) searchEl.value = '';
+  document.querySelectorAll('#tab-us .f-btn').forEach(function(btn) {{ btn.classList.remove('active'); }});
+  [['usscore','0'],['usvol','0'],['uspnl','all']].forEach(function(pair) {{
+    var btn = document.querySelector('#tab-us .f-btn[data-group="' + pair[0] + '"][data-val="' + pair[1] + '"]');
+    if (btn) btn.classList.add('active');
+  }});
+  applyUsHistoryFilters();
+}}
+
 // Modal
 var _modalBg = null;
 function _getModalBg() {{
@@ -1226,7 +1271,6 @@ function closePickModal() {{
   document.body.style.overflow = '';
 }}
 
-// [修改4] Modal 大圖：用 close 收盤價畫折線，score 不為 null 的日期加圓點+分數標記
 function _drawTrendChart(trend, col, currentScore) {{
   var container = document.getElementById('pm-trend-area');
   if (!trend || trend.length < 2) {{
@@ -1234,14 +1278,11 @@ function _drawTrendChart(trend, col, currentScore) {{
     return;
   }}
 
-  // 支援兩種格式：舊格式 {{d,s}} / 新格式 {{d,s,close}}
   var hasPriceData = trend[0].close !== undefined && trend[0].close !== null;
-  // 折線用 close（若有），否則 fallback 到 s（分數）
   var rawValues = trend.map(function(t) {{ return hasPriceData ? t.close : t.s; }});
   var rawScores = trend.map(function(t) {{ return (t.s !== undefined) ? t.s : null; }});
   var rawDates  = trend.map(function(t) {{ return (t.d || t.date || '').slice(5); }});
 
-  // 過濾 null（close 應該不會有，純防呆）
   var validIdx = rawValues.map(function(v,i){{return (v!=null)?i:-1;}}).filter(function(i){{return i>=0;}});
   if (validIdx.length < 2) {{
     container.innerHTML = '<div style="color:#4a6080;font-size:.78rem;text-align:center;padding:20px 0;">歷史資料不足</div>';
@@ -1270,7 +1311,6 @@ function _drawTrendChart(trend, col, currentScore) {{
   var lastX = toX(n - 1).toFixed(1);
   var lastY = toY(values[n - 1]).toFixed(1);
 
-  // 首尾收盤價標籤
   var priceLabels = '';
   if (hasPriceData) {{
     priceLabels +=
@@ -1278,7 +1318,6 @@ function _drawTrendChart(trend, col, currentScore) {{
       '<text x="' + lastX + '" y="' + (toY(values[n-1]) - 4).toFixed(1) + '" font-size="8" fill="' + col + '" text-anchor="middle" font-weight="700">' + values[n-1].toFixed(1) + '</text>';
   }}
 
-  // 有上榜 score 的日期：打圓點 + 顯示分數
   var scoreDots = '';
   scores.forEach(function(sc, i) {{
     if (sc === null || sc === undefined) return;
@@ -1344,66 +1383,6 @@ function _renderSignals(signals) {{
       '</div>';
   }}).join('');
 }}
-
-// 美股歷史篩選
-function applyUsHistoryFilters() {{
-  var kw    = (document.getElementById('us-history-search').value || '').trim().toLowerCase();
-  var score = parseFloat(getUsActiveVal('usscore') || 0);
-  var vol   = parseFloat(getUsActiveVal('usvol') || 0);
-  var pnl   = getUsActiveVal('uspnl');
-  var rows  = document.querySelectorAll('#us-history-body .us-history-row');
-  var shown = 0;
-  rows.forEach(function(tr) {{
-    var search  = (tr.dataset.search || '').toLowerCase();
-    var trScore = parseFloat(tr.dataset.score   || 0);
-    var trVr    = parseFloat(tr.dataset.volratio || 0);
-    var cells   = tr.querySelectorAll('td');
-    var t3text  = cells[8] ? cells[8].textContent.trim() : '';
-    var t3val   = parseFloat(t3text.replace('%','').replace('+',''));
-    var ok = true;
-    if (kw && !search.includes(kw)) ok = false;
-    if (trScore < score) ok = false;
-    if (trVr < vol) ok = false;
-    if (pnl === 'win'  && !(t3val > 0)) ok = false;
-    if (pnl === 'loss' && !(t3val < 0)) ok = false;
-    tr.style.display = ok ? '' : 'none';
-    if (ok) shown++;
-  }});
-  var el = document.getElementById('us-history-count');
-  if (el) el.textContent = '顯示 ' + shown + ' / ' + rows.length + ' 筆';
-}}
-
-function getUsActiveVal(group) {{
-  var btn = document.querySelector('#tab-us .f-btn[data-group="' + group + '"].active');
-  return btn ? btn.dataset.val : '';
-}}
-
-function resetUsHistoryFilters() {{
-  document.getElementById('us-history-search').value = '';
-  document.querySelectorAll('#tab-us .f-btn').forEach(function(btn) {{ btn.classList.remove('active'); }});
-  [['usscore','0'],['usvol','0'],['uspnl','all']].forEach(function(pair) {{
-    var btn = document.querySelector('#tab-us .f-btn[data-group="' + pair[0] + '"][data-val="' + pair[1] + '"]');
-    if (btn) btn.classList.add('active');
-  }});
-  applyUsHistoryFilters();
-}}
-
-// 美股篩選按鈕事件（在 DOMContentLoaded 裡補上）
-document.addEventListener('DOMContentLoaded', function() {{
-  document.querySelectorAll('#tab-us .f-btn').forEach(function(btn) {{
-    btn.addEventListener('click', function() {{
-      var group = this.dataset.group;
-      document.querySelectorAll('#tab-us .f-btn[data-group="' + group + '"]')
-        .forEach(function(b) {{ b.classList.remove('active'); }});
-      this.classList.add('active');
-      applyUsHistoryFilters();
-    }});
-  }});
-  // 初始化筆數顯示
-  var rows = document.querySelectorAll('#us-history-body .us-history-row');
-  var el = document.getElementById('us-history-count');
-  if (el && rows.length) el.textContent = '顯示 ' + rows.length + ' / ' + rows.length + ' 筆';
-}});
 
 document.addEventListener('keydown', function(e) {{
   if (e.key === 'Escape') closePickModal();
