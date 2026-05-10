@@ -20,7 +20,10 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent))
 
 from config import DOCS_DIR, DOCS_DATA_DIR, SITE_TITLE, SITE_SUBTITLE, KLINE_TOOL_URL, TOP_N
-from db_manager import get_latest_picks, get_history_picks, get_win_rate_stats, get_all_score_trends
+from db_manager import (
+    get_latest_picks, get_history_picks, get_win_rate_stats, get_all_score_trends,
+    get_latest_picks_us, get_history_picks_us,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -491,6 +494,227 @@ def render_winrate_section() -> str:
 
 
 # ══════════════════════════════════════════════
+#  美股精選卡片
+# ══════════════════════════════════════════════
+
+def render_us_pick_card(p: dict, trend: list[dict] | None = None) -> str:
+    """美股精選卡片 — 與台股卡片同結構，籌碼欄位留空，收盤價加 $ 符號"""
+    sc   = p.get("kline_score", 0)
+    col  = score_color(sc)
+    bg   = score_bg(sc)
+    sid  = p.get("stock_id", "")
+    name = p.get("stock_name") or p.get("sn_name", "")
+    circ = round(sc / 100 * 276.46, 1)
+    gap  = round(276.46 - circ, 1)
+
+    rsi_val = float(p["rsi"]) if p.get("rsi") else 0
+    vr_val  = float(p["vol_ratio"]) if p.get("vol_ratio") else 0
+    rsi_str = f'{rsi_val:.1f}' if rsi_val else "—"
+    vr_str  = f'{vr_val:.2f}x' if vr_val else "—"
+
+    # 迷你折線圖（與台股相同邏輯）
+    trend_json = "[]"
+    mini_svg   = '<div style="width:60px;flex-shrink:0;"></div>'
+    if trend and len(trend) >= 2:
+        valid = [t for t in trend if t.get("close") is not None]
+        if len(valid) >= 2:
+            closes    = [float(t["close"]) for t in valid]
+            scores    = [t.get("score") for t in valid]
+            dates     = [t["date"] for t in valid]
+            trend_json = json.dumps(
+                [{"d": d, "s": s, "close": c} for d, s, c in zip(dates, scores, closes)],
+                ensure_ascii=False
+            )
+            rng = max(closes) - min(closes)
+            mn  = min(closes) - rng * 0.1 - 0.01
+            mx  = max(closes) + rng * 0.1 + 0.01
+            if mx == mn: mx = mn + 1
+            n   = len(closes)
+            pts = " ".join(
+                f"{round(i/(n-1)*56,1)},{round(26-(c-mn)/(mx-mn)*22,1)}"
+                for i, c in enumerate(closes)
+            )
+            last_x    = round((n-1)/(n-1)*56, 1)
+            last_y    = round(26-(closes[-1]-mn)/(mx-mn)*22, 1)
+            arrow     = "↑" if closes[-1] > closes[-2] else ("↓" if closes[-1] < closes[-2] else "→")
+            tr_col    = col if closes[-1] >= closes[-2] else "#4a9eff"
+            delta_str = f"{closes[0]:.2f}→{closes[-1]:.2f} {arrow}"
+            mini_svg  = f"""
+  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
+    <svg width="60" height="28" viewBox="0 0 60 28">
+      <polyline points="{pts}"
+        fill="none" stroke="{tr_col}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="{last_x}" cy="{last_y}" r="2.5" fill="{tr_col}"/>
+    </svg>
+    <div style="font-size:.58rem;color:{tr_col};margin-top:1px;font-family:'IBM Plex Mono',monospace;">{delta_str}</div>
+  </div>"""
+
+    sigs_raw  = p.get("top_signals", "[]")
+    try:
+        sigs_list = json.loads(sigs_raw) if isinstance(sigs_raw, str) else sigs_raw
+    except Exception:
+        sigs_list = []
+    sigs_json = json.dumps(sigs_list, ensure_ascii=False).replace('"', '&quot;')
+
+    close_price = p.get("close_price", 0)
+    close_str   = f"${close_price:.2f}" if close_price else "—"
+
+    return f"""
+<div class="pick-card"
+  data-score="{sc}"
+  data-cat="US"
+  data-rsi="{round(rsi_val,1)}"
+  data-volratio="{round(vr_val,2)}"
+  data-trend="{trend_json.replace(chr(34), '&quot;')}"
+  data-signals="{sigs_json}"
+  data-sid="{sid}"
+  data-name="{name}"
+  data-verdict="{p.get('verdict','')}"
+  data-score-val="{sc}"
+  data-color="{col}"
+  data-price="{close_str}"
+  data-rsi-val="{rsi_str}"
+  data-kd="—"
+  data-vol="{vr_str}"
+  data-cat-label="美股"
+  data-cat-color="#60a5fa"
+  onclick="openPickModal(this)"
+  style="background:{bg};border:1px solid {col}33;border-radius:10px;padding:10px 14px;margin-bottom:6px;
+         display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
+  onmouseover="this.style.borderColor='{col}88'" onmouseout="this.style.borderColor='{col}33'">
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">{p.get('rank','')}</div>
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="{col}" stroke-width="4"
+        stroke-dasharray="{circ} {gap}"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:{col};font-family:'IBM Plex Mono',monospace;z-index:1;">{sc}</span>
+  </div>
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;flex-direction:column;gap:3px;">
+      <a href="{kline_url(sid)}" target="_blank"
+         onclick="event.stopPropagation()"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;
+                text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
+         title="點擊開啟K線分析">{sid}</a>
+      <span style="font-size:.72rem;color:#6a85a8;">{name}</span>
+    </div>
+    <div style="font-size:.7rem;color:{col};font-weight:600;margin-top:3px;">{p.get('verdict','')}</div>
+  </div>
+  {mini_svg}
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">{close_str}</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI {rsi_str}</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 {vr_str}</div>
+  </div>
+</div>"""
+
+
+# ══════════════════════════════════════════════
+#  美股精選 Section（今日卡片 + 歷史表格）
+# ══════════════════════════════════════════════
+
+def render_us_section() -> str:
+    """美股精選 Tab：今日10檔卡片（kline_scorer評分） + 近5天歷史記錄表格"""
+    us_picks     = get_latest_picks_us(top_n=10)
+    us_history   = get_history_picks_us(days=5)
+    score_trends = get_all_score_trends(days=7)
+
+    latest_date = us_picks[0]["date"] if us_picks else "—"
+
+    # ── 今日卡片區（雙欄佈局） ──
+    left_cards  = ""
+    right_cards = ""
+    for i, p in enumerate(us_picks):
+        card = render_us_pick_card(p, trend=score_trends.get(p.get("stock_id", ""), []))
+        if i % 2 == 0:
+            left_cards  += card
+        else:
+            right_cards += card
+
+    if not us_picks:
+        cards_area = '<div style="color:#4a6080;font-size:.8rem;padding:40px;text-align:center;">暫無美股資料，等待 CSV 匯入</div>'
+    else:
+        cards_area = f"""
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" id="us-cards-grid">
+  <div>{left_cards}</div>
+  <div>{right_cards}</div>
+</div>"""
+
+    # ── 歷史記錄表格 ──
+    hist_rows = ""
+    for r in us_history:
+        sc    = r.get("kline_score", 0)
+        col   = score_color(sc)
+        sid   = r.get("stock_id", "")
+        name  = r.get("stock_name") or r.get("sn_name", "")
+        rsi_v = float(r["rsi"]) if r.get("rsi") else 0
+        vr_v  = float(r["vol_ratio"]) if r.get("vol_ratio") else 0
+        cp    = r.get("close_price", 0)
+        close_str = f"${float(cp):.2f}" if cp else "—"
+        hist_rows += f"""
+<tr>
+  <td><span style="font-size:.72rem;color:#6a85a8;">{r.get('date','')}</span></td>
+  <td>
+    <a href="{kline_url(sid)}" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">{sid}</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">{name}</td>
+  <td><span style="color:{col};font-weight:700;font-family:'IBM Plex Mono',monospace;">{sc}</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">{close_str}</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">{f"{rsi_v:.1f}" if rsi_v else "—"}</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#e8b84b;">{f"{vr_v:.2f}x" if vr_v else "—"}</td>
+  <td style="font-size:.72rem;color:{col};">{r.get('verdict','—')}</td>
+</tr>"""
+
+    hist_table = f"""
+<div style="overflow-x:auto;margin-top:24px;">
+<table class="data-table" id="us-history-table">
+  <thead>
+    <tr>
+      <th>日期</th><th>代號</th><th>名稱</th>
+      <th>K線分</th><th>收盤價</th><th>RSI</th><th>量比</th><th>訊號</th>
+    </tr>
+  </thead>
+  <tbody>
+    {hist_rows if hist_rows else '<tr><td colspan="8" style="text-align:center;color:#4a6080;padding:20px;">暫無歷史資料</td></tr>'}
+  </tbody>
+</table>
+</div>""" if us_history else '<div style="color:#4a6080;font-size:.8rem;padding:20px;text-align:center;">暫無歷史資料</div>'
+
+    return f"""
+<section class="section" id="us">
+  <div class="section-header">
+    <div class="section-title">🇺🇸 美股精選</div>
+    <div class="section-date">資料日期：{latest_date}｜K線評分引擎同台股</div>
+  </div>
+
+  <!-- 說明列 -->
+  <div style="background:#0d1220;border:1px solid #1e2d4a;border-radius:8px;padding:10px 16px;
+              margin-bottom:16px;font-size:.72rem;color:#4a6080;line-height:1.8;">
+    篩選條件：Grok Elite Score ≥ 68 → 依 K線評分排序前10支 ｜ 評分邏輯與台股完全相同（籌碼面不計）
+  </div>
+
+  <!-- 今日卡片 -->
+  <div style="font-size:.8rem;font-weight:600;color:#60a5fa;margin-bottom:10px;
+              border-left:3px solid #60a5fa;padding-left:8px;">📊 今日精選（前10）</div>
+  {cards_area}
+
+  <!-- 歷史記錄 -->
+  <div style="font-size:.8rem;font-weight:600;color:#60a5fa;margin-top:28px;margin-bottom:10px;
+              border-left:3px solid #60a5fa;padding-left:8px;">📋 歷史推薦（近5天）</div>
+  {hist_table}
+
+  <div style="margin-top:12px;font-size:.65rem;color:#4a6080;text-align:center;">
+    ⚠️ 本評分僅供參考，不構成投資建議。美股評分不含籌碼面指標。
+  </div>
+</section>"""
+
+
+# ══════════════════════════════════════════════
 #  完整 HTML 組裝
 # ══════════════════════════════════════════════
 
@@ -503,6 +727,7 @@ def generate_index_html() -> str:
     today_html   = render_today_section(picks, score_trends)
     history_html = render_history_section(history)
     winrate_html = render_winrate_section()
+    us_html      = render_us_section()
 
     return f"""<!DOCTYPE html>
 <html lang="zh-TW">
@@ -578,6 +803,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 ::-webkit-scrollbar-thumb{{background:var(--border);border-radius:3px;}}
 @media(max-width:900px){{
   .today-grid{{grid-template-columns:1fr;}}
+  #us-cards-grid{{grid-template-columns:1fr !important;}}
   .navbar-inner{{flex-wrap:wrap;gap:8px;}}
   .navbar-nav{{display:flex;gap:12px;width:100%;justify-content:center;
     padding-top:8px;border-top:1px solid var(--border);}}
@@ -648,6 +874,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
       <a href="#" onclick="switchTab('today');return false;" id="nav-today" class="nav-active">今日推薦</a>
       <a href="#" onclick="switchTab('history');return false;" id="nav-history">歷史回測</a>
       <a href="#" onclick="switchTab('winrate');return false;" id="nav-winrate">勝率排行</a>
+      <a href="#" onclick="switchTab('us');return false;" id="nav-us">🇺🇸 美股</a>
     </nav>
     <div class="update-badge">🕐 {now_str} 更新</div>
   </div>
@@ -730,6 +957,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
     <div class="tab-section active" id="tab-today">{today_html}</div>
     <div class="tab-section" id="tab-history">{history_html}</div>
     <div class="tab-section" id="tab-winrate">{winrate_html}</div>
+    <div class="tab-section" id="tab-us">{us_html}</div>
   </div>
 </main>
 
@@ -743,7 +971,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 <script>
 // Tab 切換
 function switchTab(tab) {{
-  ['today', 'history', 'winrate'].forEach(function(t) {{
+  ['today', 'history', 'winrate', 'us'].forEach(function(t) {{
     var sec = document.getElementById('tab-' + t);
     var nav = document.getElementById('nav-' + t);
     if (sec) sec.classList.toggle('active', t === tab);
