@@ -136,7 +136,7 @@ def load_csv_us() -> tuple[list[str], dict[str, dict]]:
     """
     import glob as _glob
 
-    pattern = str(Path(__file__).parent.parent / "data" / "input" / "Grok_Elite_Swing_ALL_*.csv")
+    pattern = str(Path(__file__).parent.parent / "data" / "input" / "us_*.csv")
     files   = sorted(_glob.glob(pattern))
     if not files:
         logger.warning("[US] 找不到美股 CSV（Grok_Elite_Swing_ALL_*.csv），跳過")
