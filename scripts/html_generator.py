@@ -647,7 +647,7 @@ def render_us_section() -> str:
 </div>"""
 
     # ── 歷史記錄表格 ──
-    hist_rows = ""
+hist_rows = ""
     for r in us_history:
         sc    = r.get("kline_score", 0)
         col   = score_color(sc)
@@ -657,8 +657,13 @@ def render_us_section() -> str:
         vr_v  = float(r["vol_ratio"]) if r.get("vol_ratio") else 0
         cp    = r.get("close_price", 0)
         close_str = f"${float(cp):.2f}" if cp else "—"
+        t3pnl = r.get("t3_pnl")
+        t5pnl = r.get("t5_pnl")
         hist_rows += f"""
-<tr>
+<tr class="us-history-row"
+  data-search="{sid} {name}"
+  data-score="{sc}"
+  data-volratio="{round(vr_v,2)}">
   <td><span style="font-size:.72rem;color:#6a85a8;">{r.get('date','')}</span></td>
   <td>
     <a href="{kline_url(sid)}" target="_blank"
@@ -669,20 +674,68 @@ def render_us_section() -> str:
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">{close_str}</td>
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">{f"{rsi_v:.1f}" if rsi_v else "—"}</td>
   <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#e8b84b;">{f"{vr_v:.2f}x" if vr_v else "—"}</td>
-  <td style="font-size:.72rem;color:{col};">{r.get('verdict','—')}</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">{r.get('t3_price','—') or '—'}</td>
+  <td style="font-weight:600;color:{pnl_color(t3pnl)};">{pnl_str(t3pnl)}</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">{r.get('t5_price','—') or '—'}</td>
+  <td style="font-weight:600;color:{pnl_color(t5pnl)};">{pnl_str(t5pnl)}</td>
 </tr>"""
 
     hist_table = f"""
-<div style="overflow-x:auto;margin-top:24px;">
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;
+  padding:12px 16px;background:var(--s1);border:1px solid var(--border);border-radius:10px;align-items:center;">
+
+  <input id="us-history-search" type="text" placeholder="搜尋代號或名稱..."
+    style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:5px 10px;
+           color:var(--text);font-size:.78rem;outline:none;width:150px;"
+    oninput="applyUsHistoryFilters()">
+
+  <div style="width:1px;height:24px;background:var(--border);"></div>
+
+  <div style="display:flex;gap:4px;align-items:center;">
+    <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">分數</span>
+    <button class="f-btn active" data-group="usscore" data-val="0">全部</button>
+    <button class="f-btn" data-group="usscore" data-val="65">65+</button>
+    <button class="f-btn" data-group="usscore" data-val="71">71+</button>
+    <button class="f-btn" data-group="usscore" data-val="78">78+</button>
+  </div>
+
+  <div style="width:1px;height:24px;background:var(--border);"></div>
+
+  <div style="display:flex;gap:4px;align-items:center;">
+    <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">量比</span>
+    <button class="f-btn active" data-group="usvol" data-val="0">全部</button>
+    <button class="f-btn" data-group="usvol" data-val="1.5">1.5x+</button>
+    <button class="f-btn" data-group="usvol" data-val="2">2x+</button>
+  </div>
+
+  <div style="width:1px;height:24px;background:var(--border);"></div>
+
+  <div style="display:flex;gap:4px;align-items:center;">
+    <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">T+3</span>
+    <button class="f-btn active" data-group="uspnl" data-val="all">全部</button>
+    <button class="f-btn" data-group="uspnl" data-val="win">獲利</button>
+    <button class="f-btn" data-group="uspnl" data-val="loss">虧損</button>
+  </div>
+
+  <button onclick="resetUsHistoryFilters()" style="margin-left:auto;font-size:.7rem;color:var(--muted);
+    background:transparent;border:1px solid var(--border);border-radius:5px;
+    padding:3px 10px;cursor:pointer;">重設</button>
+</div>
+
+<div id="us-history-count" style="font-size:.72rem;color:var(--muted);margin-bottom:8px;"></div>
+
+<div style="overflow-x:auto;margin-top:8px;">
 <table class="data-table" id="us-history-table">
   <thead>
     <tr>
       <th>日期</th><th>代號</th><th>名稱</th>
-      <th>K線分</th><th>收盤價</th><th>RSI</th><th>量比</th><th>訊號</th>
+      <th>K線分</th><th>收盤價</th><th>RSI</th><th>量比</th>
+      <th>T+3價</th><th>T+3損益</th>
+      <th>T+5價</th><th>T+5損益</th>
     </tr>
   </thead>
-  <tbody>
-    {hist_rows if hist_rows else '<tr><td colspan="8" style="text-align:center;color:#4a6080;padding:20px;">暫無歷史資料</td></tr>'}
+  <tbody id="us-history-body">
+    {hist_rows if hist_rows else '<tr><td colspan="11" style="text-align:center;color:#4a6080;padding:20px;">暫無歷史資料</td></tr>'}
   </tbody>
 </table>
 </div>""" if us_history else '<div style="color:#4a6080;font-size:.8rem;padding:20px;text-align:center;">暫無歷史資料</div>'
@@ -1291,6 +1344,66 @@ function _renderSignals(signals) {{
       '</div>';
   }}).join('');
 }}
+
+// 美股歷史篩選
+function applyUsHistoryFilters() {{
+  var kw    = (document.getElementById('us-history-search').value || '').trim().toLowerCase();
+  var score = parseFloat(getUsActiveVal('usscore') || 0);
+  var vol   = parseFloat(getUsActiveVal('usvol') || 0);
+  var pnl   = getUsActiveVal('uspnl');
+  var rows  = document.querySelectorAll('#us-history-body .us-history-row');
+  var shown = 0;
+  rows.forEach(function(tr) {{
+    var search  = (tr.dataset.search || '').toLowerCase();
+    var trScore = parseFloat(tr.dataset.score   || 0);
+    var trVr    = parseFloat(tr.dataset.volratio || 0);
+    var cells   = tr.querySelectorAll('td');
+    var t3text  = cells[8] ? cells[8].textContent.trim() : '';
+    var t3val   = parseFloat(t3text.replace('%','').replace('+',''));
+    var ok = true;
+    if (kw && !search.includes(kw)) ok = false;
+    if (trScore < score) ok = false;
+    if (trVr < vol) ok = false;
+    if (pnl === 'win'  && !(t3val > 0)) ok = false;
+    if (pnl === 'loss' && !(t3val < 0)) ok = false;
+    tr.style.display = ok ? '' : 'none';
+    if (ok) shown++;
+  }});
+  var el = document.getElementById('us-history-count');
+  if (el) el.textContent = '顯示 ' + shown + ' / ' + rows.length + ' 筆';
+}}
+
+function getUsActiveVal(group) {{
+  var btn = document.querySelector('#tab-us .f-btn[data-group="' + group + '"].active');
+  return btn ? btn.dataset.val : '';
+}}
+
+function resetUsHistoryFilters() {{
+  document.getElementById('us-history-search').value = '';
+  document.querySelectorAll('#tab-us .f-btn').forEach(function(btn) {{ btn.classList.remove('active'); }});
+  [['usscore','0'],['usvol','0'],['uspnl','all']].forEach(function(pair) {{
+    var btn = document.querySelector('#tab-us .f-btn[data-group="' + pair[0] + '"][data-val="' + pair[1] + '"]');
+    if (btn) btn.classList.add('active');
+  }});
+  applyUsHistoryFilters();
+}}
+
+// 美股篩選按鈕事件（在 DOMContentLoaded 裡補上）
+document.addEventListener('DOMContentLoaded', function() {{
+  document.querySelectorAll('#tab-us .f-btn').forEach(function(btn) {{
+    btn.addEventListener('click', function() {{
+      var group = this.dataset.group;
+      document.querySelectorAll('#tab-us .f-btn[data-group="' + group + '"]')
+        .forEach(function(b) {{ b.classList.remove('active'); }});
+      this.classList.add('active');
+      applyUsHistoryFilters();
+    }});
+  }});
+  // 初始化筆數顯示
+  var rows = document.querySelectorAll('#us-history-body .us-history-row');
+  var el = document.getElementById('us-history-count');
+  if (el && rows.length) el.textContent = '顯示 ' + rows.length + ' / ' + rows.length + ' 筆';
+}});
 
 document.addEventListener('keydown', function(e) {{
   if (e.key === 'Escape') closePickModal();
