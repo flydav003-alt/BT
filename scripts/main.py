@@ -421,7 +421,10 @@ def run(category_filter: Optional[str] = None) -> None:
 
     for cat in categories:
         logger.info(f"\n── {cat} ──")
-        stock_ids, info_map = load_csv(cat)
+        if cat == "US":
+            stock_ids, info_map = load_csv_us()
+        else:
+            stock_ids, info_map = load_csv(cat)
         if not stock_ids:
             log_run(cat, "skipped", 0, "CSV 不存在或為空")
             continue
