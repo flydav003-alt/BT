@@ -262,7 +262,8 @@ def render_today_section(picks: dict[str, list[dict]], score_trends: dict[str, l
     <div style="display:flex;gap:4px;align-items:center;">
       <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">分數</span>
       <button class="f-btn active" data-group="score" data-val="0">全部</button>
-      <button class="f-btn" data-group="score" data-val="62">62+</button>
+      <button class="f-btn" data-group="score" data-val="65">65+</button>
+      <button class="f-btn" data-group="score" data-val="71">71+</button>
       <button class="f-btn" data-group="score" data-val="78">78+</button>
     </div>
 
@@ -365,7 +366,8 @@ def render_history_section(history: list[dict]) -> str:
     <div style="display:flex;gap:4px;align-items:center;">
       <span style="font-size:.68rem;color:var(--muted);margin-right:2px;">分數</span>
       <button class="f-btn active" data-group="hscore" data-val="0">全部</button>
-      <button class="f-btn" data-group="hscore" data-val="62">62+</button>
+      <button class="f-btn" data-group="hscore" data-val="65">65+</button>
+      <button class="f-btn" data-group="hscore" data-val="71">71+</button>
       <button class="f-btn" data-group="hscore" data-val="78">78+</button>
     </div>
 
