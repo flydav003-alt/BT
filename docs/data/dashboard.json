@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-12 13:21:59",
+  "generated_at": "2026-05-12 13:45:06",
   "today_picks": {
     "ETF": [
       {
-        "id": 841,
+        "id": 890,
         "date": "2026-05-12",
         "category": "ETF",
         "rank": 1,
@@ -16,17 +16,17 @@
         "kd_k": 56.771753316285526,
         "vol_ratio": 1.519971987949211,
         "strategy_used": "balanced",
-        "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"剛突破MA20（2614.50），短線動能轉強\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=58.6，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"KD\", \"text\": \"KD金叉（K=56.8），短線偏多\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均1.5倍），多方積極攻擊\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「長紅K」△ 有效性低｜出現在高檔（近60日83%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：2930.00（+4.8%）／支撐：2440.00（-12.7%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 409張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 132張\"}]",
+        "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"剛突破MA20（2614.50），短線動能轉強\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=58.6，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"KD\", \"text\": \"KD金叉（K=56.8），短線偏多\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均1.5倍），多方積極攻擊\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「長紅K」△ 有效性低｜出現在高檔（近60日83%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：2930.00（+4.8%）／支撐：2440.00（-12.7%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 409張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 129張\"}]",
         "t3_date": null,
         "t3_price": null,
         "t3_pnl": null,
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-12 11:55:48"
+        "created_at": "2026-05-12 13:43:57"
       },
       {
-        "id": 842,
+        "id": 891,
         "date": "2026-05-12",
         "category": "ETF",
         "rank": 2,
@@ -46,10 +46,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-12 11:55:48"
+        "created_at": "2026-05-12 13:43:57"
       },
       {
-        "id": 843,
+        "id": 892,
         "date": "2026-05-12",
         "category": "ETF",
         "rank": 3,
@@ -69,10 +69,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-12 11:55:48"
+        "created_at": "2026-05-12 13:43:57"
       },
       {
-        "id": 844,
+        "id": 893,
         "date": "2026-05-12",
         "category": "ETF",
         "rank": 4,
@@ -92,10 +92,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-12 11:55:48"
+        "created_at": "2026-05-12 13:43:57"
       },
       {
-        "id": 845,
+        "id": 894,
         "date": "2026-05-12",
         "category": "ETF",
         "rank": 5,
@@ -115,36 +115,13 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-12 11:55:48"
+        "created_at": "2026-05-12 13:43:57"
       },
       {
-        "id": 846,
+        "id": 895,
         "date": "2026-05-12",
         "category": "ETF",
         "rank": 6,
-        "stock_id": "8046",
-        "stock_name": "南電",
-        "kline_score": 60,
-        "verdict": "⚖️ 中性觀望",
-        "close_price": 900.0,
-        "rsi": 60.8187134502924,
-        "kd_k": 36.638191826069985,
-        "vol_ratio": 0.7674604909422793,
-        "strategy_used": "balanced",
-        "top_signals": "[{\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=60.8，處於偏多健康區間\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：1035.00（+15.0%）／支撐：635.00（-29.4%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 2989張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 46張\"}]",
-        "t3_date": null,
-        "t3_price": null,
-        "t3_pnl": null,
-        "t5_date": null,
-        "t5_price": null,
-        "t5_pnl": null,
-        "created_at": "2026-05-12 11:55:48"
-      },
-      {
-        "id": 847,
-        "date": "2026-05-12",
-        "category": "ETF",
-        "rank": 7,
         "stock_id": "2313",
         "stock_name": "華通",
         "kline_score": 60,
@@ -161,13 +138,13 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-12 11:55:48"
+        "created_at": "2026-05-12 13:43:57"
       },
       {
-        "id": 848,
+        "id": 896,
         "date": "2026-05-12",
         "category": "ETF",
-        "rank": 8,
+        "rank": 7,
         "stock_id": "3443",
         "stock_name": "創意電子",
         "kline_score": 58,
@@ -184,10 +161,33 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-12 11:55:48"
+        "created_at": "2026-05-12 13:43:57"
       },
       {
-        "id": 849,
+        "id": 897,
+        "date": "2026-05-12",
+        "category": "ETF",
+        "rank": 8,
+        "stock_id": "8046",
+        "stock_name": "南電",
+        "kline_score": 56,
+        "verdict": "⚖️ 中性觀望",
+        "close_price": 900.0,
+        "rsi": 60.8187134502924,
+        "kd_k": 36.638191826069985,
+        "vol_ratio": 0.7674604909422793,
+        "strategy_used": "balanced",
+        "top_signals": "[{\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=60.8，處於偏多健康區間\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：1035.00（+15.0%）／支撐：635.00（-29.4%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 2989張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 93張\"}]",
+        "t3_date": null,
+        "t3_price": null,
+        "t3_pnl": null,
+        "t5_date": null,
+        "t5_price": null,
+        "t5_pnl": null,
+        "created_at": "2026-05-12 13:43:57"
+      },
+      {
+        "id": 898,
         "date": "2026-05-12",
         "category": "ETF",
         "rank": 9,
@@ -207,10 +207,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-12 11:55:48"
+        "created_at": "2026-05-12 13:43:57"
       },
       {
-        "id": 850,
+        "id": 899,
         "date": "2026-05-12",
         "category": "ETF",
         "rank": 10,
@@ -230,7 +230,7 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-12 11:55:48"
+        "created_at": "2026-05-12 13:43:57"
       }
     ],
     "OTC": [
@@ -585,7 +585,7 @@
   },
   "history": [
     {
-      "id": 841,
+      "id": 890,
       "date": "2026-05-12",
       "category": "ETF",
       "rank": 1,
@@ -598,18 +598,18 @@
       "kd_k": 56.771753316285526,
       "vol_ratio": 1.519971987949211,
       "strategy_used": "balanced",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"剛突破MA20（2614.50），短線動能轉強\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=58.6，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"KD\", \"text\": \"KD金叉（K=56.8），短線偏多\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均1.5倍），多方積極攻擊\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「長紅K」△ 有效性低｜出現在高檔（近60日83%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：2930.00（+4.8%）／支撐：2440.00（-12.7%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 409張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 132張\"}]",
+      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"剛突破MA20（2614.50），短線動能轉強\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=58.6，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"KD\", \"text\": \"KD金叉（K=56.8），短線偏多\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均1.5倍），多方積極攻擊\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「長紅K」△ 有效性低｜出現在高檔（近60日83%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：2930.00（+4.8%）／支撐：2440.00（-12.7%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 409張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 129張\"}]",
       "t3_date": null,
       "t3_price": null,
       "t3_pnl": null,
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-12 11:55:48",
+      "created_at": "2026-05-12 13:43:57",
       "sn_name": "大立光"
     },
     {
-      "id": 842,
+      "id": 891,
       "date": "2026-05-12",
       "category": "ETF",
       "rank": 2,
@@ -629,11 +629,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-12 11:55:48",
+      "created_at": "2026-05-12 13:43:57",
       "sn_name": "緯穎"
     },
     {
-      "id": 843,
+      "id": 892,
       "date": "2026-05-12",
       "category": "ETF",
       "rank": 3,
@@ -653,11 +653,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-12 11:55:48",
+      "created_at": "2026-05-12 13:43:57",
       "sn_name": "台積電"
     },
     {
-      "id": 844,
+      "id": 893,
       "date": "2026-05-12",
       "category": "ETF",
       "rank": 4,
@@ -677,11 +677,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-12 11:55:48",
+      "created_at": "2026-05-12 13:43:57",
       "sn_name": "川湖"
     },
     {
-      "id": 845,
+      "id": 894,
       "date": "2026-05-12",
       "category": "ETF",
       "rank": 5,
@@ -701,38 +701,14 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-12 11:55:48",
+      "created_at": "2026-05-12 13:43:57",
       "sn_name": "日月光投控"
     },
     {
-      "id": 846,
+      "id": 895,
       "date": "2026-05-12",
       "category": "ETF",
       "rank": 6,
-      "stock_id": "8046",
-      "stock_name": "南電",
-      "kline_score": 60,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 900.0,
-      "rsi": 60.8187134502924,
-      "kd_k": 36.638191826069985,
-      "vol_ratio": 0.7674604909422793,
-      "strategy_used": "balanced",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=60.8，處於偏多健康區間\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：1035.00（+15.0%）／支撐：635.00（-29.4%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 2989張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 46張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-05-12 11:55:48",
-      "sn_name": "南電"
-    },
-    {
-      "id": 847,
-      "date": "2026-05-12",
-      "category": "ETF",
-      "rank": 7,
       "stock_id": "2313",
       "stock_name": "華通",
       "kline_score": 60,
@@ -749,14 +725,14 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-12 11:55:48",
+      "created_at": "2026-05-12 13:43:57",
       "sn_name": "華通"
     },
     {
-      "id": 848,
+      "id": 896,
       "date": "2026-05-12",
       "category": "ETF",
-      "rank": 8,
+      "rank": 7,
       "stock_id": "3443",
       "stock_name": "創意電子",
       "kline_score": 58,
@@ -773,11 +749,35 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-12 11:55:48",
+      "created_at": "2026-05-12 13:43:57",
       "sn_name": "創意電子"
     },
     {
-      "id": 849,
+      "id": 897,
+      "date": "2026-05-12",
+      "category": "ETF",
+      "rank": 8,
+      "stock_id": "8046",
+      "stock_name": "南電",
+      "kline_score": 56,
+      "verdict": "⚖️ 中性觀望",
+      "close_price": 900.0,
+      "rsi": 60.8187134502924,
+      "kd_k": 36.638191826069985,
+      "vol_ratio": 0.7674604909422793,
+      "strategy_used": "balanced",
+      "top_signals": "[{\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=60.8，處於偏多健康區間\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：1035.00（+15.0%）／支撐：635.00（-29.4%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 2989張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 93張\"}]",
+      "t3_date": null,
+      "t3_price": null,
+      "t3_pnl": null,
+      "t5_date": null,
+      "t5_price": null,
+      "t5_pnl": null,
+      "created_at": "2026-05-12 13:43:57",
+      "sn_name": "南電"
+    },
+    {
+      "id": 898,
       "date": "2026-05-12",
       "category": "ETF",
       "rank": 9,
@@ -797,11 +797,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-12 11:55:48",
+      "created_at": "2026-05-12 13:43:57",
       "sn_name": "欣興"
     },
     {
-      "id": 850,
+      "id": 899,
       "date": "2026-05-12",
       "category": "ETF",
       "rank": 10,
@@ -821,7 +821,7 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-12 11:55:48",
+      "created_at": "2026-05-12 13:43:57",
       "sn_name": "奇鋐"
     },
     {
