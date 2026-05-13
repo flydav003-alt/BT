@@ -1,5 +1,5 @@
 """
-html_generator.py  ── PATCHED (修改 1 & 2 & 3 & 4 & 5)
+html_generator.py  ── PATCHED (修改 1 & 2 & 3 & 4 & 5 & 6 & 7)
 =================
 靜態 HTML 生成器：從 DB 資料生成 docs/index.html
 
@@ -10,6 +10,8 @@ html_generator.py  ── PATCHED (修改 1 & 2 & 3 & 4 & 5)
   [修改4] 迷你折線圖改用 close 收盤價（price_cache 7天連續資料），不再依賴 score 欄位
            score 為 None 的日期（沒上榜）不影響折線圖，但上榜的日期在 Modal 大圖中顯示圓點分數標記
   [修改5] 美股歷史表格加 T+3/T+5 欄位 + 篩選列（搜尋/分數/量比/損益）
+  [修改6] 歷史回測（台股+美股）加入排序切換：日期↑↓ / 分數↓ / T+3損益↓ / T+5損益↓
+  [修改7] 新增「統計分析」Tab：分數區間勝率、類別績效比較、月度績效摘要
 """
 
 import json
@@ -24,6 +26,7 @@ from config import DOCS_DIR, DOCS_DATA_DIR, SITE_TITLE, SITE_SUBTITLE, KLINE_TOO
 from db_manager import (
     get_latest_picks, get_history_picks, get_win_rate_stats, get_all_score_trends,
     get_latest_picks_us, get_history_picks_us,
+    get_score_band_stats, get_category_stats, get_monthly_summary,
 )
 
 logger = logging.getLogger(__name__)
@@ -302,14 +305,19 @@ def render_history_section(history: list[dict]) -> str:
         t5pnl = r.get("t5_pnl")
         rsi_v = float(r["rsi"]) if r.get("rsi") else 0
         vr_v  = float(r["vol_ratio"]) if r.get("vol_ratio") else 0
+        t3_sort = t3pnl if t3pnl is not None else -9999
+        t5_sort = t5pnl if t5pnl is not None else -9999
 
         rows_html += f"""
 <tr class="history-row"
   data-search="{sid} {name}"
   data-cat="{cat}"
   data-score="{sc}"
+  data-date="{r.get('date','')}"
   data-rsi="{round(rsi_v,1)}"
-  data-volratio="{round(vr_v,2)}">
+  data-volratio="{round(vr_v,2)}"
+  data-t3pnl="{t3_sort}"
+  data-t5pnl="{t5_sort}">
   <td><span style="font-size:.72rem;color:#6a85a8;">{r.get('date','')}</span></td>
   <td><span style="font-size:.7rem;color:{cc};border:1px solid {cc}44;border-radius:4px;padding:1px 6px;">{cat_label(cat)}</span></td>
   <td>
@@ -328,7 +336,7 @@ def render_history_section(history: list[dict]) -> str:
     return f"""
 <section class="section" id="history">
   <div class="section-header">
-    <div class="section-title">📋 歷史回測（近5天）</div>
+    <div class="section-title">📋 歷史回測（近90天）</div>
   </div>
 
   <div id="history-filters" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;
@@ -380,6 +388,16 @@ def render_history_section(history: list[dict]) -> str:
     <button onclick="resetHistoryFilters()" style="margin-left:auto;font-size:.7rem;color:var(--muted);
       background:transparent;border:1px solid var(--border);border-radius:5px;
       padding:3px 10px;cursor:pointer;">重設</button>
+  </div>
+
+  <!-- [修改6] 排序控制列 -->
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;align-items:center;">
+    <span style="font-size:.68rem;color:var(--muted);">排序：</span>
+    <button class="sort-btn active" id="hsort-date-desc" onclick="sortHistory('date','desc')">📅 日期 ↓新→舊</button>
+    <button class="sort-btn" id="hsort-date-asc"  onclick="sortHistory('date','asc')">📅 日期 ↑舊→新</button>
+    <button class="sort-btn" id="hsort-score-desc" onclick="sortHistory('score','desc')">🎯 分數 ↓高→低</button>
+    <button class="sort-btn" id="hsort-t3-desc"    onclick="sortHistory('t3','desc')">📈 T+3損益 ↓</button>
+    <button class="sort-btn" id="hsort-t5-desc"    onclick="sortHistory('t5','desc')">📈 T+5損益 ↓</button>
   </div>
 
   <div id="history-count" style="font-size:.72rem;color:var(--muted);margin-bottom:8px;"></div>
@@ -479,6 +497,212 @@ def render_winrate_section() -> str:
   </div>
   <div style="overflow-x:auto;">
     {tables_html}
+  </div>
+</section>"""
+
+
+# ══════════════════════════════════════════════
+#  [修改7] 統計分析 Tab
+# ══════════════════════════════════════════════
+
+def render_stats_section() -> str:
+    """統計分析 Tab：分數區間勝率、類別績效比較、月度績效摘要"""
+    import json
+
+    band_t3  = get_score_band_stats(use_t5=False)
+    band_t5  = get_score_band_stats(use_t5=True)
+    cat_t3   = get_category_stats(use_t5=False)
+    cat_t5   = get_category_stats(use_t5=True)
+    month_t3 = get_monthly_summary(use_t5=False)
+    month_t5 = get_monthly_summary(use_t5=True)
+
+    def wr_color(wr):
+        if wr >= 65: return "#ff4d6d"
+        if wr >= 55: return "#ff9f40"
+        if wr >= 45: return "#e8b84b"
+        return "#4a9eff"
+
+    def _pnl_c(v):
+        if v is None: return "#4a6080"
+        return "#ff4d6d" if v > 0 else ("#4a9eff" if v < 0 else "#e8b84b")
+
+    def _pnl_s(v):
+        if v is None: return "—"
+        return f"+{v:.2f}%" if v > 0 else f"{v:.2f}%"
+
+    def bar_w(wr):
+        return max(4, min(100, round(wr)))
+
+    def render_band_table(bands):
+        rows = ""
+        for b in bands:
+            wr  = b["win_rate"]
+            wrc = wr_color(wr)
+            cnt = b["total"]
+            rows += f"""
+<tr>
+  <td style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;font-size:.88rem;">{b['band']}</td>
+  <td style="text-align:center;color:#4a6080;">{cnt}</td>
+  <td>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="flex:1;height:8px;background:#1a2340;border-radius:4px;overflow:hidden;min-width:80px;">
+        <div style="height:100%;width:{bar_w(wr)}%;background:{wrc};border-radius:4px;"></div>
+      </div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:{wrc};min-width:44px;">{wr}%</span>
+    </div>
+  </td>
+  <td style="text-align:center;font-weight:600;color:{_pnl_c(b['avg_pnl'])};">{_pnl_s(b['avg_pnl'])}</td>
+  <td style="text-align:center;font-size:.75rem;color:#ff4d6d;">{_pnl_s(b['best_pnl'])}</td>
+  <td style="text-align:center;font-size:.75rem;color:#4a9eff;">{_pnl_s(b['worst_pnl'])}</td>
+</tr>"""
+        return rows or '<tr><td colspan="6" style="text-align:center;color:#4a6080;padding:20px;">資料不足（需更多歷史紀錄）</td></tr>'
+
+    def render_cat_table(cats):
+        cat_colors = {"ETF": "#a78bfa", "OTC": "#29c5c5", "TSE": "#ff9f40", "US": "#60a5fa"}
+        rows = ""
+        for c in cats:
+            wr  = c["win_rate"]
+            wrc = wr_color(wr)
+            cc  = cat_colors.get(c["category"], "#4a6080")
+            rows += f"""
+<tr>
+  <td>
+    <span style="font-size:.75rem;color:{cc};border:1px solid {cc}44;border-radius:4px;
+                 padding:2px 8px;font-weight:700;">{c['label']}</span>
+  </td>
+  <td style="text-align:center;color:#4a6080;">{c['total']}</td>
+  <td>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="flex:1;height:8px;background:#1a2340;border-radius:4px;overflow:hidden;min-width:80px;">
+        <div style="height:100%;width:{bar_w(wr)}%;background:{wrc};border-radius:4px;"></div>
+      </div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:{wrc};min-width:44px;">{wr}%</span>
+    </div>
+  </td>
+  <td style="text-align:center;font-weight:600;color:{_pnl_c(c['avg_pnl'])};">{_pnl_s(c['avg_pnl'])}</td>
+  <td style="text-align:center;font-size:.75rem;color:#6a85a8;">{c.get('avg_score','—')}</td>
+  <td style="text-align:center;font-size:.75rem;color:#ff4d6d;">{_pnl_s(c.get('best_pnl'))}</td>
+  <td style="text-align:center;font-size:.75rem;color:#4a9eff;">{_pnl_s(c.get('worst_pnl'))}</td>
+</tr>"""
+        return rows or '<tr><td colspan="7" style="text-align:center;color:#4a6080;padding:20px;">資料不足</td></tr>'
+
+    def render_month_table(months_data):
+        rows = ""
+        for m in months_data:
+            wr  = m["win_rate"]
+            wrc = wr_color(wr)
+            rows += f"""
+<tr>
+  <td style="font-family:'IBM Plex Mono',monospace;color:#d4dff0;">{m['month']}</td>
+  <td style="text-align:center;color:#4a6080;">{m['total']}</td>
+  <td>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="flex:1;height:8px;background:#1a2340;border-radius:4px;overflow:hidden;min-width:80px;">
+        <div style="height:100%;width:{bar_w(wr)}%;background:{wrc};border-radius:4px;"></div>
+      </div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:{wrc};min-width:44px;">{wr}%</span>
+    </div>
+  </td>
+  <td style="text-align:center;font-weight:600;color:{_pnl_c(m['avg_pnl'])};">{_pnl_s(m['avg_pnl'])}</td>
+  <td style="text-align:center;font-size:.75rem;color:#6a85a8;">{m.get('avg_score','—')}</td>
+</tr>"""
+        return rows or '<tr><td colspan="5" style="text-align:center;color:#4a6080;padding:20px;">資料不足</td></tr>'
+
+    return f"""
+<section class="section" id="stats">
+  <div class="section-header">
+    <div class="section-title">📊 統計分析</div>
+  </div>
+
+  <div style="display:flex;gap:4px;background:#0d1220;border:1px solid #1e2d4a;
+              border-radius:8px;padding:4px;width:fit-content;margin-bottom:20px;">
+    <button class="tab-btn active" onclick="switchStats('t3')" id="sbtn-t3">T+3</button>
+    <button class="tab-btn" onclick="switchStats('t5')" id="sbtn-t5">T+5</button>
+  </div>
+
+  <!-- 分數區間勝率 -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:.8rem;font-weight:700;color:#e8b84b;margin-bottom:10px;
+                border-left:3px solid #e8b84b;padding-left:8px;">
+      🎯 分數區間勝率
+      <span style="font-size:.65rem;color:#4a6080;font-weight:400;margin-left:8px;">高分推薦真的比低分準嗎？</span>
+    </div>
+    <div style="overflow-x:auto;">
+      <div id="sp-band-t3">
+        <table class="data-table"><thead><tr>
+          <th>分數區間</th><th style="text-align:center;">次數</th>
+          <th>勝率</th><th style="text-align:center;">平均報酬</th>
+          <th style="text-align:center;">最佳</th><th style="text-align:center;">最差</th>
+        </tr></thead><tbody>{render_band_table(band_t3)}</tbody></table>
+      </div>
+      <div id="sp-band-t5" style="display:none;">
+        <table class="data-table"><thead><tr>
+          <th>分數區間</th><th style="text-align:center;">次數</th>
+          <th>勝率</th><th style="text-align:center;">平均報酬</th>
+          <th style="text-align:center;">最佳</th><th style="text-align:center;">最差</th>
+        </tr></thead><tbody>{render_band_table(band_t5)}</tbody></table>
+      </div>
+    </div>
+    <div style="font-size:.63rem;color:#4a6080;margin-top:6px;">
+      ✦ 勝率定義：T+N收盤高於進場收盤 ✦ 需至少1筆有效紀錄才顯示
+    </div>
+  </div>
+
+  <!-- 類別績效比較 -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:.8rem;font-weight:700;color:#29c5c5;margin-bottom:10px;
+                border-left:3px solid #29c5c5;padding-left:8px;">
+      📂 類別整體績效
+      <span style="font-size:.65rem;color:#4a6080;font-weight:400;margin-left:8px;">哪個市場信號最準？</span>
+    </div>
+    <div style="overflow-x:auto;">
+      <div id="sp-cat-t3">
+        <table class="data-table"><thead><tr>
+          <th>類別</th><th style="text-align:center;">次數</th>
+          <th>勝率</th><th style="text-align:center;">平均報酬</th>
+          <th style="text-align:center;">平均分數</th>
+          <th style="text-align:center;">最佳</th><th style="text-align:center;">最差</th>
+        </tr></thead><tbody>{render_cat_table(cat_t3)}</tbody></table>
+      </div>
+      <div id="sp-cat-t5" style="display:none;">
+        <table class="data-table"><thead><tr>
+          <th>類別</th><th style="text-align:center;">次數</th>
+          <th>勝率</th><th style="text-align:center;">平均報酬</th>
+          <th style="text-align:center;">平均分數</th>
+          <th style="text-align:center;">最佳</th><th style="text-align:center;">最差</th>
+        </tr></thead><tbody>{render_cat_table(cat_t5)}</tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 月度績效摘要 -->
+  <div style="margin-bottom:16px;">
+    <div style="font-size:.8rem;font-weight:700;color:#4a9eff;margin-bottom:10px;
+                border-left:3px solid #4a9eff;padding-left:8px;">
+      📅 月度績效摘要（近6個月）
+      <span style="font-size:.65rem;color:#4a6080;font-weight:400;margin-left:8px;">系統在進步還是退步？</span>
+    </div>
+    <div style="overflow-x:auto;">
+      <div id="sp-month-t3">
+        <table class="data-table"><thead><tr>
+          <th>月份</th><th style="text-align:center;">推薦次數</th>
+          <th>月勝率</th><th style="text-align:center;">月均報酬</th>
+          <th style="text-align:center;">月均分數</th>
+        </tr></thead><tbody>{render_month_table(month_t3)}</tbody></table>
+      </div>
+      <div id="sp-month-t5" style="display:none;">
+        <table class="data-table"><thead><tr>
+          <th>月份</th><th style="text-align:center;">推薦次數</th>
+          <th>月勝率</th><th style="text-align:center;">月均報酬</th>
+          <th style="text-align:center;">月均分數</th>
+        </tr></thead><tbody>{render_month_table(month_t5)}</tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:.63rem;color:#4a6080;text-align:center;padding:12px 0;
+              border-top:1px solid var(--border);margin-top:8px;">
+    ⚠️ 以上統計基於歷史回測，不代表未來表現。損益以收盤價計算，未含手續費。
   </div>
 </section>"""
 
@@ -645,11 +869,16 @@ def render_us_section() -> str:
         t3pnl   = r.get("t3_pnl")
         t5pnl   = r.get("t5_pnl")
         close_str = f"${float(cp):.2f}" if cp else "—"
+        t3_sort = t3pnl if t3pnl is not None else -9999
+        t5_sort = t5pnl if t5pnl is not None else -9999
         hist_rows += f"""
 <tr class="us-history-row"
   data-search="{sid} {name}"
   data-score="{sc}"
-  data-volratio="{round(vr_v, 2)}">
+  data-date="{r.get('date','')}"
+  data-volratio="{round(vr_v, 2)}"
+  data-t3pnl="{t3_sort}"
+  data-t5pnl="{t5_sort}">
   <td><span style="font-size:.72rem;color:#6a85a8;">{r.get('date','')}</span></td>
   <td>
     <a href="{kline_url(sid)}" target="_blank"
@@ -709,6 +938,16 @@ def render_us_section() -> str:
     padding:3px 10px;cursor:pointer;">重設</button>
 </div>
 
+<!-- [修改6] 美股歷史排序控制列 -->
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;align-items:center;">
+  <span style="font-size:.68rem;color:var(--muted);">排序：</span>
+  <button class="sort-btn active" id="ussort-date-desc" onclick="sortUsHistory('date','desc')">📅 日期 ↓新→舊</button>
+  <button class="sort-btn" id="ussort-date-asc"  onclick="sortUsHistory('date','asc')">📅 日期 ↑舊→新</button>
+  <button class="sort-btn" id="ussort-score-desc" onclick="sortUsHistory('score','desc')">🎯 分數 ↓高→低</button>
+  <button class="sort-btn" id="ussort-t3-desc"    onclick="sortUsHistory('t3','desc')">📈 T+3損益 ↓</button>
+  <button class="sort-btn" id="ussort-t5-desc"    onclick="sortUsHistory('t5','desc')">📈 T+5損益 ↓</button>
+</div>
+
 <div id="us-history-count" style="font-size:.72rem;color:var(--muted);margin-bottom:8px;"></div>
 
 <div style="overflow-x:auto;margin-top:8px;">
@@ -761,13 +1000,14 @@ def render_us_section() -> str:
 
 def generate_index_html() -> str:
     picks        = get_latest_picks(TOP_N)
-    history      = get_history_picks(days=5)
+    history      = get_history_picks()       # 預設90天（config.HISTORY_DAYS）
     score_trends = get_all_score_trends(days=7)
     now_str      = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     today_html   = render_today_section(picks, score_trends)
     history_html = render_history_section(history)
     winrate_html = render_winrate_section()
+    stats_html   = render_stats_section()
     us_html      = render_us_section()
 
     return f"""<!DOCTYPE html>
@@ -835,6 +1075,11 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
   font-family:var(--font);}}
 .tab-btn.active{{background:var(--s3);color:var(--text);font-weight:600;}}
 .tab-btn:hover:not(.active){{color:var(--text);}}
+.sort-btn{{background:transparent;border:1px solid var(--border);color:var(--muted);
+  font-size:.7rem;padding:3px 10px;border-radius:5px;cursor:pointer;transition:all .15s;
+  font-family:var(--font);white-space:nowrap;}}
+.sort-btn:hover{{color:var(--text);border-color:#4a6080;}}
+.sort-btn.active-sort{{background:var(--s3);color:var(--text);border-color:var(--accent);font-weight:600;}}
 .tab-section{{display:none;}}
 .tab-section.active{{display:block;}}
 .footer{{background:var(--s1);border-top:1px solid var(--border);
@@ -915,6 +1160,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
       <a href="#" onclick="switchTab('today');return false;" id="nav-today" class="nav-active">今日推薦</a>
       <a href="#" onclick="switchTab('history');return false;" id="nav-history">歷史回測</a>
       <a href="#" onclick="switchTab('winrate');return false;" id="nav-winrate">勝率排行</a>
+      <a href="#" onclick="switchTab('stats');return false;" id="nav-stats">📊 統計</a>
       <a href="#" onclick="switchTab('us');return false;" id="nav-us">🇺🇸 美股</a>
     </nav>
     <div class="update-badge">🕐 {now_str} 更新</div>
