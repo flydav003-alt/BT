@@ -59,10 +59,20 @@ SCORE_DELAY    = 1.0
 TOP_N          = 10      # ← 改為每欄 10 支
 
 # ── 回測設定 ────────────────────────────────────
-BACKTEST_DAYS      = 5
 BACKTEST_T3        = 3
 BACKTEST_T5        = 5
 WIN_RATE_THRESHOLD = 0.0
+
+# ── 歷史資料保留設定 ─────────────────────────────
+# HISTORY_DAYS：歷史回測表格顯示天數（日曆天）
+#   90天 ≈ 65個交易日，足夠觀察T+5且資料量合理
+#   每日最多 40筆（ETF+OTC+TSE+US各10），90天約 3600筆，SQLite輕鬆應付
+HISTORY_DAYS = 90
+
+# BACKFILL_CALENDAR_BUFFER：補填回測用的日曆天緩衝
+#   台股T+5最差情況跨2個週末 ≈ 9個日曆天，再加台灣假日
+#   設14天為安全值，確保T+5的交易日數真的已存在
+BACKFILL_CALENDAR_BUFFER = 14
 
 # ── 網站設定 ────────────────────────────────────
 SITE_TITLE     = "台股 K線評分排名報告與回測系統"
