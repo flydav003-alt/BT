@@ -29,7 +29,7 @@ except ImportError:
     HAS_PORTALOCKER = False
     logging.warning("portalocker 未安裝，跳過檔案鎖（單一執行環境下安全）")
 
-from config import DB_PATH, LOCK_FILE, BACKTEST_T3, BACKTEST_T5
+from config import DB_PATH, LOCK_FILE, BACKTEST_T3, BACKTEST_T5, BACKFILL_CALENDAR_BUFFER, HISTORY_DAYS
 
 logger = logging.getLogger(__name__)
 
@@ -242,19 +242,22 @@ def get_stock_name(stock_id: str) -> str:
 
 def get_pending_backfill() -> list[dict]:
     """
-    取得所有「尚未補齊 T+3 或 T+5 價格」的紀錄，
-    且該紀錄已超過 T+5 天（才有歷史價可抓）。
+    取得所有「尚未補齊 T+3 或 T+5 價格」的紀錄。
+
+    修正說明：
+    - 原本用 BACKTEST_T3+1(4天) / BACKTEST_T5+1(6天) 日曆天，遇週末假日會過早觸發
+    - 台股T+5最多跨2個週末 ≈ 9個日曆天，加上台灣假日需要更多緩衝
+    - 改用 BACKFILL_CALENDAR_BUFFER=14 天統一判斷，確保T+5交易日真的到了再補填
     """
-    cutoff_t3 = (date.today() - timedelta(days=BACKTEST_T3 + 1)).isoformat()
-    cutoff_t5 = (date.today() - timedelta(days=BACKTEST_T5 + 1)).isoformat()
+    cutoff = (date.today() - timedelta(days=BACKFILL_CALENDAR_BUFFER)).isoformat()
 
     with _connect() as conn:
         rows = conn.execute("""
             SELECT id, date, category, stock_id, close_price
             FROM daily_picks
-            WHERE (t3_price IS NULL AND date <= ?)
-               OR (t5_price IS NULL AND date <= ?)
-        """, (cutoff_t3, cutoff_t5)).fetchall()
+            WHERE date <= ?
+              AND (t3_price IS NULL OR t5_price IS NULL)
+        """, (cutoff,)).fetchall()
 
     return [dict(r) for r in rows]
 
@@ -315,11 +318,13 @@ def get_latest_picks(top_n: int = 8) -> dict[str, list[dict]]:
     return result
 
 
-def get_history_picks(days: int = 5) -> list[dict]:
+def get_history_picks(days: int = None) -> list[dict]:
     """
-    取得最近 N 天的所有推薦紀錄（含回測欄位），
-    依日期降序排列。
+    取得最近 N 天的所有推薦紀錄（含回測欄位），依日期降序排列。
+    days 預設使用 HISTORY_DAYS（90天），確保 T+5 資料完整可見。
     """
+    if days is None:
+        days = HISTORY_DAYS
     cutoff = (date.today() - timedelta(days=days)).isoformat()
     with _connect() as conn:
         rows = conn.execute("""
@@ -354,10 +359,13 @@ def get_latest_picks_us(top_n: int = 10) -> list[dict]:
     return [dict(r) for r in rows]
 
 
-def get_history_picks_us(days: int = 5) -> list[dict]:
+def get_history_picks_us(days: int = None) -> list[dict]:
     """
-    取得美股近 N 天歷史推薦紀錄（無 T+3/T+5 回測）。
+    取得美股近 N 天歷史推薦紀錄。
+    days 預設使用 HISTORY_DAYS（90天）。
     """
+    if days is None:
+        days = HISTORY_DAYS
     cutoff = (date.today() - timedelta(days=days)).isoformat()
     with _connect() as conn:
         rows = conn.execute("""
@@ -628,4 +636,131 @@ def get_all_score_trends(days: int = 7) -> dict[str, list[dict]]:
             "close": r["close"],
             "score": r["score"],   # 沒上榜的日期為 None
         })
+    return result
+
+
+# ══════════════════════════════════════════════
+#  統計分析函數（供 html_generator stats Tab 使用）
+# ══════════════════════════════════════════════
+
+def get_score_band_stats(days: int = None, use_t5: bool = False) -> list[dict]:
+    """
+    依 K線分數區間統計勝率與平均報酬。
+    回答：「高分推薦真的比低分準嗎？」
+
+    回傳：
+    [{"band":"78+","range":"78~100","total":45,"win":32,"win_rate":71.1,"avg_pnl":2.3,"best_pnl":8.1,"worst_pnl":-2.1}, ...]
+    """
+    if days is None:
+        days = HISTORY_DAYS
+    pnl_col = "t5_pnl" if use_t5 else "t3_pnl"
+    cutoff  = (date.today() - timedelta(days=days)).isoformat()
+
+    bands = [
+        ("78+",   78,  100),
+        ("71-77", 71,  77),
+        ("62-70", 62,  70),
+        ("<62",    0,  61),
+    ]
+
+    result = []
+    with _connect() as conn:
+        for label, lo, hi in bands:
+            row = conn.execute(f"""
+                SELECT
+                    COUNT(*) as total,
+                    SUM(CASE WHEN {pnl_col} > 0 THEN 1 ELSE 0 END) as win,
+                    ROUND(AVG({pnl_col}), 2)  as avg_pnl,
+                    ROUND(MAX({pnl_col}), 2)  as best_pnl,
+                    ROUND(MIN({pnl_col}), 2)  as worst_pnl
+                FROM daily_picks
+                WHERE {pnl_col} IS NOT NULL
+                  AND kline_score >= ? AND kline_score <= ?
+                  AND date >= ?
+            """, (lo, hi, cutoff)).fetchone()
+            if row and row["total"] > 0:
+                d = dict(row)
+                d["band"]     = label
+                d["range"]    = f"{lo}~{hi}"
+                d["win_rate"] = round(d["win"] / d["total"] * 100, 1)
+                result.append(d)
+            else:
+                result.append({
+                    "band": label, "range": f"{lo}~{hi}",
+                    "total": 0, "win": 0, "win_rate": 0.0,
+                    "avg_pnl": None, "best_pnl": None, "worst_pnl": None,
+                })
+    return result
+
+
+def get_category_stats(days: int = None, use_t5: bool = False) -> list[dict]:
+    """
+    各類別（ETF/OTC/TSE/US）整體勝率與平均報酬比較。
+    回答：「哪個市場信號最準？」
+
+    回傳：
+    [{"category":"ETF","label":"ETF","total":50,"win":32,"win_rate":64.0,"avg_pnl":1.8,"avg_score":68.0,...}, ...]
+    """
+    if days is None:
+        days = HISTORY_DAYS
+    pnl_col = "t5_pnl" if use_t5 else "t3_pnl"
+    cutoff  = (date.today() - timedelta(days=days)).isoformat()
+    labels  = {"ETF": "ETF", "OTC": "上櫃", "TSE": "上市", "US": "美股"}
+
+    result = []
+    with _connect() as conn:
+        for cat, lbl in labels.items():
+            row = conn.execute(f"""
+                SELECT
+                    COUNT(*) as total,
+                    SUM(CASE WHEN {pnl_col} > 0 THEN 1 ELSE 0 END) as win,
+                    ROUND(AVG({pnl_col}), 2)          as avg_pnl,
+                    ROUND(AVG(kline_score), 1)         as avg_score,
+                    ROUND(MAX({pnl_col}), 2)           as best_pnl,
+                    ROUND(MIN({pnl_col}), 2)           as worst_pnl
+                FROM daily_picks
+                WHERE {pnl_col} IS NOT NULL
+                  AND category = ?
+                  AND date >= ?
+            """, (cat, cutoff)).fetchone()
+            if row and row["total"] > 0:
+                d = dict(row)
+                d["category"] = cat
+                d["label"]    = lbl
+                d["win_rate"] = round(d["win"] / d["total"] * 100, 1)
+                result.append(d)
+    return result
+
+
+def get_monthly_summary(use_t5: bool = False, months: int = 6) -> list[dict]:
+    """
+    按月份統計整體勝率與平均報酬（近 N 個月）。
+    回答：「系統近況是在進步還是退步？」
+
+    回傳（依月份升序）：
+    [{"month":"2025-03","total":120,"win":72,"win_rate":60.0,"avg_pnl":1.2,"avg_score":67.5}, ...]
+    """
+    pnl_col = "t5_pnl" if use_t5 else "t3_pnl"
+    cutoff  = (date.today() - timedelta(days=months * 31)).isoformat()
+
+    with _connect() as conn:
+        rows = conn.execute(f"""
+            SELECT
+                SUBSTR(date, 1, 7)               as month,
+                COUNT(*)                         as total,
+                SUM(CASE WHEN {pnl_col} > 0 THEN 1 ELSE 0 END) as win,
+                ROUND(AVG({pnl_col}), 2)         as avg_pnl,
+                ROUND(AVG(kline_score), 1)        as avg_score
+            FROM daily_picks
+            WHERE {pnl_col} IS NOT NULL
+              AND date >= ?
+            GROUP BY month
+            ORDER BY month ASC
+        """, (cutoff,)).fetchall()
+
+    result = []
+    for r in rows:
+        d = dict(r)
+        d["win_rate"] = round(d["win"] / d["total"] * 100, 1) if d["total"] > 0 else 0.0
+        result.append(d)
     return result
