@@ -832,7 +832,7 @@ def render_us_pick_card(p: dict, trend: list[dict] | None = None) -> str:
 
 def render_us_section() -> str:
     us_picks     = get_latest_picks_us(top_n=10)
-    us_history   = get_history_picks_us(days=5)
+    us_history   = get_history_picks_us()
     score_trends = get_all_score_trends(days=7)
 
     latest_date = us_picks[0]["date"] if us_picks else "—"
