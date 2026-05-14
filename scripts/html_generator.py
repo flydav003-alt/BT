@@ -1658,9 +1658,16 @@ function _showWinPanel() {{
   if (panel) panel.style.display = 'block';
 }}
 
+// ── 排序共用：安全讀取 dataset 數值（dataset 永遠是字串，空字串→fallback）──
+function _dsNum(el, attr, fallback) {{
+  var v = el.dataset[attr];
+  if (v === undefined || v === '' || v === 'NaN') return fallback;
+  var n = parseFloat(v);
+  return isNaN(n) ? fallback : n;
+}}
+
 // ── [修改6] 歷史回測排序 ──
 function sortHistory(key, dir) {{
-  // 更新按鈕樣式
   document.querySelectorAll('[id^="hsort-"]').forEach(function(b) {{
     var active = (b.id === 'hsort-' + key + '-' + dir);
     b.style.background  = active ? 'var(--s3)' : 'transparent';
@@ -1671,21 +1678,18 @@ function sortHistory(key, dir) {{
   if (!tbody) return;
   var rows = Array.from(tbody.querySelectorAll('tr.history-row'));
   rows.sort(function(a, b) {{
-    var av, bv;
     if (key === 'date') {{
-      av = a.dataset.date || ''; bv = b.dataset.date || '';
+      var av = a.dataset.date || '', bv = b.dataset.date || '';
       return dir === 'desc' ? bv.localeCompare(av) : av.localeCompare(bv);
-    }} else if (key === 'score') {{
-      av = parseFloat(a.dataset.score || 0); bv = parseFloat(b.dataset.score || 0);
-      return bv - av;
-    }} else if (key === 't3') {{
-      av = parseFloat(a.dataset.t3pnl !== undefined ? a.dataset.t3pnl : -9999);
-      bv = parseFloat(b.dataset.t3pnl !== undefined ? b.dataset.t3pnl : -9999);
-      return bv - av;
-    }} else if (key === 't5') {{
-      av = parseFloat(a.dataset.t5pnl !== undefined ? a.dataset.t5pnl : -9999);
-      bv = parseFloat(b.dataset.t5pnl !== undefined ? b.dataset.t5pnl : -9999);
-      return bv - av;
+    }}
+    if (key === 'score') {{
+      return _dsNum(b,'score',0) - _dsNum(a,'score',0);
+    }}
+    if (key === 't3') {{
+      return _dsNum(b,'t3pnl',-9999) - _dsNum(a,'t3pnl',-9999);
+    }}
+    if (key === 't5') {{
+      return _dsNum(b,'t5pnl',-9999) - _dsNum(a,'t5pnl',-9999);
     }}
     return 0;
   }});
@@ -1705,21 +1709,18 @@ function sortUsHistory(key, dir) {{
   if (!tbody) return;
   var rows = Array.from(tbody.querySelectorAll('tr.us-history-row'));
   rows.sort(function(a, b) {{
-    var av, bv;
     if (key === 'date') {{
-      av = a.dataset.date || ''; bv = b.dataset.date || '';
+      var av = a.dataset.date || '', bv = b.dataset.date || '';
       return dir === 'desc' ? bv.localeCompare(av) : av.localeCompare(bv);
-    }} else if (key === 'score') {{
-      av = parseFloat(a.dataset.score || 0); bv = parseFloat(b.dataset.score || 0);
-      return bv - av;
-    }} else if (key === 't3') {{
-      av = parseFloat(a.dataset.t3pnl !== undefined ? a.dataset.t3pnl : -9999);
-      bv = parseFloat(b.dataset.t3pnl !== undefined ? b.dataset.t3pnl : -9999);
-      return bv - av;
-    }} else if (key === 't5') {{
-      av = parseFloat(a.dataset.t5pnl !== undefined ? a.dataset.t5pnl : -9999);
-      bv = parseFloat(b.dataset.t5pnl !== undefined ? b.dataset.t5pnl : -9999);
-      return bv - av;
+    }}
+    if (key === 'score') {{
+      return _dsNum(b,'score',0) - _dsNum(a,'score',0);
+    }}
+    if (key === 't3') {{
+      return _dsNum(b,'t3pnl',-9999) - _dsNum(a,'t3pnl',-9999);
+    }}
+    if (key === 't5') {{
+      return _dsNum(b,'t5pnl',-9999) - _dsNum(a,'t5pnl',-9999);
     }}
     return 0;
   }});
