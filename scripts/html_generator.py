@@ -1243,6 +1243,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
     <div class="tab-section active" id="tab-today">{today_html}</div>
     <div class="tab-section" id="tab-history">{history_html}</div>
     <div class="tab-section" id="tab-winrate">{winrate_html}</div>
+    <div class="tab-section" id="tab-stats">{stats_html}</div>
     <div class="tab-section" id="tab-us">{us_html}</div>
   </div>
 </main>
@@ -1257,7 +1258,7 @@ body{{background:var(--bg);color:var(--text);font-family:var(--font);min-height:
 <script>
 // Tab 切換
 function switchTab(tab) {{
-  ['today', 'history', 'winrate', 'us'].forEach(function(t) {{
+  ['today', 'history', 'winrate', 'stats', 'us'].forEach(function(t) {{
     var sec = document.getElementById('tab-' + t);
     var nav = document.getElementById('nav-' + t);
     if (sec) sec.classList.toggle('active', t === tab);
@@ -1655,6 +1656,91 @@ function _showWinPanel() {{
   var key = _winType + '_' + _winRange;
   var panel = document.getElementById('win-' + key);
   if (panel) panel.style.display = 'block';
+}}
+
+// ── [修改6] 歷史回測排序 ──
+function sortHistory(key, dir) {{
+  // 更新按鈕樣式
+  document.querySelectorAll('[id^="hsort-"]').forEach(function(b) {{
+    var active = (b.id === 'hsort-' + key + '-' + dir);
+    b.style.background  = active ? 'var(--s3)' : 'transparent';
+    b.style.borderColor = active ? 'var(--accent)' : 'var(--border)';
+    b.style.color       = active ? 'var(--text)' : 'var(--muted)';
+  }});
+  var tbody = document.getElementById('history-body');
+  if (!tbody) return;
+  var rows = Array.from(tbody.querySelectorAll('tr.history-row'));
+  rows.sort(function(a, b) {{
+    var av, bv;
+    if (key === 'date') {{
+      av = a.dataset.date || ''; bv = b.dataset.date || '';
+      return dir === 'desc' ? bv.localeCompare(av) : av.localeCompare(bv);
+    }} else if (key === 'score') {{
+      av = parseFloat(a.dataset.score || 0); bv = parseFloat(b.dataset.score || 0);
+      return bv - av;
+    }} else if (key === 't3') {{
+      av = parseFloat(a.dataset.t3pnl !== undefined ? a.dataset.t3pnl : -9999);
+      bv = parseFloat(b.dataset.t3pnl !== undefined ? b.dataset.t3pnl : -9999);
+      return bv - av;
+    }} else if (key === 't5') {{
+      av = parseFloat(a.dataset.t5pnl !== undefined ? a.dataset.t5pnl : -9999);
+      bv = parseFloat(b.dataset.t5pnl !== undefined ? b.dataset.t5pnl : -9999);
+      return bv - av;
+    }}
+    return 0;
+  }});
+  rows.forEach(function(r) {{ tbody.appendChild(r); }});
+  applyHistoryFilters();
+}}
+
+// ── [修改6] 美股歷史排序 ──
+function sortUsHistory(key, dir) {{
+  document.querySelectorAll('[id^="ussort-"]').forEach(function(b) {{
+    var active = (b.id === 'ussort-' + key + '-' + dir);
+    b.style.background  = active ? 'var(--s3)' : 'transparent';
+    b.style.borderColor = active ? 'var(--accent)' : 'var(--border)';
+    b.style.color       = active ? 'var(--text)' : 'var(--muted)';
+  }});
+  var tbody = document.getElementById('us-history-body');
+  if (!tbody) return;
+  var rows = Array.from(tbody.querySelectorAll('tr.us-history-row'));
+  rows.sort(function(a, b) {{
+    var av, bv;
+    if (key === 'date') {{
+      av = a.dataset.date || ''; bv = b.dataset.date || '';
+      return dir === 'desc' ? bv.localeCompare(av) : av.localeCompare(bv);
+    }} else if (key === 'score') {{
+      av = parseFloat(a.dataset.score || 0); bv = parseFloat(b.dataset.score || 0);
+      return bv - av;
+    }} else if (key === 't3') {{
+      av = parseFloat(a.dataset.t3pnl !== undefined ? a.dataset.t3pnl : -9999);
+      bv = parseFloat(b.dataset.t3pnl !== undefined ? b.dataset.t3pnl : -9999);
+      return bv - av;
+    }} else if (key === 't5') {{
+      av = parseFloat(a.dataset.t5pnl !== undefined ? a.dataset.t5pnl : -9999);
+      bv = parseFloat(b.dataset.t5pnl !== undefined ? b.dataset.t5pnl : -9999);
+      return bv - av;
+    }}
+    return 0;
+  }});
+  rows.forEach(function(r) {{ tbody.appendChild(r); }});
+  applyUsHistoryFilters();
+}}
+
+// ── [修改7] 統計分析 T+3/T+5 切換 ──
+var _statsMode = 't3';
+function switchStats(mode) {{
+  _statsMode = mode;
+  ['t3','t5'].forEach(function(m) {{
+    var btn = document.getElementById('sbtn-' + m);
+    if (btn) btn.classList.toggle('active', m === mode);
+  }});
+  ['band','cat','month'].forEach(function(panel) {{
+    ['t3','t5'].forEach(function(m) {{
+      var el = document.getElementById('sp-' + panel + '-' + m);
+      if (el) el.style.display = (m === mode) ? '' : 'none';
+    }});
+  }});
 }}
 </script>
 </body>
