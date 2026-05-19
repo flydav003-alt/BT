@@ -166,10 +166,9 @@ def upsert_daily_picks(picks: list[dict], category: str, trade_date: str) -> int
     ----
     成功寫入筆數
     """
+    valid_picks = [p for p in picks if "error" not in p]
     rows = []
-    for rank, p in enumerate(picks, 1):
-        if "error" in p:
-            continue
+    for rank, p in enumerate(valid_picks, 1):
         # 存全部訊號（前端 Modal 自行決定顯示幾筆）
         all_sigs = p.get("signals", [])
         sig_json = json.dumps(
