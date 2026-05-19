@@ -245,19 +245,24 @@ def get_pending_backfill() -> list[dict]:
     取得所有「尚未補齊 T+3 或 T+5 價格」的紀錄。
 
     修正說明：
-    - 原本用 BACKTEST_T3+1(4天) / BACKTEST_T5+1(6天) 日曆天，遇週末假日會過早觸發
-    - 台股T+5最多跨2個週末 ≈ 9個日曆天，加上台灣假日需要更多緩衝
-    - 改用 BACKFILL_CALENDAR_BUFFER=14 天統一判斷，確保T+5交易日真的到了再補填
+    - 台股：BACKFILL_CALENDAR_BUFFER=14 天（T+5 最多跨2個週末＋台灣假日緩衝）
+    - 美股：8 天即可（T+5 交易日 = 約 7 個日曆天，無台灣假日問題）
+    - 分開處理，避免美股資料被 14 天 buffer 擋住永遠不補填
     """
-    cutoff = (date.today() - timedelta(days=BACKFILL_CALENDAR_BUFFER)).isoformat()
+    tw_cutoff = (date.today() - timedelta(days=BACKFILL_CALENDAR_BUFFER)).isoformat()
+    us_cutoff = (date.today() - timedelta(days=8)).isoformat()
 
     with _connect() as conn:
         rows = conn.execute("""
             SELECT id, date, category, stock_id, close_price
             FROM daily_picks
-            WHERE date <= ?
-              AND (t3_price IS NULL OR t5_price IS NULL)
-        """, (cutoff,)).fetchall()
+            WHERE (t3_price IS NULL OR t5_price IS NULL)
+              AND (
+                (category != 'US' AND date <= ?)
+                OR
+                (category  = 'US' AND date <= ?)
+              )
+        """, (tw_cutoff, us_cutoff)).fetchall()
 
     return [dict(r) for r in rows]
 
@@ -320,7 +325,8 @@ def get_latest_picks(top_n: int = 8) -> dict[str, list[dict]]:
 
 def get_history_picks(days: int = None) -> list[dict]:
     """
-    取得最近 N 天的所有推薦紀錄（含回測欄位），依日期降序排列。
+    取得最近 N 天的台股推薦紀錄（ETF/OTC/TSE，含回測欄位），依日期降序排列。
+    美股歷史請用 get_history_picks_us()。
     days 預設使用 HISTORY_DAYS（90天），確保 T+5 資料完整可見。
     """
     if days is None:
@@ -331,7 +337,7 @@ def get_history_picks(days: int = None) -> list[dict]:
             SELECT dp.*, sn.stock_name as sn_name
             FROM daily_picks dp
             LEFT JOIN stock_names sn ON dp.stock_id = sn.stock_id
-            WHERE dp.date >= ? AND dp.category != 'US'
+            WHERE dp.date >= ? AND dp.category IN ('ETF', 'OTC', 'TSE')
             ORDER BY dp.date DESC, dp.category, dp.rank
         """, (cutoff,)).fetchall()
     return [dict(r) for r in rows]
