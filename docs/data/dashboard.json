@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-21 13:43:15",
+  "generated_at": "2026-05-22 06:35:22",
   "today_picks": {
     "ETF": [
       {
@@ -2899,9 +2899,9 @@
       {
         "stock_id": "SWKS",
         "stock_name": "SWKS",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 1.23,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 1.9,
         "win_rate": 100.0
       },
       {
@@ -2928,6 +2928,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 26.22,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "3357",
+        "stock_name": "臺慶科",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 23.88,
         "win_rate": 100.0
       },
       {
@@ -2968,14 +2976,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 14.54,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6669",
-        "stock_name": "緯穎",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 14.47,
         "win_rate": 100.0
       },
       {
@@ -3083,6 +3083,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "SWKS",
+        "stock_name": "SWKS",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 5.3,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2376",
         "stock_name": "技嘉",
         "total_cnt": 2,
@@ -3099,22 +3107,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "SWKS",
-        "stock_name": "SWKS",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.98,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "8086",
-        "stock_name": "宏捷科",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 3.63,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3580",
         "stock_name": "友威科",
         "total_cnt": 2,
@@ -3125,9 +3117,9 @@
       {
         "stock_id": "5269",
         "stock_name": "祥碩",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.3,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.26,
         "win_rate": 100.0
       },
       {
@@ -3160,6 +3152,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.11,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2455",
+        "stock_name": "全新",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.41,
         "win_rate": 100.0
       }
     ],
@@ -3383,9 +3383,9 @@
       {
         "stock_id": "SWKS",
         "stock_name": "SWKS",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 1.23,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 1.9,
         "win_rate": 100.0
       },
       {
@@ -3412,6 +3412,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 26.22,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "3357",
+        "stock_name": "臺慶科",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 23.88,
         "win_rate": 100.0
       },
       {
@@ -3452,14 +3460,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 14.54,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6669",
-        "stock_name": "緯穎",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 14.47,
         "win_rate": 100.0
       },
       {
@@ -3567,6 +3567,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "SWKS",
+        "stock_name": "SWKS",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 5.3,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2376",
         "stock_name": "技嘉",
         "total_cnt": 2,
@@ -3583,22 +3591,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "SWKS",
-        "stock_name": "SWKS",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.98,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "8086",
-        "stock_name": "宏捷科",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 3.63,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3580",
         "stock_name": "友威科",
         "total_cnt": 2,
@@ -3609,9 +3601,9 @@
       {
         "stock_id": "5269",
         "stock_name": "祥碩",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.3,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.26,
         "win_rate": 100.0
       },
       {
@@ -3644,6 +3636,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.11,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2455",
+        "stock_name": "全新",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.41,
         "win_rate": 100.0
       }
     ],
@@ -3867,9 +3867,9 @@
       {
         "stock_id": "SWKS",
         "stock_name": "SWKS",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 1.23,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 1.9,
         "win_rate": 100.0
       },
       {
@@ -3896,6 +3896,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 26.22,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "3357",
+        "stock_name": "臺慶科",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 23.88,
         "win_rate": 100.0
       },
       {
@@ -3936,14 +3944,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 14.54,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6669",
-        "stock_name": "緯穎",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 14.47,
         "win_rate": 100.0
       },
       {
@@ -4051,6 +4051,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "SWKS",
+        "stock_name": "SWKS",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 5.3,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2376",
         "stock_name": "技嘉",
         "total_cnt": 2,
@@ -4067,22 +4075,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "SWKS",
-        "stock_name": "SWKS",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.98,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "8086",
-        "stock_name": "宏捷科",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 3.63,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3580",
         "stock_name": "友威科",
         "total_cnt": 2,
@@ -4093,9 +4085,9 @@
       {
         "stock_id": "5269",
         "stock_name": "祥碩",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.3,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.26,
         "win_rate": 100.0
       },
       {
@@ -4128,6 +4120,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.11,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2455",
+        "stock_name": "全新",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.41,
         "win_rate": 100.0
       }
     ]
