@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-22 12:38:11",
+  "generated_at": "2026-05-23 05:55:15",
   "today_picks": {
     "ETF": [
       {
@@ -3185,6 +3185,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "ZS",
+        "stock_name": "Zscaler",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 14.23,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "5274",
         "stock_name": "信驊科技",
         "total_cnt": 2,
@@ -3358,14 +3366,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 3.04,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "COIN",
-        "stock_name": "Coinbase",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.85,
         "win_rate": 100.0
       },
       {
@@ -3443,6 +3443,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "ZS",
+        "stock_name": "Zscaler",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 15.42,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6274",
         "stock_name": "台燿",
         "total_cnt": 4,
@@ -3472,6 +3480,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 13.6,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "CSCO",
+        "stock_name": "思科系統",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 10.13,
         "win_rate": 100.0
       },
       {
@@ -3625,22 +3641,6 @@
         "win_cnt": 2,
         "avg_pnl": 2.3,
         "win_rate": 100.0
-      },
-      {
-        "stock_id": "AKAM",
-        "stock_name": "AKAM",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.11,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2455",
-        "stock_name": "全新",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 1.41,
-        "win_rate": 100.0
       }
     ],
     "t3_90d": [
@@ -3666,6 +3666,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 15.0,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "ZS",
+        "stock_name": "Zscaler",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 14.23,
         "win_rate": 100.0
       },
       {
@@ -3842,14 +3850,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 3.04,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "COIN",
-        "stock_name": "Coinbase",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.85,
         "win_rate": 100.0
       },
       {
@@ -3927,6 +3927,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "ZS",
+        "stock_name": "Zscaler",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 15.42,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6274",
         "stock_name": "台燿",
         "total_cnt": 4,
@@ -3956,6 +3964,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 13.6,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "CSCO",
+        "stock_name": "思科系統",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 10.13,
         "win_rate": 100.0
       },
       {
@@ -4109,22 +4125,6 @@
         "win_cnt": 2,
         "avg_pnl": 2.3,
         "win_rate": 100.0
-      },
-      {
-        "stock_id": "AKAM",
-        "stock_name": "AKAM",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.11,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2455",
-        "stock_name": "全新",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 1.41,
-        "win_rate": 100.0
       }
     ],
     "t3_all": [
@@ -4150,6 +4150,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 15.0,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "ZS",
+        "stock_name": "Zscaler",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 14.23,
         "win_rate": 100.0
       },
       {
@@ -4329,14 +4337,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "COIN",
-        "stock_name": "Coinbase",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.85,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "4766",
         "stock_name": "南寶",
         "total_cnt": 2,
@@ -4411,6 +4411,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "ZS",
+        "stock_name": "Zscaler",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 15.42,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6274",
         "stock_name": "台燿",
         "total_cnt": 4,
@@ -4440,6 +4448,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 13.6,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "CSCO",
+        "stock_name": "思科系統",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 10.13,
         "win_rate": 100.0
       },
       {
@@ -4592,22 +4608,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.3,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "AKAM",
-        "stock_name": "AKAM",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.11,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2455",
-        "stock_name": "全新",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 1.41,
         "win_rate": 100.0
       }
     ]
