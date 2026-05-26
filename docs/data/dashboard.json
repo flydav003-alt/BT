@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-26 14:17:09",
+  "generated_at": "2026-05-26 14:31:54",
   "today_picks": {
     "ETF": [
       {
-        "id": 1662,
+        "id": 1692,
         "date": "2026-05-26",
         "category": "ETF",
         "rank": 1,
@@ -23,10 +23,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:31"
+        "created_at": "2026-05-26 14:31:13"
       },
       {
-        "id": 1663,
+        "id": 1693,
         "date": "2026-05-26",
         "category": "ETF",
         "rank": 2,
@@ -46,10 +46,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:31"
+        "created_at": "2026-05-26 14:31:13"
       },
       {
-        "id": 1664,
+        "id": 1694,
         "date": "2026-05-26",
         "category": "ETF",
         "rank": 3,
@@ -69,10 +69,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:31"
+        "created_at": "2026-05-26 14:31:13"
       },
       {
-        "id": 1665,
+        "id": 1695,
         "date": "2026-05-26",
         "category": "ETF",
         "rank": 4,
@@ -92,10 +92,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:31"
+        "created_at": "2026-05-26 14:31:13"
       },
       {
-        "id": 1666,
+        "id": 1696,
         "date": "2026-05-26",
         "category": "ETF",
         "rank": 5,
@@ -115,10 +115,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:31"
+        "created_at": "2026-05-26 14:31:13"
       },
       {
-        "id": 1667,
+        "id": 1697,
         "date": "2026-05-26",
         "category": "ETF",
         "rank": 6,
@@ -138,10 +138,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:31"
+        "created_at": "2026-05-26 14:31:13"
       },
       {
-        "id": 1668,
+        "id": 1698,
         "date": "2026-05-26",
         "category": "ETF",
         "rank": 7,
@@ -161,10 +161,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:31"
+        "created_at": "2026-05-26 14:31:13"
       },
       {
-        "id": 1669,
+        "id": 1699,
         "date": "2026-05-26",
         "category": "ETF",
         "rank": 8,
@@ -184,10 +184,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:31"
+        "created_at": "2026-05-26 14:31:13"
       },
       {
-        "id": 1670,
+        "id": 1700,
         "date": "2026-05-26",
         "category": "ETF",
         "rank": 9,
@@ -207,10 +207,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:31"
+        "created_at": "2026-05-26 14:31:13"
       },
       {
-        "id": 1671,
+        "id": 1701,
         "date": "2026-05-26",
         "category": "ETF",
         "rank": 10,
@@ -230,7 +230,7 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:31"
+        "created_at": "2026-05-26 14:31:13"
       }
     ],
     "OTC": [
@@ -256,6 +256,52 @@
         "t5_price": null,
         "t5_pnl": null,
         "created_at": "2026-05-26 14:16:41"
+      },
+      {
+        "id": 1702,
+        "date": "2026-05-26",
+        "category": "OTC",
+        "rank": 1,
+        "stock_id": "4510",
+        "stock_name": "高鋒",
+        "kline_score": 77,
+        "verdict": "📊 偏多觀察",
+        "close_price": 51.9,
+        "rsi": 62.2,
+        "kd_k": 73.77923701664254,
+        "vol_ratio": 2.5,
+        "strategy_used": "breakout",
+        "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"多頭排列（MA5>10>20>60），主趨勢強勁向上\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=63.9，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"MACD\", \"text\": \"MACD黃金交叉Signal，買入訊號\"}, {\"type\": \"bull\", \"cat\": \"MACD\", \"text\": \"MACD柱狀放大，多方動能增強\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均2.4倍），多方積極攻擊\"}, {\"type\": \"bear\", \"cat\": \"布林\", \"text\": \"突破布林上軌，短線超漲追高謹慎\"}, {\"type\": \"bear\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：52.90（+1.9%）／支撐：45.00（-13.3%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 2002張\"}]",
+        "t3_date": null,
+        "t3_price": null,
+        "t3_pnl": null,
+        "t5_date": null,
+        "t5_price": null,
+        "t5_pnl": null,
+        "created_at": "2026-05-26 14:31:26"
+      },
+      {
+        "id": 1703,
+        "date": "2026-05-26",
+        "category": "OTC",
+        "rank": 2,
+        "stock_id": "3234",
+        "stock_name": "光環",
+        "kline_score": 71,
+        "verdict": "📊 偏多觀察",
+        "close_price": 110.5,
+        "rsi": 58.0,
+        "kd_k": 71.57975114051024,
+        "vol_ratio": 1.11,
+        "strategy_used": "balanced",
+        "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=57.7，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"MACD\", \"text\": \"MACD零軸上穿，中線轉多確認\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「多頭吞噬」△ 有效性低｜出現在高檔（近60日73%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：117.00（+5.9%）／支撐：91.00（-17.6%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 1326張\"}]",
+        "t3_date": null,
+        "t3_price": null,
+        "t3_pnl": null,
+        "t5_date": null,
+        "t5_price": null,
+        "t5_pnl": null,
+        "created_at": "2026-05-26 14:31:26"
       },
       {
         "id": 1673,
@@ -304,6 +350,29 @@
         "created_at": "2026-05-26 14:16:41"
       },
       {
+        "id": 1704,
+        "date": "2026-05-26",
+        "category": "OTC",
+        "rank": 3,
+        "stock_id": "6121",
+        "stock_name": "新普",
+        "kline_score": 69,
+        "verdict": "📊 偏多觀察",
+        "close_price": 394.5,
+        "rsi": 65.9,
+        "kd_k": 72.94455817751575,
+        "vol_ratio": 1.52,
+        "strategy_used": "breakout",
+        "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"多頭排列（MA5>10>20>60），主趨勢強勁向上\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=67.0，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「紅三兵」△ 有效性低｜出現在高檔（近60日96%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"bear\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：398.50（+1.0%）／支撐：353.50（-10.4%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 843張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 234張\"}]",
+        "t3_date": null,
+        "t3_price": null,
+        "t3_pnl": null,
+        "t5_date": null,
+        "t5_price": null,
+        "t5_pnl": null,
+        "created_at": "2026-05-26 14:31:26"
+      },
+      {
         "id": 1675,
         "date": "2026-05-26",
         "category": "OTC",
@@ -325,6 +394,52 @@
         "t5_price": null,
         "t5_pnl": null,
         "created_at": "2026-05-26 14:16:41"
+      },
+      {
+        "id": 1705,
+        "date": "2026-05-26",
+        "category": "OTC",
+        "rank": 4,
+        "stock_id": "6903",
+        "stock_name": "巨漢",
+        "kline_score": 63,
+        "verdict": "📊 偏多觀察",
+        "close_price": 434.0,
+        "rsi": 62.7,
+        "kd_k": 49.31274330779613,
+        "vol_ratio": 1.96,
+        "strategy_used": "balanced",
+        "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=56.2，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"量增紅K（量比均1.5倍），有效上漲\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「紅三兵」△ 有效性低｜出現在高檔（近60日91%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：451.50（+4.0%）／支撐：370.50（-14.6%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 1386張\"}]",
+        "t3_date": null,
+        "t3_price": null,
+        "t3_pnl": null,
+        "t5_date": null,
+        "t5_price": null,
+        "t5_pnl": null,
+        "created_at": "2026-05-26 14:31:26"
+      },
+      {
+        "id": 1706,
+        "date": "2026-05-26",
+        "category": "OTC",
+        "rank": 5,
+        "stock_id": "8182",
+        "stock_name": "加高",
+        "kline_score": 62,
+        "verdict": "📊 偏多觀察",
+        "close_price": 45.65,
+        "rsi": 68.0,
+        "kd_k": 82.5524426680789,
+        "vol_ratio": 1.67,
+        "strategy_used": "balanced",
+        "top_signals": "[{\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=62.3，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均3.6倍），多方積極攻擊\"}, {\"type\": \"bear\", \"cat\": \"布林\", \"text\": \"突破布林上軌，短線超漲追高謹慎\"}, {\"type\": \"bear\", \"cat\": \"K線型態\", \"text\": \"「十字線」多空僵持｜位置：高檔（93%），高檔出現需警惕\"}, {\"type\": \"bear\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：45.90（+0.5%）／支撐：32.50（-28.8%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 1614張\"}]",
+        "t3_date": null,
+        "t3_price": null,
+        "t3_pnl": null,
+        "t5_date": null,
+        "t5_price": null,
+        "t5_pnl": null,
+        "created_at": "2026-05-26 14:31:26"
       },
       {
         "id": 1676,
@@ -352,7 +467,7 @@
     ],
     "TSE": [
       {
-        "id": 1677,
+        "id": 1707,
         "date": "2026-05-26",
         "category": "TSE",
         "rank": 1,
@@ -372,10 +487,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:51"
+        "created_at": "2026-05-26 14:31:35"
       },
       {
-        "id": 1678,
+        "id": 1708,
         "date": "2026-05-26",
         "category": "TSE",
         "rank": 2,
@@ -395,10 +510,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:51"
+        "created_at": "2026-05-26 14:31:35"
       },
       {
-        "id": 1679,
+        "id": 1709,
         "date": "2026-05-26",
         "category": "TSE",
         "rank": 3,
@@ -418,10 +533,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:51"
+        "created_at": "2026-05-26 14:31:35"
       },
       {
-        "id": 1680,
+        "id": 1710,
         "date": "2026-05-26",
         "category": "TSE",
         "rank": 4,
@@ -441,10 +556,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:51"
+        "created_at": "2026-05-26 14:31:35"
       },
       {
-        "id": 1681,
+        "id": 1711,
         "date": "2026-05-26",
         "category": "TSE",
         "rank": 5,
@@ -464,13 +579,13 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-05-26 14:16:51"
+        "created_at": "2026-05-26 14:31:35"
       }
     ]
   },
   "history": [
     {
-      "id": 1662,
+      "id": 1692,
       "date": "2026-05-26",
       "category": "ETF",
       "rank": 1,
@@ -490,11 +605,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:31",
+      "created_at": "2026-05-26 14:31:13",
       "sn_name": "聯亞"
     },
     {
-      "id": 1663,
+      "id": 1693,
       "date": "2026-05-26",
       "category": "ETF",
       "rank": 2,
@@ -514,11 +629,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:31",
+      "created_at": "2026-05-26 14:31:13",
       "sn_name": "華邦電"
     },
     {
-      "id": 1664,
+      "id": 1694,
       "date": "2026-05-26",
       "category": "ETF",
       "rank": 3,
@@ -538,11 +653,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:31",
+      "created_at": "2026-05-26 14:31:13",
       "sn_name": "創意"
     },
     {
-      "id": 1665,
+      "id": 1695,
       "date": "2026-05-26",
       "category": "ETF",
       "rank": 4,
@@ -562,11 +677,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:31",
+      "created_at": "2026-05-26 14:31:13",
       "sn_name": "日月光投控"
     },
     {
-      "id": 1666,
+      "id": 1696,
       "date": "2026-05-26",
       "category": "ETF",
       "rank": 5,
@@ -586,11 +701,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:31",
+      "created_at": "2026-05-26 14:31:13",
       "sn_name": "嘉澤"
     },
     {
-      "id": 1667,
+      "id": 1697,
       "date": "2026-05-26",
       "category": "ETF",
       "rank": 6,
@@ -610,11 +725,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:31",
+      "created_at": "2026-05-26 14:31:13",
       "sn_name": "旺矽"
     },
     {
-      "id": 1668,
+      "id": 1698,
       "date": "2026-05-26",
       "category": "ETF",
       "rank": 7,
@@ -634,11 +749,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:31",
+      "created_at": "2026-05-26 14:31:13",
       "sn_name": "尖點"
     },
     {
-      "id": 1669,
+      "id": 1699,
       "date": "2026-05-26",
       "category": "ETF",
       "rank": 8,
@@ -658,11 +773,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:31",
+      "created_at": "2026-05-26 14:31:13",
       "sn_name": "奇鋐"
     },
     {
-      "id": 1670,
+      "id": 1700,
       "date": "2026-05-26",
       "category": "ETF",
       "rank": 9,
@@ -682,11 +797,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:31",
+      "created_at": "2026-05-26 14:31:13",
       "sn_name": "金像電"
     },
     {
-      "id": 1671,
+      "id": 1701,
       "date": "2026-05-26",
       "category": "ETF",
       "rank": 10,
@@ -706,7 +821,7 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:31",
+      "created_at": "2026-05-26 14:31:13",
       "sn_name": "漢唐"
     },
     {
@@ -734,6 +849,30 @@
       "sn_name": "漢科"
     },
     {
+      "id": 1702,
+      "date": "2026-05-26",
+      "category": "OTC",
+      "rank": 1,
+      "stock_id": "4510",
+      "stock_name": "高鋒",
+      "kline_score": 77,
+      "verdict": "📊 偏多觀察",
+      "close_price": 51.9,
+      "rsi": 62.2,
+      "kd_k": 73.77923701664254,
+      "vol_ratio": 2.5,
+      "strategy_used": "breakout",
+      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"多頭排列（MA5>10>20>60），主趨勢強勁向上\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=63.9，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"MACD\", \"text\": \"MACD黃金交叉Signal，買入訊號\"}, {\"type\": \"bull\", \"cat\": \"MACD\", \"text\": \"MACD柱狀放大，多方動能增強\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均2.4倍），多方積極攻擊\"}, {\"type\": \"bear\", \"cat\": \"布林\", \"text\": \"突破布林上軌，短線超漲追高謹慎\"}, {\"type\": \"bear\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：52.90（+1.9%）／支撐：45.00（-13.3%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 2002張\"}]",
+      "t3_date": null,
+      "t3_price": null,
+      "t3_pnl": null,
+      "t5_date": null,
+      "t5_price": null,
+      "t5_pnl": null,
+      "created_at": "2026-05-26 14:31:26",
+      "sn_name": "高鋒"
+    },
+    {
       "id": 1673,
       "date": "2026-05-26",
       "category": "OTC",
@@ -756,6 +895,30 @@
       "t5_pnl": null,
       "created_at": "2026-05-26 14:16:41",
       "sn_name": "長科*"
+    },
+    {
+      "id": 1703,
+      "date": "2026-05-26",
+      "category": "OTC",
+      "rank": 2,
+      "stock_id": "3234",
+      "stock_name": "光環",
+      "kline_score": 71,
+      "verdict": "📊 偏多觀察",
+      "close_price": 110.5,
+      "rsi": 58.0,
+      "kd_k": 71.57975114051024,
+      "vol_ratio": 1.11,
+      "strategy_used": "balanced",
+      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=57.7，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"MACD\", \"text\": \"MACD零軸上穿，中線轉多確認\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「多頭吞噬」△ 有效性低｜出現在高檔（近60日73%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：117.00（+5.9%）／支撐：91.00（-17.6%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 1326張\"}]",
+      "t3_date": null,
+      "t3_price": null,
+      "t3_pnl": null,
+      "t5_date": null,
+      "t5_price": null,
+      "t5_pnl": null,
+      "created_at": "2026-05-26 14:31:26",
+      "sn_name": "光環"
     },
     {
       "id": 1674,
@@ -782,6 +945,30 @@
       "sn_name": "華星光"
     },
     {
+      "id": 1704,
+      "date": "2026-05-26",
+      "category": "OTC",
+      "rank": 3,
+      "stock_id": "6121",
+      "stock_name": "新普",
+      "kline_score": 69,
+      "verdict": "📊 偏多觀察",
+      "close_price": 394.5,
+      "rsi": 65.9,
+      "kd_k": 72.94455817751575,
+      "vol_ratio": 1.52,
+      "strategy_used": "breakout",
+      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"多頭排列（MA5>10>20>60），主趨勢強勁向上\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=67.0，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「紅三兵」△ 有效性低｜出現在高檔（近60日96%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"bear\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：398.50（+1.0%）／支撐：353.50（-10.4%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 843張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 234張\"}]",
+      "t3_date": null,
+      "t3_price": null,
+      "t3_pnl": null,
+      "t5_date": null,
+      "t5_price": null,
+      "t5_pnl": null,
+      "created_at": "2026-05-26 14:31:26",
+      "sn_name": "新普"
+    },
+    {
       "id": 1675,
       "date": "2026-05-26",
       "category": "OTC",
@@ -804,6 +991,30 @@
       "t5_pnl": null,
       "created_at": "2026-05-26 14:16:41",
       "sn_name": "茂迪"
+    },
+    {
+      "id": 1705,
+      "date": "2026-05-26",
+      "category": "OTC",
+      "rank": 4,
+      "stock_id": "6903",
+      "stock_name": "巨漢",
+      "kline_score": 63,
+      "verdict": "📊 偏多觀察",
+      "close_price": 434.0,
+      "rsi": 62.7,
+      "kd_k": 49.31274330779613,
+      "vol_ratio": 1.96,
+      "strategy_used": "balanced",
+      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=56.2，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"量增紅K（量比均1.5倍），有效上漲\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「紅三兵」△ 有效性低｜出現在高檔（近60日91%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：451.50（+4.0%）／支撐：370.50（-14.6%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 1386張\"}]",
+      "t3_date": null,
+      "t3_price": null,
+      "t3_pnl": null,
+      "t5_date": null,
+      "t5_price": null,
+      "t5_pnl": null,
+      "created_at": "2026-05-26 14:31:26",
+      "sn_name": "巨漢"
     },
     {
       "id": 1676,
@@ -830,7 +1041,31 @@
       "sn_name": "智通*"
     },
     {
-      "id": 1677,
+      "id": 1706,
+      "date": "2026-05-26",
+      "category": "OTC",
+      "rank": 5,
+      "stock_id": "8182",
+      "stock_name": "加高",
+      "kline_score": 62,
+      "verdict": "📊 偏多觀察",
+      "close_price": 45.65,
+      "rsi": 68.0,
+      "kd_k": 82.5524426680789,
+      "vol_ratio": 1.67,
+      "strategy_used": "balanced",
+      "top_signals": "[{\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=62.3，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均3.6倍），多方積極攻擊\"}, {\"type\": \"bear\", \"cat\": \"布林\", \"text\": \"突破布林上軌，短線超漲追高謹慎\"}, {\"type\": \"bear\", \"cat\": \"K線型態\", \"text\": \"「十字線」多空僵持｜位置：高檔（93%），高檔出現需警惕\"}, {\"type\": \"bear\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：45.90（+0.5%）／支撐：32.50（-28.8%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 1614張\"}]",
+      "t3_date": null,
+      "t3_price": null,
+      "t3_pnl": null,
+      "t5_date": null,
+      "t5_price": null,
+      "t5_pnl": null,
+      "created_at": "2026-05-26 14:31:26",
+      "sn_name": "加高"
+    },
+    {
+      "id": 1707,
       "date": "2026-05-26",
       "category": "TSE",
       "rank": 1,
@@ -850,11 +1085,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:51",
+      "created_at": "2026-05-26 14:31:35",
       "sn_name": "國碩"
     },
     {
-      "id": 1678,
+      "id": 1708,
       "date": "2026-05-26",
       "category": "TSE",
       "rank": 2,
@@ -874,11 +1109,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:51",
+      "created_at": "2026-05-26 14:31:35",
       "sn_name": "力積電"
     },
     {
-      "id": 1679,
+      "id": 1709,
       "date": "2026-05-26",
       "category": "TSE",
       "rank": 3,
@@ -898,11 +1133,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:51",
+      "created_at": "2026-05-26 14:31:35",
       "sn_name": "上品"
     },
     {
-      "id": 1680,
+      "id": 1710,
       "date": "2026-05-26",
       "category": "TSE",
       "rank": 4,
@@ -922,11 +1157,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:51",
+      "created_at": "2026-05-26 14:31:35",
       "sn_name": "京元電子"
     },
     {
-      "id": 1681,
+      "id": 1711,
       "date": "2026-05-26",
       "category": "TSE",
       "rank": 5,
@@ -946,7 +1181,7 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-05-26 14:16:51",
+      "created_at": "2026-05-26 14:31:35",
       "sn_name": "中興電"
     },
     {
