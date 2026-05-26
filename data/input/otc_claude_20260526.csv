@@ -1,0 +1,6 @@
+﻿stock_id,name,close,daily_return_pct,vol_ratio,rsi14,ma28_bias_pct,inst_consec_days,yoy_revenue_pct,past_42d_pct,composite_score,is_early_breakout,is_strong_confirm
+4510,高鋒,51.9,3.8,2.5,62.2,9.26,1,45.8,22.7,49.2,True,True
+3234,光環,110.5,3.27,1.11,58.0,4.7,5,12.2,26.3,46.26,True,True
+6903,巨漢,434.0,4.45,1.96,62.7,8.12,4,297.0,41.8,44.25,True,True
+6121,新普,394.5,2.47,1.52,65.9,6.55,2,4.4,13.7,43.19,True,True
+8182,加高,45.65,0.44,1.67,68.0,18.09,5,14.1,68.5,41.98,True,True
