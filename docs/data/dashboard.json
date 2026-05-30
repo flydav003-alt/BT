@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29 13:42:33",
+  "generated_at": "2026-05-30 06:03:17",
   "today_picks": {
     "ETF": [
       {
@@ -3145,6 +3145,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "FSLR",
+        "stock_name": "第一太陽能",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 21.83,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6449",
         "stock_name": "鈺邦",
         "total_cnt": 2,
@@ -3366,14 +3374,6 @@
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 4.99,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2317",
-        "stock_name": "鴻海",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.38,
         "win_rate": 100.0
       }
     ],
@@ -3629,6 +3629,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "FSLR",
+        "stock_name": "第一太陽能",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 21.83,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6449",
         "stock_name": "鈺邦",
         "total_cnt": 2,
@@ -3850,14 +3858,6 @@
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 4.99,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2317",
-        "stock_name": "鴻海",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.38,
         "win_rate": 100.0
       }
     ],
@@ -4113,6 +4113,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "FSLR",
+        "stock_name": "第一太陽能",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 21.83,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6449",
         "stock_name": "鈺邦",
         "total_cnt": 2,
@@ -4334,14 +4342,6 @@
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 4.99,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2317",
-        "stock_name": "鴻海",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.38,
         "win_rate": 100.0
       }
     ],
