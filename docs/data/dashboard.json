@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10 11:38:59",
+  "generated_at": "2026-06-10 13:54:05",
   "today_picks": {
     "ETF": [
       {
@@ -2671,19 +2671,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "HPE",
-        "stock_name": "HPE",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 27.41,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "NTAP",
         "stock_name": "NTAP",
         "total_cnt": 6,
         "win_cnt": 6,
         "avg_pnl": 25.96,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "HPE",
+        "stock_name": "HPE",
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 22.47,
         "win_rate": 100.0
       },
       {
@@ -2748,14 +2748,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 9.04,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "HPQ",
-        "stock_name": "HPQ",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 8.78,
         "win_rate": 100.0
       },
       {
@@ -2876,6 +2868,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.08,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "3709",
+        "stock_name": "鑫聯大投控",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.91,
         "win_rate": 100.0
       }
     ],
@@ -3171,14 +3171,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "HPE",
-        "stock_name": "HPE",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 27.41,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3481",
         "stock_name": "群創",
         "total_cnt": 2,
@@ -3192,6 +3184,14 @@
         "total_cnt": 6,
         "win_cnt": 6,
         "avg_pnl": 25.96,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "HPE",
+        "stock_name": "HPE",
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 22.47,
         "win_rate": 100.0
       },
       {
@@ -3655,14 +3655,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "HPE",
-        "stock_name": "HPE",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 27.41,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3481",
         "stock_name": "群創",
         "total_cnt": 2,
@@ -3676,6 +3668,14 @@
         "total_cnt": 6,
         "win_cnt": 6,
         "avg_pnl": 25.96,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "HPE",
+        "stock_name": "HPE",
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 22.47,
         "win_rate": 100.0
       },
       {
