@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11 14:14:14",
+  "generated_at": "2026-06-12 07:01:16",
   "today_picks": {
     "ETF": [
       {
@@ -2151,222 +2151,6 @@
       "t5_pnl": null,
       "created_at": "2026-06-08 12:30:45",
       "sn_name": "信邦"
-    },
-    {
-      "id": 2287,
-      "date": "2026-06-06",
-      "category": "ETF",
-      "rank": 1,
-      "stock_id": "6669",
-      "stock_name": "緯穎",
-      "kline_score": 68,
-      "verdict": "📊 偏多觀察",
-      "close_price": 5660.0,
-      "rsi": 61.72839506172839,
-      "kd_k": 70.01379815556761,
-      "vol_ratio": 0.9145044087839206,
-      "strategy_used": "breakout",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"多頭排列（MA5>10>20>60），主趨勢強勁向上\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=61.7，處於偏多健康區間\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：5880.00（+3.9%）／支撐：4775.00（-15.6%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 172張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 145張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-06-06 11:56:17",
-      "sn_name": "緯穎"
-    },
-    {
-      "id": 2288,
-      "date": "2026-06-06",
-      "category": "ETF",
-      "rank": 2,
-      "stock_id": "6147",
-      "stock_name": "頎邦",
-      "kline_score": 68,
-      "verdict": "📊 偏多觀察",
-      "close_price": 270.0,
-      "rsi": 70.06369426751593,
-      "kd_k": 57.87366458212012,
-      "vol_ratio": 0.7567743506736693,
-      "strategy_used": "breakout",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"多頭排列（MA5>10>20>60），主趨勢強勁向上\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=70.1，處於偏多健康區間\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：313.50（+16.1%）／支撐：176.00（-34.8%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 765張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 9423張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-06-06 11:56:17",
-      "sn_name": "頎邦"
-    },
-    {
-      "id": 2289,
-      "date": "2026-06-06",
-      "category": "ETF",
-      "rank": 3,
-      "stock_id": "6187",
-      "stock_name": "萬潤",
-      "kline_score": 61,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 1120.0,
-      "rsi": 48.93617021276596,
-      "kd_k": 34.40462338769032,
-      "vol_ratio": 1.268189406402181,
-      "strategy_used": "pullback",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"空頭排列（MA5<10<20），短線趨勢向下\"}, {\"type\": \"neutral\", \"cat\": \"RSI\", \"text\": \"RSI=48.9，偏弱，觀望\"}, {\"type\": \"bull\", \"cat\": \"KD\", \"text\": \"低檔KD金叉（K=34.4），短線強烈買入訊號\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"量增紅K（量比均1.3倍），有效上漲\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「紅三兵」▷ 有效性中｜整理區出現，需配合均線突破確認\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：1285.00（+14.7%）／支撐：998.00（-10.9%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 463張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 22張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-06-06 11:56:17",
-      "sn_name": "萬潤"
-    },
-    {
-      "id": 2290,
-      "date": "2026-06-06",
-      "category": "ETF",
-      "rank": 4,
-      "stock_id": "2330",
-      "stock_name": "台積電",
-      "kline_score": 61,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 2365.0,
-      "rsi": 64.04494382022472,
-      "kd_k": 69.79871908616758,
-      "vol_ratio": 1.0300572031277788,
-      "strategy_used": "breakout",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"多頭排列（MA5>10>20>60），主趨勢強勁向上\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=64.0，處於偏多健康區間\"}, {\"type\": \"bear\", \"cat\": \"KD\", \"text\": \"KD死叉（K=69.8），短線壓力\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：2440.00（+3.2%）／支撐：2185.00（-7.6%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 32120張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 4477張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-06-06 11:56:17",
-      "sn_name": "台積電"
-    },
-    {
-      "id": 2291,
-      "date": "2026-06-06",
-      "category": "ETF",
-      "rank": 5,
-      "stock_id": "6139",
-      "stock_name": "亞翔",
-      "kline_score": 53,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 808.0,
-      "rsi": 62.83185840707965,
-      "kd_k": 50.961064896703064,
-      "vol_ratio": 1.5879315356655677,
-      "strategy_used": "balanced",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=62.8，處於偏多健康區間\"}, {\"type\": \"bear\", \"cat\": \"量價\", \"text\": \"大量黑K（量比均1.6倍），賣壓沉重\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：853.00（+5.6%）／支撐：655.00（-18.9%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 2900張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 283張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-06-06 11:56:17",
-      "sn_name": "亞翔"
-    },
-    {
-      "id": 2292,
-      "date": "2026-06-06",
-      "category": "ETF",
-      "rank": 6,
-      "stock_id": "3665",
-      "stock_name": "貿聯-KY",
-      "kline_score": 53,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 2200.0,
-      "rsi": 57.322175732217566,
-      "kd_k": 52.32272998820571,
-      "vol_ratio": 0.8444024420272981,
-      "strategy_used": "pullback",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=57.3，處於偏多健康區間\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：3010.00（+36.8%）／支撐：1860.00（-15.5%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 843張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 313張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-06-06 11:56:17",
-      "sn_name": "貿聯-KY"
-    },
-    {
-      "id": 2293,
-      "date": "2026-06-06",
-      "category": "ETF",
-      "rank": 7,
-      "stock_id": "2345",
-      "stock_name": "智邦",
-      "kline_score": 50,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 2490.0,
-      "rsi": 49.7584541062802,
-      "kd_k": 39.47815449657538,
-      "vol_ratio": 0.5492612530065285,
-      "strategy_used": "pullback",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"跌破MA20（2504.25），注意下方支撐\"}, {\"type\": \"neutral\", \"cat\": \"RSI\", \"text\": \"RSI=49.8，偏弱，觀望\"}, {\"type\": \"bear\", \"cat\": \"MACD\", \"text\": \"MACD柱狀向下擴大，空方動能增強\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：2695.00（+8.2%）／支撐：2325.00（-6.6%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 800張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 306張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-06-06 11:56:17",
-      "sn_name": "智邦"
-    },
-    {
-      "id": 2295,
-      "date": "2026-06-06",
-      "category": "ETF",
-      "rank": 9,
-      "stock_id": "6274",
-      "stock_name": "台燿科技",
-      "kline_score": 49,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 1610.0,
-      "rsi": 66.2037037037037,
-      "kd_k": 53.86912655209024,
-      "vol_ratio": 1.7766141803579623,
-      "strategy_used": "breakout",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"多頭排列（MA5>10>20>60），主趨勢強勁向上\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=66.2，處於偏多健康區間\"}, {\"type\": \"bear\", \"cat\": \"量價\", \"text\": \"大量黑K（量比均1.8倍），賣壓沉重\"}, {\"type\": \"bear\", \"cat\": \"K線型態\", \"text\": \"「暮星」⭐ 有效性高｜出現在高檔，爆量，看跌訊號可信度高\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：1815.00（+12.7%）／支撐：1190.00（-26.1%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 392張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 2537張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-06-06 11:56:17",
-      "sn_name": "台燿"
-    },
-    {
-      "id": 2296,
-      "date": "2026-06-06",
-      "category": "ETF",
-      "rank": 10,
-      "stock_id": "6223",
-      "stock_name": "旺矽",
-      "kline_score": 47,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 5765.0,
-      "rsi": 43.9344262295082,
-      "kd_k": 34.5294165930582,
-      "vol_ratio": 0.86396505831978,
-      "strategy_used": "pullback",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"跌破MA20（5861.75），注意下方支撐\"}, {\"type\": \"neutral\", \"cat\": \"RSI\", \"text\": \"RSI=43.9，偏弱，觀望\"}, {\"type\": \"bear\", \"cat\": \"RSI背離\", \"text\": \"RSI頂背離：價格創新高（6390.00）但RSI走低，潛在見頂訊號\"}, {\"type\": \"bear\", \"cat\": \"MACD\", \"text\": \"MACD柱狀向下擴大，空方動能增強\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：6665.00（+15.6%）／支撐：4710.00（-18.3%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 100張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 270張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-06-06 11:56:17",
-      "sn_name": "旺矽"
     }
   ],
   "win_stats": {
@@ -2412,19 +2196,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3008",
-        "stock_name": "大立光",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 14.91,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "8182",
         "stock_name": "加高",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 13.98,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "1303",
+        "stock_name": "南亞",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 13.88,
         "win_rate": 100.0
       },
       {
@@ -2444,6 +2228,22 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "3008",
+        "stock_name": "大立光",
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 13.24,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "APP",
+        "stock_name": "APP",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 13.0,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2455",
         "stock_name": "全新",
         "total_cnt": 2,
@@ -2452,19 +2252,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "APP",
-        "stock_name": "APP",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 10.24,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3653",
         "stock_name": "健策",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 9.31,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2481",
+        "stock_name": "強茂",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 9.09,
         "win_rate": 100.0
       },
       {
@@ -2492,14 +2292,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "2481",
-        "stock_name": "強茂",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 6.64,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6227",
         "stock_name": "茂綸",
         "total_cnt": 2,
@@ -2524,14 +2316,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6274",
-        "stock_name": "台燿",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 5.11,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "LRCX",
         "stock_name": "拉姆研究",
         "total_cnt": 2,
@@ -2545,6 +2329,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 4.2,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2317",
+        "stock_name": "鴻海",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 3.84,
         "win_rate": 100.0
       },
       {
@@ -2564,19 +2356,19 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "6274",
+        "stock_name": "台燿",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.5,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2542",
         "stock_name": "興富發",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 3.4,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "CIEN",
-        "stock_name": "CIEN",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.98,
         "win_rate": 100.0
       },
       {
@@ -2601,14 +2393,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.45,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "3563",
-        "stock_name": "牧德",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.41,
         "win_rate": 100.0
       }
     ],
@@ -2672,17 +2456,17 @@
       {
         "stock_id": "3008",
         "stock_name": "大立光",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 13.81,
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 12.5,
         "win_rate": 100.0
       },
       {
-        "stock_id": "2481",
-        "stock_name": "強茂",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 12.1,
+        "stock_id": "1303",
+        "stock_name": "南亞",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 12.42,
         "win_rate": 100.0
       },
       {
@@ -2710,6 +2494,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "2481",
+        "stock_name": "強茂",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 9.71,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6462",
         "stock_name": "神盾",
         "total_cnt": 3,
@@ -2731,14 +2523,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 7.82,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "CIEN",
-        "stock_name": "CIEN",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 6.96,
         "win_rate": 100.0
       },
       {
@@ -2766,19 +2550,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6274",
-        "stock_name": "台燿",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 5.35,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "GS",
         "stock_name": "高盛集團",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 5.27,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6121",
+        "stock_name": "新普",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 4.77,
         "win_rate": 100.0
       },
       {
@@ -2798,6 +2582,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "SMCI",
+        "stock_name": "SMCI",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.93,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "DXCM",
         "stock_name": "德康醫療",
         "total_cnt": 2,
@@ -2808,9 +2600,9 @@
       {
         "stock_id": "3706",
         "stock_name": "神達",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.4,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.61,
         "win_rate": 100.0
       },
       {
@@ -2843,14 +2635,6 @@
         "total_cnt": 5,
         "win_cnt": 5,
         "avg_pnl": 2.29,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2542",
-        "stock_name": "興富發",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.28,
         "win_rate": 100.0
       }
     ],
@@ -2885,14 +2669,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 19.13,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "4966",
-        "stock_name": "譜瑞-KY",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 18.2,
         "win_rate": 100.0
       },
       {
@@ -2968,6 +2744,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "1303",
+        "stock_name": "南亞",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 13.88,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "3624",
         "stock_name": "光頡",
         "total_cnt": 3,
@@ -3024,14 +2808,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6274",
-        "stock_name": "台燿",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 10.62,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6257",
         "stock_name": "矽格",
         "total_cnt": 2,
@@ -3053,6 +2829,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 9.24,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6274",
+        "stock_name": "台燿",
+        "total_cnt": 7,
+        "win_cnt": 7,
+        "avg_pnl": 9.14,
         "win_rate": 100.0
       },
       {
@@ -3186,14 +2970,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "4966",
-        "stock_name": "譜瑞-KY",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 18.73,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3236",
         "stock_name": "千如",
         "total_cnt": 2,
@@ -3258,19 +3034,19 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "1303",
+        "stock_name": "南亞",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 12.42,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2481",
         "stock_name": "強茂",
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 12.1,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6274",
-        "stock_name": "台燿",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 11.87,
         "win_rate": 100.0
       },
       {
@@ -3336,6 +3112,14 @@
         "win_cnt": 2,
         "avg_pnl": 9.07,
         "win_rate": 100.0
+      },
+      {
+        "stock_id": "6462",
+        "stock_name": "神盾",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 9.04,
+        "win_rate": 100.0
       }
     ],
     "t3_all": [
@@ -3369,14 +3153,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 19.13,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "4966",
-        "stock_name": "譜瑞-KY",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 18.2,
         "win_rate": 100.0
       },
       {
@@ -3452,6 +3228,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "1303",
+        "stock_name": "南亞",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 13.88,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "3624",
         "stock_name": "光頡",
         "total_cnt": 3,
@@ -3508,14 +3292,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6274",
-        "stock_name": "台燿",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 10.62,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6257",
         "stock_name": "矽格",
         "total_cnt": 2,
@@ -3537,6 +3313,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 9.24,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6274",
+        "stock_name": "台燿",
+        "total_cnt": 7,
+        "win_cnt": 7,
+        "avg_pnl": 9.14,
         "win_rate": 100.0
       },
       {
@@ -3670,14 +3454,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "4966",
-        "stock_name": "譜瑞-KY",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 18.73,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3236",
         "stock_name": "千如",
         "total_cnt": 2,
@@ -3742,19 +3518,19 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "1303",
+        "stock_name": "南亞",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 12.42,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2481",
         "stock_name": "強茂",
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 12.1,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6274",
-        "stock_name": "台燿",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 11.87,
         "win_rate": 100.0
       },
       {
@@ -3819,6 +3595,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 9.07,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6462",
+        "stock_name": "神盾",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 9.04,
         "win_rate": 100.0
       }
     ]
