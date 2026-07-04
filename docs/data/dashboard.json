@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03 12:24:24",
+  "generated_at": "2026-07-04 06:00:09",
   "today_picks": {
     "ETF": [
       {
@@ -2865,14 +2865,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "SWK",
-        "stock_name": "Stanley Black & Decker, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 8.72,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2383",
         "stock_name": "台光電子",
         "total_cnt": 2,
@@ -3063,6 +3055,14 @@
         "win_cnt": 3,
         "avg_pnl": 1.56,
         "win_rate": 100.0
+      },
+      {
+        "stock_id": "PNC",
+        "stock_name": "PNC金融",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.39,
+        "win_rate": 100.0
       }
     ],
     "t5_30d": [
@@ -3187,14 +3187,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "5536",
-        "stock_name": "聖暉*",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.83,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "DHI",
         "stock_name": "D.R.霍頓",
         "total_cnt": 2,
@@ -3240,6 +3232,14 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 2.74,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "FDX",
+        "stock_name": "聯邦快遞",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 2.27,
         "win_rate": 100.0
       },
       {
@@ -3477,14 +3477,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "SWK",
-        "stock_name": "Stanley Black & Decker, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 8.72,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3189",
         "stock_name": "景碩科技",
         "total_cnt": 2,
@@ -3546,6 +3538,14 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.51,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "3709",
+        "stock_name": "鑫聯大投控",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.46,
         "win_rate": 100.0
       }
     ],
@@ -3961,14 +3961,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "SWK",
-        "stock_name": "Stanley Black & Decker, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 8.72,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3189",
         "stock_name": "景碩科技",
         "total_cnt": 2,
@@ -4030,6 +4022,14 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.51,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "3709",
+        "stock_name": "鑫聯大投控",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.46,
         "win_rate": 100.0
       }
     ],
