@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-09 13:27:00",
+  "generated_at": "2026-07-10 06:20:50",
   "today_picks": {
     "ETF": [
       {
@@ -2266,19 +2266,19 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "3189",
+        "stock_name": "景碩科技",
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 8.84,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2449",
         "stock_name": "京元電子",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 8.1,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "5347",
-        "stock_name": "世界先進",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 7.25,
         "win_rate": 100.0
       },
       {
@@ -2290,11 +2290,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3189",
-        "stock_name": "景碩科技",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 7.12,
+        "stock_id": "2345",
+        "stock_name": "智邦",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.76,
         "win_rate": 100.0
       },
       {
@@ -2306,11 +2306,35 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "AJG",
+        "stock_name": "Arthur J. Gallagher & Co.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.53,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "DASH",
         "stock_name": "DoorDash",
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.51,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "5347",
+        "stock_name": "世界先進",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 5.25,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6139",
+        "stock_name": "亞翔",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 4.68,
         "win_rate": 100.0
       },
       {
@@ -2378,6 +2402,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "3037",
+        "stock_name": "欣興",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 3.2,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "3131",
         "stock_name": "弘塑",
         "total_cnt": 5,
@@ -2442,14 +2474,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "ASML",
-        "stock_name": "ASML",
-        "total_cnt": 5,
-        "win_cnt": 4,
-        "avg_pnl": 2.03,
-        "win_rate": 80.0
-      },
-      {
         "stock_id": "4958",
         "stock_name": "臻鼎-KY",
         "total_cnt": 4,
@@ -2464,41 +2488,9 @@
         "win_cnt": 3,
         "avg_pnl": 3.84,
         "win_rate": 75.0
-      },
-      {
-        "stock_id": "3443",
-        "stock_name": "創意",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 2.45,
-        "win_rate": 75.0
-      },
-      {
-        "stock_id": "SWK",
-        "stock_name": "Stanley Black & Decker, Inc.",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 5.46,
-        "win_rate": 66.7
-      },
-      {
-        "stock_id": "TER",
-        "stock_name": "Teradyne, Inc.",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 5.19,
-        "win_rate": 66.7
       }
     ],
     "t5_30d": [
-      {
-        "stock_id": "5347",
-        "stock_name": "世界先進",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 11.94,
-        "win_rate": 100.0
-      },
       {
         "stock_id": "3374",
         "stock_name": "精材",
@@ -2508,11 +2500,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3189",
-        "stock_name": "景碩科技",
+        "stock_id": "3017",
+        "stock_name": "奇鋐科技",
         "total_cnt": 3,
         "win_cnt": 3,
-        "avg_pnl": 8.85,
+        "avg_pnl": 9.58,
         "win_rate": 100.0
       },
       {
@@ -2564,11 +2556,43 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "6139",
+        "stock_name": "亞翔",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 7.64,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "3189",
+        "stock_name": "景碩科技",
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 7.12,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "VRTX",
         "stock_name": "福泰製藥",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 7.04,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2345",
+        "stock_name": "智邦",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.27,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "3711",
+        "stock_name": "日月光投控",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 6.1,
         "win_rate": 100.0
       },
       {
@@ -2580,35 +2604,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3711",
-        "stock_name": "日月光投控",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 5.19,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2345",
-        "stock_name": "智邦",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 4.78,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "DHI",
         "stock_name": "D.R.霍頓",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 4.72,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "5536",
-        "stock_name": "聖暉*",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.71,
         "win_rate": 100.0
       },
       {
@@ -2676,6 +2676,22 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "2404",
+        "stock_name": "漢唐集成",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.11,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "WMB",
+        "stock_name": "Williams Companies, Inc. (The)",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 0.89,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "OTIS",
         "stock_name": "Otis Worldwide Corporation",
         "total_cnt": 2,
@@ -2694,17 +2710,9 @@
       {
         "stock_id": "SPG",
         "stock_name": "Simon Property Group, Inc.",
-        "total_cnt": 6,
-        "win_cnt": 5,
-        "avg_pnl": 4.02,
-        "win_rate": 83.3
-      },
-      {
-        "stock_id": "ASML",
-        "stock_name": "ASML",
         "total_cnt": 5,
         "win_cnt": 4,
-        "avg_pnl": 2.44,
+        "avg_pnl": 4.06,
         "win_rate": 80.0
       },
       {
@@ -2716,20 +2724,12 @@
         "win_rate": 75.0
       },
       {
-        "stock_id": "2454",
-        "stock_name": "聯發科",
-        "total_cnt": 8,
-        "win_cnt": 6,
-        "avg_pnl": 0.17,
+        "stock_id": "ASML",
+        "stock_name": "ASML",
+        "total_cnt": 4,
+        "win_cnt": 3,
+        "avg_pnl": 2.27,
         "win_rate": 75.0
-      },
-      {
-        "stock_id": "LRCX",
-        "stock_name": "拉姆研究",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 5.34,
-        "win_rate": 66.7
       }
     ],
     "t3_90d": [
@@ -2795,14 +2795,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 15.0,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "8182",
-        "stock_name": "加高",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 13.98,
         "win_rate": 100.0
       },
       {
@@ -2878,6 +2870,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "8182",
+        "stock_name": "加高",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 9.57,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6257",
         "stock_name": "矽格",
         "total_cnt": 2,
@@ -2888,17 +2888,17 @@
       {
         "stock_id": "3236",
         "stock_name": "千如",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 9.24,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 8.88,
         "win_rate": 100.0
       },
       {
         "stock_id": "3189",
         "stock_name": "景碩科技",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 7.27,
+        "total_cnt": 7,
+        "win_cnt": 7,
+        "avg_pnl": 8.46,
         "win_rate": 100.0
       },
       {
@@ -2942,19 +2942,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "5347",
-        "stock_name": "世界先進",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 5.79,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "DHI",
         "stock_name": "D.R.霍頓",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 5.65,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "AJG",
+        "stock_name": "Arthur J. Gallagher & Co.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.53,
         "win_rate": 100.0
       },
       {
@@ -3048,14 +3048,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3236",
-        "stock_name": "千如",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 18.66,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3357",
         "stock_name": "臺慶科",
         "total_cnt": 4,
@@ -3096,6 +3088,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "3236",
+        "stock_name": "千如",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 13.03,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2481",
         "stock_name": "強茂",
         "total_cnt": 3,
@@ -3125,14 +3125,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 9.65,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "5347",
-        "stock_name": "世界先進",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 9.54,
         "win_rate": 100.0
       },
       {
@@ -3214,6 +3206,14 @@
         "win_cnt": 4,
         "avg_pnl": 8.51,
         "win_rate": 100.0
+      },
+      {
+        "stock_id": "GPC",
+        "stock_name": "Genuine Parts Company",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 8.3,
+        "win_rate": 100.0
       }
     ],
     "t3_all": [
@@ -3279,14 +3279,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 15.0,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "8182",
-        "stock_name": "加高",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 13.98,
         "win_rate": 100.0
       },
       {
@@ -3362,6 +3354,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "8182",
+        "stock_name": "加高",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 9.57,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6257",
         "stock_name": "矽格",
         "total_cnt": 2,
@@ -3372,17 +3372,17 @@
       {
         "stock_id": "3236",
         "stock_name": "千如",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 9.24,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 8.88,
         "win_rate": 100.0
       },
       {
         "stock_id": "3189",
         "stock_name": "景碩科技",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 7.27,
+        "total_cnt": 7,
+        "win_cnt": 7,
+        "avg_pnl": 8.46,
         "win_rate": 100.0
       },
       {
@@ -3426,19 +3426,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "5347",
-        "stock_name": "世界先進",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 5.79,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "DHI",
         "stock_name": "D.R.霍頓",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 5.65,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "AJG",
+        "stock_name": "Arthur J. Gallagher & Co.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.53,
         "win_rate": 100.0
       },
       {
@@ -3532,14 +3532,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3236",
-        "stock_name": "千如",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 18.66,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3357",
         "stock_name": "臺慶科",
         "total_cnt": 4,
@@ -3580,6 +3572,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "3236",
+        "stock_name": "千如",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 13.03,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2481",
         "stock_name": "強茂",
         "total_cnt": 3,
@@ -3609,14 +3609,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 9.65,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "5347",
-        "stock_name": "世界先進",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 9.54,
         "win_rate": 100.0
       },
       {
@@ -3697,6 +3689,14 @@
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 8.51,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "GPC",
+        "stock_name": "Genuine Parts Company",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 8.3,
         "win_rate": 100.0
       }
     ]
