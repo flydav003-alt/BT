@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10 12:39:44",
+  "generated_at": "2026-07-11 05:28:08",
   "today_picks": {
     "ETF": [
       {
@@ -2793,14 +2793,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "2345",
-        "stock_name": "智邦",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 6.76,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "DHI",
         "stock_name": "D.R.霍頓",
         "total_cnt": 2,
@@ -2873,22 +2865,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "CNP",
-        "stock_name": "CenterPoint Energy, Inc (Holdin",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.71,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "GPC",
-        "stock_name": "Genuine Parts Company",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 3.63,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "IP",
         "stock_name": "International Paper Company",
         "total_cnt": 6,
@@ -2915,9 +2891,9 @@
       {
         "stock_id": "3131",
         "stock_name": "弘塑",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 3.19,
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 3.1,
         "win_rate": 100.0
       },
       {
@@ -2977,6 +2953,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "GPC",
+        "stock_name": "Genuine Parts Company",
+        "total_cnt": 5,
+        "win_cnt": 4,
+        "avg_pnl": 1.72,
+        "win_rate": 80.0
+      },
+      {
         "stock_id": "4958",
         "stock_name": "臻鼎-KY",
         "total_cnt": 4,
@@ -2991,6 +2975,22 @@
         "win_cnt": 3,
         "avg_pnl": 3.84,
         "win_rate": 75.0
+      },
+      {
+        "stock_id": "3443",
+        "stock_name": "創意",
+        "total_cnt": 4,
+        "win_cnt": 3,
+        "avg_pnl": 2.45,
+        "win_rate": 75.0
+      },
+      {
+        "stock_id": "ASML",
+        "stock_name": "ASML",
+        "total_cnt": 4,
+        "win_cnt": 3,
+        "avg_pnl": 0.9,
+        "win_rate": 75.0
       }
     ],
     "t5_30d": [
@@ -3003,6 +3003,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "AJG",
+        "stock_name": "Arthur J. Gallagher & Co.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 9.97,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "3017",
         "stock_name": "奇鋐科技",
         "total_cnt": 3,
@@ -3011,27 +3019,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "MRNA",
-        "stock_name": "Moderna",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 8.85,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "LUV",
         "stock_name": "Southwest Airlines Company",
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 8.44,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "GPC",
-        "stock_name": "Genuine Parts Company",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 8.3,
         "win_rate": 100.0
       },
       {
@@ -3080,14 +3072,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 7.04,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2345",
-        "stock_name": "智邦",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 6.27,
         "win_rate": 100.0
       },
       {
@@ -3171,14 +3155,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "CNP",
-        "stock_name": "CenterPoint Energy, Inc (Holdin",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 1.33,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2404",
         "stock_name": "漢唐集成",
         "total_cnt": 2,
@@ -3211,6 +3187,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "GPC",
+        "stock_name": "Genuine Parts Company",
+        "total_cnt": 5,
+        "win_cnt": 4,
+        "avg_pnl": 5.59,
+        "win_rate": 80.0
+      },
+      {
         "stock_id": "SPG",
         "stock_name": "Simon Property Group, Inc.",
         "total_cnt": 5,
@@ -3233,6 +3217,22 @@
         "win_cnt": 3,
         "avg_pnl": 2.27,
         "win_rate": 75.0
+      },
+      {
+        "stock_id": "8054",
+        "stock_name": "安國",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 11.73,
+        "win_rate": 66.7
+      },
+      {
+        "stock_id": "2303",
+        "stock_name": "聯華電子",
+        "total_cnt": 9,
+        "win_cnt": 6,
+        "avg_pnl": 9.03,
+        "win_rate": 66.7
       }
     ],
     "t3_90d": [
@@ -3623,6 +3623,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "AJG",
+        "stock_name": "Arthur J. Gallagher & Co.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 9.97,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6239",
         "stock_name": "力成",
         "total_cnt": 2,
@@ -3679,14 +3687,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "MRNA",
-        "stock_name": "Moderna",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 8.85,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2465",
         "stock_name": "麗臺",
         "total_cnt": 2,
@@ -3711,11 +3711,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "GPC",
-        "stock_name": "Genuine Parts Company",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 8.3,
+        "stock_id": "SWK",
+        "stock_name": "Stanley Black & Decker, Inc.",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 7.78,
         "win_rate": 100.0
       }
     ],
@@ -4107,6 +4107,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "AJG",
+        "stock_name": "Arthur J. Gallagher & Co.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 9.97,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6239",
         "stock_name": "力成",
         "total_cnt": 2,
@@ -4163,14 +4171,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "MRNA",
-        "stock_name": "Moderna",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 8.85,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2465",
         "stock_name": "麗臺",
         "total_cnt": 2,
@@ -4195,11 +4195,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "GPC",
-        "stock_name": "Genuine Parts Company",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 8.3,
+        "stock_id": "SWK",
+        "stock_name": "Stanley Black & Decker, Inc.",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 7.78,
         "win_rate": 100.0
       }
     ]
