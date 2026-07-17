@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16 11:58:31",
+  "generated_at": "2026-07-17 05:28:13",
   "today_picks": {
     "ETF": [
       {
@@ -1810,19 +1810,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6415",
-        "stock_name": "矽力*-KY",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 13.61,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2449",
         "stock_name": "京元電子",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 8.1,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "DASH",
+        "stock_name": "DoorDash",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 7.08,
         "win_rate": 100.0
       },
       {
@@ -1839,14 +1839,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 5.53,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "DASH",
-        "stock_name": "DoorDash",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 5.51,
         "win_rate": 100.0
       },
       {
@@ -1887,22 +1879,6 @@
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 4.42,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "VRTX",
-        "stock_name": "福泰製藥",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.42,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "8110",
-        "stock_name": "華東",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.08,
         "win_rate": 100.0
       },
       {
@@ -1954,6 +1930,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "2105",
+        "stock_name": "正新",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.27,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "3189",
         "stock_name": "景碩科技",
         "total_cnt": 7,
@@ -2002,19 +1986,19 @@
         "win_rate": 66.7
       },
       {
+        "stock_id": "VRTX",
+        "stock_name": "福泰製藥",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 1.46,
+        "win_rate": 66.7
+      },
+      {
         "stock_id": "2492",
         "stock_name": "華新科技",
         "total_cnt": 3,
         "win_cnt": 2,
         "avg_pnl": 1.31,
-        "win_rate": 66.7
-      },
-      {
-        "stock_id": "8358",
-        "stock_name": "金居",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 1.06,
         "win_rate": 66.7
       },
       {
@@ -2032,6 +2016,22 @@
         "win_cnt": 2,
         "avg_pnl": 0.4,
         "win_rate": 66.7
+      },
+      {
+        "stock_id": "2303",
+        "stock_name": "聯華電子",
+        "total_cnt": 10,
+        "win_cnt": 6,
+        "avg_pnl": 5.27,
+        "win_rate": 60.0
+      },
+      {
+        "stock_id": "SPG",
+        "stock_name": "Simon Property Group, Inc.",
+        "total_cnt": 5,
+        "win_cnt": 3,
+        "avg_pnl": 2.07,
+        "win_rate": 60.0
       }
     ],
     "t5_30d": [
@@ -2046,9 +2046,9 @@
       {
         "stock_id": "8046",
         "stock_name": "南電",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 14.57,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 12.11,
         "win_rate": 100.0
       },
       {
@@ -2076,6 +2076,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "DASH",
+        "stock_name": "DoorDash",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 8.68,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "SWK",
         "stock_name": "Stanley Black & Decker, Inc.",
         "total_cnt": 3,
@@ -2084,35 +2092,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "DASH",
-        "stock_name": "DoorDash",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 7.74,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6139",
         "stock_name": "亞翔",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 7.64,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "VRTX",
-        "stock_name": "福泰製藥",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 7.04,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6415",
-        "stock_name": "矽力*-KY",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 5.21,
         "win_rate": 100.0
       },
       {
@@ -2140,6 +2124,22 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "4958",
+        "stock_name": "臻鼎-KY",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 3.21,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "PCAR",
+        "stock_name": "PACCAR Inc.",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.03,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "5904",
         "stock_name": "寶雅",
         "total_cnt": 3,
@@ -2148,11 +2148,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "PCAR",
-        "stock_name": "PACCAR Inc.",
+        "stock_id": "JPM",
+        "stock_name": "摩根大通",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 2.85,
+        "avg_pnl": 2.25,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2105",
+        "stock_name": "正新",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 2.2,
         "win_rate": 100.0
       },
       {
@@ -2244,6 +2252,14 @@
         "win_rate": 66.7
       },
       {
+        "stock_id": "VRTX",
+        "stock_name": "福泰製藥",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 3.86,
+        "win_rate": 66.7
+      },
+      {
         "stock_id": "TER",
         "stock_name": "Teradyne, Inc.",
         "total_cnt": 3,
@@ -2258,22 +2274,6 @@
         "win_cnt": 4,
         "avg_pnl": 0.14,
         "win_rate": 66.7
-      },
-      {
-        "stock_id": "IR",
-        "stock_name": "Ingersoll Rand Inc.",
-        "total_cnt": 5,
-        "win_cnt": 3,
-        "avg_pnl": 1.8,
-        "win_rate": 60.0
-      },
-      {
-        "stock_id": "5347",
-        "stock_name": "世界",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 5.8,
-        "win_rate": 50.0
       }
     ],
     "t3_90d": [
@@ -2291,14 +2291,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 22.78,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6548",
-        "stock_name": "長科*",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 21.31,
         "win_rate": 100.0
       },
       {
@@ -2516,6 +2508,14 @@
         "win_cnt": 3,
         "avg_pnl": 5.37,
         "win_rate": 100.0
+      },
+      {
+        "stock_id": "AKAM",
+        "stock_name": "AKAM",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 4.99,
+        "win_rate": 100.0
       }
     ],
     "t5_90d": [
@@ -2525,14 +2525,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 43.72,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6548",
-        "stock_name": "長科*",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 39.88,
         "win_rate": 100.0
       },
       {
@@ -2672,14 +2664,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6175",
-        "stock_name": "立敦",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 9.46,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "4766",
         "stock_name": "南寶",
         "total_cnt": 2,
@@ -2757,6 +2741,22 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 7.74,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "8088",
+        "stock_name": "品安",
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 7.45,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "1503",
+        "stock_name": "士電",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.45,
         "win_rate": 100.0
       }
     ],
@@ -2778,14 +2778,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6548",
-        "stock_name": "長科*",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 21.31,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6449",
         "stock_name": "鈺邦",
         "total_cnt": 2,
@@ -3000,6 +2992,14 @@
         "win_cnt": 3,
         "avg_pnl": 5.37,
         "win_rate": 100.0
+      },
+      {
+        "stock_id": "AKAM",
+        "stock_name": "AKAM",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 4.99,
+        "win_rate": 100.0
       }
     ],
     "t5_all": [
@@ -3009,14 +3009,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 43.72,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6548",
-        "stock_name": "長科*",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 39.88,
         "win_rate": 100.0
       },
       {
@@ -3156,14 +3148,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6175",
-        "stock_name": "立敦",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 9.46,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "4766",
         "stock_name": "南寶",
         "total_cnt": 2,
@@ -3241,6 +3225,22 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 7.74,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "8088",
+        "stock_name": "品安",
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 7.45,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "1503",
+        "stock_name": "士電",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.45,
         "win_rate": 100.0
       }
     ]
