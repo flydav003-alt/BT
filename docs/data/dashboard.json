@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17 11:50:18",
+  "generated_at": "2026-07-18 05:10:25",
   "today_picks": {
     "ETF": [
       {
@@ -2212,17 +2212,9 @@
       {
         "stock_id": "1513",
         "stock_name": "中興電",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 4.42,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "3131",
-        "stock_name": "弘塑",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 4.06,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.95,
         "win_rate": 100.0
       },
       {
@@ -2231,6 +2223,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.92,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "3131",
+        "stock_name": "弘塑",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 2.84,
         "win_rate": 100.0
       },
       {
@@ -2306,6 +2306,14 @@
         "win_rate": 66.7
       },
       {
+        "stock_id": "JPM",
+        "stock_name": "摩根大通",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 2.03,
+        "win_rate": 66.7
+      },
+      {
         "stock_id": "ABBV",
         "stock_name": "艾伯維",
         "total_cnt": 3,
@@ -2354,20 +2362,12 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "2303",
-        "stock_name": "聯華電子",
-        "total_cnt": 10,
-        "win_cnt": 6,
-        "avg_pnl": 5.27,
-        "win_rate": 60.0
-      },
-      {
-        "stock_id": "SPG",
-        "stock_name": "Simon Property Group, Inc.",
-        "total_cnt": 5,
-        "win_cnt": 3,
-        "avg_pnl": 2.07,
-        "win_rate": 60.0
+        "stock_id": "ALLE",
+        "stock_name": "Allegion plc",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": -0.4,
+        "win_rate": 66.7
       }
     ],
     "t5_30d": [
@@ -2436,6 +2436,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "META",
+        "stock_name": "Meta平台",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.74,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "DHI",
         "stock_name": "D.R.霍頓",
         "total_cnt": 2,
@@ -2484,19 +2492,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "JPM",
-        "stock_name": "摩根大通",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.25,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2105",
         "stock_name": "正新",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.2,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "JPM",
+        "stock_name": "摩根大通",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 2.06,
         "win_rate": 100.0
       },
       {
@@ -2556,19 +2564,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "SPG",
-        "stock_name": "Simon Property Group, Inc.",
-        "total_cnt": 5,
-        "win_cnt": 4,
-        "avg_pnl": 4.06,
-        "win_rate": 80.0
-      },
-      {
         "stock_id": "6121",
         "stock_name": "新普",
         "total_cnt": 4,
         "win_cnt": 3,
         "avg_pnl": 5.51,
+        "win_rate": 75.0
+      },
+      {
+        "stock_id": "SPG",
+        "stock_name": "Simon Property Group, Inc.",
+        "total_cnt": 4,
+        "win_cnt": 3,
+        "avg_pnl": 3.88,
         "win_rate": 75.0
       },
       {
@@ -2601,14 +2609,6 @@
         "total_cnt": 3,
         "win_cnt": 2,
         "avg_pnl": 2.42,
-        "win_rate": 66.7
-      },
-      {
-        "stock_id": "TECH",
-        "stock_name": "Bio-Techne Corp",
-        "total_cnt": 6,
-        "win_cnt": 4,
-        "avg_pnl": 0.14,
         "win_rate": 66.7
       }
     ],
