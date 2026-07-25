@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24 11:59:57",
+  "generated_at": "2026-07-25 05:29:09",
   "today_picks": {
     "ETF": [
       {
@@ -2078,14 +2078,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "PYPL",
-        "stock_name": "PayPal",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 16.31,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6488",
         "stock_name": "環球晶圓",
         "total_cnt": 4,
@@ -2174,6 +2166,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "PYPL",
+        "stock_name": "PayPal",
+        "total_cnt": 6,
+        "win_cnt": 5,
+        "avg_pnl": 13.24,
+        "win_rate": 83.3
+      },
+      {
         "stock_id": "3189",
         "stock_name": "景碩",
         "total_cnt": 5,
@@ -2238,6 +2238,14 @@
         "win_rate": 66.7
       },
       {
+        "stock_id": "3711",
+        "stock_name": "日月光投",
+        "total_cnt": 6,
+        "win_cnt": 4,
+        "avg_pnl": 0.19,
+        "win_rate": 66.7
+      },
+      {
         "stock_id": "ALLE",
         "stock_name": "Allegion plc",
         "total_cnt": 3,
@@ -2246,20 +2254,20 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "8046",
-        "stock_name": "南電",
+        "stock_id": "3017",
+        "stock_name": "奇鋐",
         "total_cnt": 5,
         "win_cnt": 3,
-        "avg_pnl": 5.9,
+        "avg_pnl": 0.21,
         "win_rate": 60.0
       },
       {
-        "stock_id": "3711",
-        "stock_name": "日月光投",
-        "total_cnt": 7,
-        "win_cnt": 4,
-        "avg_pnl": -0.41,
-        "win_rate": 57.1
+        "stock_id": "2303",
+        "stock_name": "聯華電子",
+        "total_cnt": 5,
+        "win_cnt": 3,
+        "avg_pnl": -0.4,
+        "win_rate": 60.0
       },
       {
         "stock_id": "3037",
@@ -2270,19 +2278,19 @@
         "win_rate": 57.1
       },
       {
+        "stock_id": "8046",
+        "stock_name": "南電",
+        "total_cnt": 4,
+        "win_cnt": 2,
+        "avg_pnl": 4.1,
+        "win_rate": 50.0
+      },
+      {
         "stock_id": "3706",
         "stock_name": "神達",
         "total_cnt": 2,
         "win_cnt": 1,
         "avg_pnl": 3.29,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "5904",
-        "stock_name": "寶雅",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 2.51,
         "win_rate": 50.0
       },
       {
@@ -2292,25 +2300,9 @@
         "win_cnt": 1,
         "avg_pnl": 1.94,
         "win_rate": 50.0
-      },
-      {
-        "stock_id": "3498",
-        "stock_name": "陽程",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 1.86,
-        "win_rate": 50.0
       }
     ],
     "t5_30d": [
-      {
-        "stock_id": "PYPL",
-        "stock_name": "PayPal",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 16.01,
-        "win_rate": 100.0
-      },
       {
         "stock_id": "1303",
         "stock_name": "南亞塑膠工業",
@@ -2341,14 +2333,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 7.64,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "5904",
-        "stock_name": "寶雅",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.39,
         "win_rate": 100.0
       },
       {
@@ -2392,14 +2376,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "5536",
-        "stock_name": "聖暉*",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 1.74,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "CTVA",
         "stock_name": "Corteva, Inc.",
         "total_cnt": 2,
@@ -2432,12 +2408,12 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "8046",
-        "stock_name": "南電",
-        "total_cnt": 5,
-        "win_cnt": 4,
-        "avg_pnl": 9.27,
-        "win_rate": 80.0
+        "stock_id": "PYPL",
+        "stock_name": "PayPal",
+        "total_cnt": 6,
+        "win_cnt": 5,
+        "avg_pnl": 13.17,
+        "win_rate": 83.3
       },
       {
         "stock_id": "6488",
@@ -2445,6 +2421,14 @@
         "total_cnt": 4,
         "win_cnt": 3,
         "avg_pnl": 9.88,
+        "win_rate": 75.0
+      },
+      {
+        "stock_id": "8046",
+        "stock_name": "南電",
+        "total_cnt": 4,
+        "win_cnt": 3,
+        "avg_pnl": 5.83,
         "win_rate": 75.0
       },
       {
@@ -2504,11 +2488,11 @@
         "win_rate": 60.0
       },
       {
-        "stock_id": "CFG",
-        "stock_name": "Citizens Financial Group, Inc.",
+        "stock_id": "CTAS",
+        "stock_name": "Cintas Corporation",
         "total_cnt": 2,
         "win_cnt": 1,
-        "avg_pnl": 3.8,
+        "avg_pnl": 2.75,
         "win_rate": 50.0
       },
       {
@@ -2541,6 +2525,22 @@
         "total_cnt": 2,
         "win_cnt": 1,
         "avg_pnl": 1.15,
+        "win_rate": 50.0
+      },
+      {
+        "stock_id": "DE",
+        "stock_name": "迪爾公司",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 1.01,
+        "win_rate": 50.0
+      },
+      {
+        "stock_id": "LLY",
+        "stock_name": "禮來",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 0.8,
         "win_rate": 50.0
       }
     ],
@@ -2583,14 +2583,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 16.39,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "PYPL",
-        "stock_name": "PayPal",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 16.31,
         "win_rate": 100.0
       },
       {
@@ -2783,6 +2775,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 5.46,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "INCY",
+        "stock_name": "Incyte Corporation",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 5.37,
         "win_rate": 100.0
       }
     ],
@@ -2852,14 +2852,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "PYPL",
-        "stock_name": "PayPal",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 16.01,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "4916",
         "stock_name": "事欣科",
         "total_cnt": 2,
@@ -3026,6 +3018,14 @@
         "win_cnt": 2,
         "avg_pnl": 6.45,
         "win_rate": 100.0
+      },
+      {
+        "stock_id": "6412",
+        "stock_name": "群電",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 6.36,
+        "win_rate": 100.0
       }
     ],
     "t3_all": [
@@ -3067,14 +3067,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 16.39,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "PYPL",
-        "stock_name": "PayPal",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 16.31,
         "win_rate": 100.0
       },
       {
@@ -3268,6 +3260,14 @@
         "win_cnt": 2,
         "avg_pnl": 5.46,
         "win_rate": 100.0
+      },
+      {
+        "stock_id": "INCY",
+        "stock_name": "Incyte Corporation",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 5.37,
+        "win_rate": 100.0
       }
     ],
     "t5_all": [
@@ -3333,14 +3333,6 @@
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 18.33,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "PYPL",
-        "stock_name": "PayPal",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 16.01,
         "win_rate": 100.0
       },
       {
@@ -3509,6 +3501,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 6.45,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6412",
+        "stock_name": "群電",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 6.36,
         "win_rate": 100.0
       }
     ]
