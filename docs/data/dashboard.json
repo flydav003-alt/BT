@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27 13:24:13",
+  "generated_at": "2026-07-28 05:30:13",
   "today_picks": {
     "ETF": [
       {
@@ -1291,366 +1291,6 @@
       "t5_pnl": null,
       "created_at": "2026-07-23 10:09:18",
       "sn_name": "承啟"
-    },
-    {
-      "id": 4090,
-      "date": "2026-07-22",
-      "category": "ETF",
-      "rank": 1,
-      "stock_id": "1303",
-      "stock_name": "南亞塑膠",
-      "kline_score": 71,
-      "verdict": "📊 偏多觀察",
-      "close_price": 208.0,
-      "rsi": 57.396449704142015,
-      "kd_k": 58.346847141972006,
-      "vol_ratio": 1.3943234709834422,
-      "strategy_used": "breakout",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"多頭排列（MA5>10>20>60），主趨勢強勁向上\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=57.4，處於偏多健康區間\"}, {\"type\": \"bear\", \"cat\": \"RSI背離\", \"text\": \"RSI頂背離：價格創新高（227.50）但RSI走低，潛在見頂訊號\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"量增紅K（量比均1.4倍），有效上漲\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「晨星」△ 有效性低｜出現在高檔（近60日85%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：230.00（+10.6%）／支撐：145.00（-30.3%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 133822張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 120727張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:18:03",
-      "sn_name": "南亞塑膠工業"
-    },
-    {
-      "id": 4091,
-      "date": "2026-07-22",
-      "category": "ETF",
-      "rank": 2,
-      "stock_id": "6488",
-      "stock_name": "環球晶圓",
-      "kline_score": 64,
-      "verdict": "📊 偏多觀察",
-      "close_price": 1240.0,
-      "rsi": 56.33802816901408,
-      "kd_k": 27.558320894005867,
-      "vol_ratio": 1.4404934139127494,
-      "strategy_used": "pullback",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"剛突破MA20（1217.30），短線動能轉強\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=56.3，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"量增紅K（量比均1.4倍），有效上漲\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：1600.00（+29.0%）／支撐：866.00（-30.2%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 224張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 1318張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:18:03",
-      "sn_name": "環球晶圓"
-    },
-    {
-      "id": 4092,
-      "date": "2026-07-22",
-      "category": "ETF",
-      "rank": 3,
-      "stock_id": "5274",
-      "stock_name": "信驊科技",
-      "kline_score": 60,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 15510.0,
-      "rsi": 41.721518987341774,
-      "kd_k": 58.87967683879745,
-      "vol_ratio": 1.0905573078075181,
-      "strategy_used": "pullback",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"剛突破MA20（15167.00），短線動能轉強\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI由超賣區回升至41.7，短線反彈機率高\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：18740.00（+20.8%）／支撐：11880.00（-23.4%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 312張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 312張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:18:03",
-      "sn_name": "信驊科技"
-    },
-    {
-      "id": 4094,
-      "date": "2026-07-22",
-      "category": "ETF",
-      "rank": 5,
-      "stock_id": "2408",
-      "stock_name": "南亞科",
-      "kline_score": 58,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 445.5,
-      "rsi": 53.75191424196018,
-      "kd_k": 37.07490028383767,
-      "vol_ratio": 0.6821793497515698,
-      "strategy_used": "balanced",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"空頭排列（MA5<10<20），短線趨勢向下\"}, {\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"剛突破MA20（429.27），短線動能轉強\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=53.8，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"KD\", \"text\": \"低檔KD金叉（K=37.1），短線強烈買入訊號\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：498.00（+11.8%）／支撐：380.50（-14.6%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 32704張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 3187張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:18:03",
-      "sn_name": "南亞科"
-    },
-    {
-      "id": 4095,
-      "date": "2026-07-22",
-      "category": "ETF",
-      "rank": 6,
-      "stock_id": "4958",
-      "stock_name": "臻鼎-KY",
-      "kline_score": 49,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 559.0,
-      "rsi": 44.89559164733179,
-      "kd_k": 30.787111170290515,
-      "vol_ratio": 1.1694508973780964,
-      "strategy_used": "balanced",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"空頭排列（MA5<10<20），短線趨勢向下\"}, {\"type\": \"neutral\", \"cat\": \"RSI\", \"text\": \"RSI=44.9，偏弱，觀望\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：659.00（+17.9%）／支撐：471.50（-15.7%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 13334張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 1427張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:18:03",
-      "sn_name": "臻鼎-KY"
-    },
-    {
-      "id": 4096,
-      "date": "2026-07-22",
-      "category": "ETF",
-      "rank": 7,
-      "stock_id": "2308",
-      "stock_name": "台達電子",
-      "kline_score": 43,
-      "verdict": "⚠️ 偏空謹慎",
-      "close_price": 1880.0,
-      "rsi": 43.037974683544306,
-      "kd_k": 42.325425439693035,
-      "vol_ratio": 0.9287395640450936,
-      "strategy_used": "pullback",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"空頭排列（MA5<10<20），短線趨勢向下\"}, {\"type\": \"neutral\", \"cat\": \"RSI\", \"text\": \"RSI=43.0，偏弱，觀望\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：2135.00（+13.6%）／支撐：1665.00（-11.4%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 8145張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 3679張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:18:03",
-      "sn_name": "台達電"
-    },
-    {
-      "id": 4097,
-      "date": "2026-07-22",
-      "category": "ETF",
-      "rank": 8,
-      "stock_id": "2449",
-      "stock_name": "京元電子",
-      "kline_score": 43,
-      "verdict": "⚠️ 偏空謹慎",
-      "close_price": 295.0,
-      "rsi": 41.387559808612444,
-      "kd_k": 34.33514738382591,
-      "vol_ratio": 0.7236894598727457,
-      "strategy_used": "balanced",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"空頭排列（MA5<10<20），短線趨勢向下\"}, {\"type\": \"neutral\", \"cat\": \"RSI\", \"text\": \"RSI=41.4，偏弱，觀望\"}, {\"type\": \"bull\", \"cat\": \"KD\", \"text\": \"低檔KD金叉（K=34.3），短線強烈買入訊號\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：367.50（+24.6%）／支撐：258.50（-12.4%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 18461張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 361張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:18:03",
-      "sn_name": "京元電子"
-    },
-    {
-      "id": 4098,
-      "date": "2026-07-22",
-      "category": "ETF",
-      "rank": 9,
-      "stock_id": "3026",
-      "stock_name": "禾伸堂企",
-      "kline_score": 42,
-      "verdict": "⚠️ 偏空謹慎",
-      "close_price": 663.0,
-      "rsi": 36.24708624708625,
-      "kd_k": 11.625289093029238,
-      "vol_ratio": 0.23914029223875277,
-      "strategy_used": "balanced",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"空頭排列（MA5<10<20），短線趨勢向下\"}, {\"type\": \"neutral\", \"cat\": \"RSI\", \"text\": \"RSI=36.2，偏弱，觀望\"}, {\"type\": \"bear\", \"cat\": \"MACD\", \"text\": \"MACD零軸下穿，中線轉空\"}, {\"type\": \"bear\", \"cat\": \"MACD\", \"text\": \"MACD柱狀向下擴大，空方動能增強\"}, {\"type\": \"neutral\", \"cat\": \"量價\", \"text\": \"量大幅萎縮（均量24%），等待方向確認\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：1045.00（+57.6%）／支撐：620.00（-6.5%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 8330張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 530張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:18:03",
-      "sn_name": "禾伸堂企"
-    },
-    {
-      "id": 4063,
-      "date": "2026-07-22",
-      "category": "OTC",
-      "rank": 1,
-      "stock_id": "3088",
-      "stock_name": "艾訊",
-      "kline_score": 56,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 147.5,
-      "rsi": 57.0,
-      "kd_k": 53.47738467859479,
-      "vol_ratio": 3.29,
-      "strategy_used": "balanced",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"空頭排列（MA5<10<20），短線趨勢向下\"}, {\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"剛突破MA20（139.62），短線動能轉強\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=56.3，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"KD\", \"text\": \"KD金叉（K=53.5），短線偏多\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均4.8倍），多方積極攻擊\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：152.00（+3.1%）／支撐：123.00（-16.6%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 2741張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 09:21:03",
-      "sn_name": "艾訊"
-    },
-    {
-      "id": 4064,
-      "date": "2026-07-22",
-      "category": "OTC",
-      "rank": 2,
-      "stock_id": "5328",
-      "stock_name": "華容",
-      "kline_score": 56,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 66.3,
-      "rsi": 54.8,
-      "kd_k": 30.130361138523014,
-      "vol_ratio": 0.44,
-      "strategy_used": "balanced",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"空頭排列（MA5<10<20），短線趨勢向下\"}, {\"type\": \"neutral\", \"cat\": \"RSI\", \"text\": \"RSI=37.9，偏弱，觀望\"}, {\"type\": \"bull\", \"cat\": \"KD\", \"text\": \"低檔KD金叉（K=30.1），短線強烈買入訊號\"}, {\"type\": \"bear\", \"cat\": \"MACD\", \"text\": \"MACD柱狀向下擴大，空方動能增強\"}, {\"type\": \"neutral\", \"cat\": \"量價\", \"text\": \"量大幅萎縮（均量20%），等待方向確認\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：88.80（+33.9%）／支撐：51.70（-22.0%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 1605張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 09:21:03",
-      "sn_name": "華容"
-    },
-    {
-      "id": 4065,
-      "date": "2026-07-22",
-      "category": "OTC",
-      "rank": 3,
-      "stock_id": "4939",
-      "stock_name": "亞電",
-      "kline_score": 51,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 70.9,
-      "rsi": 61.4,
-      "kd_k": 74.51753624461867,
-      "vol_ratio": 1.81,
-      "strategy_used": "breakout",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"多頭排列（MA5>10>20>60），主趨勢強勁向上\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=61.8，處於偏多健康區間\"}, {\"type\": \"bear\", \"cat\": \"量價\", \"text\": \"大量黑K（量比均5.1倍），賣壓沉重\"}, {\"type\": \"bear\", \"cat\": \"布林\", \"text\": \"突破布林上軌，短線超漲追高謹慎\"}, {\"type\": \"bear\", \"cat\": \"K線型態\", \"text\": \"「長黑K」⭐ 有效性高｜出現在高檔，爆量，看跌訊號可信度高\"}, {\"type\": \"bear\", \"cat\": \"K線型態\", \"text\": \"「爆量長黑」量比均量5.1倍 + 收黑｜主力出貨訊號\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：78.20（+10.3%）／支撐：53.20（-25.0%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 2481張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 09:21:03",
-      "sn_name": "亞電"
-    },
-    {
-      "id": 4076,
-      "date": "2026-07-22",
-      "category": "TSE",
-      "rank": 1,
-      "stock_id": "2027",
-      "stock_name": "大成鋼",
-      "kline_score": 81,
-      "verdict": "📈 強烈偏多",
-      "close_price": 43.75,
-      "rsi": 64.0,
-      "kd_k": 75.96420623672653,
-      "vol_ratio": 2.62,
-      "strategy_used": "breakout",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"短期多頭排列（MA5>10>20），趨勢偏多\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=61.2，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"MACD\", \"text\": \"MACD零軸上穿，中線轉多確認\"}, {\"type\": \"bull\", \"cat\": \"MACD\", \"text\": \"MACD黃金交叉Signal，買入訊號\"}, {\"type\": \"bull\", \"cat\": \"MACD\", \"text\": \"MACD柱狀放大，多方動能增強\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均3.1倍），多方積極攻擊\"}, {\"type\": \"bear\", \"cat\": \"布林\", \"text\": \"突破布林上軌，短線超漲追高謹慎\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「長紅K」△ 有效性低｜出現在高檔（近60日89%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"bear\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：44.75（+2.3%）／支撐：38.20（-12.7%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 30505張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 5101張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:11:54",
-      "sn_name": "大成鋼"
-    },
-    {
-      "id": 4077,
-      "date": "2026-07-22",
-      "category": "TSE",
-      "rank": 2,
-      "stock_id": "2395",
-      "stock_name": "研華",
-      "kline_score": 69,
-      "verdict": "📊 偏多觀察",
-      "close_price": 596.0,
-      "rsi": 70.3,
-      "kd_k": 58.64838266268008,
-      "vol_ratio": 2.11,
-      "strategy_used": "breakout",
-      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"多頭排列（MA5>10>20>60），主趨勢強勁向上\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI=71.5，處於偏多健康區間\"}, {\"type\": \"bull\", \"cat\": \"MACD\", \"text\": \"MACD柱狀放大，多方動能增強\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均2.7倍），多方積極攻擊\"}, {\"type\": \"bear\", \"cat\": \"布林\", \"text\": \"突破布林上軌，短線超漲追高謹慎\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：618.00（+3.7%）／支撐：453.00（-24.0%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 3321張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 1861張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:11:54",
-      "sn_name": "研華"
-    },
-    {
-      "id": 4078,
-      "date": "2026-07-22",
-      "category": "TSE",
-      "rank": 3,
-      "stock_id": "3189",
-      "stock_name": "景碩",
-      "kline_score": 58,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 796.0,
-      "rsi": 54.1,
-      "kd_k": 46.37235883168817,
-      "vol_ratio": 2.05,
-      "strategy_used": "pullback",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"空頭排列（MA5<10<20），短線趨勢向下\"}, {\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"剛突破MA20（787.65），短線動能轉強\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI由超賣區回升至43.2，短線反彈機率高\"}, {\"type\": \"bear\", \"cat\": \"RSI背離\", \"text\": \"RSI頂背離：價格創新高（845.00）但RSI走低，潛在見頂訊號\"}, {\"type\": \"bull\", \"cat\": \"KD\", \"text\": \"低檔KD金叉（K=46.4），短線強烈買入訊號\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：939.00（+18.0%）／支撐：653.00（-18.0%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 1899張\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"投信近5日買超 2643張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:11:54",
-      "sn_name": "景碩"
-    },
-    {
-      "id": 4079,
-      "date": "2026-07-22",
-      "category": "TSE",
-      "rank": 4,
-      "stock_id": "8112",
-      "stock_name": "至上",
-      "kline_score": 45,
-      "verdict": "⚖️ 中性觀望",
-      "close_price": 88.1,
-      "rsi": 49.5,
-      "kd_k": 39.25562649027434,
-      "vol_ratio": 2.17,
-      "strategy_used": "pullback",
-      "top_signals": "[{\"type\": \"bear\", \"cat\": \"均線\", \"text\": \"空頭排列（MA5<10<20），短線趨勢向下\"}, {\"type\": \"neutral\", \"cat\": \"RSI\", \"text\": \"RSI=47.7，偏弱，觀望\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均1.9倍），多方積極攻擊\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「倒錘頭」▷ 有效性中｜整理區出現，需配合均線突破確認\"}, {\"type\": \"bear\", \"cat\": \"K線型態\", \"text\": \"「墓碑十字」▷ 有效性中｜整理區出現，觀察方向選擇\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：97.80（+11.0%）／支撐：80.10（-9.1%）\"}, {\"type\": \"bull\", \"cat\": \"籌碼\", \"text\": \"外資近5日買超 18446張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 2276張\"}]",
-      "t3_date": null,
-      "t3_price": null,
-      "t3_pnl": null,
-      "t5_date": null,
-      "t5_price": null,
-      "t5_pnl": null,
-      "created_at": "2026-07-22 10:11:54",
-      "sn_name": "至上"
     }
   ],
   "win_stats": {
@@ -1712,19 +1352,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "DE",
-        "stock_name": "迪爾公司",
+        "stock_id": "TRV",
+        "stock_name": "The Travelers Companies, Inc.",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 1.83,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "SHW",
-        "stock_name": "宣偉",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 1.51,
+        "avg_pnl": 1.42,
         "win_rate": 100.0
       },
       {
@@ -1733,6 +1365,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 1.27,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "RVTY",
+        "stock_name": "Revvity, Inc.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 0.68,
         "win_rate": 100.0
       },
       {
@@ -1760,27 +1400,11 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "VRTX",
-        "stock_name": "福泰製藥",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 1.46,
-        "win_rate": 66.7
-      },
-      {
         "stock_id": "2303",
         "stock_name": "聯華電子",
         "total_cnt": 3,
         "win_cnt": 2,
         "avg_pnl": 0.93,
-        "win_rate": 66.7
-      },
-      {
-        "stock_id": "RVTY",
-        "stock_name": "Revvity, Inc.",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 0.4,
         "win_rate": 66.7
       },
       {
@@ -1832,11 +1456,11 @@
         "win_rate": 50.0
       },
       {
-        "stock_id": "ABBV",
-        "stock_name": "艾伯維",
+        "stock_id": "VRTX",
+        "stock_name": "福泰製藥",
         "total_cnt": 2,
         "win_cnt": 1,
-        "avg_pnl": 1.07,
+        "avg_pnl": 1.51,
         "win_rate": 50.0
       },
       {
@@ -1880,19 +1504,35 @@
         "win_rate": 50.0
       },
       {
-        "stock_id": "CHRW",
-        "stock_name": "C.H. Robinson Worldwide, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 0.11,
-        "win_rate": 50.0
-      },
-      {
         "stock_id": "CTVA",
         "stock_name": "Corteva, Inc.",
         "total_cnt": 2,
         "win_cnt": 1,
         "avg_pnl": -0.16,
+        "win_rate": 50.0
+      },
+      {
+        "stock_id": "AEE",
+        "stock_name": "Ameren Corporation",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": -0.25,
+        "win_rate": 50.0
+      },
+      {
+        "stock_id": "3551",
+        "stock_name": "世禾",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": -0.71,
+        "win_rate": 50.0
+      },
+      {
+        "stock_id": "3293",
+        "stock_name": "鈊象",
+        "total_cnt": 4,
+        "win_cnt": 2,
+        "avg_pnl": -0.85,
         "win_rate": 50.0
       }
     ],
@@ -1903,6 +1543,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 15.54,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "TRV",
+        "stock_name": "The Travelers Companies, Inc.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.37,
         "win_rate": 100.0
       },
       {
@@ -1919,6 +1567,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.2,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "AMCR",
+        "stock_name": "Amcor plc",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 2.17,
         "win_rate": 100.0
       },
       {
@@ -1954,19 +1610,19 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "AFL",
+        "stock_name": "美國家庭",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.09,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "WMB",
         "stock_name": "Williams Companies, Inc. (The)",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 0.89,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "ABBV",
-        "stock_name": "艾伯維",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 0.54,
         "win_rate": 100.0
       },
       {
@@ -1994,12 +1650,12 @@
         "win_rate": 75.0
       },
       {
-        "stock_id": "VRTX",
-        "stock_name": "福泰製藥",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 3.86,
-        "win_rate": 66.7
+        "stock_id": "TECH",
+        "stock_name": "Bio-Techne Corp",
+        "total_cnt": 4,
+        "win_cnt": 3,
+        "avg_pnl": 0.16,
+        "win_rate": 75.0
       },
       {
         "stock_id": "6121",
@@ -2018,19 +1674,19 @@
         "win_rate": 66.7
       },
       {
+        "stock_id": "COR",
+        "stock_name": "Cencora, Inc.",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 0.4,
+        "win_rate": 66.7
+      },
+      {
         "stock_id": "8046",
         "stock_name": "南電",
         "total_cnt": 5,
         "win_cnt": 3,
         "avg_pnl": 2.06,
-        "win_rate": 60.0
-      },
-      {
-        "stock_id": "TECH",
-        "stock_name": "Bio-Techne Corp",
-        "total_cnt": 5,
-        "win_cnt": 3,
-        "avg_pnl": 0.11,
         "win_rate": 60.0
       },
       {
@@ -2050,6 +1706,14 @@
         "win_rate": 50.0
       },
       {
+        "stock_id": "VRTX",
+        "stock_name": "福泰製藥",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 1.9,
+        "win_rate": 50.0
+      },
+      {
         "stock_id": "2412",
         "stock_name": "中華電信",
         "total_cnt": 2,
@@ -2066,30 +1730,6 @@
         "win_rate": 50.0
       },
       {
-        "stock_id": "DE",
-        "stock_name": "迪爾公司",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 1.01,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "LLY",
-        "stock_name": "禮來",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 0.8,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "SHW",
-        "stock_name": "宣偉",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 0.47,
-        "win_rate": 50.0
-      },
-      {
         "stock_id": "3706",
         "stock_name": "神達",
         "total_cnt": 2,
@@ -2098,11 +1738,11 @@
         "win_rate": 50.0
       },
       {
-        "stock_id": "COR",
-        "stock_name": "Cencora, Inc.",
+        "stock_id": "RVTY",
+        "stock_name": "Revvity, Inc.",
         "total_cnt": 2,
         "win_cnt": 1,
-        "avg_pnl": 0.07,
+        "avg_pnl": 0.33,
         "win_rate": 50.0
       },
       {
@@ -2111,14 +1751,6 @@
         "total_cnt": 2,
         "win_cnt": 1,
         "avg_pnl": -0.27,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "SPG",
-        "stock_name": "Simon Property Group, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": -0.35,
         "win_rate": 50.0
       },
       {
@@ -2135,6 +1767,14 @@
         "total_cnt": 4,
         "win_cnt": 2,
         "avg_pnl": -1.5,
+        "win_rate": 50.0
+      },
+      {
+        "stock_id": "5351",
+        "stock_name": "鈺創",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": -2.48,
         "win_rate": 50.0
       }
     ],
