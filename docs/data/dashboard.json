@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28 05:30:13",
+  "generated_at": "2026-07-28 09:39:36",
   "today_picks": {
     "ETF": [
       {
@@ -212,50 +212,27 @@
     ],
     "OTC": [
       {
-        "id": 4227,
-        "date": "2026-07-27",
+        "id": 4279,
+        "date": "2026-07-28",
         "category": "OTC",
         "rank": 1,
-        "stock_id": "5328",
-        "stock_name": "華容",
-        "kline_score": 60,
-        "verdict": "⚖️ 中性觀望",
-        "close_price": 67.2,
-        "rsi": 54.9,
-        "kd_k": 51.138015904288906,
-        "vol_ratio": 1.66,
-        "strategy_used": "balanced",
-        "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI由超賣區回升至38.0，短線反彈機率高\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「多頭吞噬」△ 有效性低｜出現在高檔（近60日66%位），反轉型態高檔效果差，謹慎\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：88.80（+32.1%）／支撐：54.30（-19.2%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 3109張\"}]",
-        "t3_date": null,
-        "t3_price": null,
-        "t3_pnl": null,
-        "t5_date": null,
-        "t5_price": null,
-        "t5_pnl": null,
-        "created_at": "2026-07-27 10:38:12"
-      },
-      {
-        "id": 4228,
-        "date": "2026-07-27",
-        "category": "OTC",
-        "rank": 2,
         "stock_id": "5904",
         "stock_name": "寶雅",
-        "kline_score": 58,
-        "verdict": "⚖️ 中性觀望",
-        "close_price": 668.0,
-        "rsi": 54.9,
-        "kd_k": 52.291245645279524,
-        "vol_ratio": 1.51,
-        "strategy_used": "balanced",
-        "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"MA5黃金交叉MA10，短線轉多\"}, {\"type\": \"neutral\", \"cat\": \"RSI\", \"text\": \"RSI=35.3，偏弱，觀望\"}, {\"type\": \"bull\", \"cat\": \"MACD\", \"text\": \"MACD零軸上穿，中線轉多確認\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「紅三兵」▷ 有效性中｜整理區出現，需配合均線突破確認\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：767.00（+14.8%）／支撐：601.00（-10.0%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 156張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 107張\"}]",
+        "kline_score": 62,
+        "verdict": "📊 偏多觀察",
+        "close_price": 679.0,
+        "rsi": 57.3,
+        "kd_k": 57.27462354060498,
+        "vol_ratio": 2.41,
+        "strategy_used": "pullback",
+        "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"剛突破MA20（670.80），短線動能轉強\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI由超賣區回升至40.2，短線反彈機率高\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均1.7倍），多方積極攻擊\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「紅三兵」▷ 有效性中｜整理區出現，需配合均線突破確認\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：767.00（+13.0%）／支撐：601.00（-11.5%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 427張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 53張\"}]",
         "t3_date": null,
         "t3_price": null,
         "t3_pnl": null,
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-07-27 10:38:12"
+        "created_at": "2026-07-28 09:39:25"
       }
     ],
     "TSE": [
@@ -308,6 +285,30 @@
     ]
   },
   "history": [
+    {
+      "id": 4279,
+      "date": "2026-07-28",
+      "category": "OTC",
+      "rank": 1,
+      "stock_id": "5904",
+      "stock_name": "寶雅",
+      "kline_score": 62,
+      "verdict": "📊 偏多觀察",
+      "close_price": 679.0,
+      "rsi": 57.3,
+      "kd_k": 57.27462354060498,
+      "vol_ratio": 2.41,
+      "strategy_used": "pullback",
+      "top_signals": "[{\"type\": \"bull\", \"cat\": \"均線\", \"text\": \"剛突破MA20（670.80），短線動能轉強\"}, {\"type\": \"bull\", \"cat\": \"RSI\", \"text\": \"RSI由超賣區回升至40.2，短線反彈機率高\"}, {\"type\": \"bull\", \"cat\": \"量價\", \"text\": \"大量紅K（量比均1.7倍），多方積極攻擊\"}, {\"type\": \"bull\", \"cat\": \"K線型態\", \"text\": \"「紅三兵」▷ 有效性中｜整理區出現，需配合均線突破確認\"}, {\"type\": \"neutral\", \"cat\": \"支撐壓力\", \"text\": \"近20日壓力：767.00（+13.0%）／支撐：601.00（-11.5%）\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"外資近5日賣超 427張\"}, {\"type\": \"bear\", \"cat\": \"籌碼\", \"text\": \"投信近5日賣超 53張\"}]",
+      "t3_date": null,
+      "t3_price": null,
+      "t3_pnl": null,
+      "t5_date": null,
+      "t5_price": null,
+      "t5_pnl": null,
+      "created_at": "2026-07-28 09:39:25",
+      "sn_name": "寶雅"
+    },
     {
       "id": 4250,
       "date": "2026-07-27",
