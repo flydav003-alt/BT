@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30 12:10:50",
+  "generated_at": "2026-07-31 05:51:41",
   "today_picks": {
     "ETF": [
       {
@@ -1546,9 +1546,9 @@
       {
         "stock_id": "6505",
         "stock_name": "台塑化",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 14.77,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 11.4,
         "win_rate": 100.0
       },
       {
@@ -1560,19 +1560,35 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "PM",
-        "stock_name": "菲利普莫里斯",
+        "stock_id": "T",
+        "stock_name": "美國電話電報",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 3.92,
+        "avg_pnl": 8.37,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2360",
+        "stock_name": "致茂",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 8.06,
         "win_rate": 100.0
       },
       {
         "stock_id": "PCAR",
         "stock_name": "PACCAR Inc.",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 4.1,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "PM",
+        "stock_name": "菲利普莫里斯",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 3.44,
+        "avg_pnl": 3.92,
         "win_rate": 100.0
       },
       {
@@ -1600,6 +1616,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "UNP",
+        "stock_name": "聯合太平洋",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 2.2,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "TRV",
         "stock_name": "The Travelers Companies, Inc.",
         "total_cnt": 2,
@@ -1624,12 +1648,28 @@
         "win_rate": 80.0
       },
       {
+        "stock_id": "5274",
+        "stock_name": "信驊",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 4.99,
+        "win_rate": 66.7
+      },
+      {
+        "stock_id": "EFX",
+        "stock_name": "Equifax, Inc.",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 2.67,
+        "win_rate": 66.7
+      },
+      {
         "stock_id": "2059",
         "stock_name": "川湖科技",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 4.07,
-        "win_rate": 75.0
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 2.53,
+        "win_rate": 66.7
       },
       {
         "stock_id": "JPM",
@@ -1640,28 +1680,20 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "ALLE",
-        "stock_name": "Allegion plc",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": -0.4,
-        "win_rate": 66.7
-      },
-      {
-        "stock_id": "2105",
-        "stock_name": "正新",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": -0.45,
-        "win_rate": 66.7
-      },
-      {
         "stock_id": "3711",
         "stock_name": "日月光投",
         "total_cnt": 7,
         "win_cnt": 4,
-        "avg_pnl": -2.22,
+        "avg_pnl": -1.28,
         "win_rate": 57.1
+      },
+      {
+        "stock_id": "9921",
+        "stock_name": "巨大",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 2.1,
+        "win_rate": 50.0
       },
       {
         "stock_id": "6121",
@@ -1672,35 +1704,11 @@
         "win_rate": 50.0
       },
       {
-        "stock_id": "MMM",
-        "stock_name": "3M Company",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 1.18,
-        "win_rate": 50.0
-      },
-      {
         "stock_id": "WRB",
         "stock_name": "W.R. Berkley Corporation",
         "total_cnt": 2,
         "win_cnt": 1,
         "avg_pnl": 1.1,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "DLTR",
-        "stock_name": "一元樹",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 0.94,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "2303",
-        "stock_name": "聯華電子",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 0.93,
         "win_rate": 50.0
       },
       {
@@ -1720,22 +1728,6 @@
         "win_rate": 50.0
       },
       {
-        "stock_id": "2467",
-        "stock_name": "志聖",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 0.29,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "3045",
-        "stock_name": "台灣大",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 0.23,
-        "win_rate": 50.0
-      },
-      {
         "stock_id": "CTVA",
         "stock_name": "Corteva, Inc.",
         "total_cnt": 2,
@@ -1744,27 +1736,19 @@
         "win_rate": 50.0
       },
       {
-        "stock_id": "AEE",
-        "stock_name": "Ameren Corporation",
+        "stock_id": "ALLE",
+        "stock_name": "Allegion plc",
         "total_cnt": 2,
         "win_cnt": 1,
-        "avg_pnl": -0.25,
+        "avg_pnl": -0.78,
         "win_rate": 50.0
       },
       {
-        "stock_id": "EFX",
-        "stock_name": "Equifax, Inc.",
+        "stock_id": "2308",
+        "stock_name": "台達電",
         "total_cnt": 2,
         "win_cnt": 1,
-        "avg_pnl": -0.85,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "WMB",
-        "stock_name": "Williams Companies, Inc. (The)",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": -0.99,
+        "avg_pnl": -0.87,
         "win_rate": 50.0
       },
       {
@@ -1774,15 +1758,31 @@
         "win_cnt": 1,
         "avg_pnl": -1.79,
         "win_rate": 50.0
+      },
+      {
+        "stock_id": "2105",
+        "stock_name": "正新",
+        "total_cnt": 4,
+        "win_cnt": 2,
+        "avg_pnl": -2.08,
+        "win_rate": 50.0
+      },
+      {
+        "stock_id": "3088",
+        "stock_name": "艾訊",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": -4.41,
+        "win_rate": 50.0
       }
     ],
     "t5_30d": [
       {
         "stock_id": "6505",
         "stock_name": "台塑化",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 22.95,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 17.15,
         "win_rate": 100.0
       },
       {
@@ -1794,11 +1794,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "EFX",
-        "stock_name": "Equifax, Inc.",
+        "stock_id": "2360",
+        "stock_name": "致茂",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 5.98,
+        "avg_pnl": 10.36,
         "win_rate": 100.0
       },
       {
@@ -1810,11 +1810,35 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "PCAR",
-        "stock_name": "PACCAR Inc.",
+        "stock_id": "EFX",
+        "stock_name": "Equifax, Inc.",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 5.1,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "T",
+        "stock_name": "美國電話電報",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 4.72,
+        "avg_pnl": 4.14,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "PCAR",
+        "stock_name": "PACCAR Inc.",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.82,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "9921",
+        "stock_name": "巨大",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 3.24,
         "win_rate": 100.0
       },
       {
@@ -1842,14 +1866,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "DLTR",
-        "stock_name": "一元樹",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 1.68,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "CTVA",
         "stock_name": "Corteva, Inc.",
         "total_cnt": 2,
@@ -1874,19 +1890,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "WMB",
-        "stock_name": "Williams Companies, Inc. (The)",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 0.89,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "TECH",
         "stock_name": "Bio-Techne Corp",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 0.4,
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 0.56,
         "win_rate": 100.0
       },
       {
@@ -1898,12 +1906,20 @@
         "win_rate": 83.3
       },
       {
+        "stock_id": "5274",
+        "stock_name": "信驊",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 7.31,
+        "win_rate": 66.7
+      },
+      {
         "stock_id": "2059",
         "stock_name": "川湖科技",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 5.21,
-        "win_rate": 75.0
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 2.86,
+        "win_rate": 66.7
       },
       {
         "stock_id": "MTB",
@@ -1922,28 +1938,12 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "2105",
-        "stock_name": "正新",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": -0.87,
-        "win_rate": 66.7
-      },
-      {
         "stock_id": "6488",
         "stock_name": "環球晶圓",
         "total_cnt": 5,
         "win_cnt": 3,
         "avg_pnl": 4.66,
         "win_rate": 60.0
-      },
-      {
-        "stock_id": "5274",
-        "stock_name": "信驊",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 4.09,
-        "win_rate": 50.0
       },
       {
         "stock_id": "CTAS",
@@ -1962,27 +1962,27 @@
         "win_rate": 50.0
       },
       {
-        "stock_id": "3045",
-        "stock_name": "台灣大",
+        "stock_id": "2308",
+        "stock_name": "台達電",
         "total_cnt": 2,
         "win_cnt": 1,
-        "avg_pnl": 1.15,
+        "avg_pnl": 1.03,
         "win_rate": 50.0
       },
       {
-        "stock_id": "AEE",
-        "stock_name": "Ameren Corporation",
+        "stock_id": "3008",
+        "stock_name": "大立光",
         "total_cnt": 2,
         "win_cnt": 1,
-        "avg_pnl": -0.27,
+        "avg_pnl": 0.24,
         "win_rate": 50.0
       },
       {
-        "stock_id": "MMM",
-        "stock_name": "3M Company",
+        "stock_id": "ALLE",
+        "stock_name": "Allegion plc",
         "total_cnt": 2,
         "win_cnt": 1,
-        "avg_pnl": -0.27,
+        "avg_pnl": -0.45,
         "win_rate": 50.0
       },
       {
@@ -2010,11 +2010,11 @@
         "win_rate": 50.0
       },
       {
-        "stock_id": "6121",
-        "stock_name": "新普",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": -2.45,
+        "stock_id": "2105",
+        "stock_name": "正新",
+        "total_cnt": 4,
+        "win_cnt": 2,
+        "avg_pnl": -2.4,
         "win_rate": 50.0
       }
     ],
@@ -2180,6 +2180,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "T",
+        "stock_name": "美國電話電報",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 8.37,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "3580",
         "stock_name": "友威科",
         "total_cnt": 2,
@@ -2212,6 +2220,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "GM",
+        "stock_name": "通用汽車",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.23,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6227",
         "stock_name": "茂綸",
         "total_cnt": 4,
@@ -2241,22 +2257,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.51,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "3709",
-        "stock_name": "鑫聯大投控",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 5.46,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "INCY",
-        "stock_name": "Incyte Corporation",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 5.37,
         "win_rate": 100.0
       }
     ],
@@ -2664,6 +2664,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "T",
+        "stock_name": "美國電話電報",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 8.37,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "3580",
         "stock_name": "友威科",
         "total_cnt": 2,
@@ -2696,6 +2704,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "GM",
+        "stock_name": "通用汽車",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.23,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6227",
         "stock_name": "茂綸",
         "total_cnt": 4,
@@ -2725,22 +2741,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.51,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "3709",
-        "stock_name": "鑫聯大投控",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 5.46,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "INCY",
-        "stock_name": "Incyte Corporation",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 5.37,
         "win_rate": 100.0
       }
     ],
