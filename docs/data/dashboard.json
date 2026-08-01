@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31 12:25:09",
+  "generated_at": "2026-08-01 05:41:06",
   "today_picks": {
     "ETF": [
       {
@@ -2037,11 +2037,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "PM",
-        "stock_name": "菲利普莫里斯",
+        "stock_id": "TMO",
+        "stock_name": "賽默飛世爾",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 3.92,
+        "avg_pnl": 3.8,
         "win_rate": 100.0
       },
       {
@@ -2066,14 +2066,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.27,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "UNP",
-        "stock_name": "聯合太平洋",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.2,
         "win_rate": 100.0
       },
       {
@@ -2117,14 +2109,6 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "2059",
-        "stock_name": "川湖科技",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 2.53,
-        "win_rate": 66.7
-      },
-      {
         "stock_id": "JPM",
         "stock_name": "摩根大通",
         "total_cnt": 3,
@@ -2133,12 +2117,36 @@
         "win_rate": 66.7
       },
       {
+        "stock_id": "ALLE",
+        "stock_name": "Allegion plc",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 0.32,
+        "win_rate": 66.7
+      },
+      {
+        "stock_id": "UNP",
+        "stock_name": "聯合太平洋",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 0.13,
+        "win_rate": 66.7
+      },
+      {
         "stock_id": "3711",
         "stock_name": "日月光投",
-        "total_cnt": 7,
+        "total_cnt": 6,
         "win_cnt": 4,
-        "avg_pnl": -1.28,
-        "win_rate": 57.1
+        "avg_pnl": -0.92,
+        "win_rate": 66.7
+      },
+      {
+        "stock_id": "2059",
+        "stock_name": "川湖科技",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 2.94,
+        "win_rate": 50.0
       },
       {
         "stock_id": "9921",
@@ -2146,14 +2154,6 @@
         "total_cnt": 2,
         "win_cnt": 1,
         "avg_pnl": 2.1,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "6121",
-        "stock_name": "新普",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 2.04,
         "win_rate": 50.0
       },
       {
@@ -2173,14 +2173,6 @@
         "win_rate": 50.0
       },
       {
-        "stock_id": "APD",
-        "stock_name": "空氣產品",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 0.45,
-        "win_rate": 50.0
-      },
-      {
         "stock_id": "CTVA",
         "stock_name": "Corteva, Inc.",
         "total_cnt": 2,
@@ -2189,11 +2181,11 @@
         "win_rate": 50.0
       },
       {
-        "stock_id": "ALLE",
-        "stock_name": "Allegion plc",
+        "stock_id": "IR",
+        "stock_name": "Ingersoll Rand Inc.",
         "total_cnt": 2,
         "win_cnt": 1,
-        "avg_pnl": -0.78,
+        "avg_pnl": -0.55,
         "win_rate": 50.0
       },
       {
@@ -2226,6 +2218,14 @@
         "total_cnt": 2,
         "win_cnt": 1,
         "avg_pnl": -4.41,
+        "win_rate": 50.0
+      },
+      {
+        "stock_id": "2449",
+        "stock_name": "京元電子",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": -4.64,
         "win_rate": 50.0
       }
     ],
@@ -2263,6 +2263,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "TMO",
+        "stock_name": "賽默飛世爾",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.23,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "EFX",
         "stock_name": "Equifax, Inc.",
         "total_cnt": 3,
@@ -2292,14 +2300,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 3.24,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "PM",
-        "stock_name": "菲利普莫里斯",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.83,
         "win_rate": 100.0
       },
       {
@@ -2343,14 +2343,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "TECH",
-        "stock_name": "Bio-Techne Corp",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 0.56,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "PYPL",
         "stock_name": "PayPal",
         "total_cnt": 6,
@@ -2367,14 +2359,6 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "2059",
-        "stock_name": "川湖科技",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 2.86,
-        "win_rate": 66.7
-      },
-      {
         "stock_id": "MTB",
         "stock_name": "M&T Bank Corporation",
         "total_cnt": 3,
@@ -2388,6 +2372,14 @@
         "total_cnt": 3,
         "win_cnt": 2,
         "avg_pnl": 0.4,
+        "win_rate": 66.7
+      },
+      {
+        "stock_id": "ALLE",
+        "stock_name": "Allegion plc",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 0.31,
         "win_rate": 66.7
       },
       {
@@ -2415,6 +2407,14 @@
         "win_rate": 50.0
       },
       {
+        "stock_id": "2059",
+        "stock_name": "川湖科技",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 1.42,
+        "win_rate": 50.0
+      },
+      {
         "stock_id": "2308",
         "stock_name": "台達電",
         "total_cnt": 2,
@@ -2428,22 +2428,6 @@
         "total_cnt": 2,
         "win_cnt": 1,
         "avg_pnl": 0.24,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "ALLE",
-        "stock_name": "Allegion plc",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": -0.45,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "APD",
-        "stock_name": "空氣產品",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": -0.67,
         "win_rate": 50.0
       },
       {
@@ -2469,6 +2453,22 @@
         "win_cnt": 2,
         "avg_pnl": -2.4,
         "win_rate": 50.0
+      },
+      {
+        "stock_id": "8046",
+        "stock_name": "南電",
+        "total_cnt": 7,
+        "win_cnt": 3,
+        "avg_pnl": -0.14,
+        "win_rate": 42.9
+      },
+      {
+        "stock_id": "META",
+        "stock_name": "Meta平台",
+        "total_cnt": 5,
+        "win_cnt": 2,
+        "avg_pnl": -0.12,
+        "win_rate": 40.0
       }
     ],
     "t3_90d": [
@@ -2521,14 +2521,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "2465",
-        "stock_name": "麗臺",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 15.0,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6442",
         "stock_name": "光紅建聖",
         "total_cnt": 2,
@@ -2569,6 +2561,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "5864",
+        "stock_name": "致和證",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 11.9,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "3661",
         "stock_name": "世芯-KY",
         "total_cnt": 2,
@@ -2582,22 +2582,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 11.71,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "5864",
-        "stock_name": "致和證",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 11.09,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6706",
-        "stock_name": "惠特",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 10.89,
         "win_rate": 100.0
       },
       {
@@ -2638,14 +2622,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 8.37,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "3580",
-        "stock_name": "友威科",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 7.1,
         "win_rate": 100.0
       },
       {
@@ -2711,6 +2687,30 @@
         "win_cnt": 3,
         "avg_pnl": 5.51,
         "win_rate": 100.0
+      },
+      {
+        "stock_id": "3709",
+        "stock_name": "鑫聯大投控",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.46,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "INCY",
+        "stock_name": "Incyte Corporation",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 5.37,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "AKAM",
+        "stock_name": "AKAM",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 4.99,
+        "win_rate": 100.0
       }
     ],
     "t5_90d": [
@@ -2757,9 +2757,9 @@
       {
         "stock_id": "5864",
         "stock_name": "致和證",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 22.42,
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 22.39,
         "win_rate": 100.0
       },
       {
@@ -2792,14 +2792,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 14.81,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6706",
-        "stock_name": "惠特",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 13.86,
         "win_rate": 100.0
       },
       {
@@ -2851,14 +2843,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "4766",
-        "stock_name": "南寶",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 9.34,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6227",
         "stock_name": "茂綸",
         "total_cnt": 4,
@@ -2888,14 +2872,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 9.04,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2465",
-        "stock_name": "麗臺",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 8.78,
         "win_rate": 100.0
       },
       {
@@ -2939,6 +2915,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "6412",
+        "stock_name": "群電",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.46,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "1503",
         "stock_name": "士電",
         "total_cnt": 2,
@@ -2947,11 +2931,27 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6412",
-        "stock_name": "群電",
+        "stock_id": "4904",
+        "stock_name": "遠傳電信",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.46,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "SWKS",
+        "stock_name": "SWKS",
         "total_cnt": 3,
         "win_cnt": 3,
-        "avg_pnl": 6.36,
+        "avg_pnl": 5.3,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "GS",
+        "stock_name": "高盛集團",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.27,
         "win_rate": 100.0
       }
     ],
