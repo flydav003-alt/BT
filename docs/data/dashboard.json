@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03 10:34:58",
+  "generated_at": "2026-08-03 11:02:19",
   "today_picks": {
     "ETF": [
       {
@@ -2228,14 +2228,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "4939",
-        "stock_name": "亞電",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 9.65,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6227",
         "stock_name": "茂綸",
         "total_cnt": 4,
@@ -2352,6 +2344,14 @@
         "stock_name": "全新",
         "total_cnt": 2,
         "win_cnt": 2,
+        "avg_pnl": 4.49,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "TRV",
+        "stock_name": "The Travelers Companies, Inc.",
+        "total_cnt": 5,
+        "win_cnt": 5,
         "avg_pnl": 4.49,
         "win_rate": 100.0
       }
@@ -2728,14 +2728,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "4939",
-        "stock_name": "亞電",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 9.65,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "4766",
         "stock_name": "南寶",
         "total_cnt": 2,
@@ -2837,6 +2829,14 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 6.36,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "4904",
+        "stock_name": "遠傳電信",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.46,
         "win_rate": 100.0
       }
     ]
