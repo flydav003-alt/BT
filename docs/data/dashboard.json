@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04 10:30:45",
+  "generated_at": "2026-08-04 12:24:45",
   "today_picks": {
     "ETF": [
       {
@@ -1952,14 +1952,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "TMO",
-        "stock_name": "賽默飛世爾",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 3.61,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "9921",
         "stock_name": "巨大",
         "total_cnt": 2,
@@ -1970,9 +1962,17 @@
       {
         "stock_id": "RTX",
         "stock_name": "雷神技術",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.9,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.13,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "TMO",
+        "stock_name": "賽默飛世爾",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 2.78,
         "win_rate": 100.0
       },
       {
@@ -1986,17 +1986,9 @@
       {
         "stock_id": "LMT",
         "stock_name": "洛克希德馬丁",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.49,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "DGX",
-        "stock_name": "Quest Diagnostics Incorporated",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.24,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 2.7,
         "win_rate": 100.0
       },
       {
@@ -2005,6 +1997,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.17,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "DGX",
+        "stock_name": "Quest Diagnostics Incorporated",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 2.09,
         "win_rate": 100.0
       },
       {
@@ -2040,19 +2040,19 @@
         "win_rate": 83.3
       },
       {
+        "stock_id": "ALLE",
+        "stock_name": "Allegion plc",
+        "total_cnt": 5,
+        "win_cnt": 4,
+        "avg_pnl": 1.42,
+        "win_rate": 80.0
+      },
+      {
         "stock_id": "5274",
         "stock_name": "信驊科技",
         "total_cnt": 4,
         "win_cnt": 3,
         "avg_pnl": 8.93,
-        "win_rate": 75.0
-      },
-      {
-        "stock_id": "ALLE",
-        "stock_name": "Allegion plc",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 0.69,
         "win_rate": 75.0
       },
       {
