@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07 11:14:16",
+  "generated_at": "2026-08-08 03:49:41",
   "today_picks": {
     "ETF": [
       {
@@ -2347,6 +2347,22 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "ARES",
+        "stock_name": "Ares Management Corporation",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.43,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "PTC",
+        "stock_name": "PTC Inc.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 4.63,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "PCAR",
         "stock_name": "PACCAR Inc.",
         "total_cnt": 3,
@@ -2403,6 +2419,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "ALLE",
+        "stock_name": "Allegion plc",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 1.8,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "TRV",
         "stock_name": "The Travelers Companies, Inc.",
         "total_cnt": 2,
@@ -2416,14 +2440,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 1.16,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "PCG",
-        "stock_name": "PG&E",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 1.1,
         "win_rate": 100.0
       },
       {
@@ -2453,17 +2469,9 @@
       {
         "stock_id": "3711",
         "stock_name": "日月光投控",
-        "total_cnt": 6,
-        "win_cnt": 5,
-        "avg_pnl": 2.27,
-        "win_rate": 83.3
-      },
-      {
-        "stock_id": "ALLE",
-        "stock_name": "Allegion plc",
         "total_cnt": 5,
         "win_cnt": 4,
-        "avg_pnl": 1.02,
+        "avg_pnl": 2.21,
         "win_rate": 80.0
       },
       {
@@ -2491,6 +2499,14 @@
         "win_rate": 75.0
       },
       {
+        "stock_id": "PCG",
+        "stock_name": "PG&E",
+        "total_cnt": 4,
+        "win_cnt": 3,
+        "avg_pnl": 0.01,
+        "win_rate": 75.0
+      },
+      {
         "stock_id": "IR",
         "stock_name": "Ingersoll Rand Inc.",
         "total_cnt": 4,
@@ -2507,14 +2523,6 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "8046",
-        "stock_name": "南電",
-        "total_cnt": 5,
-        "win_cnt": 3,
-        "avg_pnl": 1.0,
-        "win_rate": 60.0
-      },
-      {
         "stock_id": "6274",
         "stock_name": "台燿",
         "total_cnt": 2,
@@ -2523,27 +2531,19 @@
         "win_rate": 50.0
       },
       {
+        "stock_id": "6669",
+        "stock_name": "緯穎",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 3.19,
+        "win_rate": 50.0
+      },
+      {
         "stock_id": "IQV",
         "stock_name": "IQVIA Holdings, Inc.",
         "total_cnt": 2,
         "win_cnt": 1,
         "avg_pnl": 3.14,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "2059",
-        "stock_name": "川湖",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 2.94,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "2345",
-        "stock_name": "智邦",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 2.83,
         "win_rate": 50.0
       },
       {
@@ -2570,6 +2570,22 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 17.15,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "ARES",
+        "stock_name": "Ares Management Corporation",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 11.06,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "PTC",
+        "stock_name": "PTC Inc.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 9.93,
         "win_rate": 100.0
       },
       {
@@ -2645,6 +2661,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "ALLE",
+        "stock_name": "Allegion plc",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 2.4,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "AMCR",
         "stock_name": "Amcor plc",
         "total_cnt": 2,
@@ -2693,14 +2717,6 @@
         "win_rate": 83.3
       },
       {
-        "stock_id": "ALLE",
-        "stock_name": "Allegion plc",
-        "total_cnt": 5,
-        "win_cnt": 4,
-        "avg_pnl": 1.42,
-        "win_rate": 80.0
-      },
-      {
         "stock_id": "5274",
         "stock_name": "信驊",
         "total_cnt": 4,
@@ -2715,14 +2731,6 @@
         "win_cnt": 3,
         "avg_pnl": 2.29,
         "win_rate": 75.0
-      },
-      {
-        "stock_id": "6669",
-        "stock_name": "緯穎",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 6.0,
-        "win_rate": 66.7
       },
       {
         "stock_id": "MTB",
@@ -2741,12 +2749,12 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "CTVA",
-        "stock_name": "Corteva, Inc.",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": -2.8,
-        "win_rate": 66.7
+        "stock_id": "6669",
+        "stock_name": "緯穎",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 8.35,
+        "win_rate": 50.0
       },
       {
         "stock_id": "4904",
@@ -2765,6 +2773,14 @@
         "win_rate": 50.0
       },
       {
+        "stock_id": "CFG",
+        "stock_name": "Citizens Financial Group, Inc.",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 2.56,
+        "win_rate": 50.0
+      },
+      {
         "stock_id": "WRB",
         "stock_name": "W.R. Berkley Corporation",
         "total_cnt": 2,
@@ -2778,22 +2794,6 @@
         "total_cnt": 2,
         "win_cnt": 1,
         "avg_pnl": 2.1,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "2345",
-        "stock_name": "智邦",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 1.62,
-        "win_rate": 50.0
-      },
-      {
-        "stock_id": "2059",
-        "stock_name": "川湖",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 1.42,
         "win_rate": 50.0
       },
       {
@@ -2999,6 +2999,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "PTC",
+        "stock_name": "PTC Inc.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 4.63,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "WDAY",
         "stock_name": "Workday",
         "total_cnt": 6,
@@ -3036,14 +3044,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 3.41,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "IP",
-        "stock_name": "International Paper Company",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 3.4,
         "win_rate": 100.0
       }
     ],
@@ -3145,6 +3145,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "PTC",
+        "stock_name": "PTC Inc.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 9.93,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6462",
         "stock_name": "神盾",
         "total_cnt": 3,
@@ -3210,7 +3218,7 @@
       },
       {
         "stock_id": "SWKS",
-        "stock_name": "SWKS",
+        "stock_name": "Skyworks Solutions, Inc.",
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.3,
@@ -3278,14 +3286,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 4.14,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2363",
-        "stock_name": "矽統",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.03,
         "win_rate": 100.0
       }
     ],
@@ -3661,6 +3661,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "PTC",
+        "stock_name": "PTC Inc.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 9.93,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "4766",
         "stock_name": "南寶",
         "total_cnt": 2,
@@ -3762,14 +3770,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 6.36,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "SWKS",
-        "stock_name": "SWKS",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 5.3,
         "win_rate": 100.0
       }
     ]
