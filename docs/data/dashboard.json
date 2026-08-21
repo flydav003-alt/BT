@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20 10:55:29",
+  "generated_at": "2026-08-21 03:23:21",
   "today_picks": {
     "ETF": [
       {
@@ -1962,11 +1962,27 @@
   "win_stats": {
     "t3_30d": [
       {
+        "stock_id": "5351",
+        "stock_name": "鈺創",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 16.66,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2345",
         "stock_name": "智邦",
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 10.47,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6274",
+        "stock_name": "台燿",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 9.29,
         "win_rate": 100.0
       },
       {
@@ -1994,11 +2010,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "AMCR",
-        "stock_name": "Amcor plc",
+        "stock_id": "GPN",
+        "stock_name": "Global Payments Inc.",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 5.63,
+        "avg_pnl": 6.46,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "EFX",
+        "stock_name": "Equifax, Inc.",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.11,
         "win_rate": 100.0
       },
       {
@@ -2138,11 +2162,11 @@
         "win_rate": 85.7
       },
       {
-        "stock_id": "3037",
-        "stock_name": "欣興",
+        "stock_id": "2059",
+        "stock_name": "川湖",
         "total_cnt": 6,
         "win_cnt": 5,
-        "avg_pnl": 5.71,
+        "avg_pnl": 10.58,
         "win_rate": 83.3
       },
       {
@@ -2154,11 +2178,19 @@
         "win_rate": 83.3
       },
       {
-        "stock_id": "2059",
-        "stock_name": "川湖",
+        "stock_id": "3037",
+        "stock_name": "欣興",
         "total_cnt": 5,
         "win_cnt": 4,
-        "avg_pnl": 11.01,
+        "avg_pnl": 6.51,
+        "win_rate": 80.0
+      },
+      {
+        "stock_id": "6223",
+        "stock_name": "旺矽",
+        "total_cnt": 5,
+        "win_cnt": 4,
+        "avg_pnl": 3.25,
         "win_rate": 80.0
       },
       {
@@ -2168,47 +2200,31 @@
         "win_cnt": 3,
         "avg_pnl": 1.71,
         "win_rate": 75.0
-      },
-      {
-        "stock_id": "PCG",
-        "stock_name": "PG&E",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 0.01,
-        "win_rate": 75.0
-      },
-      {
-        "stock_id": "6669",
-        "stock_name": "緯穎科技",
-        "total_cnt": 7,
-        "win_cnt": 5,
-        "avg_pnl": 5.52,
-        "win_rate": 71.4
-      },
-      {
-        "stock_id": "2408",
-        "stock_name": "南亞科",
-        "total_cnt": 6,
-        "win_cnt": 4,
-        "avg_pnl": 8.49,
-        "win_rate": 66.7
-      },
-      {
-        "stock_id": "3711",
-        "stock_name": "日月光投資控股",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 3.98,
-        "win_rate": 66.7
       }
     ],
     "t5_30d": [
       {
+        "stock_id": "5351",
+        "stock_name": "鈺創",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 26.56,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2059",
         "stock_name": "川湖",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 25.4,
+        "total_cnt": 6,
+        "win_cnt": 6,
+        "avg_pnl": 23.25,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6274",
+        "stock_name": "台燿",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 18.05,
         "win_rate": 100.0
       },
       {
@@ -2228,6 +2244,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "EL",
+        "stock_name": "Estee Lauder Companies, Inc. (T",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 10.66,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "PTC",
         "stock_name": "PTC Inc.",
         "total_cnt": 2,
@@ -2241,6 +2265,14 @@
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 9.11,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "3017",
+        "stock_name": "奇鋐",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 8.63,
         "win_rate": 100.0
       },
       {
@@ -2262,9 +2294,9 @@
       {
         "stock_id": "GPN",
         "stock_name": "Global Payments Inc.",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 6.39,
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.5,
         "win_rate": 100.0
       },
       {
@@ -2276,19 +2308,27 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "AMCR",
-        "stock_name": "Amcor plc",
+        "stock_id": "EFX",
+        "stock_name": "Equifax, Inc.",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 5.8,
+        "avg_pnl": 5.72,
         "win_rate": 100.0
       },
       {
-        "stock_id": "EFX",
-        "stock_name": "Equifax, Inc.",
+        "stock_id": "2327",
+        "stock_name": "國巨",
         "total_cnt": 3,
         "win_cnt": 3,
-        "avg_pnl": 5.1,
+        "avg_pnl": 5.65,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "AMCR",
+        "stock_name": "Amcor plc",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 4.76,
         "win_rate": 100.0
       },
       {
@@ -2402,46 +2442,6 @@
         "win_cnt": 2,
         "avg_pnl": 1.62,
         "win_rate": 100.0
-      },
-      {
-        "stock_id": "ZBH",
-        "stock_name": "Zimmer Biomet Holdings, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 0.74,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "TSCO",
-        "stock_name": "Tractor Supply Company",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 0.36,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6669",
-        "stock_name": "緯穎科技",
-        "total_cnt": 7,
-        "win_cnt": 6,
-        "avg_pnl": 10.95,
-        "win_rate": 85.7
-      },
-      {
-        "stock_id": "2454",
-        "stock_name": "聯發科",
-        "total_cnt": 7,
-        "win_cnt": 6,
-        "avg_pnl": 10.37,
-        "win_rate": 85.7
-      },
-      {
-        "stock_id": "2408",
-        "stock_name": "南亞科",
-        "total_cnt": 6,
-        "win_cnt": 5,
-        "avg_pnl": 9.99,
-        "win_rate": 83.3
       }
     ],
     "t3_90d": [
@@ -2880,27 +2880,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "AMCR",
-        "stock_name": "Amcor plc",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 3.98,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2377",
-        "stock_name": "微星",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.88,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2610",
         "stock_name": "中華航空",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 3.83,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "AMCR",
+        "stock_name": "Amcor plc",
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 3.72,
         "win_rate": 100.0
       },
       {
@@ -2925,6 +2917,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 3.24,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "DXCM",
+        "stock_name": "德康醫療",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 2.94,
         "win_rate": 100.0
       }
     ],
@@ -3308,14 +3308,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "CSCO",
-        "stock_name": "思科系統",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 10.13,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "AJG",
         "stock_name": "Arthur J. Gallagher & Co.",
         "total_cnt": 2,
@@ -3409,6 +3401,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 6.45,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "GPN",
+        "stock_name": "Global Payments Inc.",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 6.39,
         "win_rate": 100.0
       }
     ]
