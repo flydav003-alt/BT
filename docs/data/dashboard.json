@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27 20:38:19",
+  "generated_at": "2026-08-28 14:28:44",
   "today_picks": {
     "ETF": [
       {
@@ -2228,9 +2228,9 @@
       {
         "stock_id": "2059",
         "stock_name": "川湖",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 15.44,
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 17.96,
         "win_rate": 100.0
       },
       {
@@ -2242,11 +2242,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6669",
-        "stock_name": "緯穎",
+        "stock_id": "2408",
+        "stock_name": "南亞科",
         "total_cnt": 5,
         "win_cnt": 5,
-        "avg_pnl": 12.74,
+        "avg_pnl": 13.36,
         "win_rate": 100.0
       },
       {
@@ -2266,19 +2266,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "TGT",
-        "stock_name": "塔吉特",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 10.49,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2345",
-        "stock_name": "智邦",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 10.47,
+        "stock_id": "ARES",
+        "stock_name": "Ares Management Corporation",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 9.87,
         "win_rate": 100.0
       },
       {
@@ -2290,6 +2282,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "TGT",
+        "stock_name": "塔吉特",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 7.93,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6223",
         "stock_name": "旺矽",
         "total_cnt": 5,
@@ -2298,27 +2298,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "ARES",
-        "stock_name": "Ares Management Corporation",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 7.46,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "3081",
-        "stock_name": "聯亞光電",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 7.45,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "CPRT",
         "stock_name": "Copart",
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 6.96,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "3081",
+        "stock_name": "聯亞光電",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 6.8,
         "win_rate": 100.0
       },
       {
@@ -2426,6 +2418,22 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "8932",
+        "stock_name": "智通*",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.9,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2359",
+        "stock_name": "所羅門",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.61,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "PFG",
         "stock_name": "Principal Financial Group Inc",
         "total_cnt": 2,
@@ -2450,19 +2458,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "2454",
-        "stock_name": "聯發科",
-        "total_cnt": 7,
-        "win_cnt": 6,
-        "avg_pnl": 6.64,
-        "win_rate": 85.7
-      },
-      {
-        "stock_id": "2408",
-        "stock_name": "南亞科",
+        "stock_id": "2308",
+        "stock_name": "台達電",
         "total_cnt": 6,
         "win_cnt": 5,
-        "avg_pnl": 9.78,
+        "avg_pnl": 3.91,
         "win_rate": 83.3
       }
     ],
@@ -2470,9 +2470,17 @@
       {
         "stock_id": "2059",
         "stock_name": "川湖",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 27.03,
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 26.93,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2615",
+        "stock_name": "萬海",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 25.63,
         "win_rate": 100.0
       },
       {
@@ -2492,19 +2500,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6669",
-        "stock_name": "緯穎",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 15.89,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2408",
         "stock_name": "南亞科",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 15.44,
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 16.31,
         "win_rate": 100.0
       },
       {
@@ -2513,6 +2513,14 @@
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 15.28,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "CRM",
+        "stock_name": "Salesforce",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 13.57,
         "win_rate": 100.0
       },
       {
@@ -2528,15 +2536,7 @@
         "stock_name": "大立光",
         "total_cnt": 7,
         "win_cnt": 7,
-        "avg_pnl": 11.35,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "EL",
-        "stock_name": "Estee Lauder Companies, Inc. (T",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 10.66,
+        "avg_pnl": 12.78,
         "win_rate": 100.0
       },
       {
@@ -2548,6 +2548,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "EL",
+        "stock_name": "Estee Lauder Companies, Inc. (T",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 9.89,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2383",
         "stock_name": "台光電",
         "total_cnt": 5,
@@ -2556,35 +2564,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3231",
-        "stock_name": "緯創",
+        "stock_id": "3081",
+        "stock_name": "聯亞光電",
         "total_cnt": 3,
         "win_cnt": 3,
-        "avg_pnl": 9.61,
+        "avg_pnl": 9.78,
         "win_rate": 100.0
       },
       {
         "stock_id": "ARES",
         "stock_name": "Ares Management Corporation",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 9.11,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "TGT",
-        "stock_name": "塔吉特",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 7.92,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "IVZ",
-        "stock_name": "Invesco Ltd",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 7.53,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 8.19,
         "win_rate": 100.0
       },
       {
@@ -2604,11 +2596,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3081",
-        "stock_name": "聯亞光電",
+        "stock_id": "3231",
+        "stock_name": "緯創",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 7.19,
+        "avg_pnl": 7.06,
         "win_rate": 100.0
       },
       {
@@ -2617,6 +2609,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 6.85,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "TGT",
+        "stock_name": "塔吉特",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 6.73,
         "win_rate": 100.0
       },
       {
@@ -2676,14 +2676,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "DXCM",
-        "stock_name": "德康醫療",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 2.94,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "PLTR",
         "stock_name": "帕蘭提爾",
         "total_cnt": 3,
@@ -2705,6 +2697,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.08,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "AMZN",
+        "stock_name": "亞馬遜",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.73,
         "win_rate": 100.0
       }
     ],
@@ -2742,14 +2742,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "TGT",
-        "stock_name": "塔吉特",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 10.49,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "4764",
         "stock_name": "雙鍵",
         "total_cnt": 2,
@@ -2763,6 +2755,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 8.37,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "TGT",
+        "stock_name": "塔吉特",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 7.93,
         "win_rate": 100.0
       },
       {
@@ -2976,19 +2976,19 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "CRM",
+        "stock_name": "Salesforce",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 13.57,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2464",
         "stock_name": "盟立",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 12.85,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "EL",
-        "stock_name": "Estee Lauder Companies, Inc. (T",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 10.66,
         "win_rate": 100.0
       },
       {
@@ -3008,6 +3008,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "EL",
+        "stock_name": "Estee Lauder Companies, Inc. (T",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 9.89,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "LUV",
         "stock_name": "Southwest Airlines Company",
         "total_cnt": 3,
@@ -3016,19 +3024,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "TGT",
-        "stock_name": "塔吉特",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 7.92,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "8088",
         "stock_name": "品安",
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 7.67,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "TGT",
+        "stock_name": "塔吉特",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 6.73,
         "win_rate": 100.0
       },
       {
@@ -3144,14 +3152,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "8932",
-        "stock_name": "智通*",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 3.52,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "IP",
         "stock_name": "International Paper Company",
         "total_cnt": 6,
@@ -3176,19 +3176,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "DXCM",
-        "stock_name": "德康醫療",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 2.94,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "PCAR",
         "stock_name": "PACCAR Inc.",
         "total_cnt": 6,
         "win_cnt": 6,
         "avg_pnl": 2.92,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "PM",
+        "stock_name": "菲利普莫里斯",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 2.83,
         "win_rate": 100.0
       }
     ],
@@ -3314,14 +3314,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "TGT",
-        "stock_name": "塔吉特",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 10.49,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "4991",
         "stock_name": "環宇-KY",
         "total_cnt": 4,
@@ -3367,6 +3359,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 8.37,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "TGT",
+        "stock_name": "塔吉特",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 7.93,
         "win_rate": 100.0
       },
       {
@@ -3540,6 +3540,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "CRM",
+        "stock_name": "Salesforce",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 13.57,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2465",
         "stock_name": "麗臺",
         "total_cnt": 3,
@@ -3644,14 +3652,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "TGT",
-        "stock_name": "塔吉特",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 7.92,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "8088",
         "stock_name": "品安",
         "total_cnt": 5,
@@ -3660,19 +3660,19 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "TGT",
+        "stock_name": "塔吉特",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 6.73,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "1503",
         "stock_name": "士電",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 6.45,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "GPN",
-        "stock_name": "Global Payments Inc.",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 6.39,
         "win_rate": 100.0
       }
     ]
