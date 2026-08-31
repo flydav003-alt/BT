@@ -151,7 +151,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
       <a href="#" onclick="switchTab('stats');return false;" id="nav-stats">📊 統計</a>
       <a href="#" onclick="switchTab('us');return false;" id="nav-us">🇺🇸 美股</a>
     </nav>
-    <div class="update-badge">🕐 2026-08-31 15:29 更新</div>
+    <div class="update-badge">🕐 2026-08-31 15:40 更新</div>
   </div>
 </nav>
 
@@ -285,98 +285,269 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <div class="today-col" id="col-ETF">
   <div class="col-header" style="border-bottom:2px solid #a78bfa;margin-bottom:12px;padding-bottom:8px;">
     <span style="font-size:.9rem;font-weight:700;color:#a78bfa;">ETF</span>
-    <span class="col-count" style="font-size:.68rem;color:#4a6080;margin-left:8px;">8 支</span>
+    <span class="col-count" style="font-size:.68rem;color:#4a6080;margin-left:8px;">10 支</span>
   </div>
   <div class="cards-wrapper">
   
 <div class="pick-card"
-  data-score="77"
+  data-score="80"
   data-cat="ETF"
-  data-rsi="73.6"
-  data-volratio="1.58"
-  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 1765.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 1710.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 1845.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: 73, &quot;close&quot;: 2025.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: 79, &quot;close&quot;: 2225.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: 77, &quot;close&quot;: 2345.0}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=73.6，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均1.6倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;突破布林上軌，短線超漲追高謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」△ 有效性低｜出現在高檔（近60日93%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：2435.00（+3.8%）／支撐：1340.00（-42.9%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 19張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 2166張&quot;}]"
-  data-sid="6805"
-  data-name="富世達"
+  data-rsi="72.8"
+  data-volratio="2.4"
+  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 306.5}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 302.5}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 311.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 333.5}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: null, &quot;close&quot;: 351.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: null, &quot;close&quot;: 386.0}, {&quot;d&quot;: &quot;2026-08-31&quot;, &quot;s&quot;: 80, &quot;close&quot;: 422.5}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=72.8，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均2.4倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;突破布林上軌，短線超漲追高謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「長紅K」△ 有效性低｜出現在高檔（近60日99%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」△ 有效性低｜出現在高檔（近60日99%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：424.50（+0.5%）／支撐：288.00（-31.8%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 11023張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 9020張&quot;}]"
+  data-sid="3374"
+  data-name="精  材"
+  data-verdict="📈 強烈偏多"
+  data-score-val="80"
+  data-color="#ff4d6d"
+  data-price="422.50"
+  data-rsi-val="72.8"
+  data-kd="81.4"
+  data-vol="2.40x"
+  data-cat-label="ETF"
+  data-cat-color="#a78bfa"
+  onclick="openPickModal(this)"
+  style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
+  onmouseover="this.style.borderColor='#ff4d6d88'" onmouseout="this.style.borderColor='#ff4d6d33'">
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">1</div>
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff4d6d" stroke-width="4"
+        stroke-dasharray="221.2 55.3"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">80</span>
+  </div>
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;flex-direction:column;gap:3px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=3374" target="_blank"
+         onclick="event.stopPropagation()"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
+         title="點擊開啟K線分析">3374</a>
+      <span style="font-size:.72rem;color:#6a85a8;">精  材</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff4d6d;font-weight:600;margin-top:3px;">📈 強烈偏多</div>
+  </div>
+  
+  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
+    <svg width="60" height="28" viewBox="0 0 60 28">
+      <polyline points="0.0,23.6 9.3,24.2 18.7,22.9 28.0,19.4 37.3,16.8 46.7,11.4 56.0,5.8"
+        fill="none" stroke="#ff4d6d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="56.0" cy="5.8" r="2.5" fill="#ff4d6d"/>
+    </svg>
+    <div style="font-size:.58rem;color:#ff4d6d;margin-top:1px;font-family:'IBM Plex Mono',monospace;">306.5→422.5 ↑</div>
+  </div>
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">422.50</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 72.8 ｜ K 81.4</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 2.40x</div>
+  </div>
+</div>
+<div class="pick-card"
+  data-score="79"
+  data-cat="ETF"
+  data-rsi="74.6"
+  data-volratio="2.81"
+  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: 70, &quot;close&quot;: 406.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 381.5}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 419.5}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 428.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: null, &quot;close&quot;: 433.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: null, &quot;close&quot;: 434.0}, {&quot;d&quot;: &quot;2026-08-31&quot;, &quot;s&quot;: 79, &quot;close&quot;: 477.0}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=74.6，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均2.8倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;突破布林上軌，短線超漲追高謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「長紅K」△ 有效性低｜出現在高檔（近60日100%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「多頭吞噬」△ 有效性低｜出現在高檔（近60日100%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：477.00（+0.0%）／支撐：347.50（-27.1%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 6636張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 1431張&quot;}]"
+  data-sid="2455"
+  data-name="全新"
+  data-verdict="📈 強烈偏多"
+  data-score-val="79"
+  data-color="#ff4d6d"
+  data-price="477.00"
+  data-rsi-val="74.6"
+  data-kd="81.8"
+  data-vol="2.81x"
+  data-cat-label="ETF"
+  data-cat-color="#a78bfa"
+  onclick="openPickModal(this)"
+  style="background:rgba(255,77,109,0.12);border:1px solid #ff4d6d33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
+  onmouseover="this.style.borderColor='#ff4d6d88'" onmouseout="this.style.borderColor='#ff4d6d33'">
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">2</div>
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff4d6d" stroke-width="4"
+        stroke-dasharray="218.4 58.1"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff4d6d;font-family:'IBM Plex Mono',monospace;z-index:1;">79</span>
+  </div>
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;flex-direction:column;gap:3px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=2455" target="_blank"
+         onclick="event.stopPropagation()"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
+         title="點擊開啟K線分析">2455</a>
+      <span style="font-size:.72rem;color:#6a85a8;">全新</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff4d6d;font-weight:600;margin-top:3px;">📈 強烈偏多</div>
+  </div>
+  
+  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
+    <svg width="60" height="28" viewBox="0 0 60 28">
+      <polyline points="0.0,19.5 9.3,24.2 18.7,16.9 28.0,15.2 37.3,14.3 46.7,14.1 56.0,5.8"
+        fill="none" stroke="#ff4d6d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="56.0" cy="5.8" r="2.5" fill="#ff4d6d"/>
+    </svg>
+    <div style="font-size:.58rem;color:#ff4d6d;margin-top:1px;font-family:'IBM Plex Mono',monospace;">406.0→477.0 ↑</div>
+  </div>
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">477.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 74.6 ｜ K 81.8</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 2.81x</div>
+  </div>
+</div>
+<div class="pick-card"
+  data-score="74"
+  data-cat="ETF"
+  data-rsi="78.7"
+  data-volratio="0.99"
+  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 5395.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 5155.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 5205.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 5725.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: null, &quot;close&quot;: 5645.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: null, &quot;close&quot;: 5785.0}, {&quot;d&quot;: &quot;2026-08-31&quot;, &quot;s&quot;: 74, &quot;close&quot;: 5990.0}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=78.7，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;KD&quot;, &quot;text&quot;: &quot;KD金叉（K=85.5），短線偏多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「晨星」△ 有效性低｜出現在高檔（近60日98%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：6045.00（+0.9%）／支撐：3710.00（-38.1%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 55張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 132張&quot;}]"
+  data-sid="3653"
+  data-name="健策"
   data-verdict="📊 偏多觀察"
-  data-score-val="77"
+  data-score-val="74"
   data-color="#ff9f40"
-  data-price="2345.00"
-  data-rsi-val="73.6"
-  data-kd="78.8"
-  data-vol="1.58x"
+  data-price="5990.00"
+  data-rsi-val="78.7"
+  data-kd="85.5"
+  data-vol="0.99x"
   data-cat-label="ETF"
   data-cat-color="#a78bfa"
   onclick="openPickModal(this)"
   style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
   onmouseover="this.style.borderColor='#ff9f4088'" onmouseout="this.style.borderColor='#ff9f4033'">
-  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">1</div>
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">3</div>
   <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
     <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
       <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
       <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
-        stroke-dasharray="212.9 63.6"
+        stroke-dasharray="204.6 71.9"
         stroke-dashoffset="28.3" stroke-linecap="round"
         transform="rotate(-90 22 22)"/>
     </svg>
-    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">77</span>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">74</span>
   </div>
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
-      <a href="https://flydav003-alt.github.io/k-line/?stock=6805" target="_blank"
+      <a href="https://flydav003-alt.github.io/k-line/?stock=3653" target="_blank"
          onclick="event.stopPropagation()"
          style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
-         title="點擊開啟K線分析">6805</a>
-      <span style="font-size:.72rem;color:#6a85a8;">富世達</span>
+         title="點擊開啟K線分析">3653</a>
+      <span style="font-size:.72rem;color:#6a85a8;">健策</span>
     </div>
     <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:3px;">📊 偏多觀察</div>
   </div>
   
   <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
     <svg width="60" height="28" viewBox="0 0 60 28">
-      <polyline points="0.0,22.6 11.2,24.2 22.4,20.3 33.6,15.1 44.8,9.3 56.0,5.8"
+      <polyline points="0.0,18.9 9.3,24.2 18.7,23.1 28.0,11.7 37.3,13.4 46.7,10.3 56.0,5.8"
         fill="none" stroke="#ff9f40" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="56.0" cy="5.8" r="2.5" fill="#ff9f40"/>
     </svg>
-    <div style="font-size:.58rem;color:#ff9f40;margin-top:1px;font-family:'IBM Plex Mono',monospace;">1765.0→2345.0 ↑</div>
+    <div style="font-size:.58rem;color:#ff9f40;margin-top:1px;font-family:'IBM Plex Mono',monospace;">5395.0→5990.0 ↑</div>
   </div>
   <div style="text-align:right;flex-shrink:0;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">2345.00</div>
-    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 73.6 ｜ K 78.8</div>
-    <div style="font-size:.62rem;color:#e8b84b;">量比 1.58x</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">5990.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 78.7 ｜ K 85.5</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 0.99x</div>
   </div>
 </div>
 <div class="pick-card"
-  data-score="73"
+  data-score="72"
   data-cat="ETF"
-  data-rsi="89.5"
-  data-volratio="1.82"
-  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 5610.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 5385.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: 70, &quot;close&quot;: 5720.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 6290.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: 68, &quot;close&quot;: 6915.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: 73, &quot;close&quot;: 7065.0}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=89.5 極度超買，短線回調風險高&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均1.8倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;突破布林上軌，短線超漲追高謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」△ 有效性低｜出現在高檔（近60日95%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：7270.00（+2.9%）／支撐：3910.00（-44.7%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 52張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 482張&quot;}]"
-  data-sid="3008"
-  data-name="大立光"
+  data-rsi="55.9"
+  data-volratio="1.87"
+  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: 51, &quot;close&quot;: 1135.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 1135.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 1160.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 1180.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: null, &quot;close&quot;: 1295.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: null, &quot;close&quot;: 1240.0}, {&quot;d&quot;: &quot;2026-08-31&quot;, &quot;s&quot;: 72, &quot;close&quot;: 1230.0}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;MA5黃金交叉MA10，短線轉多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=55.9，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均1.9倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「十字線」多空僵持｜位置：高檔（72%），高檔出現需警惕&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：1380.00（+12.2%）／支撐：978.00（-20.5%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 3528張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 1491張&quot;}]"
+  data-sid="8046"
+  data-name="南電"
   data-verdict="📊 偏多觀察"
-  data-score-val="73"
+  data-score-val="72"
   data-color="#ff9f40"
-  data-price="7065.00"
-  data-rsi-val="89.5"
-  data-kd="93.4"
-  data-vol="1.82x"
+  data-price="1230.00"
+  data-rsi-val="55.9"
+  data-kd="54.4"
+  data-vol="1.87x"
   data-cat-label="ETF"
   data-cat-color="#a78bfa"
   onclick="openPickModal(this)"
   style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
   onmouseover="this.style.borderColor='#ff9f4088'" onmouseout="this.style.borderColor='#ff9f4033'">
-  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">2</div>
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">4</div>
   <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
     <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
       <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
       <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
-        stroke-dasharray="201.8 74.7"
+        stroke-dasharray="199.1 77.4"
         stroke-dashoffset="28.3" stroke-linecap="round"
         transform="rotate(-90 22 22)"/>
     </svg>
-    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">73</span>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">72</span>
+  </div>
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;flex-direction:column;gap:3px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=8046" target="_blank"
+         onclick="event.stopPropagation()"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
+         title="點擊開啟K線分析">8046</a>
+      <span style="font-size:.72rem;color:#6a85a8;">南電</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:3px;">📊 偏多觀察</div>
+  </div>
+  
+  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
+    <svg width="60" height="28" viewBox="0 0 60 28">
+      <polyline points="0.0,24.2 9.3,24.2 18.7,21.3 28.0,19.0 37.3,5.8 46.7,12.1 56.0,13.3"
+        fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="56.0" cy="13.3" r="2.5" fill="#4a9eff"/>
+    </svg>
+    <div style="font-size:.58rem;color:#4a9eff;margin-top:1px;font-family:'IBM Plex Mono',monospace;">1135.0→1230.0 ↓</div>
+  </div>
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">1230.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 55.9 ｜ K 54.4</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.87x</div>
+  </div>
+</div>
+<div class="pick-card"
+  data-score="71"
+  data-cat="ETF"
+  data-rsi="92.1"
+  data-volratio="1.33"
+  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 5610.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 5385.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: 70, &quot;close&quot;: 5720.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 6290.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: 68, &quot;close&quot;: 6915.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: 73, &quot;close&quot;: 7065.0}, {&quot;d&quot;: &quot;2026-08-31&quot;, &quot;s&quot;: 71, &quot;close&quot;: 7650.0}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=92.1 極度超買，短線回調風險高&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;量增紅K（量比均1.3倍），有效上漲&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;突破布林上軌，短線超漲追高謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「長紅K」△ 有效性低｜出現在高檔（近60日98%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」△ 有效性低｜出現在高檔（近60日98%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：7735.00（+1.1%）／支撐：4010.00（-47.6%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 187張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 814張&quot;}]"
+  data-sid="3008"
+  data-name="大立光"
+  data-verdict="📊 偏多觀察"
+  data-score-val="71"
+  data-color="#ff9f40"
+  data-price="7650.00"
+  data-rsi-val="92.1"
+  data-kd="94.5"
+  data-vol="1.33x"
+  data-cat-label="ETF"
+  data-cat-color="#a78bfa"
+  onclick="openPickModal(this)"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
+  onmouseover="this.style.borderColor='#ff9f4088'" onmouseout="this.style.borderColor='#ff9f4033'">
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">5</div>
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
+        stroke-dasharray="196.3 80.2"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">71</span>
   </div>
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
@@ -391,205 +562,34 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   
   <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
     <svg width="60" height="28" viewBox="0 0 60 28">
-      <polyline points="0.0,21.7 11.2,24.2 22.4,20.5 33.6,14.3 44.8,7.5 56.0,5.8"
+      <polyline points="0.0,22.3 9.3,24.2 18.7,21.5 28.0,16.8 37.3,11.8 46.7,10.6 56.0,5.8"
         fill="none" stroke="#ff9f40" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="56.0" cy="5.8" r="2.5" fill="#ff9f40"/>
     </svg>
-    <div style="font-size:.58rem;color:#ff9f40;margin-top:1px;font-family:'IBM Plex Mono',monospace;">5610.0→7065.0 ↑</div>
+    <div style="font-size:.58rem;color:#ff9f40;margin-top:1px;font-family:'IBM Plex Mono',monospace;">5610.0→7650.0 ↑</div>
   </div>
   <div style="text-align:right;flex-shrink:0;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">7065.00</div>
-    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 89.5 ｜ K 93.4</div>
-    <div style="font-size:.62rem;color:#e8b84b;">量比 1.82x</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">7650.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 92.1 ｜ K 94.5</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.33x</div>
   </div>
 </div>
 <div class="pick-card"
-  data-score="69"
+  data-score="70"
   data-cat="ETF"
-  data-rsi="70.1"
-  data-volratio="0.77"
-  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: 66, &quot;close&quot;: 5600.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: 63, &quot;close&quot;: 5365.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: 59, &quot;close&quot;: 5570.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 6125.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: 62, &quot;close&quot;: 5920.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: 69, &quot;close&quot;: 6015.0}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=70.1，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：6370.00（+5.9%）／支撐：4030.00（-33.0%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 319張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 504張&quot;}]"
-  data-sid="3443"
-  data-name="創意"
+  data-rsi="72.3"
+  data-volratio="1.15"
+  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 2920.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 2765.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 2960.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 3255.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: 59, &quot;close&quot;: 3370.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: null, &quot;close&quot;: 3305.0}, {&quot;d&quot;: &quot;2026-08-31&quot;, &quot;s&quot;: 70, &quot;close&quot;: 3530.0}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=72.3，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「多頭吞噬」△ 有效性低｜出現在高檔（近60日99%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：3550.00（+0.6%）／支撐：1965.00（-44.3%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 53張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 2444張&quot;}]"
+  data-sid="3081"
+  data-name="聯亞光電"
   data-verdict="📊 偏多觀察"
-  data-score-val="69"
+  data-score-val="70"
   data-color="#ff9f40"
-  data-price="6015.00"
-  data-rsi-val="70.1"
-  data-kd="68.6"
-  data-vol="0.77x"
-  data-cat-label="ETF"
-  data-cat-color="#a78bfa"
-  onclick="openPickModal(this)"
-  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
-  onmouseover="this.style.borderColor='#ff9f4088'" onmouseout="this.style.borderColor='#ff9f4033'">
-  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">3</div>
-  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
-    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
-      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
-      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
-        stroke-dasharray="190.8 85.7"
-        stroke-dashoffset="28.3" stroke-linecap="round"
-        transform="rotate(-90 22 22)"/>
-    </svg>
-    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">69</span>
-  </div>
-  <div style="flex:1;min-width:0;">
-    <div style="display:flex;flex-direction:column;gap:3px;">
-      <a href="https://flydav003-alt.github.io/k-line/?stock=3443" target="_blank"
-         onclick="event.stopPropagation()"
-         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
-         title="點擊開啟K線分析">3443</a>
-      <span style="font-size:.72rem;color:#6a85a8;">創意</span>
-    </div>
-    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:3px;">📊 偏多觀察</div>
-  </div>
-  
-  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
-    <svg width="60" height="28" viewBox="0 0 60 28">
-      <polyline points="0.0,18.5 11.2,24.2 22.4,19.2 33.6,5.8 44.8,10.8 56.0,8.5"
-        fill="none" stroke="#ff9f40" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="56.0" cy="8.5" r="2.5" fill="#ff9f40"/>
-    </svg>
-    <div style="font-size:.58rem;color:#ff9f40;margin-top:1px;font-family:'IBM Plex Mono',monospace;">5600.0→6015.0 ↑</div>
-  </div>
-  <div style="text-align:right;flex-shrink:0;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">6015.00</div>
-    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 70.1 ｜ K 68.6</div>
-    <div style="font-size:.62rem;color:#e8b84b;">量比 0.77x</div>
-  </div>
-</div>
-<div class="pick-card"
-  data-score="68"
-  data-cat="ETF"
-  data-rsi="78.6"
-  data-volratio="1.2"
-  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 6255.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 6300.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 6440.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: 68, &quot;close&quot;: 6785.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: 68, &quot;close&quot;: 6785.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: 67, &quot;close&quot;: 6815.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: 68, &quot;close&quot;: 7200.0}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=78.6，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;突破布林上軌，短線超漲追高謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「紅三兵」△ 有效性低｜出現在高檔（近60日98%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：7245.00（+0.6%）／支撐：5475.00（-24.0%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 883張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 248張&quot;}]"
-  data-sid="6669"
-  data-name="緯穎"
-  data-verdict="📊 偏多觀察"
-  data-score-val="68"
-  data-color="#ff9f40"
-  data-price="7200.00"
-  data-rsi-val="78.6"
-  data-kd="79.0"
-  data-vol="1.20x"
-  data-cat-label="ETF"
-  data-cat-color="#a78bfa"
-  onclick="openPickModal(this)"
-  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
-  onmouseover="this.style.borderColor='#ff9f4088'" onmouseout="this.style.borderColor='#ff9f4033'">
-  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">4</div>
-  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
-    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
-      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
-      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
-        stroke-dasharray="188.0 88.5"
-        stroke-dashoffset="28.3" stroke-linecap="round"
-        transform="rotate(-90 22 22)"/>
-    </svg>
-    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">68</span>
-  </div>
-  <div style="flex:1;min-width:0;">
-    <div style="display:flex;flex-direction:column;gap:3px;">
-      <a href="https://flydav003-alt.github.io/k-line/?stock=6669" target="_blank"
-         onclick="event.stopPropagation()"
-         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
-         title="點擊開啟K線分析">6669</a>
-      <span style="font-size:.72rem;color:#6a85a8;">緯穎</span>
-    </div>
-    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:3px;">📊 偏多觀察</div>
-  </div>
-  
-  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
-    <svg width="60" height="28" viewBox="0 0 60 28">
-      <polyline points="0.0,24.2 9.3,23.3 18.7,20.6 28.0,13.9 37.3,13.9 46.7,13.3 56.0,5.8"
-        fill="none" stroke="#ff9f40" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="56.0" cy="5.8" r="2.5" fill="#ff9f40"/>
-    </svg>
-    <div style="font-size:.58rem;color:#ff9f40;margin-top:1px;font-family:'IBM Plex Mono',monospace;">6255.0→7200.0 ↑</div>
-  </div>
-  <div style="text-align:right;flex-shrink:0;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">7200.00</div>
-    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 78.6 ｜ K 79.0</div>
-    <div style="font-size:.62rem;color:#e8b84b;">量比 1.20x</div>
-  </div>
-</div>
-<div class="pick-card"
-  data-score="67"
-  data-cat="ETF"
-  data-rsi="61.4"
-  data-volratio="0.24"
-  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 577.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 547.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 601.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 598.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: 53, &quot;close&quot;: 617.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: 67, &quot;close&quot;: 610.0}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=61.4，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;量大幅萎縮（均量24%），等待方向確認&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「晨星」△ 有效性低｜出現在高檔（近60日87%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：654.00（+7.2%）／支撐：371.50（-39.1%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 2802張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 5977張&quot;}]"
-  data-sid="4979"
-  data-name="華星光"
-  data-verdict="📊 偏多觀察"
-  data-score-val="67"
-  data-color="#ff9f40"
-  data-price="610.00"
-  data-rsi-val="61.4"
-  data-kd="72.2"
-  data-vol="0.24x"
-  data-cat-label="ETF"
-  data-cat-color="#a78bfa"
-  onclick="openPickModal(this)"
-  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
-  onmouseover="this.style.borderColor='#ff9f4088'" onmouseout="this.style.borderColor='#ff9f4033'">
-  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">5</div>
-  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
-    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
-      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
-      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
-        stroke-dasharray="185.2 91.3"
-        stroke-dashoffset="28.3" stroke-linecap="round"
-        transform="rotate(-90 22 22)"/>
-    </svg>
-    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">67</span>
-  </div>
-  <div style="flex:1;min-width:0;">
-    <div style="display:flex;flex-direction:column;gap:3px;">
-      <a href="https://flydav003-alt.github.io/k-line/?stock=4979" target="_blank"
-         onclick="event.stopPropagation()"
-         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
-         title="點擊開啟K線分析">4979</a>
-      <span style="font-size:.72rem;color:#6a85a8;">華星光</span>
-    </div>
-    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:3px;">📊 偏多觀察</div>
-  </div>
-  
-  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
-    <svg width="60" height="28" viewBox="0 0 60 28">
-      <polyline points="0.0,16.3 11.2,24.2 22.4,10.0 33.6,10.8 44.8,5.8 56.0,7.7"
-        fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="56.0" cy="7.7" r="2.5" fill="#4a9eff"/>
-    </svg>
-    <div style="font-size:.58rem;color:#4a9eff;margin-top:1px;font-family:'IBM Plex Mono',monospace;">577.0→610.0 ↓</div>
-  </div>
-  <div style="text-align:right;flex-shrink:0;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">610.00</div>
-    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 61.4 ｜ K 72.2</div>
-    <div style="font-size:.62rem;color:#e8b84b;">量比 0.24x</div>
-  </div>
-</div>
-<div class="pick-card"
-  data-score="64"
-  data-cat="ETF"
-  data-rsi="70.0"
-  data-volratio="0.85"
-  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: 67, &quot;close&quot;: 2865.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 2855.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 2950.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: 60, &quot;close&quot;: 3155.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: 60, &quot;close&quot;: 3155.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: 60, &quot;close&quot;: 3340.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: 60, &quot;close&quot;: 3340.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: 64, &quot;close&quot;: 3360.0}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;MA5黃金交叉MA10，短線轉多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=70.0，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「十字線」多空僵持｜位置：高檔（94%），高檔出現需警惕&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：3450.00（+2.7%）／支撐：2400.00（-28.6%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 566張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 2099張&quot;}]"
-  data-sid="3017"
-  data-name="奇鋐"
-  data-verdict="📊 偏多觀察"
-  data-score-val="64"
-  data-color="#ff9f40"
-  data-price="3360.00"
-  data-rsi-val="70.0"
-  data-kd="70.8"
-  data-vol="0.85x"
+  data-price="3530.00"
+  data-rsi-val="72.3"
+  data-kd="85.8"
+  data-vol="1.15x"
   data-cat-label="ETF"
   data-cat-color="#a78bfa"
   onclick="openPickModal(this)"
@@ -600,11 +600,68 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
       <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
       <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
-        stroke-dasharray="176.9 99.6"
+        stroke-dasharray="193.5 83.0"
         stroke-dashoffset="28.3" stroke-linecap="round"
         transform="rotate(-90 22 22)"/>
     </svg>
-    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">64</span>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">70</span>
+  </div>
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;flex-direction:column;gap:3px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=3081" target="_blank"
+         onclick="event.stopPropagation()"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
+         title="點擊開啟K線分析">3081</a>
+      <span style="font-size:.72rem;color:#6a85a8;">聯亞光電</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:3px;">📊 偏多觀察</div>
+  </div>
+  
+  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
+    <svg width="60" height="28" viewBox="0 0 60 28">
+      <polyline points="0.0,20.5 9.3,24.2 18.7,19.5 28.0,12.4 37.3,9.7 46.7,11.2 56.0,5.8"
+        fill="none" stroke="#ff9f40" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="56.0" cy="5.8" r="2.5" fill="#ff9f40"/>
+    </svg>
+    <div style="font-size:.58rem;color:#ff9f40;margin-top:1px;font-family:'IBM Plex Mono',monospace;">2920.0→3530.0 ↑</div>
+  </div>
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">3530.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 72.3 ｜ K 85.8</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.15x</div>
+  </div>
+</div>
+<div class="pick-card"
+  data-score="68"
+  data-cat="ETF"
+  data-rsi="71.5"
+  data-volratio="0.94"
+  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: 67, &quot;close&quot;: 2865.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 2855.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 2950.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: 60, &quot;close&quot;: 3155.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: 60, &quot;close&quot;: 3155.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: 60, &quot;close&quot;: 3340.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: 60, &quot;close&quot;: 3340.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: 64, &quot;close&quot;: 3360.0}, {&quot;d&quot;: &quot;2026-08-31&quot;, &quot;s&quot;: 68, &quot;close&quot;: 3425.0}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;多頭排列（MA5>10>20>60），主趨勢強勁向上&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=71.5，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：3450.00（+0.7%）／支撐：2560.00（-25.3%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 457張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 1891張&quot;}]"
+  data-sid="3017"
+  data-name="奇鋐"
+  data-verdict="📊 偏多觀察"
+  data-score-val="68"
+  data-color="#ff9f40"
+  data-price="3425.00"
+  data-rsi-val="71.5"
+  data-kd="79.4"
+  data-vol="0.94x"
+  data-cat-label="ETF"
+  data-cat-color="#a78bfa"
+  onclick="openPickModal(this)"
+  style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
+  onmouseover="this.style.borderColor='#ff9f4088'" onmouseout="this.style.borderColor='#ff9f4033'">
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">7</div>
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
+        stroke-dasharray="188.0 88.5"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">68</span>
   </div>
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
@@ -619,49 +676,163 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   
   <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
     <svg width="60" height="28" viewBox="0 0 60 28">
-      <polyline points="0.0,23.8 8.0,24.2 16.0,20.7 24.0,13.3 32.0,13.3 40.0,6.6 48.0,6.6 56.0,5.8"
+      <polyline points="0.0,23.8 7.0,24.2 14.0,21.1 21.0,14.5 28.0,14.5 35.0,8.6 42.0,8.6 49.0,7.9 56.0,5.8"
         fill="none" stroke="#ff9f40" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="56.0" cy="5.8" r="2.5" fill="#ff9f40"/>
     </svg>
-    <div style="font-size:.58rem;color:#ff9f40;margin-top:1px;font-family:'IBM Plex Mono',monospace;">2865.0→3360.0 ↑</div>
+    <div style="font-size:.58rem;color:#ff9f40;margin-top:1px;font-family:'IBM Plex Mono',monospace;">2865.0→3425.0 ↑</div>
   </div>
   <div style="text-align:right;flex-shrink:0;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">3360.00</div>
-    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 70.0 ｜ K 70.8</div>
-    <div style="font-size:.62rem;color:#e8b84b;">量比 0.85x</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">3425.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 71.5 ｜ K 79.4</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 0.94x</div>
   </div>
 </div>
 <div class="pick-card"
-  data-score="62"
+  data-score="65"
   data-cat="ETF"
-  data-rsi="62.9"
-  data-volratio="2.75"
-  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 232.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 239.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 239.5}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 244.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: null, &quot;close&quot;: 247.5}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: 62, &quot;close&quot;: 270.0}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=62.9，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量紅K（量比均2.7倍），多方積極攻擊&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;突破布林上軌，短線超漲追高謹慎&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「長紅K」▷ 有效性中｜整理區出現，需配合均線突破確認&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：272.00（+0.7%）／支撐：224.00（-17.0%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 14626張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 1304張&quot;}]"
-  data-sid="2449"
-  data-name="京元電子"
+  data-rsi="53.8"
+  data-volratio="0.85"
+  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 3700.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 3735.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: 58, &quot;close&quot;: 3865.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 3960.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: null, &quot;close&quot;: 3870.0}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: null, &quot;close&quot;: 4065.0}, {&quot;d&quot;: &quot;2026-08-31&quot;, &quot;s&quot;: 65, &quot;close&quot;: 4075.0}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=53.8，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：4530.00（+11.2%）／支撐：3200.00（-21.5%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 204張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 176張&quot;}]"
+  data-sid="3661"
+  data-name="世芯-KY"
   data-verdict="📊 偏多觀察"
-  data-score-val="62"
+  data-score-val="65"
   data-color="#ff9f40"
-  data-price="270.00"
-  data-rsi-val="62.9"
-  data-kd="65.9"
-  data-vol="2.75x"
+  data-price="4075.00"
+  data-rsi-val="53.8"
+  data-kd="64.2"
+  data-vol="0.85x"
   data-cat-label="ETF"
   data-cat-color="#a78bfa"
   onclick="openPickModal(this)"
   style="background:rgba(255,159,64,0.10);border:1px solid #ff9f4033;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
   onmouseover="this.style.borderColor='#ff9f4088'" onmouseout="this.style.borderColor='#ff9f4033'">
-  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">7</div>
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">8</div>
   <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
     <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
       <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
       <circle cx="22" cy="22" r="18" fill="none" stroke="#ff9f40" stroke-width="4"
-        stroke-dasharray="171.4 105.1"
+        stroke-dasharray="179.7 96.8"
         stroke-dashoffset="28.3" stroke-linecap="round"
         transform="rotate(-90 22 22)"/>
     </svg>
-    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">62</span>
+    <span style="font-size:.78rem;font-weight:700;color:#ff9f40;font-family:'IBM Plex Mono',monospace;z-index:1;">65</span>
+  </div>
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;flex-direction:column;gap:3px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=3661" target="_blank"
+         onclick="event.stopPropagation()"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
+         title="點擊開啟K線分析">3661</a>
+      <span style="font-size:.72rem;color:#6a85a8;">世芯-KY</span>
+    </div>
+    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:3px;">📊 偏多觀察</div>
+  </div>
+  
+  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
+    <svg width="60" height="28" viewBox="0 0 60 28">
+      <polyline points="0.0,24.2 9.3,22.5 18.7,16.1 28.0,11.5 37.3,15.9 46.7,6.3 56.0,5.8"
+        fill="none" stroke="#ff9f40" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="56.0" cy="5.8" r="2.5" fill="#ff9f40"/>
+    </svg>
+    <div style="font-size:.58rem;color:#ff9f40;margin-top:1px;font-family:'IBM Plex Mono',monospace;">3700.0→4075.0 ↑</div>
+  </div>
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">4075.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 53.8 ｜ K 64.2</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 0.85x</div>
+  </div>
+</div>
+<div class="pick-card"
+  data-score="59"
+  data-cat="ETF"
+  data-rsi="61.3"
+  data-volratio="0.9"
+  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 90.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 92.1}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 91.4}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 91.5}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: null, &quot;close&quot;: 91.4}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: null, &quot;close&quot;: 92.1}, {&quot;d&quot;: &quot;2026-08-31&quot;, &quot;s&quot;: 59, &quot;close&quot;: 92.5}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=61.3，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;布林通道極度收窄（3.9%），即將出現方向性突破&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;K線型態&quot;, &quot;text&quot;: &quot;「晨星」△ 有效性低｜出現在高檔（近60日80%位），反轉型態高檔效果差，謹慎&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：94.00（+1.6%）／支撐：88.70（-4.1%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 889張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 1406張&quot;}]"
+  data-sid="3706"
+  data-name="神達控股"
+  data-verdict="⚖️ 中性觀望"
+  data-score-val="59"
+  data-color="#e8b84b"
+  data-price="92.50"
+  data-rsi-val="61.3"
+  data-kd="62.2"
+  data-vol="0.90x"
+  data-cat-label="ETF"
+  data-cat-color="#a78bfa"
+  onclick="openPickModal(this)"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
+  onmouseover="this.style.borderColor='#e8b84b88'" onmouseout="this.style.borderColor='#e8b84b33'">
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">9</div>
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#e8b84b" stroke-width="4"
+        stroke-dasharray="163.1 113.4"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">59</span>
+  </div>
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;flex-direction:column;gap:3px;">
+      <a href="https://flydav003-alt.github.io/k-line/?stock=3706" target="_blank"
+         onclick="event.stopPropagation()"
+         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
+         title="點擊開啟K線分析">3706</a>
+      <span style="font-size:.72rem;color:#6a85a8;">神達控股</span>
+    </div>
+    <div style="font-size:.7rem;color:#e8b84b;font-weight:600;margin-top:3px;">⚖️ 中性觀望</div>
+  </div>
+  
+  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
+    <svg width="60" height="28" viewBox="0 0 60 28">
+      <polyline points="0.0,24.1 9.3,8.8 18.7,13.9 28.0,13.2 37.3,13.9 46.7,8.8 56.0,5.9"
+        fill="none" stroke="#e8b84b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="56.0" cy="5.9" r="2.5" fill="#e8b84b"/>
+    </svg>
+    <div style="font-size:.58rem;color:#e8b84b;margin-top:1px;font-family:'IBM Plex Mono',monospace;">90.0→92.5 ↑</div>
+  </div>
+  <div style="text-align:right;flex-shrink:0;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">92.50</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 61.3 ｜ K 62.2</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 0.90x</div>
+  </div>
+</div>
+<div class="pick-card"
+  data-score="50"
+  data-cat="ETF"
+  data-rsi="55.9"
+  data-volratio="1.81"
+  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 232.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 239.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 239.5}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 244.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: null, &quot;close&quot;: 247.5}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: 62, &quot;close&quot;: 270.0}, {&quot;d&quot;: &quot;2026-08-31&quot;, &quot;s&quot;: 50, &quot;close&quot;: 257.0}]"
+  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=55.9，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量黑K（量比均1.8倍），賣壓沉重&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：272.00（+5.8%）／支撐：224.00（-12.8%）&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日賣超 5748張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 4571張&quot;}]"
+  data-sid="2449"
+  data-name="京元電子"
+  data-verdict="⚖️ 中性觀望"
+  data-score-val="50"
+  data-color="#e8b84b"
+  data-price="257.00"
+  data-rsi-val="55.9"
+  data-kd="66.6"
+  data-vol="1.81x"
+  data-cat-label="ETF"
+  data-cat-color="#a78bfa"
+  onclick="openPickModal(this)"
+  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
+  onmouseover="this.style.borderColor='#e8b84b88'" onmouseout="this.style.borderColor='#e8b84b33'">
+  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">10</div>
+  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
+      <circle cx="22" cy="22" r="18" fill="none" stroke="#e8b84b" stroke-width="4"
+        stroke-dasharray="138.2 138.3"
+        stroke-dashoffset="28.3" stroke-linecap="round"
+        transform="rotate(-90 22 22)"/>
+    </svg>
+    <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">50</span>
   </div>
   <div style="flex:1;min-width:0;">
     <div style="display:flex;flex-direction:column;gap:3px;">
@@ -671,78 +842,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
          title="點擊開啟K線分析">2449</a>
       <span style="font-size:.72rem;color:#6a85a8;">京元電子</span>
     </div>
-    <div style="font-size:.7rem;color:#ff9f40;font-weight:600;margin-top:3px;">📊 偏多觀察</div>
-  </div>
-  
-  <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
-    <svg width="60" height="28" viewBox="0 0 60 28">
-      <polyline points="0.0,24.2 11.2,20.8 22.4,20.5 33.6,18.4 44.8,16.7 56.0,5.8"
-        fill="none" stroke="#ff9f40" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="56.0" cy="5.8" r="2.5" fill="#ff9f40"/>
-    </svg>
-    <div style="font-size:.58rem;color:#ff9f40;margin-top:1px;font-family:'IBM Plex Mono',monospace;">232.0→270.0 ↑</div>
-  </div>
-  <div style="text-align:right;flex-shrink:0;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">270.00</div>
-    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 62.9 ｜ K 65.9</div>
-    <div style="font-size:.62rem;color:#e8b84b;">量比 2.75x</div>
-  </div>
-</div>
-<div class="pick-card"
-  data-score="58"
-  data-cat="ETF"
-  data-rsi="60.4"
-  data-volratio="2.0"
-  data-trend="[{&quot;d&quot;: &quot;2026-08-21&quot;, &quot;s&quot;: null, &quot;close&quot;: 373.0}, {&quot;d&quot;: &quot;2026-08-24&quot;, &quot;s&quot;: null, &quot;close&quot;: 355.0}, {&quot;d&quot;: &quot;2026-08-25&quot;, &quot;s&quot;: null, &quot;close&quot;: 379.0}, {&quot;d&quot;: &quot;2026-08-26&quot;, &quot;s&quot;: null, &quot;close&quot;: 405.0}, {&quot;d&quot;: &quot;2026-08-27&quot;, &quot;s&quot;: null, &quot;close&quot;: 445.5}, {&quot;d&quot;: &quot;2026-08-28&quot;, &quot;s&quot;: 58, &quot;close&quot;: 439.0}]"
-  data-signals="[{&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;均線&quot;, &quot;text&quot;: &quot;短期多頭排列（MA5>10>20），趨勢偏多&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;RSI&quot;, &quot;text&quot;: &quot;RSI=60.4，處於偏多健康區間&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;MACD&quot;, &quot;text&quot;: &quot;MACD柱狀放大，多方動能增強&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;量價&quot;, &quot;text&quot;: &quot;大量黑K（量比均2.0倍），賣壓沉重&quot;}, {&quot;type&quot;: &quot;bear&quot;, &quot;cat&quot;: &quot;布林&quot;, &quot;text&quot;: &quot;突破布林上軌，短線超漲追高謹慎&quot;}, {&quot;type&quot;: &quot;neutral&quot;, &quot;cat&quot;: &quot;支撐壓力&quot;, &quot;text&quot;: &quot;近20日壓力：461.50（+5.1%）／支撐：298.50（-32.0%）&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;外資近5日買超 9999張&quot;}, {&quot;type&quot;: &quot;bull&quot;, &quot;cat&quot;: &quot;籌碼&quot;, &quot;text&quot;: &quot;投信近5日買超 8471張&quot;}]"
-  data-sid="3105"
-  data-name="穩懋"
-  data-verdict="⚖️ 中性觀望"
-  data-score-val="58"
-  data-color="#e8b84b"
-  data-price="439.00"
-  data-rsi-val="60.4"
-  data-kd="73.3"
-  data-vol="2.00x"
-  data-cat-label="ETF"
-  data-cat-color="#a78bfa"
-  onclick="openPickModal(this)"
-  style="background:rgba(232,184,75,0.10);border:1px solid #e8b84b33;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s;"
-  onmouseover="this.style.borderColor='#e8b84b88'" onmouseout="this.style.borderColor='#e8b84b33'">
-  <div style="font-size:.75rem;color:#4a6080;font-family:'IBM Plex Mono',monospace;min-width:20px;text-align:center;">8</div>
-  <div style="position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
-    <svg width="44" height="44" viewBox="0 0 44 44" style="position:absolute;">
-      <circle cx="22" cy="22" r="18" fill="none" stroke="#1a2340" stroke-width="4"/>
-      <circle cx="22" cy="22" r="18" fill="none" stroke="#e8b84b" stroke-width="4"
-        stroke-dasharray="160.3 116.2"
-        stroke-dashoffset="28.3" stroke-linecap="round"
-        transform="rotate(-90 22 22)"/>
-    </svg>
-    <span style="font-size:.78rem;font-weight:700;color:#e8b84b;font-family:'IBM Plex Mono',monospace;z-index:1;">58</span>
-  </div>
-  <div style="flex:1;min-width:0;">
-    <div style="display:flex;flex-direction:column;gap:3px;">
-      <a href="https://flydav003-alt.github.io/k-line/?stock=3105" target="_blank"
-         onclick="event.stopPropagation()"
-         style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:700;color:#d4dff0;text-decoration:none;border-bottom:1px dashed #4a6080;display:inline-block;"
-         title="點擊開啟K線分析">3105</a>
-      <span style="font-size:.72rem;color:#6a85a8;">穩懋</span>
-    </div>
     <div style="font-size:.7rem;color:#e8b84b;font-weight:600;margin-top:3px;">⚖️ 中性觀望</div>
   </div>
   
   <div style="flex-shrink:0;text-align:center;cursor:pointer;" title="點擊查看詳情">
     <svg width="60" height="28" viewBox="0 0 60 28">
-      <polyline points="0.0,20.5 11.2,24.2 22.4,19.3 33.6,14.0 44.8,5.8 56.0,7.2"
+      <polyline points="0.0,24.2 9.3,20.8 18.7,20.5 28.0,18.4 37.3,16.7 46.7,5.8 56.0,12.1"
         fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="56.0" cy="7.2" r="2.5" fill="#4a9eff"/>
+      <circle cx="56.0" cy="12.1" r="2.5" fill="#4a9eff"/>
     </svg>
-    <div style="font-size:.58rem;color:#4a9eff;margin-top:1px;font-family:'IBM Plex Mono',monospace;">373.0→439.0 ↓</div>
+    <div style="font-size:.58rem;color:#4a9eff;margin-top:1px;font-family:'IBM Plex Mono',monospace;">232.0→257.0 ↓</div>
   </div>
   <div style="text-align:right;flex-shrink:0;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">439.00</div>
-    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 60.4 ｜ K 73.3</div>
-    <div style="font-size:.62rem;color:#e8b84b;">量比 2.00x</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#d4dff0;">257.00</div>
+    <div style="font-size:.62rem;color:#4a6080;margin-top:2px;">RSI 55.9 ｜ K 66.6</div>
+    <div style="font-size:.62rem;color:#e8b84b;">量比 1.81x</div>
   </div>
 </div>
   </div>
@@ -1421,6 +1535,236 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </thead>
     <tbody id="history-body">
       
+<tr class="history-row"
+  data-search="3374 精  材"
+  data-cat="ETF"
+  data-score="80"
+  data-date="2026-08-31"
+  data-rsi="72.8"
+  data-volratio="2.4"
+  data-t3pnl="-9999"
+  data-t5pnl="-9999">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-08-31</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=3374" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3374</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">精  材</td>
+  <td><span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">80</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">422.5</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row"
+  data-search="2455 全新"
+  data-cat="ETF"
+  data-score="79"
+  data-date="2026-08-31"
+  data-rsi="74.6"
+  data-volratio="2.81"
+  data-t3pnl="-9999"
+  data-t5pnl="-9999">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-08-31</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=2455" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">2455</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">全新</td>
+  <td><span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">79</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">477.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row"
+  data-search="3653 健策"
+  data-cat="ETF"
+  data-score="74"
+  data-date="2026-08-31"
+  data-rsi="78.7"
+  data-volratio="0.99"
+  data-t3pnl="-9999"
+  data-t5pnl="-9999">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-08-31</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=3653" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3653</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">健策</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">74</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">5990.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row"
+  data-search="8046 南電"
+  data-cat="ETF"
+  data-score="72"
+  data-date="2026-08-31"
+  data-rsi="55.9"
+  data-volratio="1.87"
+  data-t3pnl="-9999"
+  data-t5pnl="-9999">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-08-31</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=8046" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">8046</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">南電</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">72</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">1230.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row"
+  data-search="3008 大立光"
+  data-cat="ETF"
+  data-score="71"
+  data-date="2026-08-31"
+  data-rsi="92.1"
+  data-volratio="1.33"
+  data-t3pnl="-9999"
+  data-t5pnl="-9999">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-08-31</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=3008" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3008</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">大立光</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">71</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">7650.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row"
+  data-search="3081 聯亞光電"
+  data-cat="ETF"
+  data-score="70"
+  data-date="2026-08-31"
+  data-rsi="72.3"
+  data-volratio="1.15"
+  data-t3pnl="-9999"
+  data-t5pnl="-9999">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-08-31</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=3081" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3081</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">聯亞光電</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">70</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">3530.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row"
+  data-search="3017 奇鋐"
+  data-cat="ETF"
+  data-score="68"
+  data-date="2026-08-31"
+  data-rsi="71.5"
+  data-volratio="0.94"
+  data-t3pnl="-9999"
+  data-t5pnl="-9999">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-08-31</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=3017" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3017</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">奇鋐</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">68</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">3425.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row"
+  data-search="3661 世芯-KY"
+  data-cat="ETF"
+  data-score="65"
+  data-date="2026-08-31"
+  data-rsi="53.8"
+  data-volratio="0.85"
+  data-t3pnl="-9999"
+  data-t5pnl="-9999">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-08-31</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=3661" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3661</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">世芯-KY</td>
+  <td><span style="color:#ff9f40;font-weight:700;font-family:'IBM Plex Mono',monospace;">65</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">4075.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row"
+  data-search="3706 神達控股"
+  data-cat="ETF"
+  data-score="59"
+  data-date="2026-08-31"
+  data-rsi="61.3"
+  data-volratio="0.9"
+  data-t3pnl="-9999"
+  data-t5pnl="-9999">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-08-31</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=3706" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3706</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">神達控股</td>
+  <td><span style="color:#e8b84b;font-weight:700;font-family:'IBM Plex Mono',monospace;">59</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">92.5</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
+<tr class="history-row"
+  data-search="2449 京元電子"
+  data-cat="ETF"
+  data-score="50"
+  data-date="2026-08-31"
+  data-rsi="55.9"
+  data-volratio="1.81"
+  data-t3pnl="-9999"
+  data-t5pnl="-9999">
+  <td><span style="font-size:.72rem;color:#6a85a8;">2026-08-31</span></td>
+  <td><span style="font-size:.7rem;color:#a78bfa;border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px;">ETF</span></td>
+  <td>
+    <a href="https://flydav003-alt.github.io/k-line/?stock=2449" target="_blank"
+       style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">2449</a>
+  </td>
+  <td style="color:#6a85a8;font-size:.78rem;">京元電子</td>
+  <td><span style="color:#e8b84b;font-weight:700;font-family:'IBM Plex Mono',monospace;">50</span></td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;">257.0</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+  <td style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#6a85a8;">—</td>
+  <td style="font-weight:600;color:#4a6080;">—</td>
+</tr>
 <tr class="history-row"
   data-search="6532 瑞耘"
   data-cat="OTC"
@@ -28276,7 +28620,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td>
     <a href="https://flydav003-alt.github.io/k-line/?stock=3374" target="_blank"
        style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3374</a>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">精材</span>
+    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">精  材</span>
   </td>
   <td style="text-align:center;">
     <span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">100.0%</span>
@@ -28691,7 +29035,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td>
     <a href="https://flydav003-alt.github.io/k-line/?stock=3374" target="_blank"
        style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3374</a>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">精材</span>
+    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">精  材</span>
   </td>
   <td style="text-align:center;">
     <span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">100.0%</span>
@@ -29080,7 +29424,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td>
     <a href="https://flydav003-alt.github.io/k-line/?stock=3374" target="_blank"
        style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3374</a>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">精材</span>
+    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">精  材</span>
   </td>
   <td style="text-align:center;">
     <span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">100.0%</span>
@@ -29210,7 +29554,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td>
     <a href="https://flydav003-alt.github.io/k-line/?stock=3661" target="_blank"
        style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3661</a>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">世芯電子</span>
+    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">世芯-KY</span>
   </td>
   <td style="text-align:center;">
     <span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">100.0%</span>
@@ -29612,7 +29956,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td>
     <a href="https://flydav003-alt.github.io/k-line/?stock=3374" target="_blank"
        style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3374</a>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">精材</span>
+    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">精  材</span>
   </td>
   <td style="text-align:center;">
     <span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">100.0%</span>
@@ -29638,7 +29982,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <td>
     <a href="https://flydav003-alt.github.io/k-line/?stock=3661" target="_blank"
        style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#d4dff0;text-decoration:none;">3661</a>
-    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">世芯電子</span>
+    <span style="font-size:.68rem;color:#4a6080;margin-left:4px;">世芯-KY</span>
   </td>
   <td style="text-align:center;">
     <span style="color:#ff4d6d;font-weight:700;font-family:'IBM Plex Mono',monospace;">100.0%</span>
@@ -47323,7 +47667,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <footer class="footer">
   <div class="container">
     <div>⚠️ 本系統由 Python K線評分引擎自動產生，所有分析僅供參考，不構成買賣建議。投資人應自行判斷風險。</div>
-    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-08-31 15:29</div>
+    <div style="margin-top:4px;">資料來源：FinMind API ｜ 評分引擎：kline_scorer.py ｜ 最後更新：2026-08-31 15:40</div>
   </div>
 </footer>
 
