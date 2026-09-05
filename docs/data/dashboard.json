@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04 14:27:14",
+  "generated_at": "2026-09-05 07:01:49",
   "today_picks": {
     "ETF": [
       {
@@ -2666,22 +2666,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "2408",
-        "stock_name": "南亞科",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 10.4,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2301",
-        "stock_name": "光寶科",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 9.95,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "4939",
         "stock_name": "亞電",
         "total_cnt": 2,
@@ -2700,9 +2684,9 @@
       {
         "stock_id": "1815",
         "stock_name": "富喬",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 7.5,
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 7.76,
         "win_rate": 100.0
       },
       {
@@ -2722,35 +2706,27 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "2464",
-        "stock_name": "盟立",
+        "stock_id": "HAL",
+        "stock_name": "哈里伯頓",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 5.61,
+        "avg_pnl": 5.75,
         "win_rate": 100.0
       },
       {
         "stock_id": "IT",
         "stock_name": "Gartner, Inc.",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 4.83,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "SNPS",
-        "stock_name": "新思科技",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 4.36,
+        "avg_pnl": 5.25,
         "win_rate": 100.0
       },
       {
         "stock_id": "BR",
         "stock_name": "博睿信息",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 4.35,
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 4.69,
         "win_rate": 100.0
       },
       {
@@ -2850,12 +2826,12 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "ANET",
-        "stock_name": "Arista Networks, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 0.4,
-        "win_rate": 100.0
+        "stock_id": "3008",
+        "stock_name": "大立光",
+        "total_cnt": 6,
+        "win_cnt": 5,
+        "avg_pnl": 7.91,
+        "win_rate": 83.3
       },
       {
         "stock_id": "2609",
@@ -2872,6 +2848,30 @@
         "win_cnt": 3,
         "avg_pnl": 6.38,
         "win_rate": 75.0
+      },
+      {
+        "stock_id": "GEN",
+        "stock_name": "Gen Digital Inc.",
+        "total_cnt": 4,
+        "win_cnt": 3,
+        "avg_pnl": 0.58,
+        "win_rate": 75.0
+      },
+      {
+        "stock_id": "HOOD",
+        "stock_name": "Robinhood",
+        "total_cnt": 4,
+        "win_cnt": 3,
+        "avg_pnl": -1.15,
+        "win_rate": 75.0
+      },
+      {
+        "stock_id": "2615",
+        "stock_name": "萬海",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 12.04,
+        "win_rate": 66.7
       }
     ],
     "t5_30d": [
@@ -2924,27 +2924,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "2464",
-        "stock_name": "盟立",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 12.85,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "1815",
         "stock_name": "富喬",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 10.24,
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 10.83,
         "win_rate": 100.0
       },
       {
-        "stock_id": "2408",
-        "stock_name": "南亞科",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 9.63,
+        "stock_id": "3008",
+        "stock_name": "大立光",
+        "total_cnt": 6,
+        "win_cnt": 6,
+        "avg_pnl": 10.04,
         "win_rate": 100.0
       },
       {
@@ -2956,35 +2948,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3008",
-        "stock_name": "大立光",
-        "total_cnt": 7,
-        "win_cnt": 7,
-        "avg_pnl": 8.64,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2301",
-        "stock_name": "光寶科",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 8.47,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2368",
         "stock_name": "金像電",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 7.5,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "ANET",
-        "stock_name": "Arista Networks, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 6.85,
         "win_rate": 100.0
       },
       {
@@ -3025,6 +2993,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 6.0,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "HAL",
+        "stock_name": "哈里伯頓",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.93,
         "win_rate": 100.0
       },
       {
@@ -3070,9 +3046,9 @@
       {
         "stock_id": "BR",
         "stock_name": "博睿信息",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 3.27,
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 3.96,
         "win_rate": 100.0
       },
       {
@@ -3086,17 +3062,9 @@
       {
         "stock_id": "3653",
         "stock_name": "健策",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 2.65,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "PLTR",
-        "stock_name": "帕蘭提爾",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 2.21,
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 2.48,
         "win_rate": 100.0
       },
       {
@@ -3114,6 +3082,38 @@
         "win_cnt": 2,
         "avg_pnl": 2.08,
         "win_rate": 100.0
+      },
+      {
+        "stock_id": "PLTR",
+        "stock_name": "帕蘭提爾",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 0.74,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "VRTX",
+        "stock_name": "福泰製藥",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 0.54,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "TSCO",
+        "stock_name": "Tractor Supply Company",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 0.36,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "DASH",
+        "stock_name": "DoorDash",
+        "total_cnt": 6,
+        "win_cnt": 5,
+        "avg_pnl": 3.0,
+        "win_rate": 83.3
       }
     ],
     "t3_90d": [
@@ -3222,6 +3222,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "HAL",
+        "stock_name": "哈里伯頓",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.75,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "DHI",
         "stock_name": "D.R.霍頓",
         "total_cnt": 2,
@@ -3238,6 +3246,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "PFE",
+        "stock_name": "輝瑞",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.14,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "IT",
         "stock_name": "Gartner, Inc.",
         "total_cnt": 3,
@@ -3251,14 +3267,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 4.63,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "SNPS",
-        "stock_name": "新思科技",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.36,
         "win_rate": 100.0
       },
       {
@@ -3347,14 +3355,6 @@
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 3.1,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "DGX",
-        "stock_name": "Quest Diagnostics Incorporated",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 3.08,
         "win_rate": 100.0
       }
     ],
@@ -3480,14 +3480,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3665",
-        "stock_name": "貿聯-KY",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 6.55,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "EL",
         "stock_name": "Estee Lauder Companies, Inc. (T",
         "total_cnt": 6,
@@ -3509,6 +3501,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 6.0,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "HAL",
+        "stock_name": "哈里伯頓",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.93,
         "win_rate": 100.0
       },
       {
