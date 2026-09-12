@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11 14:32:02",
+  "generated_at": "2026-09-12 07:15:24",
   "today_picks": {
     "ETF": [
       {
@@ -2730,14 +2730,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "DASH",
-        "stock_name": "DoorDash",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.62,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "CVX",
         "stock_name": "雪佛龍",
         "total_cnt": 2,
@@ -2794,11 +2786,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "HOOD",
-        "stock_name": "Robinhood",
+        "stock_id": "EL",
+        "stock_name": "Estee Lauder Companies, Inc. (T",
         "total_cnt": 5,
         "win_cnt": 4,
-        "avg_pnl": 1.76,
+        "avg_pnl": 3.85,
         "win_rate": 80.0
       },
       {
@@ -2810,20 +2802,28 @@
         "win_rate": 75.0
       },
       {
-        "stock_id": "3498",
-        "stock_name": "陽程",
+        "stock_id": "TRMB",
+        "stock_name": "Trimble Inc.",
         "total_cnt": 4,
         "win_cnt": 3,
-        "avg_pnl": 8.02,
+        "avg_pnl": 2.17,
         "win_rate": 75.0
       },
       {
-        "stock_id": "6805",
-        "stock_name": "富世達",
+        "stock_id": "4979",
+        "stock_name": "華星光",
         "total_cnt": 4,
         "win_cnt": 3,
-        "avg_pnl": 2.85,
+        "avg_pnl": 1.37,
         "win_rate": 75.0
+      },
+      {
+        "stock_id": "3017",
+        "stock_name": "奇鋐",
+        "total_cnt": 7,
+        "win_cnt": 5,
+        "avg_pnl": 3.54,
+        "win_rate": 71.4
       }
     ],
     "t5_30d": [
@@ -2884,27 +2884,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "DASH",
-        "stock_name": "DoorDash",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 7.22,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "TGT",
         "stock_name": "塔吉特",
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 6.73,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "EL",
-        "stock_name": "Estee Lauder Companies, Inc. (T",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 6.5,
         "win_rate": 100.0
       },
       {
@@ -2937,6 +2921,14 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.62,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "EL",
+        "stock_name": "Estee Lauder Companies, Inc. (T",
+        "total_cnt": 5,
+        "win_cnt": 5,
+        "avg_pnl": 5.47,
         "win_rate": 100.0
       },
       {
@@ -2980,14 +2972,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3362",
-        "stock_name": "先進光",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.08,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2395",
         "stock_name": "研華",
         "total_cnt": 2,
@@ -3010,14 +2994,6 @@
         "win_cnt": 4,
         "avg_pnl": 8.23,
         "win_rate": 80.0
-      },
-      {
-        "stock_id": "3498",
-        "stock_name": "陽程",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 15.2,
-        "win_rate": 75.0
       },
       {
         "stock_id": "CRM",
@@ -3044,14 +3020,6 @@
         "win_rate": 75.0
       },
       {
-        "stock_id": "DE",
-        "stock_name": "迪爾公司",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 0.07,
-        "win_rate": 75.0
-      },
-      {
         "stock_id": "7751",
         "stock_name": "竑騰",
         "total_cnt": 3,
@@ -3066,6 +3034,38 @@
         "win_cnt": 2,
         "avg_pnl": 9.57,
         "win_rate": 66.7
+      },
+      {
+        "stock_id": "3498",
+        "stock_name": "陽程",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 5.13,
+        "win_rate": 66.7
+      },
+      {
+        "stock_id": "3443",
+        "stock_name": "創意",
+        "total_cnt": 6,
+        "win_cnt": 4,
+        "avg_pnl": 4.15,
+        "win_rate": 66.7
+      },
+      {
+        "stock_id": "DE",
+        "stock_name": "迪爾公司",
+        "total_cnt": 5,
+        "win_cnt": 3,
+        "avg_pnl": -0.59,
+        "win_rate": 60.0
+      },
+      {
+        "stock_id": "3017",
+        "stock_name": "奇鋐",
+        "total_cnt": 7,
+        "win_cnt": 4,
+        "avg_pnl": 3.46,
+        "win_rate": 57.1
       }
     ],
     "t3_90d": [
@@ -3230,6 +3230,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "LUV",
+        "stock_name": "Southwest Airlines Company",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 4.83,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "PTC",
         "stock_name": "PTC Inc.",
         "total_cnt": 2,
@@ -3246,19 +3254,19 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "IP",
+        "stock_name": "International Paper Company",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 4.23,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "2603",
         "stock_name": "長榮海運",
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 4.21,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "LUV",
-        "stock_name": "Southwest Airlines Company",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 4.1,
         "win_rate": 100.0
       },
       {
@@ -3294,19 +3302,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "2455",
-        "stock_name": "全新",
+        "stock_id": "CCL",
+        "stock_name": "Carnival Corporation Ltd.",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 3.62,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "IP",
-        "stock_name": "International Paper Company",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 3.39,
+        "avg_pnl": 3.71,
         "win_rate": 100.0
       }
     ],
@@ -3376,19 +3376,19 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "LUV",
+        "stock_name": "Southwest Airlines Company",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 9.25,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "ARES",
         "stock_name": "Ares Management Corporation",
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 9.11,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "LUV",
-        "stock_name": "Southwest Airlines Company",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 8.44,
         "win_rate": 100.0
       },
       {
@@ -3488,6 +3488,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "TRV",
+        "stock_name": "The Travelers Companies, Inc.",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 5.11,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "DHI",
         "stock_name": "D.R.霍頓",
         "total_cnt": 2,
@@ -3501,14 +3509,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 4.67,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "TRV",
-        "stock_name": "The Travelers Companies, Inc.",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 4.49,
         "win_rate": 100.0
       },
       {
