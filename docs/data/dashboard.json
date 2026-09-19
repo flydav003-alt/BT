@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18 14:34:39",
+  "generated_at": "2026-09-19 07:26:20",
   "today_picks": {
     "ETF": [
       {
@@ -2475,14 +2475,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "SWKS",
-        "stock_name": "Skyworks Solutions, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 8.63,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "5274",
         "stock_name": "信驊",
         "total_cnt": 4,
@@ -2496,14 +2488,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 7.89,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "TGT",
-        "stock_name": "塔吉特",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 7.12,
         "win_rate": 100.0
       },
       {
@@ -2528,6 +2512,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 6.49,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "SWKS",
+        "stock_name": "Skyworks Solutions, Inc.",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 6.37,
         "win_rate": 100.0
       },
       {
@@ -2565,9 +2557,9 @@
       {
         "stock_id": "QCOM",
         "stock_name": "高通",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.97,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 4.81,
         "win_rate": 100.0
       },
       {
@@ -2589,9 +2581,9 @@
       {
         "stock_id": "META",
         "stock_name": "Meta平台",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.02,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 4.18,
         "win_rate": 100.0
       },
       {
@@ -2675,14 +2667,6 @@
         "win_rate": 75.0
       },
       {
-        "stock_id": "CRM",
-        "stock_name": "Salesforce",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 9.21,
-        "win_rate": 75.0
-      },
-      {
         "stock_id": "OKE",
         "stock_name": "ONEOK, Inc.",
         "total_cnt": 4,
@@ -2699,11 +2683,27 @@
         "win_rate": 71.4
       },
       {
+        "stock_id": "CRM",
+        "stock_name": "Salesforce",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 10.08,
+        "win_rate": 66.7
+      },
+      {
         "stock_id": "2301",
         "stock_name": "光寶科",
         "total_cnt": 3,
         "win_cnt": 2,
         "avg_pnl": 5.82,
+        "win_rate": 66.7
+      },
+      {
+        "stock_id": "1717",
+        "stock_name": "長興",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 2.94,
         "win_rate": 66.7
       }
     ],
@@ -2719,9 +2719,9 @@
       {
         "stock_id": "SWKS",
         "stock_name": "Skyworks Solutions, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 18.75,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 14.37,
         "win_rate": 100.0
       },
       {
@@ -2741,22 +2741,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "META",
-        "stock_name": "Meta平台",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 6.69,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "QCOM",
-        "stock_name": "高通",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 6.58,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6510",
         "stock_name": "精測",
         "total_cnt": 3,
@@ -2773,14 +2757,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "TGT",
-        "stock_name": "塔吉特",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 5.97,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2301",
         "stock_name": "光寶科",
         "total_cnt": 3,
@@ -2794,6 +2770,14 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.61,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "META",
+        "stock_name": "Meta平台",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 5.56,
         "win_rate": 100.0
       },
       {
@@ -2821,6 +2805,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "QCOM",
+        "stock_name": "高通",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 4.54,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "EL",
         "stock_name": "Estee Lauder Companies, Inc. (T",
         "total_cnt": 4,
@@ -2839,9 +2831,9 @@
       {
         "stock_id": "AAPL",
         "stock_name": "蘋果公司",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.66,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.41,
         "win_rate": 100.0
       },
       {
@@ -2869,14 +2861,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "CRM",
-        "stock_name": "Salesforce",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 13.64,
-        "win_rate": 75.0
-      },
-      {
         "stock_id": "3008",
         "stock_name": "大立光電",
         "total_cnt": 4,
@@ -2890,6 +2874,14 @@
         "total_cnt": 3,
         "win_cnt": 2,
         "avg_pnl": 19.71,
+        "win_rate": 66.7
+      },
+      {
+        "stock_id": "CRM",
+        "stock_name": "Salesforce",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 16.58,
         "win_rate": 66.7
       },
       {
@@ -2946,6 +2938,14 @@
         "total_cnt": 7,
         "win_cnt": 4,
         "avg_pnl": 4.4,
+        "win_rate": 57.1
+      },
+      {
+        "stock_id": "TSLA",
+        "stock_name": "特斯拉",
+        "total_cnt": 7,
+        "win_cnt": 4,
+        "avg_pnl": -0.53,
         "win_rate": 57.1
       }
     ],
@@ -3071,11 +3071,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "DHI",
-        "stock_name": "D.R.霍頓",
+        "stock_id": "IP",
+        "stock_name": "International Paper Company",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 5.65,
+        "avg_pnl": 5.53,
         "win_rate": 100.0
       },
       {
@@ -3095,27 +3095,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "IP",
-        "stock_name": "International Paper Company",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 5.02,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "QCOM",
-        "stock_name": "高通",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.97,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "IT",
         "stock_name": "Gartner, Inc.",
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 4.83,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "QCOM",
+        "stock_name": "高通",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 4.81,
         "win_rate": 100.0
       },
       {
@@ -3183,11 +3175,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "CVX",
-        "stock_name": "雪佛龍",
+        "stock_id": "MRK",
+        "stock_name": "默克藥廠",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 2.88,
+        "avg_pnl": 2.77,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2368",
+        "stock_name": "金像電",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 2.6,
         "win_rate": 100.0
       }
     ],
@@ -3265,14 +3265,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "QCOM",
-        "stock_name": "高通",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 6.58,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "EL",
         "stock_name": "Estee Lauder Companies, Inc. (T",
         "total_cnt": 6,
@@ -3329,19 +3321,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "DHI",
-        "stock_name": "D.R.霍頓",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.72,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "APA",
-        "stock_name": "APA Corporation",
+        "stock_id": "QCOM",
+        "stock_name": "高通",
         "total_cnt": 3,
         "win_cnt": 3,
-        "avg_pnl": 4.67,
+        "avg_pnl": 4.54,
         "win_rate": 100.0
       },
       {
@@ -3369,14 +3353,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "IP",
-        "stock_name": "International Paper Company",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 4.13,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "3413",
         "stock_name": "京鼎",
         "total_cnt": 2,
@@ -3393,11 +3369,27 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "AAPL",
-        "stock_name": "蘋果公司",
+        "stock_id": "APA",
+        "stock_name": "APA Corporation",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 3.69,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "IP",
+        "stock_name": "International Paper Company",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 3.66,
+        "avg_pnl": 3.55,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "AAPL",
+        "stock_name": "蘋果公司",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.41,
         "win_rate": 100.0
       },
       {
@@ -3430,6 +3422,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.97,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "PM",
+        "stock_name": "菲利普莫里斯",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 2.83,
         "win_rate": 100.0
       }
     ],
@@ -3877,14 +3877,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "QCOM",
-        "stock_name": "高通",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 6.58,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "1503",
         "stock_name": "士電",
         "total_cnt": 2,
@@ -3914,6 +3906,14 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.63,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "2301",
+        "stock_name": "光寶科",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 5.27,
         "win_rate": 100.0
       }
     ]
