@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25 15:23:02",
+  "generated_at": "2026-09-26 07:52:25",
   "today_picks": {
     "ETF": [
       {
@@ -2498,14 +2498,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "3324",
-        "stock_name": "雙鴻",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 8.32,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "5274",
         "stock_name": "信驊",
         "total_cnt": 4,
@@ -2570,19 +2562,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "SJM",
-        "stock_name": "The J.M. Smucker Company",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.48,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "TMO",
         "stock_name": "賽默飛世爾",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.13,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 1.78,
         "win_rate": 100.0
       },
       {
@@ -2634,14 +2618,6 @@
         "win_rate": 75.0
       },
       {
-        "stock_id": "3017",
-        "stock_name": "奇鋐科技",
-        "total_cnt": 7,
-        "win_cnt": 5,
-        "avg_pnl": 2.48,
-        "win_rate": 71.4
-      },
-      {
         "stock_id": "3693",
         "stock_name": "營邦",
         "total_cnt": 3,
@@ -2666,6 +2642,14 @@
         "win_rate": 66.7
       },
       {
+        "stock_id": "HOOD",
+        "stock_name": "Robinhood",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 1.42,
+        "win_rate": 66.7
+      },
+      {
         "stock_id": "3443",
         "stock_name": "創意電子",
         "total_cnt": 3,
@@ -2682,19 +2666,19 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "2303",
-        "stock_name": "聯電",
-        "total_cnt": 5,
-        "win_cnt": 3,
-        "avg_pnl": 0.98,
-        "win_rate": 60.0
-      },
-      {
         "stock_id": "TSLA",
         "stock_name": "特斯拉",
         "total_cnt": 5,
         "win_cnt": 3,
         "avg_pnl": 0.28,
+        "win_rate": 60.0
+      },
+      {
+        "stock_id": "3017",
+        "stock_name": "奇鋐科技",
+        "total_cnt": 5,
+        "win_cnt": 3,
+        "avg_pnl": 0.05,
         "win_rate": 60.0
       },
       {
@@ -2728,9 +2712,33 @@
         "win_cnt": 2,
         "avg_pnl": 0.93,
         "win_rate": 50.0
+      },
+      {
+        "stock_id": "2354",
+        "stock_name": "鴻準",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 0.79,
+        "win_rate": 50.0
+      },
+      {
+        "stock_id": "6530",
+        "stock_name": "創威",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 0.68,
+        "win_rate": 50.0
       }
     ],
     "t5_30d": [
+      {
+        "stock_id": "AMD",
+        "stock_name": "超微半導體",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 7.21,
+        "win_rate": 100.0
+      },
       {
         "stock_id": "2421",
         "stock_name": "建準",
@@ -2764,14 +2772,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "TMO",
-        "stock_name": "賽默飛世爾",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 5.2,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6530",
         "stock_name": "創威",
         "total_cnt": 2,
@@ -2796,19 +2796,19 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "TMO",
+        "stock_name": "賽默飛世爾",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 4.31,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "VTRS",
         "stock_name": "Viatris Inc.",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 3.12,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "AMD",
-        "stock_name": "超微半導體",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.97,
         "win_rate": 100.0
       },
       {
@@ -2870,10 +2870,10 @@
       {
         "stock_id": "2303",
         "stock_name": "聯電",
-        "total_cnt": 5,
-        "win_cnt": 4,
-        "avg_pnl": 3.46,
-        "win_rate": 80.0
+        "total_cnt": 4,
+        "win_cnt": 3,
+        "avg_pnl": 3.82,
+        "win_rate": 75.0
       },
       {
         "stock_id": "VLO",
@@ -2884,11 +2884,27 @@
         "win_rate": 75.0
       },
       {
+        "stock_id": "FTNT",
+        "stock_name": "飛塔",
+        "total_cnt": 4,
+        "win_cnt": 3,
+        "avg_pnl": 0.08,
+        "win_rate": 75.0
+      },
+      {
         "stock_id": "3693",
         "stock_name": "營邦",
         "total_cnt": 3,
         "win_cnt": 2,
         "avg_pnl": 7.72,
+        "win_rate": 66.7
+      },
+      {
+        "stock_id": "HOOD",
+        "stock_name": "Robinhood",
+        "total_cnt": 3,
+        "win_cnt": 2,
+        "avg_pnl": 5.1,
         "win_rate": 66.7
       },
       {
@@ -2908,27 +2924,11 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "3264",
-        "stock_name": "欣銓",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 1.65,
-        "win_rate": 66.7
-      },
-      {
         "stock_id": "3231",
         "stock_name": "緯創",
         "total_cnt": 3,
         "win_cnt": 2,
         "avg_pnl": 0.28,
-        "win_rate": 66.7
-      },
-      {
-        "stock_id": "FTNT",
-        "stock_name": "飛塔",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": -0.06,
         "win_rate": 66.7
       },
       {
@@ -2956,19 +2956,19 @@
         "win_rate": 60.0
       },
       {
-        "stock_id": "3324",
-        "stock_name": "雙鴻",
-        "total_cnt": 2,
-        "win_cnt": 1,
-        "avg_pnl": 15.01,
-        "win_rate": 50.0
-      },
-      {
         "stock_id": "CRM",
         "stock_name": "Salesforce",
         "total_cnt": 2,
         "win_cnt": 1,
         "avg_pnl": 13.72,
+        "win_rate": 50.0
+      },
+      {
+        "stock_id": "6640",
+        "stock_name": "均華",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 6.6,
         "win_rate": 50.0
       }
     ],
@@ -3208,9 +3208,9 @@
       {
         "stock_id": "TMO",
         "stock_name": "賽默飛世爾",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 2.23,
+        "total_cnt": 7,
+        "win_cnt": 7,
+        "avg_pnl": 2.06,
         "win_rate": 100.0
       }
     ],
@@ -3261,6 +3261,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 7.53,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "AMD",
+        "stock_name": "超微半導體",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 7.21,
         "win_rate": 100.0
       },
       {
@@ -3378,9 +3386,9 @@
       {
         "stock_id": "TMO",
         "stock_name": "賽默飛世爾",
-        "total_cnt": 6,
-        "win_cnt": 6,
-        "avg_pnl": 3.58,
+        "total_cnt": 7,
+        "win_cnt": 7,
+        "avg_pnl": 3.43,
         "win_rate": 100.0
       },
       {
@@ -3405,14 +3413,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 3.24,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "AMD",
-        "stock_name": "超微半導體",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 2.97,
         "win_rate": 100.0
       },
       {
@@ -3884,6 +3884,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "AMD",
+        "stock_name": "超微半導體",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 7.21,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "TGT",
         "stock_name": "塔吉特",
         "total_cnt": 3,
@@ -3929,14 +3937,6 @@
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.63,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "6173",
-        "stock_name": "信昌電",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 5.36,
         "win_rate": 100.0
       }
     ]
