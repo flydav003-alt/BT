@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02 16:19:08",
+  "generated_at": "2026-10-03 08:18:14",
   "today_picks": {
     "ETF": [
       {
@@ -2921,19 +2921,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "5274",
-        "stock_name": "信驊科技",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 8.04,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6147",
         "stock_name": "頎邦科技",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 7.95,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "5274",
+        "stock_name": "信驊科技",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 7.68,
         "win_rate": 100.0
       },
       {
@@ -2955,9 +2955,9 @@
       {
         "stock_id": "VTRS",
         "stock_name": "Viatris Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.42,
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 2.86,
         "win_rate": 100.0
       },
       {
@@ -2966,6 +2966,14 @@
         "total_cnt": 5,
         "win_cnt": 5,
         "avg_pnl": 2.32,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "AAPL",
+        "stock_name": "蘋果公司",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 2.08,
         "win_rate": 100.0
       },
       {
@@ -3011,25 +3019,9 @@
       {
         "stock_id": "6510",
         "stock_name": "精測",
-        "total_cnt": 6,
-        "win_cnt": 5,
-        "avg_pnl": 4.44,
-        "win_rate": 83.3
-      },
-      {
-        "stock_id": "META",
-        "stock_name": "Meta平台",
         "total_cnt": 5,
         "win_cnt": 4,
-        "avg_pnl": 2.65,
-        "win_rate": 80.0
-      },
-      {
-        "stock_id": "AAPL",
-        "stock_name": "蘋果公司",
-        "total_cnt": 5,
-        "win_cnt": 4,
-        "avg_pnl": 1.12,
+        "avg_pnl": 5.12,
         "win_rate": 80.0
       },
       {
@@ -3046,14 +3038,6 @@
         "total_cnt": 4,
         "win_cnt": 3,
         "avg_pnl": 4.93,
-        "win_rate": 75.0
-      },
-      {
-        "stock_id": "QCOM",
-        "stock_name": "高通",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 3.27,
         "win_rate": 75.0
       },
       {
@@ -3089,14 +3073,6 @@
         "win_rate": 66.7
       },
       {
-        "stock_id": "2882",
-        "stock_name": "國泰金",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 1.83,
-        "win_rate": 66.7
-      },
-      {
         "stock_id": "FTNT",
         "stock_name": "飛塔",
         "total_cnt": 3,
@@ -3113,11 +3089,19 @@
         "win_rate": 66.7
       },
       {
+        "stock_id": "META",
+        "stock_name": "Meta平台",
+        "total_cnt": 6,
+        "win_cnt": 4,
+        "avg_pnl": 1.08,
+        "win_rate": 66.7
+      },
+      {
         "stock_id": "RVTY",
         "stock_name": "Revvity, Inc.",
         "total_cnt": 3,
         "win_cnt": 2,
-        "avg_pnl": 0.39,
+        "avg_pnl": 0.75,
         "win_rate": 66.7
       },
       {
@@ -3129,12 +3113,28 @@
         "win_rate": 66.7
       },
       {
+        "stock_id": "QCOM",
+        "stock_name": "高通",
+        "total_cnt": 5,
+        "win_cnt": 3,
+        "avg_pnl": 1.57,
+        "win_rate": 60.0
+      },
+      {
         "stock_id": "SWKS",
         "stock_name": "Skyworks Solutions, Inc.",
         "total_cnt": 5,
         "win_cnt": 3,
         "avg_pnl": 1.5,
         "win_rate": 60.0
+      },
+      {
+        "stock_id": "3529",
+        "stock_name": "力旺",
+        "total_cnt": 2,
+        "win_cnt": 1,
+        "avg_pnl": 7.19,
+        "win_rate": 50.0
       }
     ],
     "t5_30d": [
@@ -3179,14 +3179,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "QCOM",
-        "stock_name": "高通",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 5.92,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6173",
         "stock_name": "信昌電",
         "total_cnt": 2,
@@ -3195,19 +3187,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "5274",
-        "stock_name": "信驊科技",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 4.86,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "2609",
         "stock_name": "陽明",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 4.79,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "5274",
+        "stock_name": "信驊科技",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 4.76,
         "win_rate": 100.0
       },
       {
@@ -3235,6 +3227,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "RVTY",
+        "stock_name": "Revvity, Inc.",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 3.81,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6147",
         "stock_name": "頎邦科技",
         "total_cnt": 2,
@@ -3243,11 +3243,11 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "VTRS",
-        "stock_name": "Viatris Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 3.12,
+        "stock_id": "AAPL",
+        "stock_name": "蘋果公司",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 3.25,
         "win_rate": 100.0
       },
       {
@@ -3267,19 +3267,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "AAPL",
-        "stock_name": "蘋果公司",
-        "total_cnt": 5,
-        "win_cnt": 5,
-        "avg_pnl": 2.68,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "6274",
         "stock_name": "台燿",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.48,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "VTRS",
+        "stock_name": "Viatris Inc.",
+        "total_cnt": 3,
+        "win_cnt": 3,
+        "avg_pnl": 2.42,
         "win_rate": 100.0
       },
       {
@@ -3331,6 +3331,14 @@
         "win_rate": 80.0
       },
       {
+        "stock_id": "QCOM",
+        "stock_name": "高通",
+        "total_cnt": 5,
+        "win_cnt": 4,
+        "avg_pnl": 3.77,
+        "win_rate": 80.0
+      },
+      {
         "stock_id": "INTC",
         "stock_name": "英特爾",
         "total_cnt": 4,
@@ -3368,14 +3376,6 @@
         "total_cnt": 9,
         "win_cnt": 6,
         "avg_pnl": 3.73,
-        "win_rate": 66.7
-      },
-      {
-        "stock_id": "3711",
-        "stock_name": "日月光投資控股",
-        "total_cnt": 3,
-        "win_cnt": 2,
-        "avg_pnl": 2.71,
         "win_rate": 66.7
       }
     ],
@@ -3719,14 +3719,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "QCOM",
-        "stock_name": "高通",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 5.92,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "TRV",
         "stock_name": "The Travelers Companies, Inc.",
         "total_cnt": 2,
@@ -3860,6 +3852,14 @@
         "total_cnt": 5,
         "win_cnt": 5,
         "avg_pnl": 2.68,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "PFE",
+        "stock_name": "輝瑞",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 2.67,
         "win_rate": 100.0
       }
     ],
@@ -4331,19 +4331,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "QCOM",
-        "stock_name": "高通",
-        "total_cnt": 4,
-        "win_cnt": 4,
-        "avg_pnl": 5.92,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "SOLV",
         "stock_name": "Solventum Corporation",
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.63,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6173",
+        "stock_name": "信昌電",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.36,
         "win_rate": 100.0
       }
     ]
