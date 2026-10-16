@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16 12:49:01",
+  "generated_at": "2026-10-16 12:59:02",
   "today_picks": {
     "ETF": [
       {
@@ -995,7 +995,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-14 12:28:21",
-      "sn_name": "景碩"
+      "sn_name": "景碩科技"
     },
     {
       "id": 7380,
@@ -1475,7 +1475,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-13 14:13:59",
-      "sn_name": "欣興電子"
+      "sn_name": "欣興"
     },
     {
       "id": 7311,
@@ -1571,7 +1571,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-13 14:13:59",
-      "sn_name": "奇鋐科技"
+      "sn_name": "奇鋐"
     },
     {
       "id": 7325,
@@ -2146,7 +2146,7 @@
       },
       {
         "stock_id": "3189",
-        "stock_name": "景碩",
+        "stock_name": "景碩科技",
         "total_cnt": 6,
         "win_cnt": 6,
         "avg_pnl": 6.27,
@@ -2324,7 +2324,7 @@
       },
       {
         "stock_id": "3189",
-        "stock_name": "景碩",
+        "stock_name": "景碩科技",
         "total_cnt": 6,
         "win_cnt": 6,
         "avg_pnl": 14.38,
@@ -2364,7 +2364,7 @@
       },
       {
         "stock_id": "1303",
-        "stock_name": "南亞",
+        "stock_name": "南亞塑膠工業",
         "total_cnt": 6,
         "win_cnt": 6,
         "avg_pnl": 12.15,
