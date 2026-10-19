@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-19 15:03:51",
+  "generated_at": "2026-10-19 15:13:49",
   "today_picks": {
     "ETF": [
       {
-        "id": 7557,
+        "id": 7592,
         "date": "2026-10-19",
         "category": "ETF",
         "rank": 1,
@@ -23,10 +23,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-10-19 14:57:45"
+        "created_at": "2026-10-19 15:13:37"
       },
       {
-        "id": 7558,
+        "id": 7593,
         "date": "2026-10-19",
         "category": "ETF",
         "rank": 2,
@@ -46,10 +46,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-10-19 14:57:45"
+        "created_at": "2026-10-19 15:13:37"
       },
       {
-        "id": 7559,
+        "id": 7594,
         "date": "2026-10-19",
         "category": "ETF",
         "rank": 3,
@@ -69,10 +69,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-10-19 14:57:45"
+        "created_at": "2026-10-19 15:13:37"
       },
       {
-        "id": 7560,
+        "id": 7595,
         "date": "2026-10-19",
         "category": "ETF",
         "rank": 4,
@@ -92,10 +92,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-10-19 14:57:45"
+        "created_at": "2026-10-19 15:13:37"
       },
       {
-        "id": 7561,
+        "id": 7596,
         "date": "2026-10-19",
         "category": "ETF",
         "rank": 5,
@@ -115,10 +115,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-10-19 14:57:45"
+        "created_at": "2026-10-19 15:13:37"
       },
       {
-        "id": 7562,
+        "id": 7597,
         "date": "2026-10-19",
         "category": "ETF",
         "rank": 6,
@@ -138,10 +138,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-10-19 14:57:45"
+        "created_at": "2026-10-19 15:13:37"
       },
       {
-        "id": 7563,
+        "id": 7598,
         "date": "2026-10-19",
         "category": "ETF",
         "rank": 7,
@@ -161,10 +161,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-10-19 14:57:45"
+        "created_at": "2026-10-19 15:13:37"
       },
       {
-        "id": 7564,
+        "id": 7599,
         "date": "2026-10-19",
         "category": "ETF",
         "rank": 8,
@@ -184,10 +184,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-10-19 14:57:45"
+        "created_at": "2026-10-19 15:13:37"
       },
       {
-        "id": 7565,
+        "id": 7600,
         "date": "2026-10-19",
         "category": "ETF",
         "rank": 9,
@@ -207,10 +207,10 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-10-19 14:57:45"
+        "created_at": "2026-10-19 15:13:37"
       },
       {
-        "id": 7566,
+        "id": 7601,
         "date": "2026-10-19",
         "category": "ETF",
         "rank": 10,
@@ -230,7 +230,7 @@
         "t5_date": null,
         "t5_price": null,
         "t5_pnl": null,
-        "created_at": "2026-10-19 14:57:45"
+        "created_at": "2026-10-19 15:13:37"
       }
     ],
     "OTC": [
@@ -470,7 +470,7 @@
   },
   "history": [
     {
-      "id": 7557,
+      "id": 7592,
       "date": "2026-10-19",
       "category": "ETF",
       "rank": 1,
@@ -490,11 +490,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-10-19 14:57:45",
+      "created_at": "2026-10-19 15:13:37",
       "sn_name": "台燿科技"
     },
     {
-      "id": 7558,
+      "id": 7593,
       "date": "2026-10-19",
       "category": "ETF",
       "rank": 2,
@@ -514,11 +514,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-10-19 14:57:45",
+      "created_at": "2026-10-19 15:13:37",
       "sn_name": "創意"
     },
     {
-      "id": 7559,
+      "id": 7594,
       "date": "2026-10-19",
       "category": "ETF",
       "rank": 3,
@@ -538,11 +538,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-10-19 14:57:45",
+      "created_at": "2026-10-19 15:13:37",
       "sn_name": "台灣積體電路製造"
     },
     {
-      "id": 7560,
+      "id": 7595,
       "date": "2026-10-19",
       "category": "ETF",
       "rank": 4,
@@ -562,11 +562,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-10-19 14:57:45",
+      "created_at": "2026-10-19 15:13:37",
       "sn_name": "富世達"
     },
     {
-      "id": 7561,
+      "id": 7596,
       "date": "2026-10-19",
       "category": "ETF",
       "rank": 5,
@@ -586,11 +586,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-10-19 14:57:45",
+      "created_at": "2026-10-19 15:13:37",
       "sn_name": "欣興電子"
     },
     {
-      "id": 7562,
+      "id": 7597,
       "date": "2026-10-19",
       "category": "ETF",
       "rank": 6,
@@ -610,11 +610,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-10-19 14:57:45",
+      "created_at": "2026-10-19 15:13:37",
       "sn_name": "景碩科技"
     },
     {
-      "id": 7563,
+      "id": 7598,
       "date": "2026-10-19",
       "category": "ETF",
       "rank": 7,
@@ -634,11 +634,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-10-19 14:57:45",
+      "created_at": "2026-10-19 15:13:37",
       "sn_name": "金像電"
     },
     {
-      "id": 7564,
+      "id": 7599,
       "date": "2026-10-19",
       "category": "ETF",
       "rank": 8,
@@ -658,11 +658,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-10-19 14:57:45",
+      "created_at": "2026-10-19 15:13:37",
       "sn_name": "京元電子"
     },
     {
-      "id": 7565,
+      "id": 7600,
       "date": "2026-10-19",
       "category": "ETF",
       "rank": 9,
@@ -682,11 +682,11 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-10-19 14:57:45",
+      "created_at": "2026-10-19 15:13:37",
       "sn_name": "聯發科技"
     },
     {
-      "id": 7566,
+      "id": 7601,
       "date": "2026-10-19",
       "category": "ETF",
       "rank": 10,
@@ -706,7 +706,7 @@
       "t5_date": null,
       "t5_price": null,
       "t5_pnl": null,
-      "created_at": "2026-10-19 14:57:45",
+      "created_at": "2026-10-19 15:13:37",
       "sn_name": "奇鋐科技"
     },
     {
