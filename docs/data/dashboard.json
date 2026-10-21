@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21 13:16:32",
+  "generated_at": "2026-10-21 13:30:12",
   "today_picks": {
     "ETF": [
       {
@@ -1067,7 +1067,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-19 15:13:37",
-      "sn_name": "欣興電子"
+      "sn_name": "欣興"
     },
     {
       "id": 7597,
@@ -1115,7 +1115,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-19 15:13:37",
-      "sn_name": "金像電"
+      "sn_name": "金像電子"
     },
     {
       "id": 7599,
@@ -1187,7 +1187,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-19 15:13:37",
-      "sn_name": "奇鋐"
+      "sn_name": "奇鋐科技"
     },
     {
       "id": 7542,
@@ -1706,7 +1706,7 @@
       },
       {
         "stock_id": "1303",
-        "stock_name": "南亞塑膠工業",
+        "stock_name": "南亞",
         "total_cnt": 6,
         "win_cnt": 6,
         "avg_pnl": 9.96,
@@ -1932,7 +1932,7 @@
       },
       {
         "stock_id": "1303",
-        "stock_name": "南亞塑膠工業",
+        "stock_name": "南亞",
         "total_cnt": 6,
         "win_cnt": 6,
         "avg_pnl": 15.08,
