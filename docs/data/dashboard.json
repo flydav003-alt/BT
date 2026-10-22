@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22 13:16:55",
+  "generated_at": "2026-10-22 13:27:35",
   "today_picks": {
     "ETF": [
       {
@@ -1211,7 +1211,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-19 15:13:37",
-      "sn_name": "台燿科技"
+      "sn_name": "台 燿"
     },
     {
       "id": 7593,
@@ -1259,7 +1259,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-19 15:13:37",
-      "sn_name": "台積電"
+      "sn_name": "台灣積體電路製造"
     },
     {
       "id": 7595,
@@ -1283,7 +1283,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-19 15:13:37",
-      "sn_name": "富世達"
+      "sn_name": "富世達股份有限公司"
     },
     {
       "id": 7596,
@@ -1403,7 +1403,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-19 15:13:37",
-      "sn_name": "聯發科"
+      "sn_name": "聯發科技"
     },
     {
       "id": 7601,
@@ -1667,7 +1667,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-19 15:03:39",
-      "sn_name": "富世達"
+      "sn_name": "富世達股份有限公司"
     }
   ],
   "win_stats": {
@@ -1698,7 +1698,7 @@
       },
       {
         "stock_id": "1303",
-        "stock_name": "南亞",
+        "stock_name": "南亞塑膠工業",
         "total_cnt": 7,
         "win_cnt": 7,
         "avg_pnl": 10.33,
@@ -1890,7 +1890,7 @@
       },
       {
         "stock_id": "2330",
-        "stock_name": "台積電",
+        "stock_name": "台灣積體電路製造",
         "total_cnt": 9,
         "win_cnt": 7,
         "avg_pnl": 1.35,
