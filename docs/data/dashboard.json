@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22 15:26:17",
+  "generated_at": "2026-10-23 07:44:47",
   "today_picks": {
     "ETF": [
       {
@@ -1699,9 +1699,9 @@
       {
         "stock_id": "1303",
         "stock_name": "南亞塑膠工業",
-        "total_cnt": 7,
-        "win_cnt": 7,
-        "avg_pnl": 10.33,
+        "total_cnt": 6,
+        "win_cnt": 6,
+        "avg_pnl": 10.94,
         "win_rate": 100.0
       },
       {
@@ -1769,6 +1769,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "7751",
+        "stock_name": "竑騰",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 4.32,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "3357",
         "stock_name": "臺慶科",
         "total_cnt": 2,
@@ -1785,6 +1793,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "AMGN",
+        "stock_name": "安進",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 3.29,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "6664",
         "stock_name": "群翊",
         "total_cnt": 5,
@@ -1798,6 +1814,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 2.72,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6147",
+        "stock_name": "頎邦",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 2.65,
         "win_rate": 100.0
       },
       {
@@ -1825,6 +1849,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "5340",
+        "stock_name": "建榮",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 2.29,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "ABBV",
         "stock_name": "艾伯維",
         "total_cnt": 4,
@@ -1833,19 +1865,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "SNPS",
-        "stock_name": "新思科技",
-        "total_cnt": 3,
-        "win_cnt": 3,
+        "stock_id": "ISRG",
+        "stock_name": "直覺外科",
+        "total_cnt": 2,
+        "win_cnt": 2,
         "avg_pnl": 2.23,
         "win_rate": 100.0
       },
       {
-        "stock_id": "ISRG",
-        "stock_name": "直覺外科",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 1.78,
+        "stock_id": "6415",
+        "stock_name": "矽力*-KY",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.84,
         "win_rate": 100.0
       },
       {
@@ -1865,52 +1897,20 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "2439",
+        "stock_name": "美律",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 1.36,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "3689",
         "stock_name": "湧德",
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 1.07,
         "win_rate": 100.0
-      },
-      {
-        "stock_id": "RVTY",
-        "stock_name": "Revvity, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 0.87,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "WBD",
-        "stock_name": "Warner Bros. Discovery, Inc. -",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 0.24,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "2330",
-        "stock_name": "台灣積體電路製造",
-        "total_cnt": 9,
-        "win_cnt": 7,
-        "avg_pnl": 1.35,
-        "win_rate": 77.8
-      },
-      {
-        "stock_id": "PTC",
-        "stock_name": "PTC Inc.",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 0.5,
-        "win_rate": 75.0
-      },
-      {
-        "stock_id": "2345",
-        "stock_name": "智邦",
-        "total_cnt": 4,
-        "win_cnt": 3,
-        "avg_pnl": 0.14,
-        "win_rate": 75.0
       }
     ],
     "t5_30d": [
@@ -1928,14 +1928,6 @@
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 15.15,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "8150",
-        "stock_name": "南茂",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 14.09,
         "win_rate": 100.0
       },
       {
@@ -2003,11 +1995,27 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "LLY",
+        "stock_name": "禮來",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.7,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "1301",
         "stock_name": "台塑",
         "total_cnt": 3,
         "win_cnt": 3,
         "avg_pnl": 5.96,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6415",
+        "stock_name": "矽力*-KY",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.73,
         "win_rate": 100.0
       },
       {
@@ -2024,6 +2032,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 5.38,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "AMGN",
+        "stock_name": "安進",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.04,
         "win_rate": 100.0
       },
       {
@@ -2059,19 +2075,19 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "1815",
+        "stock_name": "富喬",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 3.7,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "ABBV",
         "stock_name": "艾伯維",
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 3.58,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "SNPS",
-        "stock_name": "新思科技",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 3.55,
         "win_rate": 100.0
       },
       {
@@ -2101,9 +2117,9 @@
       {
         "stock_id": "ISRG",
         "stock_name": "直覺外科",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 2.43,
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 2.33,
         "win_rate": 100.0
       },
       {
@@ -2123,35 +2139,19 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "AMT",
-        "stock_name": "美國鐵塔",
+        "stock_id": "FAST",
+        "stock_name": "法斯特爾",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 1.04,
+        "avg_pnl": 1.73,
         "win_rate": 100.0
       },
       {
-        "stock_id": "MSFT",
-        "stock_name": "微軟",
+        "stock_id": "2439",
+        "stock_name": "美律",
         "total_cnt": 2,
         "win_cnt": 2,
-        "avg_pnl": 1.0,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "HST",
-        "stock_name": "Host Hotels & Resorts, Inc.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 0.65,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "WBD",
-        "stock_name": "Warner Bros. Discovery, Inc. -",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 0.39,
+        "avg_pnl": 1.12,
         "win_rate": 100.0
       }
     ],
@@ -2285,14 +2285,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6147",
-        "stock_name": "頎邦",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 6.18,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "1301",
         "stock_name": "台塑",
         "total_cnt": 4,
@@ -2322,6 +2314,14 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 5.54,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6147",
+        "stock_name": "頎邦",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 5.3,
         "win_rate": 100.0
       },
       {
@@ -2383,9 +2383,9 @@
       {
         "stock_id": "DGX",
         "stock_name": "Quest Diagnostics Incorporated",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 3.08,
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 3.01,
         "win_rate": 100.0
       },
       {
@@ -2527,6 +2527,14 @@
         "win_rate": 100.0
       },
       {
+        "stock_id": "LLY",
+        "stock_name": "禮來",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 6.7,
+        "win_rate": 100.0
+      },
+      {
         "stock_id": "EL",
         "stock_name": "Estee Lauder Companies, Inc. (T",
         "total_cnt": 6,
@@ -2564,6 +2572,14 @@
         "total_cnt": 4,
         "win_cnt": 4,
         "avg_pnl": 6.0,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6415",
+        "stock_name": "矽力*-KY",
+        "total_cnt": 2,
+        "win_cnt": 2,
+        "avg_pnl": 5.73,
         "win_rate": 100.0
       },
       {
@@ -2620,22 +2636,6 @@
         "total_cnt": 2,
         "win_cnt": 2,
         "avg_pnl": 4.68,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "CCL",
-        "stock_name": "Carnival Corporation Ltd.",
-        "total_cnt": 2,
-        "win_cnt": 2,
-        "avg_pnl": 4.33,
-        "win_rate": 100.0
-      },
-      {
-        "stock_id": "MSFT",
-        "stock_name": "微軟",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 4.28,
         "win_rate": 100.0
       }
     ],
@@ -2737,14 +2737,6 @@
         "win_rate": 100.0
       },
       {
-        "stock_id": "6415",
-        "stock_name": "矽力*-KY",
-        "total_cnt": 3,
-        "win_cnt": 3,
-        "avg_pnl": 9.69,
-        "win_rate": 100.0
-      },
-      {
         "stock_id": "8182",
         "stock_name": "加高",
         "total_cnt": 3,
@@ -2798,6 +2790,14 @@
         "total_cnt": 5,
         "win_cnt": 5,
         "avg_pnl": 7.84,
+        "win_rate": 100.0
+      },
+      {
+        "stock_id": "6415",
+        "stock_name": "矽力*-KY",
+        "total_cnt": 4,
+        "win_cnt": 4,
+        "avg_pnl": 7.73,
         "win_rate": 100.0
       },
       {
