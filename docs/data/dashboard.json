@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30 14:36:21",
+  "generated_at": "2026-10-30 14:45:39",
   "today_picks": {
     "ETF": [
       {
@@ -731,7 +731,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-29 14:55:15",
-      "sn_name": "穩懋"
+      "sn_name": "穩懋半導體"
     },
     {
       "id": 8031,
@@ -755,7 +755,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-29 14:55:15",
-      "sn_name": "台灣積體電路製造"
+      "sn_name": "台積電"
     },
     {
       "id": 8032,
@@ -803,7 +803,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-29 14:55:15",
-      "sn_name": "台光電"
+      "sn_name": "台光電子材料"
     },
     {
       "id": 8034,
@@ -995,7 +995,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-29 13:50:25",
-      "sn_name": "穩懋"
+      "sn_name": "穩懋半導體"
     },
     {
       "id": 8003,
@@ -1211,7 +1211,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-28 14:45:49",
-      "sn_name": "台灣積體電路製造"
+      "sn_name": "台積電"
     },
     {
       "id": 7973,
@@ -1667,7 +1667,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-27 14:02:03",
-      "sn_name": "台灣積體電路製造"
+      "sn_name": "台積電"
     },
     {
       "id": 7912,
@@ -2171,7 +2171,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-26 15:03:13",
-      "sn_name": "台灣積體電路製造"
+      "sn_name": "台積電"
     },
     {
       "id": 7856,
@@ -2219,7 +2219,7 @@
       "t5_price": null,
       "t5_pnl": null,
       "created_at": "2026-10-26 15:03:13",
-      "sn_name": "台 燿"
+      "sn_name": "台燿科技"
     },
     {
       "id": 7858,
